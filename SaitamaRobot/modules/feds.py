@@ -2104,7 +2104,7 @@ def fed_admin_help(update: Update, context: CallbackContext):
 def fed_user_help(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
         """*🎩 Any user:*
- • `/fbanstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
+ • `/fstat`*:* Shows if you/or the user you are replying to or their username is fbanned somewhere or not
  • `/fednotif <on/off>`*:* Federation settings not in PM when there are users who are fbaned/unfbanned
  • `/frules`*:* See Federation regulations\n""",
         parse_mode=ParseMode.MARKDOWN)
@@ -2131,11 +2131,11 @@ DEL_FED_HANDLER = CommandHandler("delfed", del_fed)
 RENAME_FED = CommandHandler("renamefed", rename_fed)
 JOIN_FED_HANDLER = CommandHandler("joinfed", join_fed)
 LEAVE_FED_HANDLER = CommandHandler("leavefed", leave_fed)
-PROMOTE_FED_HANDLER = CommandHandler("fpromote", user_join_fed)
-DEMOTE_FED_HANDLER = CommandHandler("fdemote", user_demote_fed)
+PROMOTE_FED_HANDLER = CommandHandler(["fpromote","fedpromote"], user_join_fed)
+DEMOTE_FED_HANDLER = CommandHandler("fdemote","feddemote"], user_demote_fed)
 INFO_FED_HANDLER = CommandHandler("fedinfo", fed_info)
-BAN_FED_HANDLER = DisableAbleCommandHandler("fban", fed_ban)
-UN_BAN_FED_HANDLER = CommandHandler("unfban", unfban)
+BAN_FED_HANDLER = DisableAbleCommandHandler(["fban","fedban"], fed_ban)
+UN_BAN_FED_HANDLER = CommandHandler(["unfban","unfedban"], unfban)
 FED_BROADCAST_HANDLER = CommandHandler("fbroadcast", fed_broadcast)
 FED_SET_RULES_HANDLER = CommandHandler("setfrules", set_frules)
 FED_GET_RULES_HANDLER = CommandHandler("frules", get_frules)
@@ -2145,7 +2145,7 @@ FED_USERBAN_HANDLER = CommandHandler("fbanlist", fed_ban_list)
 FED_NOTIF_HANDLER = CommandHandler("fednotif", fed_notif)
 FED_CHATLIST_HANDLER = CommandHandler("fedchats", fed_chats)
 FED_IMPORTBAN_HANDLER = CommandHandler("importfbans", fed_import_bans)
-FEDSTAT_USER = DisableAbleCommandHandler(["fedstat", "fbanstat"], fed_stat_user)
+FEDSTAT_USER = DisableAbleCommandHandler(["fedstat", "fbanstat", "fstat"], fed_stat_user)
 SET_FED_LOG = CommandHandler("setfedlog", set_fed_log)
 UNSET_FED_LOG = CommandHandler("unsetfedlog", unset_fed_log)
 SUBS_FED = CommandHandler("subfed", subs_feds)
