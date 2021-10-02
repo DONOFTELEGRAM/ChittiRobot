@@ -160,7 +160,7 @@ def gban(update: Update, context: CallbackContext):
         f"<b>GBanned User ID   :</b> <code>{user_chat.id}</code>\n"
         f"<b>GBanned on        :</b> <code>{current_time}</code>\n"
         f"<b>Appeal Chat       :</b> <b>@RajniSpam</b>\n"
-        f"<b>Fban in your fed  :</b> <a href=\"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam\">Click here</a>\n")
+        f"<b>Fban in your fed  :</b> https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam\n")
     
 
     if reason:
