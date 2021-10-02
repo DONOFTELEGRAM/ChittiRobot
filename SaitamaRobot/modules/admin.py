@@ -19,6 +19,176 @@ from SaitamaRobot.modules.log_channel import loggable
 from SaitamaRobot.modules.helper_funcs.alternate import send_message
 
 
+
+@run_async
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def lessrights(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    if not (promoter.can_promote_members or
+            promoter.status == "creator") and not user.id in DRAGONS:
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
+
+    user_id = extract_user(message, args)
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect.."
+        )
+        return
+
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if user_member.status == 'administrator' or user_member.status == 'creator':
+        message.reply_text(
+            "How am I meant to promote someone that's already an admin?")
+        return
+
+    if user_id == bot.id:
+        message.reply_text(
+            "I can't promote myself! Get an admin to do it for me.")
+        return
+
+    # set same perms as bot - bot can't assign higher perms than itself!
+    bot_member = chat.get_member(bot.id)
+
+    try:
+        bot.promoteChatMember(
+            chat.id,
+            user_id,
+            # can_change_info=bot_member.can_change_info,
+            can_post_messages=bot_member.can_post_messages,
+            can_edit_messages=bot_member.can_edit_messages,
+            # can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            # can_promote_members=bot_member.can_promote_members,
+            # can_restrict_members=bot_member.can_restrict_members,
+            can_pin_messages=bot_member.can_pin_messages)
+    except BadRequest as err:
+        if err.message == "User_not_mutual_contact":
+            message.reply_text(
+                "I can't promote someone who isn't in the group.")
+        else:
+            message.reply_text("An error occured while promoting.")
+        return
+
+    bot.sendMessage(
+        chat.id,
+        f"Sucessfully promoted <b>{user_member.user.first_name or user_id}</b> with Less Rights!",
+        parse_mode=ParseMode.HTML)
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#LESSRIGHTS\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+    )
+
+    return log_message
+
+
+
+
+
+@run_async
+@connection_status
+@bot_admin
+@can_promote
+@user_admin
+@loggable
+def fullrights(update: Update, context: CallbackContext) -> str:
+    bot = context.bot
+    args = context.args
+
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    promoter = chat.get_member(user.id)
+
+    if not (promoter.can_promote_members or
+            promoter.status == "creator") and not user.id in DRAGONS:
+        message.reply_text("You don't have the necessary rights to do that!")
+        return
+
+    user_id = extract_user(message, args)
+
+    if not user_id:
+        message.reply_text(
+            "You don't seem to be referring to a user or the ID specified is incorrect.."
+        )
+        return
+
+    try:
+        user_member = chat.get_member(user_id)
+    except:
+        return
+
+    if user_member.status == 'administrator' or user_member.status == 'creator':
+        message.reply_text(
+            "How am I meant to promote someone that's already an admin?")
+        return
+
+    if user_id == bot.id:
+        message.reply_text(
+            "I can't promote myself! Get an admin to do it for me.")
+        return
+
+    # set same perms as bot - bot can't assign higher perms than itself!
+    bot_member = chat.get_member(bot.id)
+
+    try:
+        bot.promoteChatMember(
+            chat.id,
+            user_id,
+            can_change_info=bot_member.can_change_info,
+            can_post_messages=bot_member.can_post_messages,
+            can_edit_messages=bot_member.can_edit_messages,
+            can_delete_messages=bot_member.can_delete_messages,
+            can_invite_users=bot_member.can_invite_users,
+            can_promote_members=bot_member.can_promote_members,
+            can_restrict_members=bot_member.can_restrict_members,
+            can_pin_messages=bot_member.can_pin_messages)
+    except BadRequest as err:
+        if err.message == "User_not_mutual_contact":
+            message.reply_text(
+                "I can't promote someone who isn't in the group.")
+        else:
+            message.reply_text("An error occured while promoting.")
+        return
+
+    bot.sendMessage(
+        chat.id,
+        f"Sucessfully promoted <b>{user_member.user.first_name or user_id}</b> with full Rights!",
+        parse_mode=ParseMode.HTML)
+
+    log_message = (
+        f"<b>{html.escape(chat.title)}:</b>\n"
+        f"#FULLRIGHTS\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+    )
+
+    return log_message
+
+
+
+
 @run_async
 @connection_status
 @bot_admin
@@ -70,13 +240,13 @@ def promote(update: Update, context: CallbackContext) -> str:
         bot.promoteChatMember(
             chat.id,
             user_id,
-            can_change_info=bot_member.can_change_info,
+            # can_change_info=bot_member.can_change_info,
             can_post_messages=bot_member.can_post_messages,
             can_edit_messages=bot_member.can_edit_messages,
             can_delete_messages=bot_member.can_delete_messages,
             can_invite_users=bot_member.can_invite_users,
             # can_promote_members=bot_member.can_promote_members,
-            can_restrict_members=bot_member.can_restrict_members,
+            # can_restrict_members=bot_member.can_restrict_members,
             can_pin_messages=bot_member.can_pin_messages)
     except BadRequest as err:
         if err.message == "User_not_mutual_contact":
@@ -133,7 +303,7 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if not user_member.status == 'administrator':
-        message.reply_text("Can't demote what wasn't promoted!")
+        message.reply_text("Can't demote who wasn't promoted!")
         return
 
     if user_id == bot.id:
@@ -376,7 +546,7 @@ def adminlist(update, context):
         custom_title = admin.custom_title
 
         if user.first_name == '':
-            name = "☠ Deleted Account"
+            name = " 💀 Deleted Account"
         else:
             name = "{}".format(
                 mention_html(
@@ -392,13 +562,13 @@ def adminlist(update, context):
         #if user.username:
         #    name = escape_markdown("@" + user.username)
         if status == "creator":
-            text += "\n 👑 Creator:"
+            text += "\n ⚡️ Creator:"
             text += "\n<code> • </code>{}\n".format(name)
 
             if custom_title:
                 text += f"<code> ┗━ {html.escape(custom_title)}</code>\n"
 
-    text += "\n🔱 Admins:"
+    text += "\n 🔥 Admins:"
 
     custom_admin_list = {}
     normal_admin_list = []
@@ -438,12 +608,12 @@ def adminlist(update, context):
 
     text += "\n"
     for admin_group in custom_admin_list:
-        text += "\n🚨 <code>{}</code>".format(admin_group)
+        text += "\n🙂 <code>{}</code>".format(admin_group)
         for admin in custom_admin_list[admin_group]:
             text += "\n<code> • </code>{}".format(admin)
         text += "\n"
 
-    text += "\n🤖 Bots:"
+    text += "\n😁 Bots:"
     for each_bot in bot_admin_list:
         text += "\n<code> • </code>{}".format(each_bot)
 
@@ -455,13 +625,14 @@ def adminlist(update, context):
 
 __help__ = """
  • `/admins`*:* list of admins in the chat
-
 *Admins only:*
  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
  • `/unpin`*:* unpins the currently pinned message
- • `/invitelink`*:* gets invitelink
- • `/promote`*:* promotes the user replied to
- • `/demote`*:* demotes the user replied to
+ • `/chatlink`*:* gets invitelink
+ • `/promote`*:* Simply promotes that user replied to
+ • `/lessrights`*:* promotes that user with less admin rights, who is replied to
+ • `/fullrights`*:* promotes that user with full admin rights, who is replied to
+ • `/demote`*:* demotes that user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
  • `/admincache`*:* force refresh the admins list
 """
@@ -471,8 +642,9 @@ ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist)
 PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.group)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.group)
 
-INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
-
+INVITE_HANDLER = DisableAbleCommandHandler("chatlink", invite)
+FULLRIGHTS_HANDLER = DisableAbleCommandHandler("allrights",fullrights)
+LESSRIGHTS_HANDLER = DisableAbleCommandHandler("halfrights",lessrights)
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
 
@@ -485,15 +657,17 @@ dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
+dispatcher.add_handler(FULLRIGHTS_HANDLER)
+dispatcher.add_handler(LESSRIGHTS_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
 __mod_name__ = "Admin"
 __command_list__ = [
-    "adminlist", "admins", "invitelink", "promote", "demote", "admincache"
+    "adminlist", "admins", "chatlink", "promote", "demote", "halfrights","allrights", "admincache"
 ]
 __handlers__ = [
     ADMINLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
-    PROMOTE_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER, ADMIN_REFRESH_HANDLER
+    PROMOTE_HANDLER, FULLRIGHTS_HANDLER, LESSRIGHTS_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER, ADMIN_REFRESH_HANDLER
 ]
