@@ -97,12 +97,8 @@ def gban(update: Update, context: CallbackContext):
     if user_id == bot.id:
         message.reply_text("You uhh...want me to Gban myself?")
         return
-      
-    if user_id in [1574611094]:
-        message.reply_text("Hey Dumbo! You Can't Gban the Owner of *NOHA*!")
-        return
 
-    if user_id in [777000, 1087968824, 1945158766]:
+    if user_id in [777000, 1087968824]:
         message.reply_text("Fool! You can't attack Telegram's native tech!")
         return
 
@@ -164,7 +160,7 @@ def gban(update: Update, context: CallbackContext):
         f"<b>GBanned User ID   :</b> <code>{user_chat.id}</code>\n"
         f"<b>GBanned on        :</b> <code>{current_time}</code>\n"
         f"<b>Appeal Chat       :</b> <b>@RajniSpam</b>\n"
-        f"<b>Fban in your fed  :</b> https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam\n")
+        f"<b>Fban in your fed  :</b> <a href=https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam>Click here</a>\n")
     
 
     if reason:
@@ -297,7 +293,7 @@ def ungban(update: Update, context: CallbackContext):
         f"<b>UnGbanned User ID  :</b> <code>{user_chat.id}</code>\n"
         f"<b>UnGbanned on       :</b> <code>{current_time}</code>\n"
         f"<b>Appeal Chat        :</b> <b>@RajniSpam</b>\n"
-        f"<b>UnFban in your fed :</b> https://t.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam")
+        f"<b>UnFban in your fed :</b> <a href=https://t.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam>Click here</a>")
 
     if EVENT_LOGS:
         try:
@@ -401,10 +397,11 @@ def check_and_ban(update, user_id, should_message=True):
         if should_message:
             update.effective_message.reply_text(
                 f"<b>Alert</b>       : this user is globally banned.\n"
-                f"<code>*bans them from here*</code>.\n"
+                f"<code>*I've Banned them from here*</code>.\n"
                 f"<b>Appeal chat</b> : {SPAMWATCH_SUPPORT_CHAT}\n"
                 f"<b>User ID</b>     : <code>{sw_ban.id}</code>\n"
-                f"<b>GBan Reason</b> : <code>{html.escape(sw_ban.reason)}</code>",
+                f"<b>GBan Reason</b> : <code>{html.escape(sw_ban.reason)}</code>"
+                f"<b>Fban in your fed :</b> <a href=https://t.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam>Click here</a>",
                 parse_mode=ParseMode.HTML)
         return
 
@@ -412,9 +409,10 @@ def check_and_ban(update, user_id, should_message=True):
         update.effective_chat.kick_member(user_id)
         if should_message:
             text = f"<b>Alert</b>            : this user is globally banned.\n" \
-                   f"<code>*bans them from here*</code>.\n" \
+                   f"<code>*I've Banned them from here*</code>.\n" \
                    f"<b>Appeal chat</b>      : @{SUPPORT_CHAT}\n" \
                    f"<b>Gbanned User ID</b>  : <code>{user_id}</code>"
+                   f"<b>Fban in your fed :</b> <a href=https://t.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam>Click here</a>"
             user = sql.get_gbanned_user(user_id)
             if user.reason:
                 text += f"\n<b>GBan Reason :</b> <code>{html.escape(user.reason)}</code>"
