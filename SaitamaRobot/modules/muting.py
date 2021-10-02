@@ -36,7 +36,7 @@ def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
         return reply
 
     if is_user_admin(chat, user_id, member) or user_id in TIGERS:
-        reply = "Can't. Find someone else to mute but not this one."
+        reply = "Ah..Can't mute that user.. try someone else..."
         return reply
 
     return None
@@ -71,19 +71,19 @@ def mute(update: Update, context: CallbackContext) -> str:
         f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
 
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n<b>Reason:</b> <code>{reason}</code>"
 
     if member.can_send_messages is None or member.can_send_messages:
         chat_permissions = ChatPermissions(can_send_messages=False)
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)
         bot.sendMessage(
             chat.id,
-            f"Muted <b>{html.escape(member.user.first_name)}</b> with no expiration date!",
+            f"<i>I've muted {html.escape(member.user.first_name)} with no expiration date!</i>",
             parse_mode=ParseMode.HTML)
         return log
 
     else:
-        message.reply_text("This user is already muted!")
+        message.reply_text("<i>This user is already muted!</i>")
 
     return ""
 
@@ -130,7 +130,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
                 pass
             bot.sendMessage(
                 chat.id,
-                f"I shall allow <b>{html.escape(member.user.first_name)}</b> to text!",
+                f"<i>I shall allow {html.escape(member.user.first_name)} to text!</i>",
                 parse_mode=ParseMode.HTML)
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
