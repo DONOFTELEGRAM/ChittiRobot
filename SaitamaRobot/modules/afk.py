@@ -29,7 +29,7 @@ def afk(update: Update, context: CallbackContext):
         reason = args[1]
         if len(reason) > 100:
             reason = reason[:100]
-            notice = "\nYour afk reason was shortened to 100 characters."
+            notice = "\nYour afk reason was shortened to 150 characters."
     else:
         reason = ""
 
