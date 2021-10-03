@@ -66,7 +66,7 @@ buttons = [
   [
                         InlineKeyboardButton(
                             text="☑️ Add RAJNI to your group",
-                            url="t.me/Rajni3_bot?startgroup=true")
+                            url="t.me/RajniiRobot?startgroup=true")
                     ],
                      [
                          InlineKeyboardButton(
