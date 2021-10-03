@@ -34,6 +34,7 @@ from telegram.utils.helpers import mention_html, mention_markdown, escape_markdo
 
 @user_admin
 @gloggable
+@run_async
 def add_chat(update: Update, context: CallbackContext):
     chat = update.effective_chat
     msg = update.effective_message
@@ -54,6 +55,7 @@ def add_chat(update: Update, context: CallbackContext):
 
 @user_admin
 @gloggable
+@run_async
 def rem_chat(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
@@ -84,7 +86,7 @@ def kuki_message(context: CallbackContext, message):
     else:
         return False
         
-
+@run_async
 def chatbot(update: Update, context: CallbackContext):
     message = update.effective_message
     chat_id = update.effective_chat.id
@@ -104,6 +106,7 @@ def chatbot(update: Update, context: CallbackContext):
         sleep(0.3)
         message.reply_text(kuki, timeout=60)
 
+@run_async
 def list_all_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_kuki_chats()
     text = "<b>KUKI-Enabled Chats</b>\n"
@@ -139,13 +142,13 @@ Chatbot utilizes the Kuki API and allows Cutiepii to talk and provides a more in
 
 __mod_name__ = "Ai Chat"
 
-ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat, run_async=True)
-REMOVE_CHAT_HANDLER = CommandHandler("rmchat", rem_chat, run_async=True)
+ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat)
+REMOVE_CHAT_HANDLER = CommandHandler("rmchat", rem_chat)
 CHATBOT_HANDLER = MessageHandler(
     Filters.text & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!")
-                    & ~Filters.regex(r"^\/")), chatbot, run_async=True)
+                    & ~Filters.regex(r"^\/")), chatbot)
 LIST_ALL_CHATS_HANDLER = CommandHandler(
-    "allchats", list_all_chats, filters=CustomFilters.dev_filter, run_async=True)
+    "allchats", list_all_chats, filters=CustomFilters.dev_filter)
 
 dispatcher.add_handler(ADD_CHAT_HANDLER)
 dispatcher.add_handler(REMOVE_CHAT_HANDLER)
