@@ -177,11 +177,11 @@ def new_member(update: Update, context: CallbackContext):
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Oh, Genos? Let's get this moving.",
+                    "My Developer just joined this chat",
                     reply_to_message_id=reply)
                 welcome_log = (f"{html.escape(chat.title)}\n"
                                f"#USER_JOINED\n"
-                               f"Bot Owner just joined the chat")
+                               f"My Developer just joined this chat")
                 continue
 
             # Welcome Devs
@@ -195,7 +195,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
-                    "Huh! A Dragon disaster just joined! Stay Alert!",
+                    "My SUDO USER just joined this chat! Stay Alert!",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -203,7 +203,7 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Support
             elif new_mem.id in DEMONS:
                 update.effective_message.reply_text(
-                    "Huh! Someone with a Demon disaster level just joined!",
+                    "My Demon user just joined this chat!",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -211,14 +211,14 @@ def new_member(update: Update, context: CallbackContext):
             # Welcome Whitelisted
             elif new_mem.id in TIGERS:
                 update.effective_message.reply_text(
-                    "Oof! A Tiger disaster just joined!",
+                    "My Tiger user just joined this chat!",
                     reply_to_message_id=reply)
                 continue
 
             # Welcome Tigers
             elif new_mem.id in WOLVES:
                 update.effective_message.reply_text(
-                    "Oof! A Wolf disaster just joined!",
+                    "My Wolf just joined this chat!",
                     reply_to_message_id=reply)
                 continue
 
@@ -233,10 +233,9 @@ def new_member(update: Update, context: CallbackContext):
                 if creator:
                     bot.send_message(
                         JOIN_LOGGER,
-                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>\n<b>Creator:</b> <code>{}</code>"
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>"
                         .format(
-                            html.escape(chat.title), chat.id,
-                            html.escape(creator)),
+                            html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
                 else:
                     bot.send_message(
@@ -245,7 +244,7 @@ def new_member(update: Update, context: CallbackContext):
                         .format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
                 update.effective_message.reply_text(
-                    "Watashi ga kita!", reply_to_message_id=reply)
+                    "HolA! I'm alive, make me admin with enough rights to let me get in action.", reply_to_message_id=reply)
                 continue
 
             else:
@@ -256,7 +255,7 @@ def new_member(update: Update, context: CallbackContext):
                     media_wel = True
 
                 first_name = (
-                    new_mem.first_name or "PersonWithNoName"
+                    new_mem.first_name or "Deleted Account"
                 )  # edge case of empty name - occurs for some bugs.
 
                 if cust_welcome:
@@ -318,7 +317,7 @@ def new_member(update: Update, context: CallbackContext):
 
         if user.id == new_mem.id:
             if should_mute:
-                if welc_mutes == "soft":
+                if welc_mutes == "medialock":
                     bot.restrict_chat_member(
                         chat.id,
                         new_mem.id,
@@ -334,7 +333,7 @@ def new_member(update: Update, context: CallbackContext):
                         ),
                         until_date=(int(time.time() + 24 * 60 * 60)),
                     )
-                if welc_mutes == "strong":
+                if welc_mutes == "human":
                     welcome_bool = False
                     if not media_wel:
                         VERIFIED_USER_WAITLIST.update({
@@ -363,10 +362,10 @@ def new_member(update: Update, context: CallbackContext):
                         })
                     new_join_mem = f'<a href="tg://user?id={user.id}">{html.escape(new_mem.first_name)}</a>'
                     message = msg.reply_text(
-                        f"{new_join_mem}, click the button below to prove you're human.\nYou have 120 seconds.",
+                        f"{new_join_mem}, click the button below to prove you're human.\nYou have 5 minutes only.",
                         reply_markup=InlineKeyboardMarkup([{
                             InlineKeyboardButton(
-                                text="Yes, I'm human.",
+                                text="Yes, I'm a human.",
                                 callback_data=f"user_join_({new_mem.id})",
                             )
                         }]),
@@ -390,8 +389,8 @@ def new_member(update: Update, context: CallbackContext):
                     job_queue.run_once(
                         partial(check_not_bot, new_mem, chat.id,
                                 message.message_id),
-                        120,
-                        name="welcomemute",
+                        300,
+                        name="captcha",
                     )
 
         if welcome_bool:
@@ -489,13 +488,13 @@ def left_member(update: Update, context: CallbackContext):
             # Give the owner a special goodbye
             if left_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Oi! Genos! He left..", reply_to_message_id=reply)
+                    "Oh! My Developer just left the chat", reply_to_message_id=reply)
                 return
 
             # Give the devs a special goodbye
             elif left_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "See you later at the Hero's Association!",
+                    "See you later at the Rajni Support!",
                     reply_to_message_id=reply,
                 )
                 return
@@ -964,9 +963,9 @@ WELC_HELP_TXT = (
 WELC_MUTE_HELP_TXT = (
     "You can get the bot to mute new people who join your group and hence prevent spambots from flooding your group. "
     "The following options are possible:\n"
-    "• `/welcomemute soft`*:* restricts new members from sending media for 24 hours.\n"
-    "• `/welcomemute strong`*:* mutes new members till they tap on a button thereby verifying they're human.\n"
-    "• `/welcomemute off`*:* turns off welcomemute.\n"
+    "• `/captcha medialock`*:* restricts new members from sending media for 24 hours.\n"
+    "• `/captcha human`*:* mutes new members till they tap on a button thereby verifying they're human.\n"
+    "• `/captcha off`*:* turns off welcomemute.\n"
     "*Note:* Strong mode kicks a user from the chat if they dont verify in 120seconds. They can always rejoin though"
 )
 
@@ -1020,7 +1019,7 @@ __help__ = """
  • `/resetwelcome`*:* reset to the default welcome message.
  • `/resetgoodbye`*:* reset to the default goodbye message.
  • `/cleanwelcome <on/off>`*:* On new member, try to delete the previous welcome message to avoid spamming the chat.
- • `/welcomemutehelp`*:* gives information about welcome mutes.
+ • `/captchahelp`*:* gives information about captcha mutes on user join.
  • `/cleanservice <on/off`*:* deletes telegrams welcome/left service messages. 
  *Example:*
 user joined chat, user left chat.
@@ -1042,13 +1041,13 @@ RESET_WELCOME = CommandHandler(
 RESET_GOODBYE = CommandHandler(
     "resetgoodbye", reset_goodbye, filters=Filters.group)
 WELCOMEMUTE_HANDLER = CommandHandler(
-    "welcomemute", welcomemute, filters=Filters.group)
+    "captcha", welcomemute, filters=Filters.group)
 CLEAN_SERVICE_HANDLER = CommandHandler(
     "cleanservice", cleanservice, filters=Filters.group)
 CLEAN_WELCOME = CommandHandler(
     "cleanwelcome", clean_welcome, filters=Filters.group)
 WELCOME_HELP = CommandHandler("welcomehelp", welcome_help)
-WELCOME_MUTE_HELP = CommandHandler("welcomemutehelp", welcome_mute_help)
+WELCOME_MUTE_HELP = CommandHandler("captchahelp", welcome_mute_help)
 BUTTON_VERIFY_HANDLER = CallbackQueryHandler(user_button, pattern=r"user_join_")
 
 dispatcher.add_handler(NEW_MEM_HANDLER)
