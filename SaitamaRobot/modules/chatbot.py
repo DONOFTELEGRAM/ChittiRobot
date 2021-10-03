@@ -23,7 +23,7 @@ import SaitamaRobot.modules.sql.kuki_sql as sql
 
 from time import sleep
 from telegram import ParseMode
-from Robot import dispatcher, updater, SUPPORT_CHAT
+from SaitamaRobot import dispatcher, updater, SUPPORT_CHAT
 from SaitamaRobot.modules.log_channel import gloggable
 from telegram import Message, Chat, Update, Bot, MessageEntity
 from telegram.error import BadRequest, RetryAfter, Unauthorized
