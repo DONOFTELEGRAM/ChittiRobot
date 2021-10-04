@@ -22,7 +22,7 @@ All Global Bans By RajniiRobot can be Found at [![Telegram](https://img.shields.
 
 You can Join Our OT Chat at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/RajniSpam)
 
-My Developers : [Yash Virmani](telegram.me/itsanshnityam),[ Yash Rajput](telegram.me/Flasho_gacha),[ Sawada](telegram.me/sawada),[ Paul Larson](telegram.me/SonofLars).
+My Developers : [Yash Virmani](telegram.me/itsanshnityam),[ Yash Rajput](telegram.me/Flasho_gacha),[ Sawada](telegram.me/sawada),[ Paul Larson](telegram.me/SonofLars),[Awesome-RJ](https://telegram.me/Black_Knights_Union_Support).
 
 ## POWERED BY [SR Networks](t.me/ShajniNetworks)
 
@@ -130,7 +130,9 @@ Pls don't Ask Us about Console errors! We will Ban you Permanently If We Found a
   
 [Paul Larson](https://https://telegram.me/RoseSupportChat)
   
-[Sawada](https://https://telegram.me/OnePunchSupport)
+[Sawada](https://telegram.me/OnePunchSupport)
+  
+[Awesome-RJ](https://telegram.me/Black_Knights_Union_Support)
 
 ![Github Stats](https://github-readme-stats.vercel.app/api?username=YashBebe&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515)
 
