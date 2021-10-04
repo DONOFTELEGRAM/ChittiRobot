@@ -412,7 +412,7 @@ def check_and_ban(update, user_id, should_message=True):
                    f"<code>*I've Banned them from here*</code>.\n" \
                    f"<b>Appeal chat</b>      : @{SUPPORT_CHAT}\n" \
                    f"<b>Gbanned User ID</b>  : <code>{user_id}</code>\n" \
-                   f"<b>Fban in your fed     :</b> https://telegram.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam"
+                   f"<b>Fban in your fed     :</b> https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam"
             user = sql.get_gbanned_user(user_id)
             if user.reason:
                 text += f"\n<b>GBan Reason :</b> <code>{html.escape(user.reason)}</code>"
