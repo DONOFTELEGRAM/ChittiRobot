@@ -36,12 +36,12 @@ def kukirm(update: Update, context: CallbackContext) -> str:
             is_kuki = sql.rem_kuki(user_id)
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"AI_DISABLED\n"
+                f"AI_DEACTIVATED\n"
                 f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             )
         else:
             update.effective_message.edit_text(
-                "Cutiepii Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
+                "Rajni AI Chat module Deactivated by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -62,12 +62,12 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
             is_kuki = sql.set_kuki(user_id)
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"AI_ENABLE\n"
+                f"AI_ACTIVATED\n"
                 f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             )
         else:
             update.effective_message.edit_text(
-                "Cutiepii Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
+                "Rajni AI Chat module Activated by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -79,14 +79,14 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
 def kuki(update: Update, context: CallbackContext):
     user = update.effective_user
     message = update.effective_message
-    msg = f"Choose an option"
+    msg = f"Choose an option below."
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text="Enable",
+            text="Activate AI",
             callback_data="add_chat({})")],
        [
         InlineKeyboardButton(
-            text="Disable",
+            text="Deactivate AI",
             callback_data="rm_chat({})")]])
     message.reply_text(
         msg,
@@ -143,22 +143,22 @@ __help__ = """
 Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
 
 *Admins only Commands*:
-  ➢ `/Chatbot`*:* Shows chatbot control panel
+  ➢ `/aichat`*:* Will ask you to on/off AI Chatbot.
 
-*Powered by ItelAi*
+*Powered by Itel Ai*
 """
 
-__mod_name__ = "ChatBot"
+__mod_name__ = "AIChat"
 
 
-CHATBOTK_HANDLER = CommandHandler("chatbot", kuki)
+CHATBOTK_HANDLER = CommandHandler("aichat", kuki)
 ADD_CHAT_HANDLER = CallbackQueryHandler(kukiadd, pattern=r"add_chat")
 RM_CHAT_HANDLER = CallbackQueryHandler(kukirm, pattern=r"rm_chat")
 CHATBOT_HANDLER = MessageHandler(
     Filters.text & (~Filters.regex(r"^#[^\s]+") & ~Filters.regex(r"^!")
                     & ~Filters.regex(r"^\/")), chatbot)
 LIST_ALL_CHATS_HANDLER = CommandHandler(
-    "allchats", list_all_chats, filters=CustomFilters.dev_filter)
+    "aichats", list_all_chats, filters=CustomFilters.dev_filter)
 
 dispatcher.add_handler(ADD_CHAT_HANDLER)
 dispatcher.add_handler(CHATBOTK_HANDLER)
