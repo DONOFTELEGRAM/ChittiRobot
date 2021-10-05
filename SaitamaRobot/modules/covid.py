@@ -11,12 +11,12 @@ from bs4 import BeautifulSoup
 from random import randint
 from typing import List
 from telegram import ParseMode, InputMediaPhoto, Update, TelegramError, ChatAction
-from telegram.ext import CommandHandler, run_async, CallbackContext
+from telegram.ext import CommandHandler, CallbackContext
 
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 
-
+@run_async
 def covid(update: Update, context: CallbackContext):
     message = update.effective_message
     text = message.text.split(' ', 1)
@@ -32,5 +32,5 @@ def covid(update: Update, context: CallbackContext):
 
 
 
-COVID_HANDLER = DisableAbleCommandHandler(["covid", "corona"], covid, run_async = True)
+COVID_HANDLER = DisableAbleCommandHandler(["covid", "corona"], covid)
 dispatcher.add_handler(COVID_HANDLER)
