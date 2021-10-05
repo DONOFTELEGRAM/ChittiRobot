@@ -58,7 +58,8 @@ if is_module_loaded(FILENAME):
 
             if result:
                 datetime_fmt = "%H:%M - %d-%m-%Y"
-                result += "\n<b>Event Stamp</b>: <code>{}</code>".format(datetime.utcnow().strftime(datetime_fmt))
+                result += "\n<b>Event Stamp</b>: <code>{}</code>".format(
+                    datetime.utcnow().strftime(datetime_fmt))
 
                 if message.chat.type == chat.SUPERGROUP and message.chat.username:
                     result += f'\n<b>Link:</b> <a href="https://t.me/{chat.username}/{message.message_id}">click here</a>'
@@ -189,7 +190,6 @@ if is_module_loaded(FILENAME):
 • `/logchannel`*:* get log channel info
 • `/setlog`*:* set the log channel.
 • `/unsetlog`*:* unset the log channel.
-
 Setting the log channel is done by:
 • adding the bot to the desired channel (as an admin!)
 • sending `/setlog` in the channel
