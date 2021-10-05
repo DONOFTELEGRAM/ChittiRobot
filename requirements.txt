@@ -2,6 +2,8 @@ future
 emoji
 bing_image_downloader
 gpytranslate
+aiofiles
+aiohttp
 lxml
 beautifulsoup4
 requests
