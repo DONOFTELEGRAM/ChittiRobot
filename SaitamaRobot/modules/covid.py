@@ -10,7 +10,7 @@ from urllib.error import URLError, HTTPError
 from bs4 import BeautifulSoup
 from random import randint
 from typing import List
-from telegram import ParseMode, InputMediaPhoto, Update, TelegramError, ChatAction
+from telegram import ParseMode, InputMediaPhoto, run_async, Update, TelegramError, ChatAction
 from telegram.ext import CommandHandler, CallbackContext
 
 from SaitamaRobot import dispatcher
