@@ -1,5 +1,7 @@
 future
 emoji
+bing_image_downloader
+gpytranslate
 lxml
 beautifulsoup4
 requests
