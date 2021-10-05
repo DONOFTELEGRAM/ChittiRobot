@@ -4,6 +4,7 @@ bing_image_downloader
 gpytranslate
 aiofiles
 lxml
+pgram
 beautifulsoup4
 requests
 search_engine_parser
