@@ -118,7 +118,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('https://www.kuki-api.tk/api/RajniiRobot/@Awesomr_rj/message='+Message)
+        kukiurl = requests.get('https://www.kuki-api.tk/api/RajniiRobot/@itzzzyashu/message='+Message)
         Kuki = json.loads(kukiurl.text)
         kuki = Kuki['reply']
         sleep(0.3)
@@ -141,10 +141,8 @@ def list_all_chats(update: Update, context: CallbackContext):
 
 __help__ = """
 AI Chat Module utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
-
 *Admins only Commands*:
   ➢ `/aichat`*:* Will ask you to on/off AI Chatbot.
-
 *Powered by Itel Ai*
 """
 
