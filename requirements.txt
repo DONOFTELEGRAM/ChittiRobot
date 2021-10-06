@@ -35,3 +35,7 @@ pyrate-limiter
 cachetools
 telegraph
 pyrogram
+nekos.py
+pillow
+psycopg2-binary
+psutil
