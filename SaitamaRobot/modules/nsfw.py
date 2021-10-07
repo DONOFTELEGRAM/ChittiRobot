@@ -412,10 +412,11 @@ def dva(update, context):
         return
     msg.reply_photo(url)
 
-__mod_name__ = "Lewd"
+__mod_name__ = "NSFW"
 
 __help__ = """
 This Module is for only +18 guys, kids & teenagers Stay Away please!
+this module is not made for public groups.
 
 Commands
  - /neko: Sends Random SFW Neko source Images.
