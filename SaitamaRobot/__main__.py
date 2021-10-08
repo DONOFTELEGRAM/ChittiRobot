@@ -62,6 +62,13 @@ You can get my Modules Related help by /help command or by Clicking the *Help* b
 Hope you'll like Me,
 Thanks for using Me.
 """
+buttons = [
+  [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
+  [InlineKeyboardButton(text="Support Chat", url=f"t.me/RajniSupportChat"),
+   InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
+  [InlineKeyboardButton(text="Global Logs", url="t.me/RajniGlobal"),
+   InlineKeyboardButton(text="Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
+  [InlineKeyboardButton(text="Help", callback_data="get_help")]]
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
@@ -193,43 +200,7 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
-
-        else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                SAITAMA_IMG,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(context.bot.first_name)),
-                parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [[
-                        InlineKeyboardButton(
-                            text="☑️ Add RAJNI to your group",
-                            url="t.me/RajniiRobot?startgroup=true")
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text="Support Chat",
-                             url=f"t.me/RajniSupportChat"),
-                         InlineKeyboardButton(
-                             text="Updates",
-                             url="t.me/RajniUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="Global Logs",
-                             url="t.me/RajniGlobal"),
-                         InlineKeyboardButton(
-                             text="Rajni Devs",
-                             url="t.me/joinchat/8z8YkOxkkxRiNzc1")
-                     ],
-  [
-    InlineKeyboardButton(
-      text="Help",
-      callback_data="get_help")
-  ]]))
+                
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
