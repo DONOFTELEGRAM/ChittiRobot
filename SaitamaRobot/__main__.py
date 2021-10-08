@@ -61,7 +61,7 @@ What can i do?
  • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
  • I have a note keeping system, blacklists, and even pre determined replies on certain keywords.
 Checkout Full Help menu by sending /help To know about my modules and usage.
-""".format(first_name, context.bot.first_name,
+""".format(first_name, dispatcher.bot.first_name,
            buttons = [
              [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
              [InlineKeyboardButton(text="Support Chat", url=f"t.me/RajniSupportChat"),
