@@ -204,7 +204,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
              [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
-             [InlineKeyboardButton(text="Support Chat", url=f"t.me/RajniSupportChat"),
+             [InlineKeyboardButton(text="Support Chat", url="t.me/RajniSupportChat"),
               InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
              [InlineKeyboardButton(text="Global Logs", url="t.me/RajniGlobal"),
               InlineKeyboardButton(text="Chit chat", url="t.me/RajniSpam")],
