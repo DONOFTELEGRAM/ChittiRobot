@@ -51,24 +51,24 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi {}, My name is {}! 
-My Code Name is `C-437`.
-I'm an *Advance Group Management bot*.
-I'm Running on *Python 3.8.6*.
-I've Amazing Modules made for Fun & to *help you & your Group admins* in *Managing your Groups well*.
-I was made by *@RajniDevs*,
-*See my Whole Story* [Here](https://www.hotstar.com/in/tv/bahu-humari-rajni-kant/7326/meet-the-kants/1000084825).
-You can get my Modules Related help by /help command or by Clicking the *Help* button below.
-Hope you'll like Me,
-Thanks for using Me.
-"""
-buttons = [
-  [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
-  [InlineKeyboardButton(text="Support Chat", url=f"t.me/RajniSupportChat"),
-   InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
-  [InlineKeyboardButton(text="Global Logs", url="t.me/RajniGlobal"),
-   InlineKeyboardButton(text="Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
-  [InlineKeyboardButton(text="Help", callback_data="get_help")]]
+Hi {}, My name is *{}*! 
+A bot to manage your chats when you're offline.
+What can i do?
+*I can do lot of cool stuffs, here's a short list:*
+ • I can Restrict user.
+ • I can greets users with customizable welcome messages and even set a group's rules.
+ • I have an advanced anti-flood system.
+ • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+ • I have a note keeping system, blacklists, and even pre determined replies on certain keywords.
+Checkout Full Help menu by sending /help To know about my modules and usage.
+""".format(first_name, context.bot.first_name,
+           buttons = [
+             [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
+             [InlineKeyboardButton(text="Support Chat", url=f"t.me/RajniSupportChat"),
+              InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
+             [InlineKeyboardButton(text="Global Logs", url="t.me/RajniGlobal"),
+              InlineKeyboardButton(text="Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
+             [InlineKeyboardButton(text="Help", callback_data="get_help")]])
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
@@ -78,17 +78,14 @@ Have a look at the following for an idea of some of the things I can help you wi
  • /start : Starts me, can be used to check i'm alive or no...
  • /help : PM's you this message.
  • /help <module name> : PM's you info about that module.
- • /support : Sends a request to Bot Staff to help you regarding your issue. (Groups only.)
 *Need help? head to @RajniSupportChat*
 Click on the buttons below to get documentation about specific modules!
  • /settings :
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
-{}
 And the following:
 """.format(
-    dispatcher.bot.first_name, ""
-    if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
+    dispatcher.bot.first_name)
 
 SAITAMA_IMG = "https://telegra.ph/file/c96ffcdae0c324a85659f.jpg"
 
@@ -183,7 +180,7 @@ def start(update: Update, context: CallbackContext):
                         InlineKeyboardButton(
                             text="Back", callback_data="help_back"),
                         InlineKeyboardButton(
-                            text="Home", callback_data="help_next")
+                            text="Home", callback_data="help_back")
                     ]]))
 
             elif args[0].lower().startswith("stngs_"):
@@ -314,8 +311,7 @@ def get_help(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
                         text="Help",
-                        url="t.me/{}?start=ghelp_{}".format(
-                            context.bot.username, module))
+                        url=f"t.me/{context.bot.username}?start=ghelp_{module}")
                 ]]))
             return
         update.effective_message.reply_text(
@@ -323,19 +319,18 @@ def get_help(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton(
                     text="Help",
-                    url="t.me/{}?start=help".format(context.bot.username))
+                    url=f"t.me/{context.bot.username}?start=help")
             ]]))
         return
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
-        text = "Here is the available help for the *{}* module:\n".format(HELPABLE[module].__mod_name__) \
+        text = f"Here is the available help for the *{HELPABLE[module].__mod_name__}* module:\n" \
                + HELPABLE[module].__help__
         send_help(
             chat.id, text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back",
-                                       callback_data="help_back")]]))
+                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]))
 
     else:
         send_help(chat.id, HELP_STRINGS)
