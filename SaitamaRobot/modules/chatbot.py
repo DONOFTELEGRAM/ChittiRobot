@@ -127,7 +127,7 @@ def chatbot(update: Update, context: CallbackContext):
 @run_async
 def list_all_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_kuki_chats()
-    text = "<b>KUKI-Enabled Chats</b>\n"
+    text = "<b>AI Chatbot-Enabled Chats</b>\n"
     for chat in chats:
         try:
             x = context.bot.get_chat(int(*chat))
