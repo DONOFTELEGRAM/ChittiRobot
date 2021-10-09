@@ -546,12 +546,12 @@ Group admins/group owners do not need these commands.
 
  ╔ *Broadcast: (Bot owner only)*
  ╠  *Note:* This supports basic markdown
- ╠ `/broadcastall`*:* Broadcasts everywhere
- ╠ `/broadcastusers`*:* Broadcasts too all users
- ╚ `/broadcastgroups`*:* Broadcasts too all groups
+ ╠ `/gcastall`*:* Broadcasts everywhere
+ ╠ `/gcastusers`*:* Broadcasts too all users
+ ╚ `/gcastchats`*:* Broadcasts too all groups
 
  ╔ *Groups Info:*
- ╠ `/groups`*:* List the groups with Name, ID, members count as a txt
+ ╠ `/chatslist`*:* List the groups with Name, ID, members count as a txt
  ╠ `/leave <ID>`*:* Leave the group, ID must have hyphen
  ╠ `/stats`*:* Shows overall bot stats
  ╠ `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
@@ -570,10 +570,6 @@ Group admins/group owners do not need these commands.
 
  ╔ *Speedtest:*
  ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
-
- ╔ *Global Bans:*
- ╠ `/gban user reason`*:* Globally bans a user
- ╚ `/ungban user reason`*:* Unbans the user from the global bans list
 
  ╔ *Module loading:*
  ╠ `/listmodules`*:* Lists names of all modules
