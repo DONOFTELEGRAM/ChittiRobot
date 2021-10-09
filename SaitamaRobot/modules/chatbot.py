@@ -140,7 +140,7 @@ def list_all_chats(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text, parse_mode="HTML")
 
 __help__ = """
-AI Chat Module utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
+AI Chat Module utilizes the Kuki's api which allows Rajnii to talk and provide a more interactive group chat experience.
 *Admins only Commands*:
   ➢ `/aichat`*:* Will ask you to on/off AI Chatbot.
 *Powered by Itel Ai*
