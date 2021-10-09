@@ -56,9 +56,9 @@ def broadcast(update: Update, context: CallbackContext):
     if len(to_send) >= 2:
         to_group = False
         to_user = False
-        if to_send[0] == '/broadcastgroups':
+        if to_send[0] == '/gcastchats':
             to_group = True
-        if to_send[0] == '/broadcastusers':
+        if to_send[0] == '/gcastusers':
             to_user = True
         else:
             to_group = to_user = True
@@ -89,7 +89,7 @@ def broadcast(update: Update, context: CallbackContext):
                 except TelegramError:
                     failed_user += 1
         update.effective_message.reply_text(
-            f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
+            f"Gcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
         )
 
 
@@ -114,7 +114,7 @@ def log_user(update: Update, context: CallbackContext):
 @sudo_plus
 def chats(update: Update, context: CallbackContext):
     all_chats = sql.get_all_chats() or []
-    chatfile = 'List of chats.\n0. Chat name | Chat ID | Members count\n'
+    chatfile = 'List of chats.\n Chat name | Chat ID | Members count\n'
     P = 1
     for chat in all_chats:
         try:
@@ -166,7 +166,7 @@ def __migrate__(old_chat_id, new_chat_id):
 __help__ = ""  # no help string
 
 BROADCAST_HANDLER = CommandHandler(
-    ["broadcastall", "broadcastusers", "broadcastgroups"], broadcast)
+    ["gcastall", "gcastusers", "gcastchats"], broadcast)
 USER_HANDLER = MessageHandler(Filters.all & Filters.group, log_user)
 CHAT_CHECKER_HANDLER = MessageHandler(Filters.all & Filters.group, chat_checker)
 CHATLIST_HANDLER = CommandHandler("chatslist", chats)
