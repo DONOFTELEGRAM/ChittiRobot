@@ -126,7 +126,7 @@ def get_id(update: Update, context: CallbackContext):
             user2 = message.reply_to_message.forward_from
 
             msg.reply_text(
-                f"<b>Telegram ID:</b>,"
+                f"<b>Telegram ID:</b>\n"
                 f"• {html.escape(user2.first_name)} - <code>{user2.id}</code>.\n"
                 f"• {html.escape(user1.first_name)} - <code>{user1.id}</code>.",
                 parse_mode=ParseMode.HTML)
@@ -142,12 +142,13 @@ def get_id(update: Update, context: CallbackContext):
 
         if chat.type == "private":
             msg.reply_text(
-                f"Your id is <code>{chat.id}</code>.",
+                f"<b><a href='tg://user?id={chat.id}'>Your ID</a> -</b> <code>{chat.id}</code>.",
                 parse_mode=ParseMode.HTML)
 
         else:
             msg.reply_text(
-                f"This group's id is <code>{chat.id}</code>.",
+                f"<b>Chat ID :</b> <code>{chat.id}</code>.\n"
+                f"<b><a href='tg://user?id={user1.id}'>User ID :</a></b> <code>{user1.id}</code>\n",
                 parse_mode=ParseMode.HTML)
 
 
@@ -176,7 +177,7 @@ async def group_info(event) -> None:
     msg += f"\n**Scam**: `{entity.scam}`"
     msg += f"\n**Slowmode**: `{entity.slowmode_enabled}`"
     if entity.username:
-        msg += f"\n**Username**: {entity.username}"
+        msg += f"\n**Username**: @{entity.username}"
     msg += "\n\n**Member Stats:**"
     msg += f"\n`Admins:` `{len(totallist)}`"
     msg += f"\n`Users`: `{totallist.total}`"
@@ -271,10 +272,10 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'God'."
+        text += "\n\nThe Disaster level of this person is 'Developer'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nThis user is member of 'Hero Association'."
+        text += "\n\nThe Disaster level of this person is 'Developer'."
         disaster_level_present = True
     elif user.id in DRAGONS:
         text += "\n\nThe Disaster level of this person is 'Dragon'."
@@ -290,7 +291,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/OnePunchUpdates/155">?</a>]'.format(
+        text += ' [<a href="https://t.me/RajniUpdates/">Disasters?</a>]'.format(
             bot.username)
 
     try:
