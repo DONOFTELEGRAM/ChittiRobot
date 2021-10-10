@@ -35,52 +35,48 @@ def ban(update: Update, context: CallbackContext) -> str:
     if not user_id:
         message.reply_text("I doubt that's a user.")
         return log_message
-
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("Can't seem to find this person.")
-            return log_message
-        else:
+        if excp.message != "User not found":
             raise
-
+        message.reply_text("Can't seem to find this person.")
+        return log_message
     if user_id == bot.id:
         message.reply_text("Oh yeah, ban myself, noob!")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text(
-                "Trying to put me against my Owner huh?")
-            return log_message
+            message.reply_text("Trying to put me against the Darling huh?")
         elif user_id in DEV_USERS:
             message.reply_text("I can't act against our own.")
-            return log_message
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Dragon here will put civilian lives at risk.")
-            return log_message
+                "Fighting this Titan Shifter here will put civilian lives at risk.",
+            )
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from SR Support to fight a Demon disaster."
+                "Bring an order from The Ackermans to fight a Royal Blood.",
             )
-            return log_message
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from SR Support to fight a Tiger disaster."
+                "Bring an order from Ackermans to fight a Scout.",
             )
-            return log_message
         elif user_id in WOLVES:
-            message.reply_text("Wolf abilities make them ban immune!")
-            return log_message
+            message.reply_text("Garrison abilities make them ban immune!")
         else:
             message.reply_text("This user has immunity and cannot be banned.")
-            return log_message
-
+        return log_message
+    if message.text.startswith("/s"):
+        silent = True
+        if not can_delete(chat, context.bot.id):
+            return ""
+    else:
+        silent = False
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#BANNED\n"
+        f"#{'S' if silent else ''}BANNED\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
@@ -88,25 +84,39 @@ def ban(update: Update, context: CallbackContext) -> str:
         log += "\n<b>Reason:</b> {}".format(reason)
 
     try:
-        chat.kick_member(user_id)
+        chat.ban_member(user_id)
+
+        if silent:
+            if message.reply_to_message:
+                message.reply_to_message.delete()
+            message.delete()
+            return log
+
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"I've Banned {mention_html(member.user.id, html.escape(member.user.first_name))} without time limit</b>")
+            f"<i>I've banned {mention_html(member.user.id, html.escape(member.user.first_name))} without any time limit.</i>\n"
+        )
         if reason:
-            reply += f"\nReason:</b> \n{html.escape(reason)}"
-        bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML, quote=False)
+            reply += f"\n<b>  Reason:</b> \n{html.escape(reason)}"
+        bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML)
         return log
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Banned!', quote=False)
+            if silent:
+                return log
+            message.reply_text("Banned!", quote=False)
             return log
-        else:
-            LOGGER.warning(update)
-            LOGGER.exception("ERROR banning user %s in chat %s (%s) due to %s",
-                             user_id, chat.title, chat.id, excp.message)
-            message.reply_text("Uhm...that didn't work...")
+        LOGGER.warning(update)
+        LOGGER.exception(
+            "ERROR banning user %s in chat %s (%s) due to %s",
+            user_id,
+            chat.title,
+            chat.id,
+            excp.message,
+        )
+        message.reply_text("Can't ban this user.")
 
     return log_message
 
@@ -376,9 +386,12 @@ __help__ = """
  • `/kickme`*:* punchs the user who issued the command
 *Admins only:*
  • `/ban <userhandle>`*:* bans a user. (via handle, or reply)
+ • `/sban <userhandle>`*:* Silently ban a user. Deletes command, Replied message and doesn't reply. (via handle, or reply)
  • `/tban <userhandle> x(m/h/d)`*:* bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  • `/unban <userhandle>`*:* unbans a user. (via handle, or reply)
  • `/kick <userhandle>`*:* Punches a user out of the group, (via handle, or reply)
+ • `/zombies`*:* searches deleted accounts.
+ • `/zombies clean`*:* removes deleted accounts from the group.
 """
 
 BAN_HANDLER = CommandHandler("ban", ban)
