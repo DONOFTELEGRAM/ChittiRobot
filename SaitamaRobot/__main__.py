@@ -204,12 +204,10 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
              [InlineKeyboardButton(text="☑️ Add RAJNI to your group", url="t.me/{}?startgroup=true".format(context.bot.username))],
-             [InlineKeyboardButton(text="Support Chat", url="t.me/RajniSupportChat"),
-              InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
-             [InlineKeyboardButton(text="Global Logs", url="t.me/RajniGlobal"),
-              InlineKeyboardButton(text="Chit chat", url="t.me/RajniSpam")],
-             [InlineKeyboardButton(text="Help", callback_data="get_help")]
-                    ]]))
+             [InlineKeyboardButton(text="💎Support Chat", url="t.me/RajniSupportChat"),
+              InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
+             [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
+              InlineKeyboardButton(text="😉Chit chat", url="t.me/RajniSpam")]]]))
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
