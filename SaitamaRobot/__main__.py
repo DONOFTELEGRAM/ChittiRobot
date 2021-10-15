@@ -109,8 +109,9 @@ SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
 DONATE_STRING = """*@RajniiRobot* is hosted on Heroku free server yet,
 so it doesn't need any donations for now,
-But if you want to donate my developers you can,
-*My developer’s* [*Gpay*](https://pay.google.com) *ID* - `dhruv040.04@okaxis`.
+But if you want to donate my developer you can,
+You can also DM my developer to ask about donation.
+*My developer’s* [Gpay](https://pay.google.com) *UPI ID* - `dhruv040.04@okaxis`.
 
 *What we do with donations?*
 » _donations will help us to run Rajni
@@ -523,8 +524,8 @@ def donate(update: Update, context: CallbackContext):
 
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
-                "You can also donate to the person currently running me "
-                "[here]({})".format(DONATION_LINK),
+                "Thanks for supporting us!😘"
+                "~[Team SR Network](https://telegram.me/ShajniNetwork)",
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
