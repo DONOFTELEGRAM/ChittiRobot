@@ -207,8 +207,7 @@ def start(update: Update, context: CallbackContext):
 [InlineKeyboardButton(text="Global",url="t.me/RajniGlobal"),
  InlineKeyboardButton(text="Devs", url="t.me/ShajniDevs")],
 [InlineKeyboardButton(text="Help", callback_data="get_help")]])
-
-    else:
+else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(uptime),
             parse_mode=ParseMode.HTML)
