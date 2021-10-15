@@ -201,15 +201,36 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                     [
-[InlineKeyboardButton(text="Add me to a group", url="t.me/{}?startgroup=true".format(context.bot.username))],
-[InlineKeyboardButton(text="Support Chat", url="t.me/{}".format(SUPPORT_CHAT)),
- InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
-[InlineKeyboardButton(text="Global",url="t.me/RajniGlobal"),
- InlineKeyboardButton(text="Devs", url="t.me/ShajniDevs")],
-[InlineKeyboardButton(text="Help", callback_data="get_help")]])
-else:
+[
+                        InlineKeyboardButton(
+                            text="☑️ Add RAJNI to your group",
+                            url="t.me/{}?startgroup=true".format(context.bot.username))
+                    ],
+                     [
+                         InlineKeyboardButton(
+                             text="Support Chat",
+                             url=f"t.me/RajniSupportChat"),
+                         InlineKeyboardButton(
+                             text="Updates",
+                             url="t.me/RajniUpdates")
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="Global Logs",
+                             url="t.me/RajniGlobal"),
+                         InlineKeyboardButton(
+                             text="Rajni Devs",
+                             url="t.me/joinchat/8z8YkOxkkxRiNzc1")
+                     ],
+  [
+    InlineKeyboardButton(
+      text="Help",
+      callback_data="help_back")
+  ]])
+    else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(uptime),
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
+            .format(uptime),
             parse_mode=ParseMode.HTML)
 
 # for test purposes
