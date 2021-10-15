@@ -50,7 +50,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_START_TEXT = ("""
+PM_START_TEXT = """
 Hi there, My name is Rajnii! 
 A bot to manage your chats when you're offline.
 What can i do?
@@ -87,7 +87,7 @@ What can i do?
       text="Help",
       callback_data="help_back")
   ]
-])
+]
 
 HELP_STRINGS = """
 Hey! My name is *Rajnii*.
