@@ -50,7 +50,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_START_TEXT = """
+PM_START_TEXT = ("""
 Hi there, My name is Rajnii! 
 A bot to manage your chats when you're offline.
 What can i do?
@@ -61,7 +61,7 @@ What can i do?
  • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
  • I have a note keeping system, blacklists, and even pre determined replies on certain keywords.
 *Checkout Full Help menu by sending* `/help` *to know about my modules and usage.*
-"""
+""",
 buttons = [
   [
                         InlineKeyboardButton(
@@ -89,9 +89,10 @@ buttons = [
       text="Help",
       callback_data="help_back")
   ]
-]
+])
+
 HELP_STRINGS = """
-Hey {}! My name is *{}*.
+Hey! My name is *Rajnii*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
 Have a look at the following for an idea of some of the things I can help you with.
 *Main commands available :*
