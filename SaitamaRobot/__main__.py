@@ -4,20 +4,43 @@ import re
 from sys import argv
 from typing import Optional
 
-from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
-                          OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
-                          SUPPORT_CHAT, dispatcher, StartTime, telethn, updater)
+from SaitamaRobot import (
+    ALLOW_EXCL,
+    CERT_PATH,
+    DONATION_LINK,
+    LOGGER,
+    OWNER_ID,
+    PORT,
+    TOKEN,
+    URL,
+    WEBHOOK,
+    SUPPORT_CHAT,
+    dispatcher,
+    StartTime,
+    telethn,
+    updater)
+
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from SaitamaRobot.modules import ALL_MODULES
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
 from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
-from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
-                      Update)
-from telegram.error import (BadRequest, ChatMigrated, NetworkError,
-                            TelegramError, TimedOut, Unauthorized)
-from telegram.ext import (CallbackContext, CallbackQueryHandler, CommandHandler,
-                          Filters, MessageHandler)
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from telegram.error import (
+    BadRequest,
+    ChatMigrated,
+    NetworkError,
+    TelegramError,
+    TimedOut,
+    Unauthorized,
+)
+from telegram.ext import (
+    CallbackContext,
+    CallbackQueryHandler,
+    CommandHandler,
+    Filters,
+    MessageHandler,
+)
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 
@@ -30,10 +53,7 @@ def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        if count < 3:
-            remainder, result = divmod(seconds, 60)
-        else:
-            remainder, result = divmod(seconds, 24)
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -51,68 +71,35 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi there, My name is Rajnii! 
-A bot to manage your chats when you're offline.
-What can i do?
-*I can do lot of cool stuffs, here's a short list:*
- • I can Restrict user.
- • I can greets users with customizable welcome messages and even set a group's rules.
- • I have an advanced anti-flood system.
- • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
- • I have a note keeping system, blacklists, and even pre determined replies on certain keywords.
-*Checkout Full Help menu by sending* `/help` *to know about my modules and usage.*
-""" [[
-                        InlineKeyboardButton(
-                            text="☑️ Add RAJNI to your group",
-                            url="t.me/RajniiRobot?startgroup=true")
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text="Support Chat",
-                             url=f"t.me/RajniSupportChat"),
-                         InlineKeyboardButton(
-                             text="Updates",
-                             url="t.me/RajniUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="Global Logs",
-                             url="t.me/RajniGlobal"),
-                         InlineKeyboardButton(
-                             text="Rajni Devs",
-                             url="t.me/joinchat/8z8YkOxkkxRiNzc1")
-                     ],
-  [
-    InlineKeyboardButton(
-      text="Help",
-      callback_data="help_back")
-  ]
-]
+Hey hi {}, I'm {}!
+I am an Anime themed group management bot.
+Built by weebs for weebs, I specialize in managing anime eccentric communities!
+"""
 
 HELP_STRINGS = """
-Hey! My name is *Rajnii*.
-I'm here Active to help your admins manage their groups with My Advanced Modules!
-Have a look at the following for an idea of some of the things I can help you with.
-*Main commands available :*
- • /start : Starts me, can be used to check i'm alive or no...
- • /help : PM's you this message.
- • /help <module name> : PM's you info about that module.
-*Need help? head to @RajniSupportChat*
-Click on the buttons below to get documentation about specific modules!
- • /settings :
+Hey there! My name is *{}*.
+I'm a Hero For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+the things I can help you with.
+*Main* commands available:
+ • /help: PM's you this message.
+ • /help <module name>: PM's you info about that module.
+ • /donate: information on how to donate!
+ • /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
-And the following:""".format(dispatcher.bot.first_name)
+{}
+And the following:
+""".format(
+    dispatcher.bot.first_name,
+    "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
+)
 
 SAITAMA_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
 
-DONATE_STRING = """
-@RajniiRobot is running on free server so it don't need any donations for now,
-If you still wanna donate and help me to run better,
-smoother and faster you can donate my developer at Gpay
-My developers Gpay UPI ID is dhruv040.04@okaxis,
-Thanks for Supporting us.
-"""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+ You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
+ Supporting isnt always financial! \
+ Those who cannot provide monetary support are welcome to help us develop the bot at @OnePunchDev."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -125,16 +112,14 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("SaitamaRobot.modules." +
-                                              module_name)
+    imported_module = importlib.import_module("SaitamaRobot.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
-    if not imported_module.__mod_name__.lower() in IMPORTED:
+    if imported_module.__mod_name__.lower() not in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
-        raise Exception(
-            "Can't have two modules with the same name! Please change one")
+        raise Exception("Can't have two modules with the same name! Please change one")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -171,7 +156,8 @@ def send_help(chat_id, text, keyboard=None):
         text=text,
         parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
-        reply_markup=keyboard)
+        reply_markup=keyboard,
+    )
 
 
 @run_async
@@ -191,18 +177,20 @@ def start(update: Update, context: CallbackContext):
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
             elif args[0].lower().startswith("ghelp_"):
-                mod = args[0].lower().split('_', 1)[1]
+                mod = args[0].lower().split("_", 1)[1]
                 if not HELPABLE.get(mod, False):
                     return
                 send_help(
-                    update.effective_chat.id, HELPABLE[mod].__help__,
-                    InlineKeyboardMarkup([[
-                        InlineKeyboardButton(
-                            text="Back", callback_data="help_back"),
-                        InlineKeyboardButton(
-                            text="Home", callback_data="help_next")
-                    ]]))
-
+                    update.effective_chat.id,
+                    HELPABLE[mod].__help__,
+                    InlineKeyboardMarkup(
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]],
+                    ),
+                )
+            elif args[0].lower() == "markdownhelp":
+                IMPORTED["extras"].markdown_help_sender(update)
+            elif args[0].lower() == "disasters":
+                IMPORTED["disasters"].send_disasters(update)
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -214,22 +202,64 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
-                
-             
-            
+
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(context.bot.first_name)),
-                parse_mode=ParseMode.MARKDOWN)
+                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
+                ),
+                parse_mode=ParseMode.MARKDOWN,
+                disable_web_page_preview=True,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="☑️ Add me",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username,
+                                ),
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="🚑 Support",
+                                url=f"https://t.me/{SUPPORT_CHAT}",
+                            ),
+                            InlineKeyboardButton(
+                                text="🔔 Updates",
+                                url="https://t.me/OnePunchUpdates",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="🧾 Getting Started",
+                                url="https://t.me/OnePunchUpdates/29",
+                            ),
+                            InlineKeyboardButton(
+                                text="🗄 Source code",
+                                url="https://github.com/AnimeKaizoku/SaitamaRobot",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="☠️ Kaizoku Network",
+                                url="https://t.me/Kaizoku/4",
+                            ),
+                        ],
+                    ],
+                ),
+            )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
-            .format(uptime),
-            parse_mode=ParseMode.HTML)
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime,
+            ),
+            parse_mode=ParseMode.HTML,
+        )
+
+
 
 # for test purposes
 def error_callback(update: Update, context: CallbackContext):
