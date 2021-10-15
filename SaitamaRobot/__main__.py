@@ -64,7 +64,7 @@ What can i do?
 """
 
 HELP_STRINGS = """
-Hey there! My name is *{}*.
+Hey {}! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
 Have a look at the following for an idea of some of the things I can help you with.
 *Main commands available :*
@@ -196,25 +196,22 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
-                ),
+                    escape_markdown(first_name), escape_markdown(context.bot.first_name)),
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                     [
-[InlineKeyboardButton(text="Add me to a group", url="t.me/RajniiRobot?startgroup=true")],
+[InlineKeyboardButton(text="Add me to a group", url="t.me/{}?startgroup=true".format(context.bot.username))],
 [InlineKeyboardButton(text="Support Chat", url="t.me/{}".format(SUPPORT_CHAT)),
  InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates")],
 [InlineKeyboardButton(text="Global",url="t.me/RajniGlobal"),
  InlineKeyboardButton(text="Devs", url="t.me/ShajniDevs")],
 [InlineKeyboardButton(text="Help", callback_data="get_help")]])
+
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime,
-            ),
-            parse_mode=ParseMode.HTML,
-        )
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(uptime),
+            parse_mode=ParseMode.HTML)
 
 # for test purposes
 def error_callback(update: Update, context: CallbackContext):
@@ -266,9 +263,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        text="Back", callback_data="help_back")
-                ]]))
+                    InlineKeyboardButton(text="Back", callback_data="help_back")]]))
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
