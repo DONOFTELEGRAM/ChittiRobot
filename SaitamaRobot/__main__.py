@@ -51,7 +51,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi {}, My name is *{}*! 
+Hi there, My name is Rajnii! 
 A bot to manage your chats when you're offline.
 What can i do?
 *I can do lot of cool stuffs, here's a short list:*
@@ -193,12 +193,9 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(context.bot.first_name)),
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
