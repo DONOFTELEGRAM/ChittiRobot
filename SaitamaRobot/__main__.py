@@ -71,20 +71,31 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hey hi {}, I'm {}!
-I am an Anime themed group management bot.
-Built by weebs for weebs, I specialize in managing anime eccentric communities!
+Hi *{}*!
+I'm *{}*, A bot to manage your chats when you're offline.
+*What can i do?*
+I can do lot of cool stuffs, here's a short list:
+ • I can Restrict user.
+ • I can greets users with customizable welcome messages and even set a group's rules.
+ • I have an advanced anti-flood system.
+ • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+ • I have a note keeping system, blacklists, and even I can chat with users as a virtual human by using Kuki AI.
+ 
+*Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Hero For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
-the things I can help you with.
-*Main* commands available:
- • /help: PM's you this message.
- • /help <module name>: PM's you info about that module.
- • /donate: information on how to donate!
- • /settings:
+I'm here Active to help your admins manage their groups with My Advanced Modules!
+Have a look at the following for an idea of some of the things I can help you with.
+*Main commands available :*
+ • /start : Starts me, can be used to check i'm alive or no...
+ • /help : PM's you this message.
+ • /help <module name> : PM's you info about that module.
+
+*Need help? head to @RajniSupportChat*
+Click on the buttons below to get documentation about specific modules!
+ • /settings :
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
 {}
@@ -96,10 +107,20 @@ And the following:
 
 SAITAMA_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project via [Paypal](ko-fi.com/sawada) or by contacting @Sawada \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at @OnePunchDev."""
+DONATE_STRING = """Rajni is hosted on Heroku free server yet,
+so it doesn't need any donations for now,
+But if you want to donate my developers you can,
+*My developer’s [Gpay](https://pay.google.com) ID* - `dhruv040.04@okaxis`.
+
+*What we do with donations?*
+» donations will help us to run Rajni
+ on a paid server by which
+ Rajni will work faster than before!
+» donations will help us to improve Rajni
+ with more useful and fun modules.
+» these donations will also help us
+ to help others, those who really need support.
+"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -214,43 +235,15 @@ def start(update: Update, context: CallbackContext):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [
-                            InlineKeyboardButton(
-                                text="☑️ Add me",
-                                url="t.me/{}?startgroup=true".format(
-                                    context.bot.username,
-                                ),
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="🚑 Support",
-                                url=f"https://t.me/{SUPPORT_CHAT}",
-                            ),
-                            InlineKeyboardButton(
-                                text="🔔 Updates",
-                                url="https://t.me/OnePunchUpdates",
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="🧾 Getting Started",
-                                url="https://t.me/OnePunchUpdates/29",
-                            ),
-                            InlineKeyboardButton(
-                                text="🗄 Source code",
-                                url="https://github.com/AnimeKaizoku/SaitamaRobot",
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="☠️ Kaizoku Network",
-                                url="https://t.me/Kaizoku/4",
-                            ),
-                        ],
-                    ],
-                ),
-            )
+[InlineKeyboardButton(text="😁Add RAJNI to your group", url="t.me/RajniiRobot?startgroup=true")],
+[InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
+ InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
+[InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
+ InlineKeyboardButton(text="💻Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
+[InlineKeyboardButton(text="💥Help", callback_data="help_back")],
+],
+),
+)
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
