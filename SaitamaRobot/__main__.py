@@ -62,7 +62,34 @@ What can i do?
  • I have a note keeping system, blacklists, and even pre determined replies on certain keywords.
 *Checkout Full Help menu by sending* `/help` *to know about my modules and usage.*
 """
-
+buttons = [
+  [
+                        InlineKeyboardButton(
+                            text="☑️ Add RAJNI to your group",
+                            url="t.me/{}?startgroup=true".format(context.bot.username))
+                    ],
+                     [
+                         InlineKeyboardButton(
+                             text="Support Chat",
+                             url=f"t.me/RajniSupportChat"),
+                         InlineKeyboardButton(
+                             text="Updates",
+                             url="t.me/RajniUpdates")
+                     ],
+                     [
+                         InlineKeyboardButton(
+                             text="Global Logs",
+                             url="t.me/RajniGlobal"),
+                         InlineKeyboardButton(
+                             text="Rajni Devs",
+                             url="t.me/joinchat/8z8YkOxkkxRiNzc1")
+                     ],
+  [
+    InlineKeyboardButton(
+      text="Help",
+      callback_data="help_back")
+  ]
+]
 HELP_STRINGS = """
 Hey {}! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
@@ -165,20 +192,18 @@ def start(update: Update, context: CallbackContext):
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
             elif args[0].lower().startswith("ghelp_"):
-                mod = args[0].lower().split("_", 1)[1]
+                mod = args[0].lower().split('_', 1)[1]
                 if not HELPABLE.get(mod, False):
                     return
                 send_help(
-                    update.effective_chat.id,
-                    HELPABLE[mod].__help__,
-                    InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]],
-                    ),
-                )
-            elif args[0].lower() == "markdownhelp":
-                IMPORTED["extras"].markdown_help_sender(update)
-            elif args[0].lower() == "disasters":
-                IMPORTED["disasters"].send_disasters(update)
+                    update.effective_chat.id, HELPABLE[mod].__help__,
+                    InlineKeyboardMarkup([[
+                        InlineKeyboardButton(
+                            text="Back", callback_data="help_back"),
+                        InlineKeyboardButton(
+                            text="Home", callback_data="help_next")
+                    ]]))
+
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -190,43 +215,17 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
-
+                
+             
+            
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name), escape_markdown(context.bot.first_name)),
-                parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-[
-                        InlineKeyboardButton(
-                            text="☑️ Add RAJNI to your group",
-                            url="t.me/{}?startgroup=true".format(context.bot.username))
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text="Support Chat",
-                             url=f"t.me/RajniSupportChat"),
-                         InlineKeyboardButton(
-                             text="Updates",
-                             url="t.me/RajniUpdates")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="Global Logs",
-                             url="t.me/RajniGlobal"),
-                         InlineKeyboardButton(
-                             text="Rajni Devs",
-                             url="t.me/joinchat/8z8YkOxkkxRiNzc1")
-                     ],
-  [
-    InlineKeyboardButton(
-      text="Help",
-      callback_data="help_back")
-  ]])
+                    escape_markdown(first_name),
+                    escape_markdown(context.bot.first_name)),
+                parse_mode=ParseMode.MARKDOWN)
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>"
