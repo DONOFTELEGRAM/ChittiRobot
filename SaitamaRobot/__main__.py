@@ -107,19 +107,19 @@ And the following:
 
 SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
-DONATE_STRING = """Rajni is hosted on Heroku free server yet,
+DONATE_STRING = """*@RajniiRobot* is hosted on Heroku free server yet,
 so it doesn't need any donations for now,
 But if you want to donate my developers you can,
-*My developer’s [Gpay](https://pay.google.com) ID* - `dhruv040.04@okaxis`.
+*My developer’s* [*Gpay*](https://pay.google.com) *ID* - `dhruv040.04@okaxis`.
 
 *What we do with donations?*
-» donations will help us to run Rajni
+» _donations will help us to run Rajni
  on a paid server by which
- Rajni will work faster than before!
-» donations will help us to improve Rajni
- with more useful and fun modules.
-» these donations will also help us
- to help others, those who really need support.
+ Rajni will work faster than before!_
+» _donations will help us to improve Rajni
+ with more useful and fun modules._
+» _these donations will also help us
+ to help others, those who really need support._
 """
 
 IMPORTED = {}
