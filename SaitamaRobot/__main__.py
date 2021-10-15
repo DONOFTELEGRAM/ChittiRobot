@@ -105,7 +105,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-SAITAMA_IMG = "https://telegra.ph/file/46e6d9dfcb3eb9eae95d9.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
 DONATE_STRING = """Rajni is hosted on Heroku free server yet,
 so it doesn't need any donations for now,
@@ -240,7 +240,7 @@ def start(update: Update, context: CallbackContext):
  InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
 [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
  InlineKeyboardButton(text="💻Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
-[InlineKeyboardButton(text="💥Help", callback_data="help_back")],
+[InlineKeyboardButton(text="💥Help", callback_data="get_help")],
 ],
 ),
 )
