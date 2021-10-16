@@ -1,7 +1,9 @@
+import html
+
 __mod_name__ = "Markdown"
 
 __help__ = f"""
-Markdown is a very powerful formatting tool supported by telegram. {dispatcher.bot.first_name} has some enhancements, to make sure that \
+Markdown is a very powerful formatting tool supported by telegram. @RajniiRobot has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
 • <code>_italic_</code>: wrapping text with '_' will produce italic text
 • <code>*bold*</code>: wrapping text with '*' will produce bold text
