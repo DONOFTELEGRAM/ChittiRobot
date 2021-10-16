@@ -78,8 +78,7 @@ def markdown_help(update: Update, context: CallbackContext):
 
 __help__ = """
 *Available commands:*
-*Markdown:*
- • `/markdownhelp`*:* quick summary of how markdown works in telegram - can only be called in private chats
+
 *Paste:*
  • `/paste`*:* Saves replied content to `nekobin.com` and replies with a url
 *React:*
@@ -105,7 +104,7 @@ MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help)
 dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
-__mod_name__ = "Extras"
+__mod_name__ = "Misc"
 __command_list__ = ["id", "echo"]
 __handlers__ = [
     ECHO_HANDLER,
