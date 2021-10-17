@@ -23,7 +23,7 @@ Keep in mind that your message <b>MUST</b> contain some text other than just a b
 
 Try sending the below text to me.
 “
-/save test This is a markdown test. _italics_, *bold*, `code`, [Link text](example.com)p
+/save test This is a markdown test. _italics_, *bold*, `code`, [Link text](example.com)
 [button](buttonurl:github.com) 
 [button2](buttonurl://google.com:same)
 ”
