@@ -20,11 +20,4 @@ If you want multiple buttons on the same line, use :same, as such:
 [two](buttonurl://google.com:same)</code>
 This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
-
-Try sending the below text to me.
-“
-/save test This is a markdown test. _italics_, *bold*, `code`, [Link text](example.com)
-[button](buttonurl:github.com) 
-[button2](buttonurl://google.com:same)
-”
 """
