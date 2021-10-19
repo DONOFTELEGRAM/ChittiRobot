@@ -221,27 +221,28 @@ def new_member(update: Update, context: CallbackContext):
                     "My Wolf just joined this chat!",
                     reply_to_message_id=reply)
                 continue
-
-            # Welcome yourself
+# Welcome yourself
             elif new_mem.id == bot.id:
                 creator = None
-                for x in bot.get_chat_administrators(
-                        update.effective_chat.id):
-                    if x.status == 'creator':
+                for x in bot.get_chat_administrators(update.effective_chat.id):
+                    if x.status == "creator":
                         creator = x.user
                         break
                 if creator:
                     bot.send_message(
                         JOIN_LOGGER,
-                        "#NEW_CHAT\n<b>Chat Name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
-                        parse_mode=ParseMode.HTML)
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>\n<b>Creator:</b> <code>{}</code>".format(
+                            html.escape(chat.title), chat.id, html.escape(creator),
+                        ),
+                        parse_mode=ParseMode.HTML,
+                    )
                 else:
                     bot.send_message(
                         JOIN_LOGGER,
                         "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
                 update.effective_message.reply_text(
-                    "HolA! I'm alive, make me admin with enough rights to let me get in action.", reply_to_message_id=reply)
+                    "HolA! I'm alive, make me admin with enough rights to let me get in action. Join @RajniSupportchat for guidance about using me!", reply_to_message_id=reply)
                 continue
 
             else:
