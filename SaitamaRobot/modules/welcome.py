@@ -233,15 +233,12 @@ def new_member(update: Update, context: CallbackContext):
                 if creator:
                     bot.send_message(
                         JOIN_LOGGER,
-                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>"
-                        .format(
-                            html.escape(chat.title), chat.id),
+                        "#NEW_CHAT\n<b>Chat Name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
                 else:
                     bot.send_message(
                         JOIN_LOGGER,
-                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>"
-                        .format(html.escape(chat.title), chat.id),
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
                 update.effective_message.reply_text(
                     "HolA! I'm alive, make me admin with enough rights to let me get in action.", reply_to_message_id=reply)
