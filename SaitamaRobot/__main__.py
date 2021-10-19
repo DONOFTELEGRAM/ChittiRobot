@@ -293,7 +293,7 @@ def start(update: Update, context: CallbackContext):
  InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
 [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
  InlineKeyboardButton(text="💻Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
-[InlineKeyboardButton(text="💥Help", callback_data="help_prev")],
+[InlineKeyboardButton(text="💥Help", callback_data="help_back")],
 ],
 ),
 )
