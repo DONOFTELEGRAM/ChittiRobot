@@ -643,8 +643,8 @@ PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.group)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.group)
 
 INVITE_HANDLER = DisableAbleCommandHandler("chatlink", invite)
-FULLRIGHTS_HANDLER = DisableAbleCommandHandler("allrights",fullrights)
-LESSRIGHTS_HANDLER = DisableAbleCommandHandler("halfrights",lessrights)
+FULLRIGHTS_HANDLER = DisableAbleCommandHandler(["allrights","fullrights"],fullrights)
+LESSRIGHTS_HANDLER = DisableAbleCommandHandler(["halfrights","lessrights"],lessrights)
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
 
