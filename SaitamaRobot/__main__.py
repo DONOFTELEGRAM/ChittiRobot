@@ -111,7 +111,10 @@ DONATE_STRING = """*@RajniiRobot* is hosted on Heroku free server yet,
 so it doesn't need any donations for now,
 But if you want to donate my developer you can,
 You can also DM my developer to ask about donation.
-*My developer’s* [Gpay](https://pay.google.com) *UPI ID* - `dhruv040.04@okaxis`.
+• [Gpay](https://pay.google.com)
+*UPI ID* - `dhruv040.04@okaxis`
+• By Scanning the [BHIM UPI QR CODE](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg) below
+by your payment application.
 
 *What we do with donations?*
 » _donations will help us to run Rajni
@@ -524,7 +527,7 @@ def donate(update: Update, context: CallbackContext):
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
                 "Thanks for supporting us!😘"
-                "~[Team SR Network](https://telegram.me/ShajniNetwork)",
+                "[Our BHIM UPI QR](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg)",
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
