@@ -360,7 +360,7 @@ def rajni_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="help_back")
+                    InlineKeyboardButton(text="Back", callback_data="rajni_back")
                  ]
                 ]
             ),
