@@ -83,6 +83,14 @@ I can do lot of cool stuffs, here's a short list:
  
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
+buttons = [
+[InlineKeyboardButton(text="😁Add RAJNI to your group", url="t.me/RajniiRobot?startgroup=true")],
+[InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
+ InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
+[InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
+ InlineKeyboardButton(text="💻About", callback_data="rajni_")],
+[InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")],
+]
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
@@ -288,18 +296,7 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name), escape_markdown(context.bot.first_name),
                 ),
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-[InlineKeyboardButton(text="😁Add RAJNI to your group", url="t.me/RajniiRobot?startgroup=true")],
-[InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
- InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
-[InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
- InlineKeyboardButton(text="💻About", callback_data="rajni_")],
-[InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")],
-],
-),
-)
+                disable_web_page_preview=True)
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
