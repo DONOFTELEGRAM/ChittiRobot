@@ -84,6 +84,23 @@ I can do lot of cool stuffs, here's a short list:
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
 
+buttons = [
+    [
+        InlineKeyboardButton(
+            text="➕️ ᴀᴅᴅ ʏᴏɴᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/RajniiRobot?startgroup=true"),
+    ],
+    [
+        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="rajni_"),
+        InlineKeyboardButton(
+            text="ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+        ),
+    ],
+    [
+        InlineKeyboardButton(text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅꜱ❔", callback_data="help_back"),
+    ],
+]
+
+
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
