@@ -295,7 +295,7 @@ def start(update: Update, context: CallbackContext):
 [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
  InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
 [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
- InlineKeyboardButton(text="💻Rajni Devs", url="t.me/joinchat/8z8YkOxkkxRiNzc1")],
+ InlineKeyboardButton(text="💻About", callback_data="rajni_")],
 [InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")],
 ],
 ),
@@ -339,6 +339,40 @@ def error_callback(update: Update, context: CallbackContext):
         print(error)
         # handle all other telegram related errors
 
+
+@run_async
+def rajni_about_callback(update, context):
+    query = update.callback_query
+    if query.data == "rajni_":
+        query.message.edit_text(
+            text="""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+                 \n• I can restrict users.
+                 \n• I can greet users with customizable welcome messages and even set a group's rules.
+                 \n• I have an advanced anti-flood system.
+                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+                 \n• I check for admins' permissions before executing any command and more stuffs
+                 \n\n Rajni is licensed under the GNU General Public License v3.0_
+                 \nHere is the [Repository](https://github.com/Yashbebe/RajniKant).
+                 \n\nIf you have any question about me, let us know at @RajniSupportChat.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="Back", callback_data="help_back")
+                 ]
+                ]
+            ),
+        )
+    elif query.data == "help_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+        )
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
