@@ -72,7 +72,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi *{}*!
-I'm *{}*, A bot to manage your chats when you're offline.
+I'm *Rajni*, A bot to manage your chats when you're offline.
 *What can i do?*
 I can do lot of cool stuffs, here's a short list:
  • I can Restrict user.
@@ -83,14 +83,7 @@ I can do lot of cool stuffs, here's a short list:
  
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
-buttons = [
-             [InlineKeyboardButton(text="😁Add RAJNI to your group", url="t.me/RajniiRobot?startgroup=true")],
-             [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
-              InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
-             [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
-              InlineKeyboardButton(text="💻About", callback_data="rajni_")],
-             [InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")]
-]
+
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
@@ -293,13 +286,10 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
-                    escape_markdown(first_name), escape_markdown(context.bot.first_name)),
+                    escape_markdown(first_name)),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=True)
-
-
+                timeout=60)
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
