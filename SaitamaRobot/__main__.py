@@ -71,8 +71,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi *{}*!
-I'm *Rajni*, A bot to manage your chats when you're offline.
+Hi, I'm *Rajni*!, A bot to manage your chats when you're offline.
 *What can i do?*
 I can do lot of cool stuffs, here's a short list:
  • I can Restrict user.
@@ -90,7 +89,7 @@ buttons = [
             text="➕️ ᴀᴅᴅ ʏᴏɴᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕️", url="t.me/RajniiRobot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="rajni_"),
+        InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="yone_"),
         InlineKeyboardButton(
             text="ꜱᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
         ),
@@ -264,6 +263,7 @@ def help_button(update, context):
 
 
 @run_async
+@run_async
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -279,13 +279,10 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]],
+                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
                     ),
                 )
-            elif args[0].lower() == "markdownhelp":
-                IMPORTED["extras"].markdown_help_sender(update)
-            elif args[0].lower() == "disasters":
-                IMPORTED["disasters"].send_disasters(update)
+
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -299,18 +296,16 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                SAITAMA_IMG,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name)),
+            update.effective_message.reply_text(
+                PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60)
+                timeout=60,
+            )
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime,
+                uptime
             ),
             parse_mode=ParseMode.HTML,
         )
@@ -348,9 +343,9 @@ def error_callback(update: Update, context: CallbackContext):
 
 
 @run_async
-def rajni_about_callback(update, context):
+def yone_about_callback(update, context):
     query = update.callback_query
-    if query.data == "rajni_":
+    if query.data == "yone_":
         query.message.edit_text(
             text="""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n• I can restrict users.
@@ -367,7 +362,7 @@ def rajni_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="rajni_back")
+                    InlineKeyboardButton(text="Back", callback_data="yone_back")
                  ]
                 ]
             ),
@@ -622,7 +617,7 @@ def main():
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
-    about_callback_handler = CallbackQueryHandler(rajni_about_callback, pattern=r"rajni_")
+    about_callback_handler = CallbackQueryHandler(yone_about_callback, pattern=r"yone_")
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(
         settings_button, pattern=r"stngs_")
