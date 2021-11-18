@@ -306,9 +306,8 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/OnePunchUpdates/155">?</a>]'.format(
-            bot.username,
-        )
+        text += '{}’s [<a href="https://t.me/RajniUpdates/93">Disasters?</a>]'.format(
+            bot.username)
 
     try:
         user_member = chat.get_member(user.id)
