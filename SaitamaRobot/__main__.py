@@ -253,8 +253,6 @@ def help_button(update, context):
     except BadRequest:
         pass
 
-
-@run_async
 @run_async
 def start(update: Update, context: CallbackContext):
     args = context.args
@@ -271,7 +269,8 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back"),
+                          InlineKeyboardButton(text="Home", callback_data="start"]]
                     ),
                 )
 
@@ -345,8 +344,8 @@ def yone_about_callback(update, context):
                  \n• I have an advanced anti-flood system.
                  \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
                  \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n• I check for admins' permissions before executing any command and more stuffs
-                 \n\n Rajni is licensed under the GNU General Public License v3.0_
+                 \n• I check for admin’s permissions before executing any command and more stuffs
+                 \n\n Rajni is licensed under the GNU General Public License v3.0
                  \nHere is the [Repository](https://github.com/Yashbebe/RajniKant).
                  \n\nIf you have any question about me, let us know at @RajniSupportChat.""",
             parse_mode=ParseMode.MARKDOWN,
@@ -402,8 +401,12 @@ def get_help(update: Update, context: CallbackContext):
         send_help(
             chat.id, text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back",
-                                       callback_data="help_back")]]))
+                [InlineKeyboardButton(
+                        text="Home",
+                        callback_data="start"),
+                 InlineKeyboardButton(
+                        text="Back",
+                        callback_data="help_back")]))
 
     else:
         send_help(chat.id, HELP_STRINGS)
