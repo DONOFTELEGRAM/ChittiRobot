@@ -348,8 +348,8 @@ def yone_about_callback(update, context):
                  \n• I have more useful and fun modules too.
                  \n• I can chat with users by using [Kuki AI](https://kuki-api.tk)
                  \n• @RajniiRobot reposiratory is private can’t be fork, if you want base Repository [Click here](https://github.com/SaitamaRobot).
-                 \n• Join my Support Links at [here]()
-                 \n\nIf you have any question about me, let our team help you at {SUPPORT_CHAT}.""",
+                 \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3)
+                 \n\n*If you have any question about me, let our team help you at {SUPPORT_CHAT}*.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
