@@ -357,11 +357,11 @@ def yone_about_callback(update, context):
                  [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
                   InlineKeyboardButton(text="Global", url="t.me/RajniGlobal")],
-                 [InlineKeyboardButton(text="Home", callback_data="start"),
+                 [InlineKeyboardButton(text="Home", callback_data="yone_back"),
                   InlineKeyboardButton(text="Help", callback_data="help_back")]]
             ),
         )
-    elif query.data == "help_back":
+    elif query.data == "yone_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
