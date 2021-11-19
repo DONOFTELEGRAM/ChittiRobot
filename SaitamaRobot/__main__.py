@@ -226,7 +226,7 @@ def help_button(update, context):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text="Home", callback_data="yone_back"),
-                      InlineKeyboardButton(text="Back", callback_data="help_back]]
+                      InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
 
