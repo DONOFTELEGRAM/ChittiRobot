@@ -338,7 +338,7 @@ def yone_about_callback(update, context):
     query = update.callback_query
     if query.data == "yone_":
         query.message.edit_text(
-            text="""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+            text=f"""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n• I can restrict users.
                  \n• I can greet users with customizable welcome messages and even set a group's rules.
                  \n• I have an advanced anti-flood system.
@@ -347,9 +347,9 @@ def yone_about_callback(update, context):
                  \n• I check for admin’s permissions before executing any command and more stuffs.
                  \n• I have more useful and fun modules too.
                  \n• I can chat with users by using [Kuki AI](https://kuki-api.tk)
-                 \n\n• @RajniiRobot reposiratory is private can’t be fork, if you want base Repository [Click here](https://github.com/SaitamaRobot).
-                 \n• I 
-                 \n\nIf you have any question about me, let us know at @RajniSupportChat.""",
+                 \n• @RajniiRobot reposiratory is private can’t be fork, if you want base Repository [Click here](https://github.com/SaitamaRobot).
+                 \n• Join my Support Links at [here]()
+                 \n\nIf you have any question about me, let our team help you at {SUPPORT_CHAT}.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
