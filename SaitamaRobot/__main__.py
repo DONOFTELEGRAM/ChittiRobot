@@ -354,9 +354,11 @@ def yone_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Back", callback_data="yone_back")
-                 ]
+                 [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
+                  InlineKeyboardButton(text="Support", url="t.me/RajniiSupportchat),
+                  InlineKeyboardButton(text="Global", url="t.me/RajniGlobal")],
+                 [InlineKeyboardButton(text="Home", callback_data="start"),
+                  InlineKeyboardButton(text="Help", callback_data="help_back")],
                 ]
             ),
         )
