@@ -225,8 +225,8 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Home", callback_data="rajni_back"),
-                      InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                      InlineKeyboardButton(text="★Back★", callback_data="help_back")]]
                 ),
             )
 
@@ -276,8 +276,8 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back"),
-                          InlineKeyboardButton(text="Home", callback_data="rajni_back")]]
+                        [[InlineKeyboardButton(text="★Back★", callback_data="help_back"),
+                          InlineKeyboardButton(text="★Home★", callback_data="rajni_back")]]
                     ),
                 )
 
@@ -365,8 +365,8 @@ def rajni_about_callback(update, context):
                  [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
                   InlineKeyboardButton(text="Global", url="t.me/RajniGlobal")],
-                 [InlineKeyboardButton(text="Home", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="Help", callback_data="help_back")]]
+                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
             ),
         )
     elif query.data == "rajni_back":
@@ -413,10 +413,10 @@ def get_help(update: Update, context: CallbackContext):
             chat.id, text,
             InlineKeyboardMarkup(
                 [InlineKeyboardButton(
-                        text="Home",
+                        text="★Home★",
                         callback_data="rajni_back"),
                  InlineKeyboardButton(
-                        text="Back",
+                        text="★Back★",
                         callback_data="help_back")]))
 
     else:
