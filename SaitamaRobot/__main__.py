@@ -88,7 +88,7 @@ buttons = [
  [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
   InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
  [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
- InlineKeyboardButton(text="💻About", callback_data="yone_")],
+ InlineKeyboardButton(text="💻About", callback_data="rajni_")],
  [InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")]]
 
 
@@ -196,7 +196,7 @@ def send_help(chat_id, text, keyboard=None):
 
 @run_async
 def test(update: Update, context: CallbackContext):
-    # pprint(eval(str(update)))
+    # print(eval(str(update)))
     # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
@@ -225,7 +225,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Home", callback_data="yone_back"),
+                    [[InlineKeyboardButton(text="Home", callback_data="rajni_back"),
                       InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
@@ -277,7 +277,7 @@ def start(update: Update, context: CallbackContext):
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
                         [[InlineKeyboardButton(text="Back", callback_data="help_back"),
-                          InlineKeyboardButton(text="Home", callback_data="yone_back")]]
+                          InlineKeyboardButton(text="Home", callback_data="rajni_back")]]
                     ),
                 )
 
@@ -341,9 +341,9 @@ def error_callback(update: Update, context: CallbackContext):
 
 
 @run_async
-def yone_about_callback(update, context):
+def rajni_about_callback(update, context):
     query = update.callback_query
-    if query.data == "yone_":
+    if query.data == "rajni_":
         query.message.edit_text(
             text=f"""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n• I can restrict users.
@@ -353,10 +353,11 @@ def yone_about_callback(update, context):
                  \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
                  \n• I check for admin’s permissions before executing any command and more stuffs.
                  \n• I have more useful and fun modules too.
-                 \n• I can chat with users by using [Kuki AI](https://kuki-api.tk)
+                 \n• I can chat with users by using [Kuki AI](https://kuki-api.tk).
                  \n• @RajniiRobot reposiratory is private can’t be fork, if you want base Repository [Click here](https://github.com/SaitamaRobot).
-                 \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3)
-                 \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.""",
+                 \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
+                 \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
+                 \n *Thanks for using me :), [Click here](https://t.me/RajniUpdates/85) to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -364,11 +365,11 @@ def yone_about_callback(update, context):
                  [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
                   InlineKeyboardButton(text="Global", url="t.me/RajniGlobal")],
-                 [InlineKeyboardButton(text="Home", callback_data="yone_back"),
+                 [InlineKeyboardButton(text="Home", callback_data="rajni_back"),
                   InlineKeyboardButton(text="Help", callback_data="help_back")]]
             ),
         )
-    elif query.data == "yone_back":
+    elif query.data == "rajni_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -413,7 +414,7 @@ def get_help(update: Update, context: CallbackContext):
             InlineKeyboardMarkup(
                 [InlineKeyboardButton(
                         text="Home",
-                        callback_data="yone_back"),
+                        callback_data="rajni_back"),
                  InlineKeyboardButton(
                         text="Back",
                         callback_data="help_back")]))
@@ -622,7 +623,7 @@ def main():
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
-    about_callback_handler = CallbackQueryHandler(yone_about_callback, pattern=r"yone_")
+    about_callback_handler = CallbackQueryHandler(rajni_about_callback, pattern=r"rajni_")
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(
         settings_button, pattern=r"stngs_")
