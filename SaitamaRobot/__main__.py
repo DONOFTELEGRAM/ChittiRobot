@@ -364,7 +364,7 @@ def rajni_about_callback(update, context):
                 [
                  [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
-                  InlineKeyboardButton(text="Manual", url="manual_")],
+                  InlineKeyboardButton(text="Manual", callback_data="manual_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
