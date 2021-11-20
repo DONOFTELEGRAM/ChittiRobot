@@ -366,9 +366,8 @@ def rajni_about_callback(update, context):
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
                   InlineKeyboardButton(text="Manual", url="manual_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
-            ),
-        )
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                ]))
     elif query.data == "rajni_back":
         query.message.edit_text(
                 PM_START_TEXT,
@@ -379,7 +378,7 @@ def rajni_about_callback(update, context):
         )
 
 @run_async
-def manual_callback(update, context):
+def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
@@ -395,9 +394,17 @@ def manual_callback(update, context):
                 [
                  [InlineKeyboardButton(text="Add me", url="t.me/RajniiRobot?startgroup=true"),
                   InlineKeyboardButton(text="About", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
-            ))
+                 [InlineKeyboardButton(text="★Home★", callback_data="manual_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                ]))
+elif query.data == "manual_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+                disable_web_page_preview=False,
+            )
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
@@ -640,7 +647,7 @@ def main():
 
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start)
-    manual_callback_handler = CallbackQueryHandler(manual_callback, pattern=r"manual_")
+    manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
