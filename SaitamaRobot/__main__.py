@@ -362,9 +362,9 @@ def rajni_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
-                  InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
-                  InlineKeyboardButton(text="Manual", callback_data="manual_")],
+                 [InlineKeyboardButton(text="Updates 📲", url="t.me/RajniUpdates"),
+                  InlineKeyboardButton(text="Support 👨‍✈️", url="t.me/RajniSupportchat"),
+                  InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
@@ -392,8 +392,8 @@ def rajni_manual_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Add me", url="t.me/RajniiRobot?startgroup=true"),
-                  InlineKeyboardButton(text="About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="Add me 📲", url="t.me/RajniiRobot?startgroup=true"),
+                  InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
