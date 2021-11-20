@@ -397,9 +397,7 @@ def manual_callback(update, context):
                   InlineKeyboardButton(text="About", callback_data="rajni_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
-            ),
-else:
-print("it's ok"))
+            ))
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
