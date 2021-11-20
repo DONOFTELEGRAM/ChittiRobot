@@ -364,7 +364,7 @@ def rajni_about_callback(update, context):
                 [
                  [InlineKeyboardButton(text="Updates", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support", url="t.me/RajniSupportchat"),
-                  InlineKeyboardButton(text="Global", url="t.me/RajniGlobal")],
+                  InlineKeyboardButton(text="Manual", url="manual_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
             ),
@@ -377,6 +377,29 @@ def rajni_about_callback(update, context):
                 timeout=60,
                 disable_web_page_preview=False,
         )
+
+@run_async
+def manual_callback(update, context):
+    query = update.callback_query
+    if query.data == "manual_":
+        query.message.edit_text(
+            text=f"""Here is the help how to use me with my best performance, follow the steps below!
+                 \n• First add me to a group...
+                 \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
+                 \n• Promote me with all admin rights to let me get in actions!.
+                 \n• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
+                 \n• Now start learning and try to use me better!, You can get all support and help related to me at @{SUPPORT_CHAT}.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [InlineKeyboardButton(text="Add me", url="t.me/RajniiRobot?startgroup=true"),
+                  InlineKeyboardButton(text="About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")]]
+            ),
+else:
+print("it's ok"))
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
@@ -619,7 +642,7 @@ def main():
 
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start)
-
+    manual_callback_handler = CallbackQueryHandler(manual_callback, pattern=r"manual_")
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
@@ -636,6 +659,7 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
+    dispatcher.add_handler(manual_callback_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
