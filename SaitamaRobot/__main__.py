@@ -407,14 +407,14 @@ def rajni_tandc_callback(update, context):
         query.message.edit_text(
             text=f"""*The Terms and Conditions are as follows:*
 
-                     \n_• We respect everyone's privacy & we never collect Sensitive data from groups._
-                     \n_• Rajnii is one of the safest, Stable, and Moduler telegram bot._
-                     \n_• Messages between users and Rajni is End to End Encrypted!_
-                     \n_• NSFW content spammers always get Permanent Global Ban in Rajnii Database._
-                     \n_• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajni Slower to respond and we  can blacklist them who spam Rajni’s buttons or commands, then Rajni won't reply them._
-                     \n_• Global appeals for Rajni? Read the [criteria](https://t.me/RajniGlobal/402) first.
-                     \n   Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
-                     \n_• We only stores User ID, Usernames, Name only, which is needed bot to respond._""",
+                     \n• We respect everyone's privacy & we never collect Sensitive data from groups.
+                     \n• Rajnii is one of the safest, Stable, and Moduler telegram bot.
+                     \n• Messages between users and Rajni is End to End Encrypted!
+                     \n• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
+                     \n• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajni Slower to respond and we  can blacklist them who spam Rajni’s buttons or commands, then Rajni won't reply them.
+                     \n• Global appeals for Rajni? Read the [criteria](https://t.me/RajniGlobal/402) first.
+                     \n Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
+                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
