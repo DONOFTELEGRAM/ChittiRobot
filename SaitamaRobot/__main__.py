@@ -73,13 +73,9 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 Hi, I'm *Rajni*!, A bot to manage your chats when you're offline.
 *What can i do?*
-I can do lot of cool stuffs, here's a short list:
- • I can Restrict user.
- • I can greets users with customizable welcome messages and even set a group's rules.
- • I have an advanced anti-flood system.
- • I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
- • I have a note keeping system, blacklists, and even I can chat with users as a virtual human by using Kuki AI.
- 
+Read in my about Section.
+Hopefully you'll use me well!
+
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
 
