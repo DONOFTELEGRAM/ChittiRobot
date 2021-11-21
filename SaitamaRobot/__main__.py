@@ -365,6 +365,7 @@ def rajni_about_callback(update, context):
                  [InlineKeyboardButton(text="Updates 📲", url="t.me/RajniUpdates"),
                   InlineKeyboardButton(text="Support 👨‍✈️", url="t.me/RajniSupportchat"),
                   InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
+                 [InlineKeyboardButton(text="Terms And Conditions 📄", callback_data="tandc_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
@@ -394,6 +395,31 @@ def rajni_manual_callback(update, context):
                 [
                  [InlineKeyboardButton(text="Add me 📲", url="t.me/RajniiRobot?startgroup=true"),
                   InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                ]))
+
+
+@run_async
+def rajni_tandc_callback(update, context):
+    query = update.callback_query
+    if query.data == "tandc_":
+        query.message.edit_text(
+            text=f"""*The Terms and Conditions are as follows:*
+
+                     \n_• We respect everyone's privacy & we never collect Sensitive data from groups._
+                     \n_• Rajnii is one of the safest, Stable, and Moduler telegram bot._
+                     \n_• Messages between users and Rajni is End to End Encrypted!_
+                     \n_• NSFW content spammers always get Permanent Global Ban in Rajnii Database._
+                     \n_• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajni Slower to respond and we  can blacklist them who spam Rajni’s buttons or commands, then Rajni won't reply them._
+                     \n_• Global appeals for Rajni? Read the [criteria](https://t.me/RajniGlobal/402) first.
+                     \n   Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
+                     \n_• We only stores User ID, Usernames, Name only, which is needed bot to respond._""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
@@ -640,6 +666,7 @@ def main():
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start)
     manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
+    terms_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
@@ -657,6 +684,7 @@ def main():
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(manual_callback_handler)
+    dispatcher.add_handler(terms_condition_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
