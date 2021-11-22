@@ -342,8 +342,9 @@ def rajni_about_callback(update, context):
     if query.data == "rajni_":
         query.message.edit_text(
             text=f"""*『About section:』*
-                 \n\nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
-                 \n• I can restrict users.
+                 \nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+                 \n*Here's a Shortlist what I can do.*
+                 \n\n• I can restrict users.
                  \n• I can greet users with customizable welcome messages and even set a group's rules.
                  \n• I have an advanced anti-flood system.
                  \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
@@ -410,10 +411,13 @@ def rajni_tandc_callback(update, context):
                      \n• Rajnii is one of the safest, Stable, and Moduler telegram bot.
                      \n• Messages between users and Rajni is End to End Encrypted!
                      \n• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
+                     \n• Be Active on your chats, if someone spamming your group, you can use report feature & you can also report us about that on @RajniSpam to appeal a Gban/Fban.
+                     \n• Make sure antiflood is enabled, so nobody can flood/spam your group.
                      \n• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajni Slower to respond and we  can blacklist them who spam Rajni’s buttons or commands, then Rajni won't reply them.
                      \n• Global appeals for Rajni? Read the [criteria](https://t.me/RajniGlobal/402) first.
                      \n Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
-                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond.""",
+                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond.
+                     \n\n_Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
