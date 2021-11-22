@@ -341,7 +341,8 @@ def rajni_about_callback(update, context):
     query = update.callback_query
     if query.data == "rajni_":
         query.message.edit_text(
-            text=f"""I'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+            text=f"""*『About section:』*
+                 \n\nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n• I can restrict users.
                  \n• I can greet users with customizable welcome messages and even set a group's rules.
                  \n• I have an advanced anti-flood system.
@@ -350,7 +351,7 @@ def rajni_about_callback(update, context):
                  \n• I check for admin’s permissions before executing any command and more stuffs.
                  \n• I have more useful and fun modules too.
                  \n• I can chat with users by using [Kuki AI](https://kuki-api.tk).
-                 \n• @RajniiRobot reposiratory is private can’t be fork, if you want base Repository [Click here](https://github.com/SaitamaRobot).
+                 \n• @RajniiRobot reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/SaitamaRobot) | don't come to us for asking Rajni's Repo.
                  \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
                  \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
                  \n *Thanks for using me :),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
@@ -379,8 +380,9 @@ def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
-            text=f"""Here is the help how to use me with my best performance, follow the steps below!
-                 \n• First add me to a group...
+            text=f"""*『Manual section:』*
+                 \nHere is the help how to use me with my best performance, follow the steps below!
+                 \n\n• First add me to a group...
                  \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
                  \n• Promote me with all admin rights to let me get in actions!.
                  \n• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
@@ -401,9 +403,10 @@ def rajni_tandc_callback(update, context):
     query = update.callback_query
     if query.data == "tandc_":
         query.message.edit_text(
-            text=f"""*The Terms and Conditions are as follows:*
+            text=f"""*『T&C section:』*
+                     \n*The Terms and Conditions are as follows:*
 
-                     \n• We respect everyone's privacy & we never collect Sensitive data from groups.
+                     \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
                      \n• Rajnii is one of the safest, Stable, and Moduler telegram bot.
                      \n• Messages between users and Rajni is End to End Encrypted!
                      \n• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
