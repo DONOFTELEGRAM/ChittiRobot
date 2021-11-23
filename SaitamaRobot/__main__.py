@@ -90,6 +90,8 @@ buttons = [
 
 
 HELP_STRINGS = """
+[Help section:](https://telegra.ph/file/d40481cb215f983a3fb9c.jpg)
+
 Hey there! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
 Have a look at the following for an idea of some of the things I can help you with.
@@ -185,7 +187,7 @@ def send_help(chat_id, text, keyboard=None):
         chat_id=chat_id,
         text=text,
         parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=True,
+        disable_web_page_preview=False,
         reply_markup=keyboard,
     )
 
@@ -219,7 +221,7 @@ def help_button(update, context):
             query.message.edit_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
                 reply_markup=InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                       InlineKeyboardButton(text="★Back★", callback_data="help_back")]]
@@ -341,7 +343,7 @@ def rajni_about_callback(update, context):
     query = update.callback_query
     if query.data == "rajni_":
         query.message.edit_text(
-            text=f"""*『About section:』*
+            text=f"""*『[About](https://telegra.ph/file/54be2e85bd0b185c74db2.jpg) section:』*
                  \nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n*Here's a Shortlist what I can do.*
                  \n\n• I can restrict users.
@@ -357,7 +359,7 @@ def rajni_about_callback(update, context):
                  \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
                  \n *Thanks for using me :),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
+            disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="Updates 📲", url="t.me/RajniUpdates"),
@@ -381,7 +383,7 @@ def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
-            text=f"""*『Manual section:』*
+            text=f"""*『[Manual](https://telegra.ph/file/e24e30f8e5d14c367f19c.jpg) section:』*
                  \nHere is the help how to use me with my best performance, follow the steps below!
                  \n\n• First add me to a group...
                  \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
@@ -389,7 +391,7 @@ def rajni_manual_callback(update, context):
                  \n• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
                  \n• Now start learning and try to use me better!, You can get all support and help related to me at @{SUPPORT_CHAT}.""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
+            disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="Add me 📲", url="t.me/RajniiRobot?startgroup=true"),
@@ -404,7 +406,7 @@ def rajni_tandc_callback(update, context):
     query = update.callback_query
     if query.data == "tandc_":
         query.message.edit_text(
-            text=f"""*『T&C section:』*
+            text=f"""*『[T&C](https://telegra.ph/file/1d6a5a6d857a54d618f0d.jpg) section:』*
                      \n*The Terms and Conditions are as follows:*
 
                      \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
@@ -419,7 +421,7 @@ def rajni_tandc_callback(update, context):
                      \n• We only stores User ID, Usernames, Name only, which is needed bot to respond.
                      \n\n_Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
+            disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
