@@ -90,7 +90,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-[Help section:](https://telegra.ph/file/d40481cb215f983a3fb9c.jpg)
+*『*[Help](https://telegra.ph/file/d40481cb215f983a3fb9c.jpg) *section:』*
 
 Hey there! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
@@ -343,7 +343,7 @@ def rajni_about_callback(update, context):
     query = update.callback_query
     if query.data == "rajni_":
         query.message.edit_text(
-            text=f"""*『[About](https://telegra.ph/file/54be2e85bd0b185c74db2.jpg) section:』*
+            text=f"""*『*[About](https://telegra.ph/file/54be2e85bd0b185c74db2.jpg) *section:』*
                  \nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n*Here's a Shortlist what I can do.*
                  \n\n• I can restrict users.
@@ -383,7 +383,7 @@ def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
-            text=f"""*『[Manual](https://telegra.ph/file/e24e30f8e5d14c367f19c.jpg) section:』*
+            text=f"""*『*[Manual](https://telegra.ph/file/e24e30f8e5d14c367f19c.jpg) *section:』*
                  \nHere is the help how to use me with my best performance, follow the steps below!
                  \n\n• First add me to a group...
                  \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
@@ -406,7 +406,7 @@ def rajni_tandc_callback(update, context):
     query = update.callback_query
     if query.data == "tandc_":
         query.message.edit_text(
-            text=f"""*『[T&C](https://telegra.ph/file/1d6a5a6d857a54d618f0d.jpg) section:』*
+            text=f"""*『*[T&C](https://telegra.ph/file/1d6a5a6d857a54d618f0d.jpg) *section:』*
                      \n*The Terms and Conditions are as follows:*
 
                      \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
