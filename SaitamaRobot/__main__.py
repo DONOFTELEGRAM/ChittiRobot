@@ -71,7 +71,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi, I'm <b><a href="https://telegra.ph/file/0db1b3d079b7217b5dd1f.jpg">Rajnii</a></b>!, A bot to manage your chats when you're offline.
+Hi, I'm [『Rajnii』](https://telegra.ph/file/0db1b3d079b7217b5dd1f.jpg)!, A bot to manage your chats when you're offline.
 *What can i do?*
 Read in my about Section.
 Hopefully you'll use me well!
@@ -80,7 +80,7 @@ Hopefully you'll use me well!
 """
 
 buttons = [
- [InlineKeyboardButton(text="😁Add RAJNI to your group", url="t.me/RajniiRobot?startgroup=true")],
+ [InlineKeyboardButton(text="😁Add 『Rajnii』 to your group", url="t.me/RajniiRobot?startgroup=true")],
  [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
   InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
  [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
@@ -114,7 +114,7 @@ And the following:
 
 SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
-DONATE_STRING = """*@RajniiRobot* is hosted on Heroku free server yet,
+DONATE_STRING = """*『Rajnii』* is hosted on Heroku free server yet,
 so it doesn't need any donations for now,
 But if you want to donate my developer you can,
 You can also DM my developer to ask about donation.
@@ -344,7 +344,7 @@ def rajni_about_callback(update, context):
     if query.data == "rajni_":
         query.message.edit_text(
             text=f"""*『*[About](https://telegra.ph/file/54be2e85bd0b185c74db2.jpg) *section:』*
-                 \nI'm *Rajni*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+                 \nI'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n*Here's a Shortlist what I can do.*
                  \n\n• I can restrict users.
                  \n• I can greet users with customizable welcome messages and even set a group's rules.
@@ -354,7 +354,7 @@ def rajni_about_callback(update, context):
                  \n• I check for admin’s permissions before executing any command and more stuffs.
                  \n• I have more useful and fun modules too.
                  \n• I can chat with users by using [Kuki AI](https://kuki-api.tk).
-                 \n• @RajniiRobot reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/SaitamaRobot) | don't come to us for asking Rajni's Repo.
+                 \n• Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/SaitamaRobot) | don't come to us for asking Rajni's Repo.
                  \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
                  \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
                  \n *Thanks for using me :),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
@@ -411,14 +411,14 @@ def rajni_tandc_callback(update, context):
 
                      \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
                      \n• Rajnii is one of the safest, Stable, and Moduler telegram bot.
-                     \n• Messages between users and Rajni is End to End Encrypted!
+                     \n• Messages between users and Rajnii is End to End Encrypted!
                      \n• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
                      \n• Be Active on your chats, if someone spamming your group, you can use report feature & you can also report us about that on @RajniSpam to appeal a Gban/Fban.
                      \n• Make sure antiflood is enabled, so nobody can flood/spam your group.
-                     \n• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajni Slower to respond and we  can blacklist them who spam Rajni’s buttons or commands, then Rajni won't reply them.
-                     \n• Global appeals for Rajni? Read the [criteria](https://t.me/RajniGlobal/402) first.
+                     \n• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajnii Slower to respond and if we blacklist them who spams Rajni’s buttons or commands, Hence Rajni will ignore thier existance.
+                     \n• Global appeals for Rajnii? Read the [criteria](https://t.me/RajniGlobal/402) first.
                      \n Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
-                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond.
+                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
                      \n\n_Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
