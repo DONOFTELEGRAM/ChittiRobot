@@ -12,19 +12,19 @@ An Advanced Modular Telegram Python Group Management bot running on python3.8.6.
 Build For Mainly Group Maintaining & Help Admins With Amazing Advanced Modules.
 
 
-You Can Find RajniiRobot at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/RajniiRobot)
+You Can Find RajniiRobot at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniiRobot)
 
-The Support Chat can be reached out to at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/RajniSupportChat)
+The Support Chat can be reached out to at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniSupportChat)
 
-You can get All Updates at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](t.me/RajniUpdates)
+You can get All Updates at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](telegram.me/RajniUpdates)
 
-All Global Bans By RajniiRobot can be Found at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](t.me/RajniGlobal)
+All Global Bans By RajniiRobot can be Found at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](telegram.me/RajniGlobal)
 
-You can Join Our OT Chat at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://t.me/RajniSpam)
+You can Join Our OT Chat at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniSpam)
 
 My Developers : [Yash Virmani](telegram.me/itsanshnityam),[ Yash Rajput](telegram.me/Flasho_gacha),[ Sawada](telegram.me/sawada),[ Paul Larson](telegram.me/SonofLars),[ Awesome-RJ](https://telegram.me/Black_Knights_Union_Support).
 
-## POWERED BY [SR Networks](t.me/ShajniNetworks)
+## POWERED BY [SR Networks](telegram.me/ShajniNetworks)
 
 
 ## How to setup/deploy.
