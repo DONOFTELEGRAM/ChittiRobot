@@ -383,7 +383,7 @@ def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
-            text=f"""*『*[Manual](https://telegra.ph/file/e24e30f8e5d14c367f19c.jpg) *section:』*
+            text=f"""*『*[Manual](https://telegra.ph/file/8e8fb6982ef9e4f0cd799.jpg) *section:』*
                  \nHere is the help how to use me with my best performance, follow the steps below!
                  \n\n• First add me to a group...
                  \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
@@ -406,7 +406,7 @@ def rajni_tandc_callback(update, context):
     query = update.callback_query
     if query.data == "tandc_":
         query.message.edit_text(
-            text=f"""*『*[T&C](https://telegra.ph/file/1d6a5a6d857a54d618f0d.jpg) *section:』*
+            text=f"""*『*[T&C](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
                      \n*The Terms and Conditions are as follows:*
 
                      \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
