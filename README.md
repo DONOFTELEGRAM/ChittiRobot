@@ -16,13 +16,13 @@ You Can Find RajniiRobot at [![Telegram](https://img.shields.io/badge/telegram-1
 
 The Support Chat can be reached out to at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniSupportChat)
 
-You can get All Updates at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](telegram.me/RajniUpdates)
+You can get All Updates at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniUpdates)
 
-All Global Bans By RajniiRobot can be Found at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](telegram.me/RajniGlobal)
+All Global Bans By RajniiRobot can be Found at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniGlobal)
 
 You can Join Our OT Chat at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniSpam)
 
-My Developers : [Yash Virmani](telegram.me/itsanshnityam),[ Yash Rajput](telegram.me/Flasho_gacha),[ Sawada](telegram.me/sawada),[ Paul Larson](telegram.me/SonofLars),[ Awesome-RJ](https://telegram.me/Black_Knights_Union_Support).
+My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](https://telegram.me/Flasho_gacha),[ Sawada](https://telegram.me/sawada),[ Paul Larson](https://telegram.me/SonOfLars),[ Awesome-RJ](https://telegram.me/Black_Knights_Union_Support).
 
 ## POWERED BY [SR Networks](telegram.me/ShajniNetworks)
 
