@@ -362,7 +362,7 @@ def rajni_about_callback(update, context):
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Credits👨‍💻", callback_data="credits_"),
+                 [InlineKeyboardButton(text="Developers 👨‍💻", callback_data="credits_"),
                   InlineKeyboardButton(text="Support 👨‍✈️", callback_data="support_"),
                   InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
                  [InlineKeyboardButton(text="Terms And Conditions 📄", callback_data="tandc_")],
@@ -405,7 +405,7 @@ def rajni_support_callback(update, context):
     query = update.callback_query
     if query.data == "support_":
         query.message.edit_text(
-            text=f"""*『*[Support](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
+            text=f"""*『*[Support](https://telegra.ph/file/3c90f6fc89c72d529e60f.jpg) *section:』*
                      \n*Just Click the link below as it’s mentioned:*
 
                      \n\n• Join Support chat - @{SUPPORT_CHAT}.
@@ -427,10 +427,10 @@ def rajni_credits_callback(update, context):
     query = update.callback_query
     if query.data == "credits_":
         query.message.edit_text(
-            text=f"""*『*[Credits](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
+            text=f"""*『*[Developers](https://telegra.ph/file/e8037324894de412039a4.jpg) *section:』*
                      \n*My developers:*
 
-                     \n\n*• Main developer  - @itzzzyashu*
+                     \n\n*• Main developer   - @itzzzyashu*
                      \n*• Normal Updates   - @sawada*
                      \n*• New modules      - @flasho_gacha*
                      \n*• Updated modules  - @Awesome_RJ_official*
