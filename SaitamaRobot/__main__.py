@@ -362,8 +362,8 @@ def rajni_about_callback(update, context):
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Updates 📲", url="t.me/RajniUpdates"),
-                  InlineKeyboardButton(text="Support 👨‍✈️", url="t.me/RajniSupportchat"),
+                 [InlineKeyboardButton(text="Credits👨‍💻", callback_data="credits_"),
+                  InlineKeyboardButton(text="Support 👨‍✈️", callback_data="support_"),
                   InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
                  [InlineKeyboardButton(text="Terms And Conditions 📄", callback_data="tandc_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
@@ -396,6 +396,50 @@ def rajni_manual_callback(update, context):
                 [
                  [InlineKeyboardButton(text="Add me 📲", url="t.me/RajniiRobot?startgroup=true"),
                   InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                ]))
+
+@run_async
+def rajni_support_callback(update, context):
+    query = update.callback_query
+    if query.data == "support_":
+        query.message.edit_text(
+            text=f"""*『*[Support](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
+                     \n*Just Click the link below as it’s mentioned:*
+
+                     \n\n• Join Support chat - @{SUPPORT_CHAT}.
+                     \n• Join Updates here - @RajniUpdates.
+                     \n• Global Events here - @RajniGlobal.
+                     \n• Join Spam/Appeal chat - @RajniSpam.
+                     \n• Join Developers chat - @ShJniDeVs.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                ]))
+
+@run_async
+def rajni_credits_callback(update, context):
+    query = update.callback_query
+    if query.data == "credits_":
+        query.message.edit_text(
+            text=f"""*『*[Credits](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
+                     \n*My developers:*
+
+                     \n\n• Main developer - @itzzzyashu.
+                     \n• Normal Updates - @sawada,
+                     \n• New modules - @flasho_gacha,
+                     \n• Updated modules - @Awesome_RJ_official,
+                     \n• Base code - @SonOfLars.""",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=False,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
                  [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                   InlineKeyboardButton(text="★Help★", callback_data="help_back")],
                 ]))
@@ -670,8 +714,12 @@ def main():
 
     test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start)
+
     manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
     terms_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
+    support_callback_handler = CallbackQueryHandler(rajni_support_callback, pattern=r"support_")
+    credits_callback_handler = CallbackQueryHandler(rajni_credits_callback, pattern=r"credits_")
+
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*")
@@ -688,11 +736,15 @@ def main():
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
+
     dispatcher.add_handler(manual_callback_handler)
     dispatcher.add_handler(terms_condition_handler)
+    dispatcher.add_handler(credits_callback_handler)
+    dispatcher.add_handler(support_callback_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
+
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(donate_handler)
 
