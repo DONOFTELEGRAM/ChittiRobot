@@ -412,7 +412,7 @@ def rajni_support_callback(update, context):
                      \n• Join Updates here - @RajniUpdates.
                      \n• Global Events here - @RajniGlobal.
                      \n• Join Spam/Appeal chat - @RajniSpam.
-                     \n• Join Developers chat - @ShJniDeVs.""",
+                     \n• Join Developers chat - @ShAjNiDeVs.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
