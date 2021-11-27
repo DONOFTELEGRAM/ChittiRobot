@@ -430,11 +430,11 @@ def rajni_credits_callback(update, context):
             text=f"""*『*[Credits](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
                      \n*My developers:*
 
-                     \n\n• Main developer - @itzzzyashu.
-                     \n• Normal Updates - @sawada,
-                     \n• New modules - @flasho_gacha,
-                     \n• Updated modules - @Awesome_RJ_official,
-                     \n• Base code - @SonOfLars.""",
+                     \n\n*• Main developer  - @itzzzyashu*
+                     \n*• Normal Updates   - @sawada*
+                     \n*• New modules      - @flasho_gacha*
+                     \n*• Updated modules  - @Awesome_RJ_official*
+                     \n*• Base code        - @SonOfLars*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
