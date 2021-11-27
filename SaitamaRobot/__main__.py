@@ -362,7 +362,7 @@ def rajni_about_callback(update, context):
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Developers 👨‍💻", callback_data="credits_"),
+                 [InlineKeyboardButton(text="Credits 👨‍💻", callback_data="credits_"),
                   InlineKeyboardButton(text="Support 👨‍✈️", callback_data="support_"),
                   InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
                  [InlineKeyboardButton(text="Terms And Conditions 📄", callback_data="tandc_")],
@@ -428,8 +428,6 @@ def rajni_credits_callback(update, context):
     if query.data == "credits_":
         query.message.edit_text(
             text=f"""*『*[Developers](https://telegra.ph/file/e8037324894de412039a4.jpg) *section:』*
-                     \n*My developers:*
-
                      \n\n*• Main developer   - @itzzzyashu*
                      \n*• Normal Updates   - @sawada*
                      \n*• New modules      - @flasho_gacha*
