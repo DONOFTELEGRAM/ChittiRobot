@@ -229,8 +229,8 @@ def gban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         log.edit_text(
             log_message +
-            f"\n<b>Gbanned Users in :</b> <code>{gbanned_chats}</code> Chats",
-            InlineKeyboardMarkup(gban_button),
+            f"\n<b>Gbanned User in :</b> <code>{gbanned_chats}</code> Chats",
+          # InlineKeyboardMarkup(gban_button),
             parse_mode=ParseMode.HTML)
     else:
         send_to_list(
@@ -364,7 +364,7 @@ def ungban(update: Update, context: CallbackContext):
 
     if EVENT_LOGS:
         log.edit_text(
-            log_message + f"\n<b>UnGbanned in :</b> {ungbanned_chats} Chats",
+            log_message + f"\n<b>UnGbanned User in :</b> {ungbanned_chats} Chats",
             parse_mode=ParseMode.HTML)
     else:
         send_to_list(bot, DRAGONS + DEMONS, "UnGban complete!")
