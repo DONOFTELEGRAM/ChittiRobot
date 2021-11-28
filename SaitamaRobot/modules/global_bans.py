@@ -143,7 +143,7 @@ def gban(update: Update, context: CallbackContext):
     message.reply_text("On it!")
 
     start_time = time.time()
-    datetime_fmt = "%d-%m-%YT%H:%M"
+    datetime_fmt = "%d-%m-%Y--T%H:%M"
     current_time = datetime.utcnow().strftime(datetime_fmt)
 
     if chat.type != 'private':
@@ -181,7 +181,7 @@ def gban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message, gban_button, parse_mode=ParseMode.HTML)
+                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
@@ -247,7 +247,7 @@ def gban(update: Update, context: CallbackContext):
 
     try:
         bot.send_message(
-            user_id, "#ATTENTION"
+            user_id, "**#ATTENTION**"
             "You have been marked as Malicious and as such have been banned from any future groups we manage."
             f"\n<b>Reason:</b> <code>{html.escape(user.reason)}</code>"
             f"</b>Appeal Chat:</b> @{SUPPORT_CHAT}",
@@ -286,7 +286,7 @@ def ungban(update: Update, context: CallbackContext):
         f"On it!.")
 
     start_time = time.time()
-    datetime_fmt = "%Y-%m-%dT%H:%M"
+    datetime_fmt = "%d%m-%Y--T%H:%M"
     current_time = datetime.utcnow().strftime(datetime_fmt)
 
     if chat.type != 'private':
@@ -316,7 +316,7 @@ def ungban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message, ungban_button, parse_mode=ParseMode.HTML)
+                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
