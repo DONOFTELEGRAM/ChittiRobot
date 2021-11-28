@@ -286,7 +286,7 @@ def ungban(update: Update, context: CallbackContext):
         f"On it!.")
 
     start_time = time.time()
-    datetime_fmt = "%d%m-%Y--T%H:%M"
+    datetime_fmt = "%d-%m-%Y--T%H:%M"
     current_time = datetime.utcnow().strftime(datetime_fmt)
 
     if chat.type != 'private':
