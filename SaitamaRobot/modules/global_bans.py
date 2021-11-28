@@ -181,8 +181,7 @@ def gban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message,
-                 InlineKeyboardMarkup(gban_button))
+                EVENT_LOGS, log_message, gban_button, parse_mode=ParseMode.HTML)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
@@ -317,8 +316,7 @@ def ungban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message,
-                InlineKeyboardMarkup(ungban_button))
+                EVENT_LOGS, log_message, ungban_button, parse_mode=ParseMode.HTML)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
