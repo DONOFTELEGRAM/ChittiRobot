@@ -152,6 +152,15 @@ def gban(update: Update, context: CallbackContext):
     else:
         chat_origin = "<b>{}</b>\n".format(chat.id)
 
+    gban_button = [
+ InlineKeyboardButton(
+       text="Appeal chat",
+       url="https://telegram.me/RajniSpam"),
+ InlineKeyboardButton(
+       text="Fban in your Fed",
+       url=f"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam"),
+    ]
+
     log_message = (
         f"<b> #GBANNED </b> \n"
         f"<b>Originated from   :</b> <code>{chat_origin}</code>\n"
@@ -169,15 +178,6 @@ def gban(update: Update, context: CallbackContext):
             log_message += f"\n<b>Reason:</b> <code>{reason}</code>"
         else:
             log_message += f"\n<b>Reason:</b> <code>{reason}</code>"
-
-    gban_button = [
- InlineKeyboardButton(
-       text="Appeal chat",
-       url="https://telegram.me/RajniSpam"),
- InlineKeyboardButton(
-       text="Fban in your Fed",
-       url=f"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam"),
-    ]
 
     if EVENT_LOGS:
         try:
