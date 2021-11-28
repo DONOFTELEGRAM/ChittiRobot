@@ -173,7 +173,7 @@ def gban(update: Update, context: CallbackContext):
         try:
             log = bot.send_message(
                 EVENT_LOGS, log_message,
-                 InlineKeyboardMarkup([
+                 reply_markup=InlineKeyboardMarkup([
                   InlineKeyboardButton(
                         text="Appeal chat",
                         url="https://telegram.me/RajniSpam"),
@@ -307,13 +307,13 @@ def ungban(update: Update, context: CallbackContext):
         try:
             log = bot.send_message(
                 EVENT_LOGS, log_message,
-                InlineKeyboardMarkup([
+                reply_markup=InlineKeyboardMarkup([
                   InlineKeyboardButton(
                         text="Appeal chat",
                         url="https://telegram.me/RajniSpam"),
                   InlineKeyboardButton(
-                        text="Fban in your Fed",
-                        url=f"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam")]),
+                        text="Unban in your Fed",
+                        url=f"https://telegram.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam")]),
                   parse_mode=ParseMode.HTML)
         except BadRequest as excp:
             log = bot.send_message(
