@@ -181,7 +181,11 @@ def gban(update: Update, context: CallbackContext):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
+                EVENT_LOGS,
+                log_message,
+                InlineKeyboardMarkup(gban_button),
+                parse_mode=ParseMode.HTML,
+                timeout=60)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
