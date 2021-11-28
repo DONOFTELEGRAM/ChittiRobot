@@ -184,8 +184,7 @@ def gban(update: Update, context: CallbackContext):
                 EVENT_LOGS,
                 log_message,
                 InlineKeyboardMarkup(gban_button),
-                parse_mode=ParseMode.HTML,
-                timeout=60)
+                parse_mode=ParseMode.MARKDOWN)
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
