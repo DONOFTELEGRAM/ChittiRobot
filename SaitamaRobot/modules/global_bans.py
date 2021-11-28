@@ -173,7 +173,7 @@ def gban(update: Update, context: CallbackContext):
         try:
             log = bot.send_message(
                 EVENT_LOGS, log_message,
-                 reply_markup=InlineKeyboardMarkup([
+                 InlineKeyboardMarkup([
                   InlineKeyboardButton(
                         text="Appeal chat",
                         url="https://telegram.me/RajniSpam"),
@@ -307,7 +307,7 @@ def ungban(update: Update, context: CallbackContext):
         try:
             log = bot.send_message(
                 EVENT_LOGS, log_message,
-                reply_markup=InlineKeyboardMarkup([
+                InlineKeyboardMarkup([
                   InlineKeyboardButton(
                         text="Appeal chat",
                         url="https://telegram.me/RajniSpam"),
