@@ -169,9 +169,7 @@ def gban(update: Update, context: CallbackContext):
         f"<b>GBanned User ID   :</b> <code>{user_chat.id}</code>\n"
         f"<b>GBanned on        :</b> <code>{current_time}</code>\n"
         f"<b>Appeal Chat       :</b> <b>@RajniSpam</b>\n"
-        f"<b>Fban in your fed  :</b> https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam\n",
-        InlineKeyboardMarkup(gban_button))
-    
+        f"<b>Fban in your fed  :</b> https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam\n")
 
     if reason:
         if chat.type == chat.SUPERGROUP and chat.username:
@@ -232,6 +230,7 @@ def gban(update: Update, context: CallbackContext):
         log.edit_text(
             log_message +
             f"\n<b>Gbanned Users in :</b> <code>{gbanned_chats}</code> Chats",
+            InlineKeyboardMarkup(gban_button),
             parse_mode=ParseMode.HTML)
     else:
         send_to_list(
