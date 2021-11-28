@@ -169,17 +169,20 @@ def gban(update: Update, context: CallbackContext):
         else:
             log_message += f"\n<b>Reason:</b> <code>{reason}</code>"
 
+    gban_button = [
+ InlineKeyboardButton(
+       text="Appeal chat",
+       url="https://telegram.me/RajniSpam"),
+ InlineKeyboardButton(
+       text="Fban in your Fed",
+       url=f"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam"),
+    ]
+
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message,parse_mode=ParseMode.HTML,
-                 InlineKeyboardMarkup([
-                  InlineKeyboardButton(
-                        text="Appeal chat",
-                        url="https://telegram.me/RajniSpam"),
-                  InlineKeyboardButton(
-                        text="Fban in your Fed",
-                        url=f"https://telegram.me/share/url?url=/fban+{user_chat.id}+AppealChat+@RajniSpam")]))
+                EVENT_LOGS, log_message,
+                 InlineKeyboardMarkup(gban_button))
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
@@ -302,17 +305,20 @@ def ungban(update: Update, context: CallbackContext):
         f"<b>Appeal Chat        :</b> <b>@RajniSpam</b>\n"
         f"<b>UnFban in your fed :</b> https://telegram.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam")
 
+    ungban_button = [
+ InlineKeyboardButton(
+       text="Appeal chat",
+       url="https://telegram.me/RajniSpam"),
+ InlineKeyboardButton(
+      text="Unban in your Fed",
+      url=f"https://telegram.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam"),
+     ]
+
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message,parse_mode=ParseMode.HTML,
-                InlineKeyboardMarkup([
-                  InlineKeyboardButton(
-                        text="Appeal chat",
-                        url="https://telegram.me/RajniSpam"),
-                  InlineKeyboardButton(
-                        text="Unban in your Fed",
-                        url=f"https://telegram.me/share/url?url=/unfban+{user_chat.id}+AppealChat+@RajniSpam")]))
+                EVENT_LOGS, log_message,
+                InlineKeyboardMarkup(ungban_button))
         except BadRequest as excp:
             log = bot.send_message(
                 EVENT_LOGS, log_message +
