@@ -354,6 +354,7 @@ def rajni_about_callback(update, context):
                  \n• I check for admin’s permissions before executing any command and more stuffs.
                  \n• I have more useful and fun modules too.
                  \n• I can chat with users by using [Kuki AI](https://kuki-api.tk).
+                 \n• [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
                  \n• Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/SaitamaRobot) | don't come to us for asking Rajni's Repo.
                  \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
                  \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
