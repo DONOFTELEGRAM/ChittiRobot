@@ -405,9 +405,9 @@ def rajni_manual_callback(update, context):
 
 def admin_setup(update, context):
     query = update.callback_query
-    if query.data == "antispam_":
+    if query.data == "adminsetup_":
         query.message.edit_text(
-            text="""｢ Admin Setup 」
+            text="""*｢ Admin Setup 」*
 
                  \n• To avoid slowing down, Rajnii caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), Rajnii will only find out ~10 minutes later.
                  \n• If you want to update them immediately, you can use the `/admincache` command,thta'll force Rajnii to check who the admins are again and their permissions
@@ -430,7 +430,7 @@ def antispam_setup(update, context):
     query = update.callback_query
     if query.data == "antispamsetup_":
         query.message.edit_text(
-            text="""｢ Anti-Spam Setup 」
+            text="""*｢ Anti-Spam Setup 」*
                  \n\n\n*« Anti-Spam »*
                  \n• `/antispam <on/off/yes/no>`: Change antispam security settings in the group, or return your current settings(when no arguments).
                  This helps protect you and your groups by removing spam flooders as quickly as possible.
