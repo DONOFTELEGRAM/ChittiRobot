@@ -794,12 +794,12 @@ def main():
 
     # About Callbacks
     about_callback_handler = CallbackQueryHandler(rajni_about_callback, pattern=r"rajni_")
-        terms_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
-        support_callback_handler = CallbackQueryHandler(rajni_support_callback, pattern=r"support_")
-        credits_callback_handler = CallbackQueryHandler(rajni_credits_callback, pattern=r"credits_")
-        manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
-            admin_setup_handler = CallbackQueryHandler(admin_setup, pattern=r"adminsetup_")
-            antispam_setup_handler = CallbackQueryHandler(antispam_setup, pattern=r"antispamsetup_")
+    terms_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
+    support_callback_handler = CallbackQueryHandler(rajni_support_callback, pattern=r"support_")
+    credits_callback_handler = CallbackQueryHandler(rajni_credits_callback, pattern=r"credits_")
+    manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
+    admin_setup_handler = CallbackQueryHandler(admin_setup, pattern=r"adminsetup_")
+    antispam_setup_handler = CallbackQueryHandler(antispam_setup, pattern=r"antispamsetup_")
 
     # Help Handlers
     help_handler = CommandHandler("help", get_help)
