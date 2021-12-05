@@ -73,7 +73,7 @@ def broadcast(update: Update, context: CallbackContext):
                         int(chat.chat_id),
                         to_send[1],
                         parse_mode="MARKDOWN",
-                        disable_web_page_preview=True)
+                        disable_web_page_preview=False)
                     sleep(0.1)
                 except TelegramError:
                     failed += 1
@@ -84,7 +84,7 @@ def broadcast(update: Update, context: CallbackContext):
                         int(user.user_id),
                         to_send[1],
                         parse_mode="MARKDOWN",
-                        disable_web_page_preview=True)
+                        disable_web_page_preview=False)
                     sleep(0.1)
                 except TelegramError:
                     failed_user += 1
@@ -128,10 +128,10 @@ def chats(update: Update, context: CallbackContext):
             pass
 
     with BytesIO(str.encode(chatfile)) as output:
-        output.name = "groups_list.csv"
+        output.name = "chats_list.csv"
         update.effective_message.reply_document(
             document=output,
-            filename="groups_list.csv",
+            filename="chats_list.csv",
             caption="Here be the list of groups in my database.")
 
 
