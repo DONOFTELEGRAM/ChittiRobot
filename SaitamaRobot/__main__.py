@@ -794,7 +794,7 @@ def main():
 
     # About Callbacks
     about_callback_handler = CallbackQueryHandler(rajni_about_callback, pattern=r"rajni_")
-    terms_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
+    term_condition_handler = CallbackQueryHandler(rajni_tandc_callback, pattern=r"tandc_")
     support_callback_handler = CallbackQueryHandler(rajni_support_callback, pattern=r"support_")
     credits_callback_handler = CallbackQueryHandler(rajni_credits_callback, pattern=r"credits_")
     manual_callback_handler = CallbackQueryHandler(rajni_manual_callback, pattern=r"manual_")
@@ -822,12 +822,12 @@ def main():
 
     # Info Callbacks
     dispatcher.add_handler(about_callback_handler)
-       dispatcher.add_handler(terms_condition_handler)
-       dispatcher.add_handler(credits_callback_handler)
-       dispatcher.add_handler(support_callback_handler)
-       dispatcher.add_handler(manual_callback_handler)
-         dispatcher.add_handler(admin_setup_handler)
-         dispatcher.add_handler(antispam_setup_handler)
+    dispatcher.add_handler(term_condition_handler)
+    dispatcher.add_handler(credits_callback_handler)
+    dispatcher.add_handler(support_callback_handler)
+    dispatcher.add_handler(manual_callback_handler)
+    dispatcher.add_handler(admin_setup_handler)
+    dispatcher.add_handler(antispam_setup_handler)
 
     # Help Handlers
     dispatcher.add_handler(help_callback_handler)
