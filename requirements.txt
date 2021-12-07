@@ -1,7 +1,6 @@
 future
 emoji
 bing_image_downloader
-gpytranslate
 aiofiles
 lxml
 beautifulsoup4
@@ -20,8 +19,8 @@ psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
-googletrans==4.0.0-rc1
-google-trans-new==1.1.9
+#googletrans
+google_trans_new
 jikanpy
 speedtest-cli
 regex
