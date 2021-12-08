@@ -201,7 +201,7 @@ async def get_entity(client, entity):
                 entity_client = pgram
     return entity, entity_client
 
-
+session_name = TOKEN.split(":")[0]
 pgram = Client(
     session_name,
     api_id=API_ID,
