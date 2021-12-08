@@ -9,6 +9,9 @@ import telegram.ext as tg
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
+from motor import motor_asyncio
+from odmantic import AIOEngine
+from pymongo import MongoClient
 from Python_ARQ import ARQ
 from aiohttp import ClientSession
 from telegraph import Telegraph
@@ -77,6 +80,7 @@ if ENV:
     PORT = int(os.environ.get('PORT', 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get('API_ID', None)
+    MONGO_DB_URL = os.environ.get("MONGO_DB_URL", None)
     API_HASH = os.environ.get('API_HASH', None)
     DB_URI = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
@@ -156,6 +160,7 @@ else:
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
+    MONGO_DB_URL = Config.MONGO_DB_URL
     CASH_API_KEY = Config.CASH_API_KEY
     TIME_API_KEY = Config.TIME_API_KEY
     AI_API_KEY = Config.AI_API_KEY
