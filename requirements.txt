@@ -6,6 +6,10 @@ lxml
 python-arq
 beautifulsoup4
 requests
+odmantic
+motor
+gpytranslate
+pymongo
 search_engine_parser
 sqlalchemy==1.3.20
 python-telegram-bot==12.8
