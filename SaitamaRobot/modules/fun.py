@@ -35,7 +35,7 @@ import requests as r
 import urllib.request
 import os
 
-import Cutiepii_Robot.modules.fun_strings as fun_strings
+import SaitamaRobot.modules.fun_strings as fun_strings
 
 from pyrogram import filters
 from pathlib import Path
