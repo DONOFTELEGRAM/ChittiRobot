@@ -5,6 +5,8 @@ import time
 import spamwatch
 import aiohttp
 import telegram.ext as tg
+from pyrogram import Client, errors
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
 
 StartTime = time.time()
