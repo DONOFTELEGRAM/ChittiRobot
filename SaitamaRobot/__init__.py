@@ -99,7 +99,7 @@ if ENV:
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
-
+    MONGO_DB = "Rajnii"
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
     except ValueError:
@@ -150,7 +150,6 @@ else:
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
-
     DB_URI = Config.SQLALCHEMY_DATABASE_URI
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
@@ -161,6 +160,7 @@ else:
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
     MONGO_DB_URL = Config.MONGO_DB_URL
+    MONGO_DB = Config.MONGO_DB
     CASH_API_KEY = Config.CASH_API_KEY
     TIME_API_KEY = Config.TIME_API_KEY
     AI_API_KEY = Config.AI_API_KEY
@@ -217,7 +217,10 @@ pgram = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=TOKEN)
-
+mongodb = MongoClient(MONGO_DB_URL, 27017)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
+db = motor[MONGO_DB]
+engine = AIOEngine(motor, MONGO_DB)
 aiohttpsession = ClientSession()
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
