@@ -39,11 +39,11 @@ import Cutiepii_Robot.modules.fun_strings as fun_strings
 
 from pyrogram import filters
 from pathlib import Path
-from Cutiepii_Robot import DEMONS, DRAGONS, pgram as bot, dispatcher, BOT_USERNAME, BOT_NAME
-from Cutiepii_Robot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
-from Cutiepii_Robot.modules.helper_funcs.chat_status import is_user_admin
-from Cutiepii_Robot.modules.helper_funcs.alternate import typing_action
-from Cutiepii_Robot.modules.helper_funcs.extraction import extract_user
+from SaitamaRobot import DEMONS, DRAGONS, pgram as bot, dispatcher, BOT_USERNAME, BOT_NAME
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.alternate import typing_action
+from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async, Filters
