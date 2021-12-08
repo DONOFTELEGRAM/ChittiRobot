@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from Cutiepii_Robot import db
+from SaitamaRobot import db
 from typing import Dict, List, Union
 
 
