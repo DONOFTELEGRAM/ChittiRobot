@@ -39,7 +39,7 @@ import SaitamaRobot.modules.fun_strings as fun_strings
 
 from pyrogram import filters
 from pathlib import Path
-from SaitamaRobot import DEMONS, DRAGONS, pgram as bot, dispatcher, BOT_USERNAME, BOT_NAME
+from SaitamaRobot import DEMONS, DRAGONS, pgram as bot, dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
 from SaitamaRobot.modules.helper_funcs.alternate import typing_action
@@ -49,6 +49,8 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async, Filters
 from telegram.utils.helpers import escape_markdown
 
+BOT_USERNAME = "RajniiRobot"
+BOT_NAME = "Rajnii"
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
 
 #sleep how many times after each edit in 'love' 
