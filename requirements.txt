@@ -3,6 +3,7 @@ emoji
 bing_image_downloader
 aiofiles
 lxml
+python-arq
 beautifulsoup4
 requests
 search_engine_parser
@@ -19,7 +20,7 @@ psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
-#googletrans
+googletrans
 google_trans_new
 jikanpy
 speedtest-cli
