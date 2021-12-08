@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import spamwatch
-
+import aiohttp
 import telegram.ext as tg
 from telethon import TelegramClient
 
@@ -205,6 +205,9 @@ pgram = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=TOKEN)
+
+aiohttpsession = ClientSession()
+# ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
