@@ -204,8 +204,8 @@ pgram = Client(
     session_name,
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=TOKEN,
-)
+    bot_token=TOKEN)
+arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("saitama", API_ID, API_HASH)
 dispatcher = updater.dispatcher
