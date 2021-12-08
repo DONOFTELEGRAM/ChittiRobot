@@ -9,10 +9,7 @@ import telegram.ext as tg
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
-from motor import motor_asyncio
 from odmantic import AIOEngine
-from pymongo import MongoClient
-from pymongo.errors import ServerSelectionTimeoutError
 from Python_ARQ import ARQ
 from aiohttp import ClientSession
 from telegraph import Telegraph
@@ -81,7 +78,6 @@ if ENV:
     PORT = int(os.environ.get('PORT', 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
     API_ID = os.environ.get('API_ID', None)
-    MONGO_DB_URL = os.environ.get("MONGO_DB_URL", None)
     API_HASH = os.environ.get('API_HASH', None)
     DB_URI = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
@@ -100,7 +96,6 @@ if ENV:
     SUPPORT_CHAT = os.environ.get('SUPPORT_CHAT', None)
     SPAMWATCH_SUPPORT_CHAT = os.environ.get('SPAMWATCH_SUPPORT_CHAT', None)
     SPAMWATCH_API = os.environ.get('SPAMWATCH_API', None)
-    MONGO_DB = "Rajnii"
     try:
         BL_CHATS = set(int(x) for x in os.environ.get('BL_CHATS', "").split())
     except ValueError:
@@ -160,8 +155,6 @@ else:
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
-    MONGO_DB_URL = Config.MONGO_DB_URL
-    MONGO_DB = Config.MONGO_DB
     CASH_API_KEY = Config.CASH_API_KEY
     TIME_API_KEY = Config.TIME_API_KEY
     AI_API_KEY = Config.AI_API_KEY
@@ -218,10 +211,6 @@ pgram = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=TOKEN)
-mongodb = MongoClient(MONGO_DB_URL, 27017)[MONGO_DB]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
-db = motor[MONGO_DB]
-engine = AIOEngine(motor, MONGO_DB)
 aiohttpsession = ClientSession()
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
