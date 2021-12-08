@@ -29,11 +29,12 @@ SOFTWARE.
 from os import remove
 from pyrogram import filters
 
-from SaitamaRobot import DRAGONS, BOT_USERNAME, arq, pgram
+from SaitamaRobot import DRAGONS, arq, pgram
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.permissions import adminsOnly
 from SaitamaRobot.modules.mongo.nsfw_mongo import is_nsfw_on, nsfw_off, nsfw_on
 
+BOT_USERNAME = "RajniiRobot"
 
 async def get_file_id_from_message(message):
     file_id = None
