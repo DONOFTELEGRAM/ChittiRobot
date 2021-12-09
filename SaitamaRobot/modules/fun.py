@@ -704,7 +704,7 @@ def romance(update: Update, context: CallbackContext):
 	    reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 @run_async
-def owo(update: Update, context: CallbackContext):
+def owo(update: Update, contextual: CallbackContext):
 	bot = context.bot
 	args = context.args
 	message = update.effective_message
@@ -792,7 +792,7 @@ def clockanimation(bot: Bot, update: Update):
 
 
 @run_async
-def earthanimation(bot: Bot, update: Update):
+def earthanimation(bot: Bot, update: Update, context: CallbackContext):
     msg = update.effective_message.reply_text('🌏') 
     for x in range(EDIT_TIMES):
         msg.edit_text(earth_ani[x%18])
