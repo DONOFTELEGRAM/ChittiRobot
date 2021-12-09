@@ -792,7 +792,7 @@ def clockanimation(bot: Bot, update: Update):
 
 
 @run_async
-def earthanimation(bot: Bot, update: Update, context: CallbackContext):
+def earthanimation(bot: Bot, update: Update):
     msg = update.effective_message.reply_text('🌏') 
     for x in range(EDIT_TIMES):
         msg.edit_text(earth_ani[x%18])
