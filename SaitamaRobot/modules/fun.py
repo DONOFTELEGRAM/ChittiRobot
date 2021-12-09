@@ -280,6 +280,12 @@ def goodmorning(update, context):
     reply = f"Good Morning! {escape_markdown(first_name)}"
     message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
+@run_async
+@typing_action
+def rajnisupport(update, context):
+    message = update.effective_message
+    reply = "Feel free to report *Spammers* and *Scammers* at \n[RajniSpam • off-topic/appeal chat](t.me/RajniSpam)" 
+    message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 @run_async
 def sanitize(update: Update, context: CallbackContext):
@@ -927,6 +933,7 @@ UWU_HANDLER = DisableAbleCommandHandler("uwu", uwu)
 OWO_HANDLER = DisableAbleCommandHandler("owo", owo)
 GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning")
 GDNIGHT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight")
+RSREPORT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(scammer|scam|scamming|spam|spammer|spamming|report|illegal|fraud)"), rajnisupport, friendly="rajnisupport")
 KILL_HANDLER = DisableAbleCommandHandler("kill",kill)
 LOVE_HANDLER = DisableAbleCommandHandler("love", love)
 HACK_HANDLER = DisableAbleCommandHandler("hack", hack)
@@ -942,6 +949,7 @@ dispatcher.add_handler(GBUN_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
+dispatcher.add_handler(RSREPORT_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
@@ -1025,6 +1033,7 @@ __handlers__ = [
     UWU_HANDLER,
     OWO_HANDLER,
     GDMORNING_HANDLER,
+    RSREPORT_HANDLER,
     GDNIGHT_HANDLER,
     LOVE_HANDLER,
     HACK_HANDLER,
