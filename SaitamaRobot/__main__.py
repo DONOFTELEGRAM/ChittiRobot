@@ -83,7 +83,7 @@ buttons = [
  [InlineKeyboardButton(text="😁Add 『Rajnii』 to your group", url="t.me/RajniiRobot?startgroup=true")],
  [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
   InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
- [InlineKeyboardButton(text="👻Global Logs", url="t.me/RajniGlobal"),
+ [InlineKeyboardButton(text="👻Chatting Group", url="t.me/RajniSpam"),
  InlineKeyboardButton(text="💻About", callback_data="rajni_")],
  [InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")]]
 
