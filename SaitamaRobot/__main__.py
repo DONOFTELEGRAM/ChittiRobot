@@ -470,7 +470,7 @@ A button gets added to the welcome message for them to unmute themselves. This p
                  \n• Join @RajniiRobot’s official Federation by sending the below command to your group (You shouldn't be Anonymous there, You should be owner of the group to do this).
  [Click here](https://telegram.me/RajniiRobot?start=ghelp_federations) to know what a federation do.
  `/joinfed 48b40c38-d23b-49a9-b064-531ac228df74`
-                 \n• Join our @MissRose_bot's  Federation [TIAF] • A as same as above one.
+                 \n• Join our Rose bot Federation [TIAF] • A as same as above one.
  `/joinfed 26e460c0-7819-4bdf-acd0-b4aee506563d`.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
