@@ -461,15 +461,17 @@ The locks module allows you to lock away some common items in the telegram world
                  \n• `/warn <userhandle>`: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
                  \n• `/strongwarn <on/yes/off/no>`: If set to on, exceeding the warn limit will result in a ban. Else, will just kick.
 If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command.
+
                  \n\n*« Captcha »*
                  \n• `/captcha <off/soft/strong>`: All users that join, get muted
 A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots.
-                 \n\n*« Federation »*
-                 \n• Join *@RajniiRobot's official Federation* by sending the below command to your group (You shouldn't be Anonymous there, You should be owner of the group to do this).
-[Click here](https://telegram.me/RajniiRobot?start=ghelp_federations) to know what a federation do.
-`/joinfed 48b40c38-d23b-49a9-b064-531ac228df74`
-                 \n• Join our @MissRose_bot's  Federation *[TIAF] • A* as same as above one.
-`/joinfed 26e460c0-7819-4bdf-acd0-b4aee506563d`.""",
+
+                 \n\n*« Federations »*
+                 \n• Join @RajniiRobot’s official Federation by sending the below command to your group (You shouldn't be Anonymous there, You should be owner of the group to do this).
+ [Click here](https://telegram.me/RajniiRobot?start=ghelp_federations) to know what a federation do.
+ `/joinfed 48b40c38-d23b-49a9-b064-531ac228df74`
+                 \n• Join our @MissRose_bot's  Federation [TIAF] • A as same as above one.
+ `/joinfed 26e460c0-7819-4bdf-acd0-b4aee506563d`.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
