@@ -949,7 +949,7 @@ dispatcher.add_handler(GBUN_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
-dispatcher.add_handler(RSREPORT_HANDLER)
+# dispatcher.add_handler(RSREPORT_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
@@ -1033,7 +1033,7 @@ __handlers__ = [
     UWU_HANDLER,
     OWO_HANDLER,
     GDMORNING_HANDLER,
-    RSREPORT_HANDLER,
+#    RSREPORT_HANDLER,
     GDNIGHT_HANDLER,
     LOVE_HANDLER,
     HACK_HANDLER,
