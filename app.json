@@ -10,15 +10,7 @@
          "Rajnii",
          "RajniiRobot"
       ],   
-   "repository": "https://github.com/YashBebe/RajniiRobotActive",
-   "addons": [
-      {
-         "options": {
-            "version": "11"
-         },
-         "plan": "heroku-postgresql"
-      }
-   ],
+   "repository": "https://github.com/itzzzzyashu/RajniiRobotActive",
    "env": {
       "TOKEN": {
          "description": "Your bot token. Get one from @BotFather duh",
@@ -32,6 +24,11 @@
       },
       "API_HASH": {
          "description": "Get API_HASH from my.telegram.org, used for telethon based modules.",
+         "required": true,
+         "value": ""
+      },
+      "DATABASE_URL": {
+         "description": "Enter HEROKU postgres db url",
          "required": true,
          "value": ""
       },    
