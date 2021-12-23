@@ -1,5 +1,6 @@
 import html
 import time
+from sylviorus import SYL
 from datetime import datetime
 from io import BytesIO
 
@@ -524,6 +525,23 @@ def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *Gbans*: `{sql.does_chat_gban(chat_id)}`."
 
 
+x = SYL()
+syl = x.get_info(user)
+print(x)
+print(x.reason)
+
+try:
+       sylban = SYL()
+       spamer = sylban.get_info(int(user.id))
+       if spamer.blacklisted != False:
+           text += "\n\n<b>This person is banned on Sylviorus!</b>"
+           text += f"\nReason: <pre>{spamer.reason}</pre>"
+           text += "\nAppeal at @Sylviorus_Support"
+       else:
+           pass
+   except:
+       pass
+
 __help__ = f"""
 *Admins only:*
  • `/antispam <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
@@ -550,7 +568,7 @@ dispatcher.add_handler(UNGBAN_HANDLER)
 dispatcher.add_handler(GBAN_LIST)
 dispatcher.add_handler(GBAN_STATUS)
 
-__mod_name__ = "AntiSpam"
+__mod_name__ = "Anti-Spam"
 __handlers__ = [GBAN_HANDLER, UNGBAN_HANDLER, GBAN_LIST, GBAN_STATUS]
 
 if STRICT_GBAN:  # enforce GBANS if this is set
