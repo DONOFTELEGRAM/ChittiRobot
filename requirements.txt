@@ -2,6 +2,7 @@ future
 emoji
 bing_image_downloader
 aiofiles
+sylviorus
 lxml
 python-arq
 beautifulsoup4
