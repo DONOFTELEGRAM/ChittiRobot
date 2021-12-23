@@ -524,7 +524,8 @@ def __migrate__(old_chat_id, new_chat_id):
 def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *Gbans*: `{sql.does_chat_gban(chat_id)}`."
 
-
+# sylviorus-api Added by @HellXGodLike
+"""
 x = SYL()
 syl = x.get_info(user)
 print(x)
@@ -541,6 +542,7 @@ print(x.reason)
            pass
    except:
        pass
+"""
 
 __help__ = f"""
 *Admins only:*
