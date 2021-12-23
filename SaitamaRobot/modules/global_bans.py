@@ -530,7 +530,7 @@ syl = x.get_info(user)
 print(x)
 print(x.reason)
 
-try:
+   try:
        sylban = SYL()
        spamer = sylban.get_info(int(user.id))
        if spamer.blacklisted != False:
