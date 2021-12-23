@@ -3,6 +3,7 @@ import re
 import os
 import html
 import requests
+from SaitamaRobot import AI_API_KEY
 import SaitamaRobot.modules.sql.kuki_sql as sql
 
 from time import sleep
@@ -118,7 +119,7 @@ def chatbot(update: Update, context: CallbackContext):
             return
         Message = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('http://kukiapi.xyz/api/message='+Message)
+        kukiurl = requests.get(f'{AI_API_KEY}'+Message)
         Kuki = json.loads(kukiurl.text)
         kuki = Kuki['reply']
         sleep(0.3)
