@@ -525,24 +525,21 @@ def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *Gbans*: `{sql.does_chat_gban(chat_id)}`."
 
 # sylviorus-api Added by @HellXGodLike
-"""
 x = SYL()
 syl = x.get_info(user)
 print(x)
 print(x.reason)
+try:
+  sylban = SYL()
+  spamer = sylban.get_info(int(user.id))
+  text += "\n\n<b>This person is banned on Sylviorus!</b>"
+  text += f"\nReason: <pre>{spamer.reason}</pre>"
+  text += "\nAppeal at @Sylviorus_Support"
+  else:
+    pass
+  except:
+    pass
 
-   try:
-       sylban = SYL()
-       spamer = sylban.get_info(int(user.id))
-       if spamer.blacklisted != False:
-           text += "\n\n<b>This person is banned on Sylviorus!</b>"
-           text += f"\nReason: <pre>{spamer.reason}</pre>"
-           text += "\nAppeal at @Sylviorus_Support"
-       else:
-           pass
-   except:
-       pass
-"""
 
 __help__ = f"""
 *Admins only:*
