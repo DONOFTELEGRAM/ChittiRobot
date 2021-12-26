@@ -75,7 +75,7 @@ if ENV:
     HEROKU_APP_NAME = (os.environ.get('HEROKU_APP_NAME', False))
     HEROKU_API_KEY = (os.environ.get('HEROKU_API_KEY', False))
     EVENT_LOGS = os.environ.get('EVENT_LOGS')
-    BOT_USERNAME os.environ.get('BOT_USERNAME', None)
+    BOT_USERNAME os.environ.get('BOT_USERNAME', "")
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
     PORT = int(os.environ.get('PORT', 5000))
