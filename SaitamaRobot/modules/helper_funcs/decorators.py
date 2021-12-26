@@ -1,7 +1,8 @@
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.filters import BaseFilter
-from SaitamaRobot import dispatcher as d, log
+log = logging.getLogger('[Enterprise]')
+from SaitamaRobot import dispatcher as d
 from typing import Optional, Union, List
 
 
