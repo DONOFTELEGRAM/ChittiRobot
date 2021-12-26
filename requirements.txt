@@ -4,6 +4,7 @@ bing_image_downloader
 aiofiles
 sylviorus
 lxml
+heroku3
 python-arq
 beautifulsoup4
 requests
