@@ -89,6 +89,8 @@ if ENV:
     DB_URL = os.environ.get("DATABASE_URL")
     MONGO_URI = os.environ.get("MONGO_DB_URI")
     MONGO_DB = "Rajnii"
+    ARQ_API_URL = https://thearq.tech"
+    ARQ_API_KEY = os.enviorn.get("ARQ_API")
 #    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
