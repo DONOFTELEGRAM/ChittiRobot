@@ -9,23 +9,23 @@ log = logging.getLogger('[Enterprise]')
 class KigyoTelegramHandler:
     def __init__(self, d):
         self._dispatcher = d
-
+    @run_async
     def command(
             self, command: str, filters: Optional[BaseFilter] = None, admin_ok: bool = False, pass_args: bool = False,
-            pass_chat_data: bool = False, run_async: bool = True, can_disable: bool = True,
+            pass_chat_data: bool = False: bool = True, can_disable: bool = True,
             group: Optional[int] = 40
     ):
-
+        @run_async
         def _command(func):
             try:
                 if can_disable:
                     self._dispatcher.add_handler(
-                        DisableAbleCommandHandler(command, func, filters=filters, run_async=run_async,
+                        DisableAbleCommandHandler(command, func, filters=filters,
                                                   pass_args=pass_args, admin_ok=admin_ok), group
                     )
                 else:
                     self._dispatcher.add_handler(
-                        CommandHandler(command, func, filters=filters, run_async=run_async, pass_args=pass_args), group
+                        CommandHandler(command, func, filters=filters, pass_args=pass_args), group
                     )
                 log.debug(f"[KIGCMD] Loaded handler {command} for function {func.__name__} in group {group}")
             except TypeError:
