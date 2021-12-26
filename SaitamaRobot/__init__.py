@@ -9,6 +9,7 @@ import telegram.ext as tg
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
+from telethon.sessions import MemorySession
 from pymongo import MongoClient
 from motor import motor_asyncio
 from pymongo.errors import ServerSelectionTimeoutError
@@ -232,7 +233,7 @@ engine = AIOEngine(motor, MONGO_DB)
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("rajniirobot", API_ID, API_HASH)
+telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
