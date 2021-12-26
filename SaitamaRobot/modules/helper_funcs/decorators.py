@@ -1,11 +1,11 @@
+import logging
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, InlineQueryHandler
 from telegram.ext.filters import BaseFilter
-log = logging.getLogger('[Enterprise]')
 from SaitamaRobot import dispatcher as d
 from typing import Optional, Union, List
 
-
+log = logging.getLogger('[Enterprise]')
 class KigyoTelegramHandler:
     def __init__(self, d):
         self._dispatcher = d
