@@ -87,8 +87,8 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
     DB_URL = os.environ.get("DATABASE_URL")
-#    MONGO_URI = os.environ.get("MONGO_DB_URI")
-#    MONGO_DB = "Rajnii"
+    MONGO_URI = os.environ.get("MONGO_DB_URI")
+    MONGO_DB = "Rajnii"
 #    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
@@ -218,19 +218,17 @@ async def get_entity(client, entity):
                 entity_client = pgram
     return entity, entity_client
 
-# session_name = TOKEN.split(":")[0]
-"""
+session_name = TOKEN.split(":")[0]
 pgram = Client(
     session_name,
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=TOKEN)
-"""
 aiohttpsession = ClientSession()
-# mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
-# motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
-# db = motor[MONGO_DB]
-# engine = AIOEngine(motor, MONGO_DB)
+mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
+db = motor[MONGO_DB]
+engine = AIOEngine(motor, MONGO_DB)
 # ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH) # soon
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
