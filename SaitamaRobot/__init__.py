@@ -72,6 +72,8 @@ if ENV:
             "Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get('INFOPIC', False))
+    HEROKU_APP_NAME = (os.environ.get('HEROKU_APP_NAME', False))
+    HEROKU_API_KEY = (os.environ.get('HEROKU_API_KEY', False))
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
