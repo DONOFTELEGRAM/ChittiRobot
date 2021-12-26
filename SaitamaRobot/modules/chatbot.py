@@ -97,7 +97,7 @@ def kuki(update: Update, context: CallbackContext):
 
 def kuki_message(context: CallbackContext, message):
     reply_message = message.reply_to_message
-    if message.text.lower() == "kuki":
+    if message.text.lower() == "rajni":
         return True
     if reply_message:
         if reply_message.from_user.id == context.bot.get_me().id:
@@ -128,7 +128,7 @@ def chatbot(update: Update, context: CallbackContext):
 @run_async
 def list_all_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_kuki_chats()
-    text = "<b>AI Chatbot-Enabled Chats</b>\n"
+    text = "<b>AI Chatbot-Enabled in these Chats</b>\n"
     for chat in chats:
         try:
             x = context.bot.get_chat(int(*chat))
