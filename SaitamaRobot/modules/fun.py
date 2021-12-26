@@ -703,147 +703,6 @@ def romance(update: Update, context: CallbackContext):
 	    reply = temp.format(user1=user1, user2=user2)
 	    reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
-@run_async
-def owo(update: Update, contextual: CallbackContext):
-	bot = context.bot
-	args = context.args
-	message = update.effective_message
-
-	reply_to = message.reply_to_message or message
-
-	curr_user = html.escape(message.from_user.first_name)
-	user_id = extract_user(message, args)
-
-	if user_id:
-	    owo_user = bot.get_chat(user_id)
-	    user1 = curr_user
-	    user2 = html.escape(owo_user.first_name)
-
-	else:
-	    user1 = bot.first_name
-	    user2 = curr_user
-
-	owo_type = random.choice(("Gif", "Sticker"))
-	if owo_type == "Gif":
-	    try:
-	        temp = random.choice(fun_strings.OWO_GIFS)
-	        reply_to.reply_animation(temp)
-	    except BadRequest:
-	        owo_type = "Text"
-
-	if owo_type == "Sticker":
-	    try:
-	        temp = random.choice(fun_strings.OWO_STICKERS)
-	        reply_to.reply_sticker(temp)
-	    except BadRequest:
-	        owo_type = "Text"
-
-@run_async
-def uwu(update: Update, context: CallbackContext):
-	bot = context.bot
-	args = context.args
-	message = update.effective_message
-
-	reply_to = message.reply_to_message or message
-
-	curr_user = html.escape(message.from_user.first_name)
-	user_id = extract_user(message, args)
-
-	if user_id:
-	    uwu_user = bot.get_chat(user_id)
-	    user1 = curr_user
-	    user2 = html.escape(uwu_user.first_name)
-
-	else:
-	    user1 = bot.first_name
-	    user2 = curr_user
-
-	uwu_type = random.choice(("Gif", "Sticker"))
-	if uwu_type == "Gif":
-	    try:
-	        temp = random.choice(fun_strings.UWU_GIFS)
-	        reply_to.reply_animation(temp)
-	    except BadRequest:
-	        uwu_type = "Text"
-
-	if uwu_type == "Sticker":
-	    try:
-	        temp = random.choice(fun_strings.UWU_STICKERS)
-	        reply_to.reply_sticker(temp)
-	    except BadRequest:
-	        uwu_type = "Text"
-	
-@run_async
-def blockanimation(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('⬜') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(block_chain[x%18])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('🟥')
-
-
-@run_async
-def clockanimation(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('🕛') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(clock_ani[x%11])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('🕚')
-
-
-@run_async
-def earthanimation(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('🌏') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(earth_ani[x%18])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('🌍')
-
-
-@run_async
-def moonanimation(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('🌚') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(moon_ani[x%32])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('🌙')
-
-
-@run_async
-def bombs(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('💣') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(bomb_ettu[x%9])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('RIP PLOX...')
-
-
-@run_async
-def hack(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('Target selected') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(hack_you[x%5])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('successful hacked')
-
-
-@run_async
-def love(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('❣️') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(love_siren[x%5])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('പ്രണയം  😂 ')
-
-@run_async
-def kill(bot: Bot, update: Update):
-    msg = update.effective_message.reply_text('🔫') 
-    for x in range(EDIT_TIMES):
-        msg.edit_text(kill_you[x%12])
-        time.sleep(EDIT_SLEEP)
-    msg.edit_text('⚰')
-
-
 __help__ = f"""
   • `/runs`*:* reply a random string from an array of replies
   • `/slap`*:* slap a user, or get slapped if not a reply
@@ -856,61 +715,18 @@ __help__ = f"""
   • `/rlg`*:* Join ears,nose,mouth and create an emo ;-;
   • `/shout <keyword>`*:* write anything you want to give loud shout
   • `/weebify <text>`*:* returns a weebified text
-  • `/sanitize`*:* always use this before /pat or any contact
   • `/pat`*:* pats a user, or get patted
   • `/8ball`*:* predicts using 8ball method
   • `/gbam`*:* troll somone with fake gbans, only Disaster People can do this
-  • `/meme`*:* sends random anime memes
-  • `/hmeme`*:* sends random hentai memes
-  • `/cuddle`*:* cuddle someone by replying to his/her message or get cuddled
-  • `/hug`*:* hug someone or get hugged by {BOT_NAME}
-  • `/love`*:* Checks Love in your heart weather it's true or fake
-  • `/kiss`*:* Kiss someone or get kissed 
   • `/flirt`*:* {BOT_NAME} will flirt to the replied person or with you
   • `/lewd`*:* {BOT_NAME} will act lewd with you or with the replied person
   • `/romance`*:* {BOT_NAME} will act all romantic with you or replied person
-  • `/couples`*:* To Choose Couple Of The Day
-  • `/owo`*:* OWO de text
-  • `/stretch`*:* STRETCH de text
-  • `/clapmoji`*:* Type in reply to a message and see magic
-  • `/bmoji`*:* Type in reply to a message and see magic
-  • `/copypasta`*:* Type in reply to a message and see magic
-  • `/vapor`*:* owo vapor dis
-  • `/zalgofy`*:* reply to a message to glitch it out!
-  • `/abuse`*:* Abuses the cunt
-  • `/insult`*:* Insult the cunt
   • `/react`*:* Check on your own
-  • `/rhappy`*:* Check on your own
-  • `/rangry`*:* Check on your own
-  • `/angrymoji`*:* Check on your own
-  • `/crymoji`*:* Check on your own
-  • `/cowsay, /tuxsay , /milksay , /kisssay , /wwwsay , /defaultsay , /bunnysay , /moosesay , /sheepsay , /rensay , /cheesesay , /ghostbusterssay , /skeletonsay <i>text</i>`*:* Returns a stylish art text from the given text
-  • `/deepfry`*:* Type this in reply to an image/sticker to roast the image/sticker
-  • `/figlet`*:* Another Style art
-  • `/dice`*:* Roll A dice
-  • `/dart`*:* Throw a dart and try your luck
-  • `/ball`*:* 1 to 5 any value
-  • `/basketball`*:* Try your luck if you can enter the ball in the ring
-  • `/type <text>`*:* Make the bot type something for you in a professional way
-  • `/carbon <text</i>`*:* Beautifies your text and enwraps inside a terminal image [ENGLISH ONLY]
-  • `/sticklet <text>`*:* Turn a text into a sticker
-  • `/fortune`*:* gets a random fortune quote
-  • `/quotly`*:* Type /quotly in reply to a message to make a sticker of that
-  • `/animate`*:* Enwrap your text in a beautiful anime
   • `/dare`*:* sends random dare
   • `/truth`*:* sends random truth
-  • `/love`*:* ❣️
-  • `/hack`*:* 👨‍💻
-  • `/bombs`*:* 💣
-  • `/moonanimation`*:* 🌚
-  • `/clockanimation`*:* 🕛
-  • `/earthanimation`*:* 🌍
-  • `/blockanimation`*:* 🟥
-  • `/kill`*:* ⚰
-  • `/police`*:* 🚓
 """
 
-SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
+
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
@@ -929,26 +745,16 @@ GBAM_HANDLER = DisableAbleCommandHandler("gbam", gbam)
 CUDDLE_HANDLER = DisableAbleCommandHandler("cuddle", cuddle)
 FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt)   
 ROMANCE_HANDLER = DisableAbleCommandHandler("romance", romance) 
-UWU_HANDLER = DisableAbleCommandHandler("uwu", uwu)
-OWO_HANDLER = DisableAbleCommandHandler("owo", owo)
 GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning")
 GDNIGHT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight")
 # RSREPORT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(scammer|scam|scamming|spam|spammer|spamming|report|illegal|fraud)"), rajnisupport, friendly="rajnisupport")
-KILL_HANDLER = DisableAbleCommandHandler("kill",kill)
-LOVE_HANDLER = DisableAbleCommandHandler("love", love)
-HACK_HANDLER = DisableAbleCommandHandler("hack", hack)
-BOMBS_HANDLER = DisableAbleCommandHandler("bombs",bombs)
-MOONANIMATION_HANDLER = DisableAbleCommandHandler("moonanimation", moonanimation)
-CLOCKANIMATION_HANDLER = DisableAbleCommandHandler("clockanimation", clockanimation)
-BLOCKANIMATION_HANDLER = DisableAbleCommandHandler("blockanimation", blockanimation)
-EARTHANIMATION_HANDLER = DisableAbleCommandHandler("earthanimation", earthanimation)
+
 
 
 dispatcher.add_handler(GBAM_HANDLER)
 dispatcher.add_handler(GBUN_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
-dispatcher.add_handler(SANITIZE_HANDLER)
 # dispatcher.add_handler(RSREPORT_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
@@ -963,20 +769,9 @@ dispatcher.add_handler(EIGHTBALL_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(CUDDLE_HANDLER)
 dispatcher.add_handler(FLIRT_HANDLER)
-dispatcher.add_handler(ROMANCE_HANDLER)    
-dispatcher.add_handler(UWU_HANDLER)
-dispatcher.add_handler(OWO_HANDLER)
+dispatcher.add_handler(ROMANCE_HANDLER)
 dispatcher.add_handler(GDMORNING_HANDLER)
 dispatcher.add_handler(GDNIGHT_HANDLER)
-dispatcher.add_handler(KILL_HANDLER)
-dispatcher.add_handler(LOVE_HANDLER)
-dispatcher.add_handler(HACK_HANDLER)
-dispatcher.add_handler(BOMBS_HANDLER)
-dispatcher.add_handler(EARTHANIMATION_HANDLER)
-dispatcher.add_handler(MOONANIMATION_HANDLER)
-dispatcher.add_handler(CLOCKANIMATION_HANDLER)
-dispatcher.add_handler(BLOCKANIMATION_HANDLER)
-
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -990,7 +785,6 @@ __command_list__ = [
     "decide",
     "table",
     "pat",
-    "sanitize",
     "shout",
     "weebify",
     "8ball",
@@ -999,16 +793,6 @@ __command_list__ = [
     "cuddle", 
     "flirt", 
     "romance", 
-    "uwu", 
-    "owo",
-     "love",
-     "hack",
-     "bombs",
-     "moonanimation",
-     "clockanimation",
-     "earthanimation",
-     "blockanimation",
-     "kill"
 ]
 __handlers__ = [
     RUNS_HANDLER,
@@ -1021,7 +805,6 @@ __handlers__ = [
     RLG_HANDLER,
     DECIDE_HANDLER,
     TABLE_HANDLER,
-    SANITIZE_HANDLER,
     SHOUT_HANDLER,
     WEEBIFY_HANDLER,
     EIGHTBALL_HANDLER,
@@ -1030,17 +813,7 @@ __handlers__ = [
     CUDDLE_HANDLER,
     FLIRT_HANDLER,
     ROMANCE_HANDLER,
-    UWU_HANDLER,
-    OWO_HANDLER,
     GDMORNING_HANDLER,
 #    RSREPORT_HANDLER,
     GDNIGHT_HANDLER,
-    LOVE_HANDLER,
-    HACK_HANDLER,
-    BOMBS_HANDLER,
-    MOONANIMATION_HANDLER,
-    CLOCKANIMATION_HANDLER,
-    EARTHANIMATION_HANDLER,
-    BLOCKANIMATION_HANDLER,
-    KILL_HANDLER
 ]
