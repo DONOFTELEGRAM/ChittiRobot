@@ -80,6 +80,10 @@ if ENV:
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
     DB_URI = os.environ.get('DATABASE_URL')
+    MONGO_URI = os.environ.get("MONGO_DB_URI", None)
+    MONGO_PORT = int(os.environ.get("MONGO_PORT", None))
+    MONGO_DB = os.environ.get("MONGO_DB", None)
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
@@ -152,6 +156,9 @@ else:
     NO_LOAD = Config.NO_LOAD
     DEL_CMDS = Config.DEL_CMDS
     STRICT_GBAN = Config.STRICT_GBAN
+    MONGO_URI = Config.MONGO_DB_URI
+    MONGO_PORT = Config.MONGO_PORT
+    MONGO_DB = Config.MONGO_DB
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
@@ -212,6 +219,11 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN)
 aiohttpsession = ClientSession()
+mongodb = MongoClient(MONGO_URI, MONGO_PORT)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
+db = motor[MONGO_DB]
+engine = AIOEngine(motor, MONGO_DB)
+# ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH) # soon
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
