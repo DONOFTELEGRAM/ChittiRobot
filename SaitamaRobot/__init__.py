@@ -85,6 +85,7 @@ if ENV:
     API_HASH = os.environ.get("API_HASH", None)
     DB_URI = os.environ.get("DATABASE_URL")
     MONGO_URI = os.environ.get("MONGO_DB_URI")
+    MONGO_DB = "Rajnii"
 #    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
