@@ -535,10 +535,10 @@ try:
   text += "\n\n<b>This person is banned on Sylviorus!</b>"
   text += f"\nReason: <pre>{spamer.reason}</pre>"
   text += "\nAppeal at @Sylviorus_Support"
-  else:
-    pass
-  except:
-    pass
+else:
+  pass
+except:
+  pass
 
 
 __help__ = f"""
