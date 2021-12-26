@@ -27,14 +27,39 @@
          "required": true,
          "value": ""
       },
-      "DATABASE_URL": {
+         "HEROKU_APP_NAME": {
+         "description": "app name.",
+         "required": true,
+         "value": ""
+   },
+         "HEROKU_API_KEY": {
+         "description": "app link",
+         "required": true,
+         "value": ""
+   },
+         "BOT_USERNAME": {
+         "description": "bot username",
+         "required": true,
+         "value": ""
+   },
+         "DATABASE_URL": {
          "description": "Enter HEROKU postgres db url",
          "required": true,
          "value": ""
-      },    
-      "SQLALCHEMY_DATABASE_URI": {
+      },
+         "SQLALCHEMY_DATABASE_URI": {
          "description": "Your postgres sql db, empty this field if you dont have one.",
          "required": false,
+         "value": ""
+      },
+         "MONGO_DB_URI": {
+         "description": "Your mango db url.",
+         "required": true,
+         "value": ""
+      },
+         "STRING_SESSION": {
+         "description": "Your mango db url.",
+         "required": true,
          "value": ""
       },
       "OWNER_ID": {
