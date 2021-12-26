@@ -635,6 +635,7 @@ __help__ = """
  • `/demote`*:* demotes that user replied to
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
  • `/admincache`*:* force refresh the admins list
+ • `/antichannel <on/off/yes/no>`*:* Anti-Channelmode protect your groups from users who chat with channels and remain Anonymous.
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist)
