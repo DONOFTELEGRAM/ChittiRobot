@@ -1,9 +1,9 @@
 from pyrogram import filters
 from SaitamaRobot import SUPPORT_CHAT
-from SaitamaRobot import ARQ_API_URL, pgram as app, arq
+from SaitamaRobot import ARQ_API_URL, pgram as app, arq, dispatcher
 
 
-@app.on_message(filters.command("arq"))
+
 async def arq_stats(_, message):
     data = await arq.stats()
     if not data.ok:
@@ -40,3 +40,8 @@ async def arq_stats(_, message):
     await message.reply_text(
         statistics, disable_web_page_preview=True
     )
+
+
+arqcmd = dispatcher.add_handler("arq", arq)
+
+CommandHandler(arqcmd)
