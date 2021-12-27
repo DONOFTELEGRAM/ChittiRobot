@@ -77,6 +77,7 @@ if ENV:
             "Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", False))
+    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", "") # From:- https://openweathermap.org/api
     HEROKU_APP_NAME = (os.environ.get("HEROKU_APP_NAME", False))
     HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", False))
     EVENT_LOGS = os.environ.get("EVENT_LOGS")
