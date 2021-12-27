@@ -423,7 +423,8 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def nstats(update: Update, context: CallbackContext):
-    stats = f"""Maintained by [itzzzyashu](t.me/itzzzyashu)\n
+    stats = f"""
+    Maintained by <a href="t.me/itzzzyashu"><bold>itzzzyashu™</bold></a>)
     developed using python-telegram-bot\n
     Python version: 3.8.5\n
     Library version: 12.8\n
