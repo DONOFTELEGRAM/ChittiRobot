@@ -428,7 +428,7 @@ def nstats(update: Update, context: CallbackContext):
 <b>Python version:</b> <code>3.8.5</code>
 <b>Library version:</b> <code>12.8</code>
 <b>SRC:</b> <code>Not Available</code>
-<bRajnii statistics</b>""" + "\n".join([mod.__stats__() for mod in STATS])
+<b>Rajnii statistics</b>""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result+"""\n
 <a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>
