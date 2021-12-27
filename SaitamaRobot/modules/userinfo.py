@@ -33,7 +33,7 @@ from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
 from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient
-
+from SaitamaRobot.arq import statistics
 
 def no_by_per(totalhp, percentage):
     """
@@ -134,8 +134,8 @@ def get_id(update: Update, context: CallbackContext):
 
             msg.reply_text(
                 f"<b>Telegram ID:</b>\n"
-                f"<b>• {html.escape(user2.first_name)} -</b> <code>{user2.id}</code>.\n"
-                f"<b>• {html.escape(user1.first_name)} -</b> <code>{user1.id}</code>.",
+                f"<b>• {html.escape(user1.first_name)} -</b> <code>{user1.id}</code>.\n"
+                f"<b>• {html.escape(user2.first_name)} -</b> <code>{user2.id}</code>.",
                 parse_mode=ParseMode.HTML,
             )
 
@@ -151,11 +151,13 @@ def get_id(update: Update, context: CallbackContext):
 
         if chat.type == "private":
             msg.reply_text(
-                f"Your id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+                f"Your id is <code>{chat.id}</code>.",
+                parse_mode=ParseMode.HTML,
             )
 
         else:
             msg.reply_text(
+                # f"Your ID is <code>{user1.id}</code>"
                 f"This group's id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
             )
 
@@ -178,7 +180,7 @@ async def group_info(event) -> None:
             "Can't for some reason, maybe it is a private one or that I am banned there.",
         )
         return
-    msg = f"**ID**: `{entity.id}`"
+    msg = f"**ID**: `-100{entity.id}`"
     msg += f"\n**Title**: `{entity.title}`"
     msg += f"\n**Datacenter**: `{entity.photo.dc_id}`"
     msg += f"\n**Video PFP**: `{entity.photo.has_video}`"
@@ -187,7 +189,7 @@ async def group_info(event) -> None:
     msg += f"\n**Scam**: `{entity.scam}`"
     msg += f"\n**Slowmode**: `{entity.slowmode_enabled}`"
     if entity.username:
-        msg += f"\n**Username**: {entity.username}"
+        msg += f"\n**Username**: @{entity.username}"
     msg += "\n\n**Member Stats:**"
     msg += f"\n`Admins:` `{len(totallist)}`"
     msg += f"\n`Users`: `{totallist.total}`"
@@ -242,20 +244,20 @@ def info(update: Update, context: CallbackContext):
 
     text = (
         f"╒═══「<b> Appraisal results:</b> 」\n"
-        f"ID: <code>{user.id}</code>\n"
-        f"First Name: {html.escape(user.first_name)}"
+        f"<b>ID:</b> <code>{user.id}</code>\n"
+        f"<b>First Name:</b> {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\nLast Name: {html.escape(user.last_name)}"
+        text += f"\n<b>Last Name:</b> {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\nUsername: @{html.escape(user.username)}"
+        text += f"\n<b>Username:</b> @{html.escape(user.username)}"
 
-    text += f"\nPermalink: {mention_html(user.id, 'link')}"
+    text += f"\n<b>User-link:</b> {mention_html(user.first_name, user.id)}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\nPresence: <code>{}</code>"
+        _stext = "\n<b>Presence:</b> <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
@@ -264,21 +266,21 @@ def info(update: Update, context: CallbackContext):
             status = status = bot.get_chat_member(chat.id, user.id).status
             if status:
                 if status in {"left", "kicked"}:
-                    text += _stext.format("Not here")
+                    text += _stext.format("Not in this chat")
                 elif status == "member":
                     text += _stext.format("Detected")
                 elif status in {"administrator", "creator"}:
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))}</i> {userhp['percentage']}%]"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
             text += "\n\n<b>This person is Spamwatched!</b>"
-            text += f"\nReason: <pre>{spamwtc.reason}</pre>"
-            text += "\nAppeal at @SpamWatchSupport"
+            text += f"\n<b>Reason:</b> <pre>{spamwtc.reason}</pre>"
+            text += "\n<i>Appeal bans at @SpamWatchSupport</i>"
         else:
             pass
     except:
@@ -287,26 +289,26 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'God'."
+        text += "\n\nThis User is my main developer."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nThis user is member of 'Hero Association'."
+        text += "\n\nThis User is one of our Association’s developers."
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nThe Disaster level of this person is 'Dragon'."
+        text += "\n\nThis person is one of my SUDO or a DRAGON users, stay alert from them."
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += "\n\nThe Disaster level of this person is 'Demon'."
+        text += "\n\nThis person is from our SUPPORT staff or a DEMON users."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Disaster level of this person is 'Tiger'."
+        text += "\n\nThis person is one of my TIGER users."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Disaster level of this person is 'Wolf'."
+        text += "\n\nThis person is one of my WHITELISTED or WOLF users"
         disaster_level_present = True
 
     if disaster_level_present:
-        text += '{}’s [<a href="https://t.me/RajniUpdates/93">Disasters?</a>]'.format(
+        text += '{}’s \n<a href="https://t.me/RajniUpdates/93">Disasters?</a> ]'.format(
             bot.username)
 
     try:
@@ -347,12 +349,12 @@ def info(update: Update, context: CallbackContext):
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
-                text, parse_mode=ParseMode.HTML, disable_web_page_preview=True,
+                text, parse_mode=ParseMode.HTML, disable_web_page_preview=False,
             )
 
     else:
         message.reply_text(
-            text, parse_mode=ParseMode.HTML, disable_web_page_preview=True,
+            text, parse_mode=ParseMode.HTML, disable_web_page_preview=False,
         )
 
     rep.delete()
@@ -420,8 +422,8 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @run_async
 @sudo_plus
-def stats(update: Update, context: CallbackContext):
-    stats = "<b>📊 Current stats:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+def nstats(update: Update, context: CallbackContext):
+    stats = "<b>📊 Current statistics:</b>\n" + "\n".join([mod.__stats__() for mod in STATS]) + statistics
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
@@ -540,7 +542,7 @@ Examples:
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)
 GET_BIO_HANDLER = DisableAbleCommandHandler("bio", about_bio)
 
-STATS_HANDLER = CommandHandler("stats", stats)
+STATS_HANDLER = CommandHandler("nstats", nstats)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid)
 INFO_HANDLER = DisableAbleCommandHandler(("info", "book"), info)
