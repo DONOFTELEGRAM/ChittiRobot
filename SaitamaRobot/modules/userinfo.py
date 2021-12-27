@@ -422,7 +422,7 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @run_async
 @sudo_plus
-def stats(update: Update, context: CallbackContext):
+def nstats(update: Update, context: CallbackContext):
     stats = f"""Maintained by [itzzzyashu](t.me/itzzzyashu)\n
     developed using python-telegram-bot\n
     Python version: 3.8.5\n
