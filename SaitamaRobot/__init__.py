@@ -10,6 +10,7 @@ from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
 from telethon.sessions import MemorySession
+from telethon.sessions import StringSession
 from pymongo import MongoClient
 from motor import motor_asyncio
 from pymongo.errors import ServerSelectionTimeoutError
