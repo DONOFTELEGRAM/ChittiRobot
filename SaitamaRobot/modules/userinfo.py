@@ -243,18 +243,18 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╒═══「<b> Appraisal results:</b> 」\n"
-        f"<b>ID:</b> <code>{user.id}</code>\n"
-        f"<b>First Name:</b> {html.escape(user.first_name)}"
+        f"╒═══「<b> User info </b>」\n"
+        f"<b>User ID:</b> <code>{user.id}</code>\n"
+        f"<b>First Name:</b> </code>{html.escape(user.first_name)}</code>"
     )
 
     if user.last_name:
-        text += f"\n<b>Last Name:</b> {html.escape(user.last_name)}"
+        text += f"\n**Last Name:** <code>{html.escape(user.last_name)}</code>"
 
     if user.username:
-        text += f"\n<b>Username:</b> @{html.escape(user.username)}"
+        text += f"\n**Username:** @{html.escape(user.username)}"
 
-    text += f"\n<b>User-link:</b> {mention_html(user.id, 'link')}"
+    text += f"\n<b>User link:</b> {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
         _stext = "\n<b>Presence:</b> <code>{}</code>"
@@ -278,9 +278,9 @@ def info(update: Update, context: CallbackContext):
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
-            text += "\n\n<b>This person is Spamwatched!</b>"
+            text += f"\n\n<b>This person is Spamwatched!</b>"
             text += f"\n<b>Reason:</b> <pre>{spamwtc.reason}</pre>"
-            text += "\n<i>Appeal bans at @SpamWatchSupport</i>"
+            text += f"\n<i>Appeal bans at @SpamWatchSupport<i>"
         else:
             pass
     except:
@@ -308,7 +308,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += '{}’s \n<a href="https://t.me/RajniUpdates/93">Disasters?</a> ]'.format(
+        text += ' {}’s [<a href="https://t.me/RajniUpdates/93">?</a>]'.format(
             bot.username)
 
     try:
@@ -320,7 +320,7 @@ def info(update: Update, context: CallbackContext):
             result = result.json()["result"]
             if "custom_title" in result.keys():
                 custom_title = result["custom_title"]
-                text += f"\n\nTitle:\n<b>{custom_title}</b>"
+                text += f"\n\n<b>Title:</b> <code>{custom_title}</code>"
     except BadRequest:
         pass
 
