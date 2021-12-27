@@ -1,9 +1,9 @@
+
 from pyrogram import filters
-from SaitamaRobot import SUPPORT_CHAT
-from SaitamaRobot import ARQ_API_URL, pgram as app, arq, dispatcher
-from telegram.ext import CommandHandler
+from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 
 
+@app.on_message(filters.command("arq"))
 async def arq_stats(_, message):
     data = await arq.stats()
     if not data.ok:
@@ -32,17 +32,7 @@ async def arq_stats(_, message):
 **Users:** `{users}`
 **Bot:** {bot}
 **Address:** {ARQ_API_URL}
-
-✦ [Support](https://telegram.me/{SUPPORT_CHAT}) | ✦ [Updates](telegram.me/RajniUpdates)
-
-╘══「 by [itzzzyashu™](t.me/Itzzzyashu) 」
 """
     await message.reply_text(
         statistics, disable_web_page_preview=True
     )
-
-
-ARQ_HANDLER = CommandHandler("arqstats", arq_stats)
-dispatcher.add_handler(ARQ_HANDLER)
-
-__handlers = [ARQ_HANDLER]
