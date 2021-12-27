@@ -1,7 +1,7 @@
 from pyrogram import filters
 from SaitamaRobot import SUPPORT_CHAT
 from SaitamaRobot import ARQ_API_URL, pgram as app, arq, dispatcher
-
+from telegram.ext import CommandHandler
 
 
 async def arq_stats(_, message):
@@ -44,3 +44,5 @@ async def arq_stats(_, message):
 
 ARQ_HANDLER = CommandHandler("arq", arq)
 dispatcher.add_handler(ARQ_HANDLER)
+
+__handlers = [ARQ_HANDLER]
