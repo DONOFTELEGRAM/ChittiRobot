@@ -71,21 +71,17 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi, I'm [『Rajnii』](https://telegra.ph/file/0db1b3d079b7217b5dd1f.jpg)!, A bot to manage your chats when you're offline.
-*What can i do?*
-Read in my about Section.
-Hopefully you'll use me well!
-
+Hi, I'm [『Rajnii』](https://telegra.ph/file/0db1b3d079b7217b5dd1f.jpg)!,
+_A bot to manage your chats when you're offline._
+_Make sure to read my "About" section to know how you can use me effectively!_
+*Join Chatting Group - @RajniSpam!*
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
 """
 
 buttons = [
- [InlineKeyboardButton(text="😁Add 『Rajnii』 to your group", url="t.me/RajniiRobot?startgroup=true")],
- [InlineKeyboardButton(text="💎Support Chat", url=f"t.me/RajniSupportChat"),
-  InlineKeyboardButton(text="📲Updates", url="t.me/RajniUpdates")],
- [InlineKeyboardButton(text="👻Chatting Group", url="t.me/RajniSpam"),
- InlineKeyboardButton(text="💻About", callback_data="rajni_")],
- [InlineKeyboardButton(text="💥Help Menu", callback_data="help_back")]]
+ [InlineKeyboardButton(text="Add Rajnii to your group", url="t.me/RajniiRobot?startgroup=true")],
+ [InlineKeyboardButton(text="About Me", callback_data="rajni_"),
+ [InlineKeyboardButton(text="Help section", callback_data="help_back")]]
 
 
 
