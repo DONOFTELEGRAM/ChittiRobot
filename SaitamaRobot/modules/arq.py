@@ -1,5 +1,5 @@
 from pyrogram import filters
-
+from SaitamaRobot import SUPPORT_CHAT
 from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 
 
@@ -32,6 +32,10 @@ async def arq_stats(_, message):
 **Users:** `{users}`
 **Bot:** {bot}
 **Address:** {ARQ_API_URL}
+
+✦ [Support](https://telegram.me/{SUPPORT_CHAT}) | ✦ [Updates](telegram.me/RajniUpdates)
+
+╘══「 by [itzzzzyashu](t.me/Itzzzyashu) 」
 """
     await message.reply_text(
         statistics, disable_web_page_preview=True
