@@ -80,6 +80,7 @@ if ENV:
     HEROKU_APP_NAME = (os.environ.get("HEROKU_APP_NAME", False))
     HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", False))
     EVENT_LOGS = os.environ.get("EVENT_LOGS")
+    REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     BOT_ID = int(os.environ.get("BOT_ID", 2037190400))
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
