@@ -257,15 +257,3 @@ async def alive(event):
             text += f"{res.splitlines()[6]}\n"
             text += f"Checked By **{fname}**"
             await k.edit(text)
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
