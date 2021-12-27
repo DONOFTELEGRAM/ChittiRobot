@@ -1,5 +1,6 @@
 future
 emoji
+TgCrypto
 bing_image_downloader
 aiofiles
 sylviorus
