@@ -79,9 +79,19 @@ _Make sure to read my "About" section to know how you can use me effectively!_
 """
 
 buttons = [
- [InlineKeyboardButton(text="Add Rajnii to your group", url="t.me/RajniiRobot?startgroup=true")],
- [InlineKeyboardButton(text="About Me", callback_data="rajni_"),
- [InlineKeyboardButton(text="Help section", callback_data="help_back")]]
+    [
+        InlineKeyboardButton(
+            text="Add Rajnii to your group",
+            url="t.me/RajniiRobot?startgroup=true")],
+    [
+        InlineKeyboardButton(
+            text="About Me",
+            callback_data="rajni_"),
+        InlineKeyboardButton(
+            text="Help section",
+            callback_data="help_back"),
+    ],
+]
 
 
 
