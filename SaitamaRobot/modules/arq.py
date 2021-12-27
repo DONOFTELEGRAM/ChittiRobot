@@ -43,5 +43,4 @@ async def arq_stats(_, message):
 
 
 ARQ_HANDLER = CommandHandler("arq", arq)
-
-CommandHandler(ARQ_HANDLER)
+dispatcher.add_handler(ARQ_HANDLER)
