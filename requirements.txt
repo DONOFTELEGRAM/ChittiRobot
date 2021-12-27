@@ -1,6 +1,9 @@
 future
 emoji
 countryinfo
+search_engine_parser
+tswift import Song
+youtubesearchpython
 faker
 tgCrypto>=1.2.2
 bing_image_downloader
