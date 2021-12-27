@@ -424,15 +424,17 @@ def set_about_me(update: Update, context: CallbackContext):
 @sudo_plus
 def nstats(update: Update, context: CallbackContext):
     stats = f"""
-*Maintained by* [itzzzyashu](t.me/itzzzyashu)
-*PTB version* `12.8`
-*Python version:* `3.8.5`
-*Library version:* `12.8`
-*SRC:* `Not Available`
-\n\n✦ [Support](https://t.me/RajniSupport) | ✦ [Updates](https://t.me/RajniUpdates)\n
-*📖 Bot statistics:*\n""" + "\n".join([mod.__stats__() for mod in STATS])
+<b>Maintained by* <a href="t.me/itzzzyashu">itzzzyashu</a></b>
+<b>PTB version:</b> <code>12.8</code>
+<b>Python version:</b> <code>3.8.5</code>
+<b>Library version:</b> <code>12.8</code>
+<b>SRC:</b> <code>Not Available</code>
+
+\n\n✦ <a href="https://t.me/RajniSupport">Support</a> | ✦ <a href="https://t.me/RajniUpdates">Updates</a>\n
+<b>📖 Bot statistics:</b>""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    update.effective_message.reply_text(result, parse_mode=ParseMode.MARKDOWN)
+    update.effective_message.reply_text(result+"""\n✦ <a href="https://t.me/RajniSupport">Support</a> | ✦ <a href="https://t.me/RajniUpdates">Updates</a>
+    <b>Maintained by <a href="t.me/itzzzyashu">itzzzyashu</a></b>""", parse_mode=ParseMode.HTML)
 
 
 @run_async
