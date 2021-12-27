@@ -2,6 +2,7 @@ future
 emoji
 countryinfo
 tswift
+pykeyboard
 youtube_dl
 youtube_search
 pytube
