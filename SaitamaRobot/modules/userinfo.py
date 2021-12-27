@@ -245,14 +245,14 @@ def info(update: Update, context: CallbackContext):
     text = (
         f"╒═══「<b> User info </b>」\n"
         f"<b>User ID:</b> <code>{user.id}</code>\n"
-        f"<b>First Name:</b> </code>{html.escape(user.first_name)}</code>"
+        f"<b>First Name:</b> {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n**Last Name:** <code>{html.escape(user.last_name)}</code>"
+        text += f"\n<b>Last Name:</b> {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n**Username:** @{html.escape(user.username)}"
+        text += f"\n<b>Username:</b> @{html.escape(user.username)}"
 
     text += f"\n<b>User link:</b> {mention_html(user.id, 'link')}"
 
@@ -278,9 +278,9 @@ def info(update: Update, context: CallbackContext):
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
-            text += f"\n\n<b>This person is Spamwatched!</b>"
-            text += f"\n<b>Reason:</b> <pre>{spamwtc.reason}</pre>"
-            text += f"\n<i>Appeal bans at @SpamWatchSupport<i>"
+            text += f"\n\nThis person is Spamwatched!"
+            text += f"\nReason:</b> <pre>{spamwtc.reason}</pre>"
+            text += f"\nAppeal bans at @SpamWatchSupport"
         else:
             pass
     except:
