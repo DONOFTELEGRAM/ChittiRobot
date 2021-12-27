@@ -1,5 +1,7 @@
 future
 emoji
+countryinfo
+faker
 tgCrypto>=1.2.2
 bing_image_downloader
 aiofiles
@@ -37,6 +39,7 @@ git+https://github.com/starry69/python-markdown2.git
 wikipedia
 telethon
 spamwatch
+PyDictionary==2.0.1
 alphabet_detector
 pyrate-limiter
 cachetools
