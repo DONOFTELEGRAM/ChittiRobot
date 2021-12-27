@@ -91,7 +91,7 @@ if ENV:
     MONGO_DB = "Rajnii"
     ARQ_API_URL = "https://thearq.tech"
     ARQ_API_KEY = os.environ.get("ARQ_API")
-#    STRING_SESSION = os.environ.get("STRING_SESSION", None)
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
@@ -231,7 +231,7 @@ mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
-# ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH) # soon
+ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH) # soon
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
