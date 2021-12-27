@@ -422,8 +422,14 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @run_async
 @sudo_plus
-def nstats(update: Update, context: CallbackContext):
-    stats = "<b>📊 Current statistics:</b>\n" + "\n".join([mod.__stats__() for mod in STATS]) # + statistics
+def stats(update: Update, context: CallbackContext):
+    stats = f"""Maintained by [itzzzyashu](t.me/itzzzyashu)\n
+    developed using python-telegram-bot\n
+    Python version: 3.8.5\n
+    Library version: 12.8\n
+    \nSRC: Not Available\n
+    \n\n✦ Support (https://t.me/RajniSupport) | ✦ Updates (https://t.me/RajniUpdates)\n\n
+    <b>📖 Bot statistics:</b>\n""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
