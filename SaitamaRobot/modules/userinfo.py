@@ -308,8 +308,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' {}’s [<a href="https://t.me/RajniUpdates/93">?</a>]'.format(
-            bot.username)
+        text += ' [<a href="https://t.me/RajniUpdates/93">?</a>]'
 
     try:
         user_member = chat.get_member(user.id)
@@ -424,18 +423,16 @@ def set_about_me(update: Update, context: CallbackContext):
 @sudo_plus
 def nstats(update: Update, context: CallbackContext):
     stats = f"""
-╒═══「 System statistics 」
-
+╒═══「 <b>System statistics</b> 」
 <b>PTB version:</b> <code>12.8</code>
 <b>Python version:</b> <code>3.8.5</code>
 <b>Library version:</b> <code>12.8</code>
 <b>SRC:</b> <code>Not Available</code>
-
-\n✦ <a href="https://t.me/RajniSupport">Support</a> | ✦ <a href="https://t.me/RajniUpdates">Updates</a>\n
-<b>📖 Bot statistics:</b>""" + "\n".join([mod.__stats__() for mod in STATS])
+<bRajnii statistics</b>""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    update.effective_message.reply_text(result+"""\n<a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>\n
-╘══「 <b>By <a href="t.me/itzzzyashu">itzzzyashu</a></b> 」""", parse_mode=ParseMode.HTML)
+    update.effective_message.reply_text(result+"""\n
+<a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>
+╘══「 <b>By <a href="https://github.com/itzzzzyashu">itzzzyashu</a></b> 」""", parse_mode=ParseMode.HTML)
 
 
 @run_async
