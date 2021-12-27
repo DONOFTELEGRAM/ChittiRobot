@@ -1,8 +1,7 @@
 future
 emoji
 countryinfo
-search_engine_parser
-tswift import Song
+tswift
 youtubesearchpython
 faker
 tgCrypto>=1.2.2
