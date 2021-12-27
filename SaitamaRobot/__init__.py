@@ -232,7 +232,7 @@ mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
-ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH) # soon
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH) # soon
 # ARQ Client
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
