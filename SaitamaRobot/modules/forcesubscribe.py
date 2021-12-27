@@ -1,6 +1,6 @@
 import logging
 import time
-
+from telegram.ext import CommandHandler
 from pyrogram import filters
 from pyrogram.errors import RPCError
 from pyrogram.errors.exceptions.bad_request_400 import (
@@ -11,9 +11,7 @@ from pyrogram.errors.exceptions.bad_request_400 import (
     UserNotParticipant,
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
-
-from SaitamaRobot import BOT_ID, BOT_USERNAME
-
+from SaitamaRobot import BOT_ID, BOT_USERNAME, dispatcher
 # from Cutiepii_Robot import OWNER_ID as SUDO_USERS
 from SaitamaRobot import pgram
 from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
@@ -139,7 +137,7 @@ def _check_member(client, message):
             return
 
 
-@pgram.on_message(filters.command(["forcesubscribe", "forcesub", f"forcesub@{BOT_USERNAME}", f"forcesubscribe@{BOT_USERNAME}"]) & ~filters.private)
+# @pgram.on_message(filters.command(["forcesubscribe", "forcesub", f"forcesub@{BOT_USERNAME}", f"forcesubscribe@{BOT_USERNAME}"]) & ~filters.private)
 def config(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
     if user.status == "creator":
@@ -213,4 +211,8 @@ Note: Only creator of the group can setup me and i will not allow force subscrib
 Note: /forcesub is an alias of /forcesubscribe
  
 """
+FSUB_HANDLER = CommandHandler(["forcesubscribe","forcesub"], config)
+dispatcher.add_handler(FSUB_HANDLER)
+
+
 __mod_name__ = "F-Sub"
