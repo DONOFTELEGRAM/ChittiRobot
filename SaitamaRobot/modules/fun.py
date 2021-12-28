@@ -648,8 +648,8 @@ FLIRT_HANDLER = DisableAbleCommandHandler("flirt", flirt)
 ROMANCE_HANDLER = DisableAbleCommandHandler("romance", romance) 
 UWU_HANDLER = DisableAbleCommandHandler("uwu", uwu)
 OWO_HANDLER = DisableAbleCommandHandler("owo", owo)
-GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning", run_async=True)
-GDNIGHT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight", run_async=True)
+GDMORNING_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodmorning|good morning)"), goodmorning, friendly="goodmorning")
+GDNIGHT_HANDLER = DisableAbleMessageHandler(Filters.regex(r"(?i)(goodnight|good night)"), goodnight, friendly="goodnight")
 
 
 dispatcher.add_handler(GBAM_HANDLER)
