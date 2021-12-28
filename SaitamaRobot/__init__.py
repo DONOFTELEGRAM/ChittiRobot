@@ -198,6 +198,7 @@ if not SPAMWATCH_API:
 else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
+session_name = TOKEN.split(":")[0]
 pgram = Client(
     session_name,
     api_id=API_ID,
@@ -231,7 +232,6 @@ async def get_entity(client, entity):
                 entity_client = pgram
     return entity, entity_client
 
-session_name = TOKEN.split(":")[0]
 
 aiohttpsession = ClientSession()
 mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
