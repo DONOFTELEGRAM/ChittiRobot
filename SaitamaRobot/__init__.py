@@ -195,10 +195,24 @@ DEV_USERS.add(OWNER_ID)
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("SpamWatch API key missing! recheck your config.")
+    LOGGER.warning("[RAJNII ERROR]: SpamWatch API key Is Missing! Recheck Your Config.")
 else:
-    sw = spamwatch.Client(SPAMWATCH_API)
+    try:
+        sw = spamwatch.Client(SPAMWATCH_API)
+    except:
+        sw = None
+        LOGGER.warning("[RAJNII ERROR]: Can't connect to SpamWatch!")
+        
 
+from SaitamaRobot.modules.sql import SESSION
+
+    
+
+updater = tg.Updater(TOKEN, workers=WORKERS, request_kwargs={"read_timeout": 10, "connect_timeout": 10}, use_context=True, persistence=PostgresPersistence(SESSION))
+print("[RAJNII]: TELETHON CLIENT STARTING")
+telethn = TelegramClient("RAJNII", API_ID, API_HASH)
+dispatcher = updater.dispatcher
+print("[RAJNII]: PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
 pgram = Client(
     session_name,
@@ -206,20 +220,21 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN,
 )
-aiohttpsession = ClientSession()
-mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
+print("[RAJNII]: Connecting To SRN • Data Center • Mumbai • MongoDB Database")
+mongodb = MongoClient(MONGO_DB_URL, MONGO_PORT)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
-ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH) # soon
+print("[INFO]: INITIALZING AIOHTTP SESSION")
+aiohttpsession = ClientSession()
 # ARQ Client
+print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
-dispatcher = updater.dispatcher
+print("[RAJNII]: Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
+ubot = TelegramClient(StringSession(STRING_SESSION), APP_ID, APP_HASH)
+print("[RAJNII]: Connecting To SRN • Rajnii Userbot (t.me/itzzzyashu)")
 timeout = httpx.Timeout(40, pool=None)
 http = httpx.AsyncClient(http2=True, timeout=timeout)
-# Load at end to ensure all prev variables have been set
 
 async def get_entity(client, entity):
     entity_client = client
@@ -247,16 +262,19 @@ async def get_entity(client, entity):
                 entity_client = pgram
     return entity, entity_client
 
-
+apps = [pgram]
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
-apps = [pgram]
-from SaitamaRobot.modules.helper_funcs.handlers import (CustomCommandHandler,
-                                                        CustomMessageHandler,
-                                                        CustomRegexHandler)
+
+# Load at end to ensure all prev variables have been set
+from SaitamaRobot.modules.helper_funcs.handlers import (
+    CustomCommandHandler,
+    CustomMessageHandler,
+    CustomRegexHandler,
+)
 
 # make sure the regex handler can take extra kwargs
 tg.RegexHandler = CustomRegexHandler
