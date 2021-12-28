@@ -98,6 +98,7 @@ if ENV:
     DB_URL = os.environ.get("DATABASE_URL")
     MONGO_DB_URL = os.environ.get("MONGO_DB_URI")
     MONGO_DB = "Rajnii"
+    MONGO_PORT = os.environ.get("MONGO_PORT", 27017)
     ARQ_API_URL = "https://thearq.tech"
     ARQ_API_KEY = os.environ.get("ARQ_API")
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
