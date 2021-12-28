@@ -798,7 +798,7 @@ def main():
             dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "I am now online!")
         except Unauthorized:
             LOGGER.warning(
-                "Bot isnt able to send message to support_chat, go and check!")
+                "Bot isnt able to send message to support chat, go and check!")
         except BadRequest as e:
             LOGGER.warning(e.message)
 
@@ -866,7 +866,7 @@ def main():
 
     else:
         LOGGER.info("[RAJNII] SRN Connection Successful!")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
+        updater.start_polling(timeout=15, read_latency=4)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
