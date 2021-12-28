@@ -34,6 +34,8 @@ from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient
 from SaitamaRobot.modules.arq import arq_stats
+from SaitamaRobot.modules.heroku import dyno_usage
+
 # from SaitamaRobot.modules.arq.arq_stats import statistics
 
 def no_by_per(totalhp, percentage):
@@ -432,20 +434,31 @@ def nstats(update: Update, context: CallbackContext):
 <b>Library version:</b> <code>12.8</code>
 <b>SRC:</b> <code>Not Available</code>\n
 <b>ARQ statistics</b>
-**Uptime:** `{uptime}`
-**Requests Since Uptime:** `{requests}`
-**CPU:** `{cpu}`
-**Memory:**
-    **Total Used:** `{server_mem}`
-    **API:** `{api_mem}`
-**Disk:** `{disk}`
-**Platform:** `{platform}`
-**Python:** `{python_version}`
-**Users:** `{users}`
-**Bot:** {bot}
-**Address:** {ARQ_API_URL}
+<b>Uptime:</b> `{uptime}`
+<b>Requests Since Uptime:</b> `{requests}`
+<b>CPU:</b> `{cpu}`
+<b>Memory:</b>
+    <b>Total Used:</b> `{server_mem}`
+    <b>API:</b> `{api_mem}`
+<b>Disk:</b> `{disk}`
+<b>Platform:</b> `{platform}`
+<b>Python:</b> `{python_version}`
+<b>Users:</b> `{users}`
+<b>Bot:</b> {bot}
+<b>Address:<b> {ARQ_API_URL}
 
-<b>「 Rajnii statistics 」</b>\n""" + "\n".join([mod.__stats__() for mod in STATS])
+╒═══「 <b>Server stats</b> 」
+<b>Dyno usage for<b> <code>{HEROKU_APP_NAME}<code>
+    | <code>{AppHours}</code> <b>hours</b> <code>{AppMinutes}</code> <b>minutes</b>
+    | <code>{AppPercentage}%</code>
+
+<b>Dyno hours quota remaining this month:\n</b>
+    | <code>{hours}</code> <b>hours</b> <code>{minutes}</code> <b>minutes</b>
+    | <code>{percentage}%</code>
+
+╒═══「 <b> Rajnii statistics 」</b>
+       
+       """ + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result+"""\n
 <a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>
