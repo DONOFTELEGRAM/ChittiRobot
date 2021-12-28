@@ -31,7 +31,10 @@ logging.basicConfig(
               logging.StreamHandler()],
     level=logging.INFO)
 
+
 LOGGER = logging.getLogger(__name__)
+logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
+
 
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
