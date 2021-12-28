@@ -47,10 +47,10 @@ from pyrogram.types import (
 from search_engine_parser import GoogleSearch
 from tswift import Song
 from youtubesearchpython import VideosSearch
-
+from telegram.ext import CommandHandler
 from SaitamaRobot.utils.inlinehelper import *
 from SaitamaRobot.utils.pluginhelpers import fetch, json_prettify
-from SaitamaRobot import pgram, OPENWEATHERMAP_ID, TIME_API_KEY, BOT_USERNAME, SUPPORT_CHAT
+from SaitamaRobot import pgram, OPENWEATHERMAP_ID, TIME_API_KEY, BOT_USERNAME, SUPPORT_CHAT, dispatcher
 
 dictionary = PyDictionary()
 
@@ -1022,3 +1022,6 @@ def generate_time(to_find: str, findtype: List[str]) -> str:
         result = None
 
     return result
+
+INLINE_HELP = CommandHandler("inline", inline_help)
+dispatcher.add_handler(INLINE_HELP)
