@@ -853,18 +853,17 @@ def main():
 
 
     if WEBHOOK:
-        LOGGER.info("[RAJNII] Using Webhooks")
-        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+        LOGGER.info("Using webhooks.")
+        updater.start_webhook(listen="127.0.0.1", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
-            updater.bot.set_webhook(
-                url=URL + TOKEN, certificate=open(CERT_PATH, 'rb'))
+            updater.bot.set_webhook(url=URL + TOKEN, certificate=open(CERT_PATH, "rb"))
         else:
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-            LOGGER.info("[RAJNII] Connected to SRN • Counter-49 • Uttrakhand")
-        updater.start_polling(timeout=15, read_latency=4, clean=True)
+        LOGGER.info("[RAJNII] SRN Connection Successful!")
+        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
@@ -873,8 +872,15 @@ def main():
 
     updater.idle()
 
+try:
+    ubot.start()
+except BaseException:
+    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
+    sys.exit(1)
 
 if __name__ == '__main__':
-    LOGGER.info("[RAJNII] LOADED MODULES: \n" + str(ALL_MODULES))
+    LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
+    pgram.start()
     main()
+    idle()
