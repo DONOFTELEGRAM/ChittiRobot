@@ -44,7 +44,8 @@ speedtest-cli
 regex
 bleach
 wikipedia
-telethon
+telethon==1.16.4
+ujson
 spamwatch
 PyDictionary==2.0.1
 alphabet_detector
