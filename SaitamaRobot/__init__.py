@@ -198,6 +198,13 @@ if not SPAMWATCH_API:
 else:
     sw = spamwatch.Client(SPAMWATCH_API)
 
+pgram = Client(
+    session_name,
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=TOKEN,
+)
+
 async def get_entity(client, entity):
     entity_client = client
     if not isinstance(entity, Chat):
@@ -225,11 +232,7 @@ async def get_entity(client, entity):
     return entity, entity_client
 
 session_name = TOKEN.split(":")[0]
-pgram = Client(
-    session_name,
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=TOKEN)
+
 aiohttpsession = ClientSession()
 mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
@@ -247,7 +250,7 @@ DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
-
+apps = [pgram]
 # Load at end to ensure all prev variables have been set
 from SaitamaRobot.modules.helper_funcs.handlers import (CustomCommandHandler,
                                                         CustomMessageHandler,
