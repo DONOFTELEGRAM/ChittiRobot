@@ -43,7 +43,6 @@ jikanpy
 speedtest-cli
 regex
 bleach
-git+https://github.com/starry69/python-markdown2.git
 wikipedia
 telethon
 spamwatch
@@ -56,10 +55,9 @@ pyrogram
 nekos.py
 psycopg2-binary
 psutil
-
+markdown2>=2.4.0
 python-rapidjson
 git+https://github.com/python-telegram-bot/ptbcontrib.git
-markdown2>=2.4.0
 cowpy
 selenium
 pendulum
