@@ -77,7 +77,7 @@ async def variable(var):
                     )
                 else:
                     await k.edit(
-                        "`[HEROKU]` ConfigVars:\n\n"
+                        "*[HEROKU]* ConfigVars:\n\n"
                         "================================"
                         f"\n```{result}```\n"
                         "================================"
@@ -85,7 +85,7 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        s = await var.reply("`Setting information...weit ser`")
+        s = await var.reply("`Setting information...wait karo sar 😅`")
         variable = var.pattern_match.group(2)
         if not variable:
             return await s.edit(">`.set var <ConfigVars-name> <value>`")
