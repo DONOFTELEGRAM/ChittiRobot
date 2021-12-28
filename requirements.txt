@@ -20,6 +20,9 @@ beautifulsoup4
 requests
 odmantic
 motor
+googletrans==4.0.0-rc1
+google-trans-new==1.1.9
+geopy
 gpytranslate
 pymongo
 search_engine_parser
@@ -36,8 +39,6 @@ psutil
 aiohttp>=2.2.5
 Pillow>=4.2.0
 CurrencyConverter
-googletrans
-google_trans_new
 jikanpy
 speedtest-cli
 regex
@@ -55,3 +56,10 @@ pyrogram
 nekos.py
 psycopg2-binary
 psutil
+
+python-rapidjson
+git+https://github.com/python-telegram-bot/ptbcontrib.git
+markdown2>=2.4.0
+cowpy
+selenium
+pendulum
