@@ -69,7 +69,7 @@ async def alive_function(answers):
     bot_state = "Dead" if not await app.get_me() else "Alive"
     # ubot_state = 'Dead' if not await app2.get_me() else 'Alive'
     buttons.add(
-        InlineKeyboardButton("Main Bot", url="https://t.me/Cutiepii_Robot"),
+        InlineKeyboardButton("Main Bot", url="https://t.me/RajniiRobot"),
         InlineKeyboardButton("Go Inline!", switch_inline_query_current_chat=""),
     )
 
@@ -86,7 +86,7 @@ async def alive_function(answers):
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
-            description="Check Bot's Statisticss",
+            description="Check Bot's Statistics",
             thumb_url="https://telegra.ph/file/6f661139886946ca73591.mp4",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
