@@ -33,6 +33,7 @@ from SaitamaRobot.modules.sql.users_sql import get_user_num_chats
 from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient
+from SaitamaRobot.modules.arq import statistics
 # from SaitamaRobot.modules.arq.arq_stats import statistics
 
 def no_by_per(totalhp, percentage):
@@ -427,7 +428,9 @@ def nstats(update: Update, context: CallbackContext):
 <b>PTB version:</b> <code>12.8</code>
 <b>Python version:</b> <code>3.8.5</code>
 <b>Library version:</b> <code>12.8</code>
-<b>SRC:</b> <code>Not Available</code>
+<b>SRC:</b> <code>Not Available</code>\n
+<b>ARQ statistics</b>
+{statistics}
 <b>Rajnii statistics</b>\n""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result+"""\n
