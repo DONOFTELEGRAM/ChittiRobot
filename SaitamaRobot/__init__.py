@@ -205,6 +205,20 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN,
 )
+aiohttpsession = ClientSession()
+mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
+motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
+db = motor[MONGO_DB]
+engine = AIOEngine(motor, MONGO_DB)
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH) # soon
+# ARQ Client
+arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
+dispatcher = updater.dispatcher
+timeout = httpx.Timeout(40, pool=None)
+http = httpx.AsyncClient(http2=True, timeout=timeout)
+# Load at end to ensure all prev variables have been set
 
 async def get_entity(client, entity):
     entity_client = client
@@ -233,25 +247,12 @@ async def get_entity(client, entity):
     return entity, entity_client
 
 
-aiohttpsession = ClientSession()
-mongodb = MongoClient(MONGO_URI, 27017)[MONGO_DB]
-motor = motor_asyncio.AsyncIOMotorClient(MONGO_URI)
-db = motor[MONGO_DB]
-engine = AIOEngine(motor, MONGO_DB)
-ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH) # soon
-# ARQ Client
-arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
-dispatcher = updater.dispatcher
-
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 apps = [pgram]
-# Load at end to ensure all prev variables have been set
 from SaitamaRobot.modules.helper_funcs.handlers import (CustomCommandHandler,
                                                         CustomMessageHandler,
                                                         CustomRegexHandler)
