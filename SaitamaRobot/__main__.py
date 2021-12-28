@@ -19,7 +19,9 @@ from SaitamaRobot import (
     dispatcher,
     StartTime,
     telethn,
-    updater)
+    updater,
+    pgram,
+    ubot)
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
@@ -44,7 +46,7 @@ from telegram.ext import (
 )
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
-
+from pyrogram import Client, idle
 
 def get_readable_time(seconds: int) -> str:
     count = 0
