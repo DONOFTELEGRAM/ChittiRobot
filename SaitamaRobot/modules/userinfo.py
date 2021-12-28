@@ -425,13 +425,27 @@ def set_about_me(update: Update, context: CallbackContext):
 def nstats(update: Update, context: CallbackContext):
     stats = f"""
 ╒═══「 <b>System statistics</b> 」
+
+       <b>「 ARQ stats 」</b>
 <b>PTB version:</b> <code>12.8</code>
 <b>Python version:</b> <code>3.8.5</code>
 <b>Library version:</b> <code>12.8</code>
 <b>SRC:</b> <code>Not Available</code>\n
 <b>ARQ statistics</b>
-{statistics}
-<b>Rajnii statistics</b>\n""" + "\n".join([mod.__stats__() for mod in STATS])
+**Uptime:** `{uptime}`
+**Requests Since Uptime:** `{requests}`
+**CPU:** `{cpu}`
+**Memory:**
+    **Total Used:** `{server_mem}`
+    **API:** `{api_mem}`
+**Disk:** `{disk}`
+**Platform:** `{platform}`
+**Python:** `{python_version}`
+**Users:** `{users}`
+**Bot:** {bot}
+**Address:** {ARQ_API_URL}
+
+<b>「 Rajnii statistics 」</b>\n""" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result+"""\n
 <a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>
