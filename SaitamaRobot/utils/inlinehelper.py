@@ -56,7 +56,7 @@ async def inline_help_func(__HELP__):
             title="Inline Commands",
             description="Help Related To Inline Usage.",
             input_message_content=InputTextMessageContent(__HELP__),
-            thumb_url="https://telegra.ph/file/ad9d8a4adb866d62c501f.png",
+            thumb_url="https://telegra.ph/file/e76d780fd13417ed7a718.jpg",
             reply_markup=buttons,
         )
     ]
@@ -87,7 +87,7 @@ async def alive_function(answers):
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Statistics",
-            thumb_url="https://telegra.ph/file/6f661139886946ca73591.mp4",
+            thumb_url="https://telegra.ph/file/e76d780fd13417ed7a718.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
