@@ -1,4 +1,4 @@
-httpx[http2]>=0.18.1,<1.0.0
+httpx
 future
 emoji
 countryinfo
@@ -20,8 +20,8 @@ beautifulsoup4
 requests
 odmantic
 motor
-googletrans==4.0.0-rc1
-google-trans-new==1.1.9
+googletrans
+google-trans-new
 geopy
 gpytranslate
 pymongo
