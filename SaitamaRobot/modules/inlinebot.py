@@ -154,6 +154,7 @@ __HELP__ = f"""
 - **wiki [QUERY]** - __Search wikipedia.__
 - **ping** - __Check ping rate.__
 - **pokedex [TEXT]** - __Pokemon Search.__
+
 """
 
 
