@@ -1,6 +1,7 @@
 httpx[http2]
 future
 pydub==0.25.1
+psutil==5.8.0
 emoji
 countryinfo
 tswift
