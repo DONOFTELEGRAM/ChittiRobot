@@ -14,7 +14,7 @@ from bing_image_downloader import downloader
 import bs4
 from bs4 import BeautifulSoup
 from PIL import Image
-
+import time
 from telethon.tl import functions, types
 from telethon import *
 from telethon.tl.types import *
@@ -34,6 +34,7 @@ async def _(event):
         return
     
     webevent = await event.reply("searching........")
+    time.sleep(.600)
     match = event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
