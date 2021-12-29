@@ -6,7 +6,9 @@ import requests
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
+from pyrogram import filters
 
+from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
@@ -420,11 +422,27 @@ def set_about_me(update: Update, context: CallbackContext):
                     MAX_MESSAGE_LENGTH // 4, len(info[1]),
                 ),
             )
-
+    
+"""
+    data = await arq.stats()
+    if not data.ok:
+        return await message.reply_text(data.result)
+    data = data.result
+    uptime = data.uptime
+    requests = data.requests
+    cpu = data.cpu
+    server_mem = data.memory.server
+    api_mem = data.memory.api
+    disk = data.disk
+    platform = data.platform
+    python_version = data.python
+    users = data.users
+    bot = data.bot
+"""
 
 @run_async
 @sudo_plus
-def nstats(update: Update, context: CallbackContext):
+def nstats(update: Update, context: CallbackContext): #  (_, message)
     stats = f"""
 ╒═══「 <b>System statistics</b> 」
 
@@ -434,33 +452,32 @@ def nstats(update: Update, context: CallbackContext):
 <b>Library version:</b> <code>12.8</code>
 <b>SRC:</b> <code>Not Available</code>\n
 <b>ARQ statistics</b>
-<b>Uptime:</b> `{uptime}`
-<b>Requests Since Uptime:</b> `{requests}`
-<b>CPU:</b> `{cpu}`
+<b>Uptime:</b> <code>{uptime}</code>
+<b>Requests Since Uptime:</b> <code>{requests}</code>
+<b>CPU:</b> <code>{cpu}</code>
 <b>Memory:</b>
-    <b>Total Used:</b> `{server_mem}`
-    <b>API:</b> `{api_mem}`
-<b>Disk:</b> `{disk}`
-<b>Platform:</b> `{platform}`
-<b>Python:</b> `{python_version}`
-<b>Users:</b> `{users}`
+    <b>Total Used:</b> <code>{server_mem}</code>
+    <b>API:</b> <code>{api_mem}</code>
+<b>Disk:</b> <code>{disk}</code>
+<b>Platform:</b> <code>{platform}</code>
+<b>Python:</b> <code>{python_version}</code>
+<b>Users:</b> <code>{users}</code>
 <b>Bot:</b> {bot}
 <b>Address:<b> {ARQ_API_URL}
 
-╒═══「 <b>Server stats</b> 」
+╒═══「 <b>Server statistics</b> 」
 <b>Dyno usage for<b> <code>{HEROKU_APP_NAME}<code>
     | <code>{AppHours}</code> <b>hours</b> <code>{AppMinutes}</code> <b>minutes</b>
     | <code>{AppPercentage}%</code>
-
 <b>Dyno hours quota remaining this month:\n</b>
     | <code>{hours}</code> <b>hours</b> <code>{minutes}</code> <b>minutes</b>
     | <code>{percentage}%</code>
 
-╒═══「 <b> Rajnii statistics 」</b>
-       
+╒═══「 <b>Rajnii statistics</b> 」
        """ + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    update.effective_message.reply_text(result+"""\n
+    update.effective_message.reply_text(result+"""
+    
 <a href="https://t.me/RajniSupport">✦ Support</a> | <a href="https://t.me/RajniUpdates">✦ Updates</a>
 ╘══「 <b>By <a href="https://github.com/itzzzzyashu">itzzzyashu</a></b> 」""", parse_mode=ParseMode.HTML)
 
