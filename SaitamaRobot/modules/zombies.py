@@ -8,6 +8,7 @@ from telethon.tl.types import ChatBannedRights, ChannelParticipantsAdmins
 
 from SaitamaRobot import telethn, OWNER_ID, DEV_USERS, DRAGONS, DEMONS
 
+
 # =================== CONSTANT ===================
 
 BANNED_RIGHTS = ChatBannedRights(
