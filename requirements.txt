@@ -16,6 +16,7 @@ NumPy==1.21.3
 tswift
 pykeyboard
 youtube_dl
+dnspython
 youtube_search
 pytube
 youtube_search_python
