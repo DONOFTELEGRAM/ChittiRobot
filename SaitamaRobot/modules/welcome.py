@@ -236,19 +236,20 @@ def new_member(update: Update, context: CallbackContext):
                         parse_mode=ParseMode.HTML,
                     )
                 else:
+                  Welcome_gif = "https://telegra.ph/file/5763390d45f4061d71c1b.mp4"
                     bot.send_message(
                         JOIN_LOGGER,
                         "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
-                update.effective_message.reply_video("https://telegra.ph/file/1931e5affb03c1d412ab0.mp4",
-                    f"HolA! I'm {BOT_NAME}, thank you to adding me in {chat.title},",
-                    f"make me admin with enough rights to let me get in action.\n",
-                    f"Join @{SUPPORT_CHAT} for guidance about using me!"),
-                reply_to_message_id=reply,
-                reply_markup=InlineKeyboardMarkup([
-                  [InlineKeyboardButton(text="• Support •", url=f"https://t.me/{SUPPORT_CHAT}"),
-                   InlineKeyboardButton(text="• Updates •", url="https://t.me/RajniUpdates")],
-                  [InlineKeyboardButton(text="• SanatanRakshaNetwork •", url="https://t.me/SanatanRakshaNetwork")]])
+                update.effective_message.reply_video(Welcome_gif,
+                    f"""HolA! I'm {BOT_NAME}, thank you to adding me in {chat.title},
+                    make me admin with enough rights to let me get in action.
+                    Join @{SUPPORT_CHAT} for guidance about using me!"""),
+                    reply_to_message_id=reply,
+                    reply_markup=InlineKeyboardMarkup(
+                        [[InlineKeyboardButton(text="• Support •", url=f"https://t.me/{SUPPORT_CHAT}"),
+                          InlineKeyboardButton(text="• Updates •", url="https://t.me/RajniUpdates")],
+                         [InlineKeyboardButton(text="• Sanatan-Raksha-Network •", url="https://t.me/SanatanRakshaNetwork")]]))
                 continue
 
             else:
