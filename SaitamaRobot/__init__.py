@@ -98,7 +98,7 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
     DB_URL = os.environ.get("DATABASE_URL")
-    MONGO_DB_URL = os.environ.get("MONGO_DB_URI")
+    MONGO_DB_URL = os.environ.get("MONGO_DB_URI","")
     MONGO_DB = "Rajnii"
     MONGO_PORT = int(os.environ.get("MONGO_PORT", None))
     ARQ_API_URL = "https://thearq.tech"
