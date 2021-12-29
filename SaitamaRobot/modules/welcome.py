@@ -5,7 +5,7 @@ import time
 from functools import partial
 
 import SaitamaRobot.modules.sql.welcome_sql as sql
-from SaitamaRobot import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
+from SaitamaRobot import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS, BOT_NAME
                           WOLVES, sw, dispatcher, JOIN_LOGGER)
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
@@ -248,7 +248,7 @@ def new_member(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup([
                   [InlineKeyboardButton(text="• Support •", url=f"https://t.me/{SUPPORT_CHAT}"),
                    InlineKeyboardButton(text="• Updates •", url="https://t.me/RajniUpdates")],
-                  [InlineKeyboardButton(text="• SanatanRakshaNetwork •", url="https://t.me/SanatanRakshaNetwork")]]))
+                  [InlineKeyboardButton(text="• SanatanRakshaNetwork •", url="https://t.me/SanatanRakshaNetwork")]])
                 continue
 
             else:
