@@ -8,7 +8,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 from pyrogram import filters
 
-from SaitamaRobot import ARQ_API_URL, pgram as app, arq
+# from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
