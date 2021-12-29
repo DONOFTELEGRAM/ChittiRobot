@@ -15,7 +15,7 @@ tgCrypto>=1.2.2
 bing_image_downloader
 aiofiles
 sylviorus
-lxml
+lxml>=4.6.5
 heroku3
 python-arq
 beautifulsoup4
@@ -76,7 +76,7 @@ CurrencyConverter
 emoji==1.6.1
 feedparser==6.0.8
 pyrate-limiter==2.4.7
-lxml==4.6.4
+lxml>=4.6.5
 nltk==3.6.5
 pillow>=4.2.0
 pretty-errors==1.2.24
