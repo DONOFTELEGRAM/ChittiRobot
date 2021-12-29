@@ -553,7 +553,7 @@ Group admins/group owners do not need these commands.
  ╔ *Groups Info:*
  ╠ `/chatslist`*:* List the groups with Name, ID, members count as a txt
  ╠ `/leave <ID>`*:* Leave the group, ID must have hyphen
- ╠ `/stats`*:* Shows overall bot stats
+ ╠ `/nstats`*:* Shows overall bot stats.
  ╠ `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
  ╚ `/ginfo username/link/ID`*:* Pulls info panel for entire group
 
@@ -570,6 +570,9 @@ Group admins/group owners do not need these commands.
 
  ╔ *Speedtest:*
  ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
+
+ ╔ *Chat Inform:*
+ ╚ `/snipe <Group-ID> <text>`*:* Inform a group that dragon+ user mentioned.
 
  ╔ *Module loading:*
  ╠ `/listmodules`*:* Lists names of all modules
