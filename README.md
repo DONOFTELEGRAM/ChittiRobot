@@ -1,4 +1,4 @@
-[RAJNI](https://telegra.ph/file/ef034c1bc67755d42be08.mp4)
+![RAJNI](https://telegra.ph/file/cdddd4bdbd05f9d5bc441.jpg)
 
 # [@RajniiRobot](https://telegram.me/RajniiRobot)
 ### Random
