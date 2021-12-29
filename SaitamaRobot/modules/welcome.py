@@ -242,7 +242,7 @@ def new_member(update: Update, context: CallbackContext):
                 update.effective_message.reply_video("https://telegra.ph/file/5763390d45f4061d71c1b.mp4",
                     f"""HolA! I'm {BOT_NAME}, thank you to adding me in {chat.title},
                     make me admin with enough rights to let me get in action.
-                    Join @{SUPPORT_CHAT} for guidance about using me!"""),
+                    Join @{SUPPORT_CHAT} for guidance about using me!""",
                     reply_to_message_id=reply,
                     reply_markup=InlineKeyboardMarkup(
                         [[InlineKeyboardButton(text="• Support •", url=f"https://t.me/{SUPPORT_CHAT}"),
