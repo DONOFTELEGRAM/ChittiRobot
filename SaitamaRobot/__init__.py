@@ -84,6 +84,7 @@ if ENV:
     INFOPIC = bool(os.environ.get("INFOPIC", False))
     OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", "") # From:- https://openweathermap.org/api
     HEROKU_APP_NAME = (os.environ.get("HEROKU_APP_NAME", False))
+    ERROR_LOGS = os.environ.get("ERROR_LOGS", True)
     HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", False))
     EVENT_LOGS = os.environ.get("EVENT_LOGS")
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
