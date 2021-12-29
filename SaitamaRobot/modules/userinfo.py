@@ -45,7 +45,46 @@ from SaitamaRobot.modules.arq import arq_stats
 # from SaitamaRobot.modules.heroku.dyno_usage import AppHours, AppMinutes, AppPercentage, hours, minutes, percentage
 
 
+# ARQ INFO
+# ARQ INFO
 
+@app.on_message(filters.command("arq"))
+async def arq_stats(_, message):
+    data = await arq.stats()
+    if not data.ok:
+        return await message.reply_text(data.result)
+    data = data.result
+    uptime = data.uptime
+    requests = data.requests
+    cpu = data.cpu
+    server_mem = data.memory.server
+    api_mem = data.memory.api
+    disk = data.disk
+    platform = data.platform
+    python_version = data.python
+    users = data.users
+    bot = data.bot
+    statistics = f"""
+**Uptime:** `{uptime}`
+**Requests Since Uptime:** `{requests}`
+**CPU:** `{cpu}`
+**Memory:**
+    **Total Used:** `{server_mem}`
+    **API:** `{api_mem}`
+**Disk:** `{disk}`
+**Platform:** `{platform}`
+**Python:** `{python_version}`
+**Users:** `{users}`
+**Bot:** {bot}
+**Address:** {ARQ_API_URL}
+"""
+    await message.reply_text(
+        statistics, disable_web_page_preview=True)
+    
+    
+    
+# HEROKU
+# HEROKU
 
 
 heroku_api = "https://api.heroku.com"
@@ -223,7 +262,8 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
 
 
-
+# HEROKU
+# HEROKU
 
 
 def no_by_per(totalhp, percentage):
@@ -628,18 +668,6 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def nstats(update: Update, context: CallbackContext): #  (_, message)
-    data = data.result
-    uptime = data.uptime
-    requests = data.requests
-    cpu = data.cpu
-    server_mem = data.memory.server
-    api_mem = data.memory.api
-    disk = data.disk
-    platform = data.platform
-    python_version = data.python
-    users = data.users
-    bot = data.bot
-    
     stats = f"""
 ╒═══「 <b>System statistics</b> 」
 
