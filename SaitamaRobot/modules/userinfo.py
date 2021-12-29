@@ -47,7 +47,7 @@ from SaitamaRobot.modules.arq import arq_stats
 
 # ARQ INFO
 # ARQ INFO
-
+"""
 @app.on_message(filters.command("arq"))
 async def arq_stats(_, message):
     data = await arq.stats()
@@ -64,7 +64,7 @@ async def arq_stats(_, message):
     python_version = data.python
     users = data.users
     bot = data.bot
-    statistics = f"""
+    statistics = f""" """
 **Uptime:** `{uptime}`
 **Requests Since Uptime:** `{requests}`
 **CPU:** `{cpu}`
@@ -76,12 +76,12 @@ async def arq_stats(_, message):
 **Python:** `{python_version}`
 **Users:** `{users}`
 **Bot:** {bot}
-**Address:** {ARQ_API_URL}
+**Address:** {ARQ_API_URL}"""
 """
     await message.reply_text(
         statistics, disable_web_page_preview=True)
     
-    
+"""
     
 # HEROKU
 # HEROKU
