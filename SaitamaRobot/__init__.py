@@ -212,8 +212,9 @@ else:
 
 from SaitamaRobot.modules.sql import SESSION
 
-    
-
+print("[RAJNII]: Installing Telegraph")
+telegraph = Telegraph()
+print("[RAJNII]: Creating Telegraph Account")
 updater = tg.Updater(TOKEN, workers=WORKERS, request_kwargs={"read_timeout": 10, "connect_timeout": 10}, use_context=True)
 print("[RAJNII]: TELETHON CLIENT STARTING")
 telethn = TelegramClient("RAJNII", API_ID, API_HASH)
