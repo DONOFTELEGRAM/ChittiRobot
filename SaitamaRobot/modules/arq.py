@@ -3,7 +3,7 @@ from pyrogram import filters
 from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 
 
-@app.on_message(filters.command("arq"))
+@app.on_message(filters.command("nstats"))
 async def arq_stats(_, message):
     data = await arq.stats()
     if not data.ok:
