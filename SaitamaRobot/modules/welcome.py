@@ -240,7 +240,7 @@ def new_member(update: Update, context: CallbackContext):
                         JOIN_LOGGER,
                         "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
-                update.effective_message.reply_video("https://telegra.ph/file/e76d780fd13417ed7a718.jpg",
+                update.effective_message.reply_video("https://telegra.ph/file/1931e5affb03c1d412ab0.mp4",
                     f"HolA! I'm {BOT_NAME}, thank you to adding me in {chat.title},",
                     f"make me admin with enough rights to let me get in action.\n",
                     f"Join @{SUPPORT_CHAT} for guidance about using me!"),
