@@ -1,5 +1,7 @@
 httpx[http2]
 future
+wget==3.2
+yt-dlp
 pydub==0.25.1
 psutil==5.8.0
 emoji
