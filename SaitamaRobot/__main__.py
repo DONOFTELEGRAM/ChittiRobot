@@ -865,7 +865,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info("[RAJNII] SRN Connection Successful!")
+        LOGGER.info("[RAJNII] • SRN • Connection Successful!")
         updater.start_polling(timeout=15, read_latency=4)
 
     if len(argv) not in (1, 3, 4):
@@ -878,7 +878,7 @@ def main():
 try:
     ubot.start()
 except BaseException:
-    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
+    print("[] • Userbot Error ! Please add a STRING_SESSION get it from")
     sys.exit(1)
 
 if __name__ == '__main__':
