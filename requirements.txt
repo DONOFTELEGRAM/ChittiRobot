@@ -4,6 +4,7 @@ pydub==0.25.1
 psutil==5.8.0
 emoji
 countryinfo
+NumPy==1.21.3
 tswift
 pykeyboard
 youtube_dl
