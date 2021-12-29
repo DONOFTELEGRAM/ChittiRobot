@@ -663,20 +663,9 @@ def set_about_me(update: Update, context: CallbackContext):
     python_version = data.python
     users = data.users
     bot = data.bot
-"""
-
-@run_async
-@sudo_plus
-def nstats(update: Update, context: CallbackContext): #  (_, message)
-    stats = f"""
-╒═══「 <b>System statistics</b> 」
-
-       <b>「 ARQ stats 」</b>
-<b>PTB version:</b> <code>12.8</code>
-<b>Python version:</b> <code>3.8.5</code>
-<b>Library version:</b> <code>12.8</code>
-<b>SRC:</b> <code>Not Available</code>\n
-<b>ARQ statistics</b>
+    
+    
+    
 <b>Uptime:</b> <code>{uptime}</code>
 <b>Requests Since Uptime:</b> <code>{requests}</code>
 <b>CPU:</b> <code>{cpu}</code>
@@ -690,6 +679,7 @@ def nstats(update: Update, context: CallbackContext): #  (_, message)
 <b>Bot:</b> {bot}
 <b>Address:<b> {ARQ_API_URL}
 
+
 ╒═══「 <b>Server statistics</b> 」
 <b>Dyno usage for<b> <code>{HEROKU_APP_NAME}<code>
     | <code>{AppHours}</code> <b>hours</b> <code>{AppMinutes}</code> <b>minutes</b>
@@ -697,6 +687,20 @@ def nstats(update: Update, context: CallbackContext): #  (_, message)
 <b>Dyno hours quota remaining this month:\n</b>
     | <code>{hours}</code> <b>hours</b> <code>{minutes}</code> <b>minutes</b>
     | <code>{percentage}%</code>
+"""
+
+@run_async
+@sudo_plus
+def nstats(update: Update, context: CallbackContext): #  (_, message)
+    stats = f"""
+╒═══「 <b>System statistics</b> 」
+
+
+       <b>「 ARQ stats 」</b>
+<b>PTB version:</b> <code>12.8</code>
+<b>Python version:</b> <code>3.8.5</code>
+<b>Library version:</b> <code>12.8</code>
+<b>SRC:</b> <code>Not Available</code>
 
 ╒═══「 <b>Rajnii statistics</b> 」
        """ + "\n".join([mod.__stats__() for mod in STATS])
