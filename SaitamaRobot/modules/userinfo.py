@@ -37,7 +37,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient
 from SaitamaRobot.modules.arq import arq_stats
-from SaitamaRobot.modules.heroku import dyno_usage, AppHours, AppMinutes, AppPercentage, hours, minutes, percentage
+from SaitamaRobot.modules.heroku.dyno_usage import AppHours, AppMinutes, AppPercentage, hours, minutes, percentage
 
 # from SaitamaRobot.modules.arq.arq_stats import statistics
 
