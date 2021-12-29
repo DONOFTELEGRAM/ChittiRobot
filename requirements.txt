@@ -3,7 +3,7 @@ future
 wget==3.2
 pretty_errors
 opencv-python
-ffmpeg-python
+ffmpeg==1.4
 yt-dlp
 pydub==0.25.1
 psutil==5.8.0
