@@ -8,7 +8,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 from pyrogram import filters
 
-# from SaitamaRobot import ARQ_API_URL, pgram as app, arq
+from SaitamaRobot import ARQ_API_URL, pgram as app, arq
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
@@ -23,6 +23,7 @@ from SaitamaRobot import (
     TIGERS,
     WOLVES,
     INFOPIC,
+    HEROKU_APP_NAME,
     dispatcher,
     sw,
 )
@@ -36,7 +37,7 @@ from SaitamaRobot.modules.helper_funcs.chat_status import sudo_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot import telethn as SaitamaTelethonClient
 from SaitamaRobot.modules.arq import arq_stats
-from SaitamaRobot.modules.heroku import dyno_usage
+from SaitamaRobot.modules.heroku import dyno_usage, AppHours, AppMinutes, AppPercentage, hours, minutes, percentage
 
 # from SaitamaRobot.modules.arq.arq_stats import statistics
 
@@ -423,10 +424,9 @@ def set_about_me(update: Update, context: CallbackContext):
                 ),
             )
     
+
 """
     data = await arq.stats()
-    if not data.ok:
-        return await message.reply_text(data.result)
     data = data.result
     uptime = data.uptime
     requests = data.requests
@@ -443,6 +443,18 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def nstats(update: Update, context: CallbackContext): #  (_, message)
+    data = data.result
+    uptime = data.uptime
+    requests = data.requests
+    cpu = data.cpu
+    server_mem = data.memory.server
+    api_mem = data.memory.api
+    disk = data.disk
+    platform = data.platform
+    python_version = data.python
+    users = data.users
+    bot = data.bot
+    
     stats = f"""
 ╒═══「 <b>System statistics</b> 」
 
