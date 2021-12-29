@@ -202,25 +202,25 @@ DEV_USERS.add(OWNER_ID)
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("[RAJNII ERROR]: SpamWatch API key Is Missing! Recheck Your Config.")
+    LOGGER.warning("[RAJNII ERROR] SpamWatch API key Is Missing! Recheck Your Config.")
 else:
     try:
         sw = spamwatch.Client(SPAMWATCH_API)
     except:
         sw = None
-        LOGGER.warning("[RAJNII ERROR]: Can't connect to SpamWatch!")
+        LOGGER.warning("[RAJNII ERROR] Can't connect to SpamWatch!")
         
 
 from SaitamaRobot.modules.sql import SESSION
 
-print("[RAJNII]: Installing Telegraph")
+print("[RAJNII] Installing Telegraph")
 telegraph = Telegraph()
-print("[RAJNII]: Creating Telegraph Account")
+print("[RAJNII] Creating Telegraph Account")
 updater = tg.Updater(TOKEN, workers=WORKERS, request_kwargs={"read_timeout": 10, "connect_timeout": 10}, use_context=True)
-print("[RAJNII]: TELETHON CLIENT STARTING")
+print("[RAJNII] TELETHON CLIENT STARTING")
 telethn = TelegramClient("RAJNII", API_ID, API_HASH)
 dispatcher = updater.dispatcher
-print("[RAJNII]: PYROGRAM CLIENT STARTING")
+print("[RAJNII] PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
 pgram = Client(
     session_name,
@@ -228,19 +228,19 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN,
 )
-print("[RAJNII]: Connecting To SRN • Data Center • Mumbai • MongoDB Database")
+print("[RAJNII] Connecting To SRN • Data Center • Mumbai • MongoDB Database")
 mongodb = MongoClient(MONGO_DB_URL, MONGO_PORT)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
-print("[INFO]: INITIALZING AIOHTTP SESSION")
+print("[RAJNII] INITIALZING AIOHTTP SESSION")
 aiohttpsession = ClientSession()
 # ARQ Client
-print("[INFO]: INITIALIZING ARQ CLIENT")
+print("[RAJNII] INITIALIZING ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-print("[RAJNII]: Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
+print("[RAJNII] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
-print("[RAJNII]: Connecting To SRN • Rajnii Userbot (t.me/itzzzyashu)")
+print("[RAJNII] Connecting To SRN • Rajnii Userbot (t.me/itzzzyashu)")
 timeout = httpx.Timeout(40, pool=None)
 http = httpx.AsyncClient(http2=True, timeout=timeout)
 
