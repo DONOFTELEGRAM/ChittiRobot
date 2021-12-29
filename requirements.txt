@@ -2,6 +2,7 @@ httpx[http2]
 future
 wget==3.2
 apscheduler
+carbonnow
 pretty_errors
 secureme==0.0.4
 beautifulsoup4
