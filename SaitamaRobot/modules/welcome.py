@@ -236,8 +236,7 @@ def new_member(update: Update, context: CallbackContext):
                         parse_mode=ParseMode.HTML,
                     )
                 else:
-                  Welcome_gif = "https://telegra.ph/file/5763390d45f4061d71c1b.mp4"
-                    bot.send_message(
+                    bot.send_message("https://telegra.ph/file/5763390d45f4061d71c1b.mp4"
                         JOIN_LOGGER,
                         "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(html.escape(chat.title), chat.id),
                         parse_mode=ParseMode.HTML)
