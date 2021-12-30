@@ -75,7 +75,7 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
     with INSERTION_LOCK:
         user = SESSION.query(Users).get(user_id)
         if not user:
-            user = Users(user_id, username)
+            user = Users('user_id', 'username')
             SESSION.add(user)
             SESSION.flush()
         else:
