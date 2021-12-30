@@ -89,6 +89,20 @@ __help__ = """
  • `/wiki <query>`*:* wikipedia your query
 *Wallpapers:*
  • `/wall <query>`*:* get a wallpaper from wall.alphacoders.com
+ *Movie*
+ • `/imdb <query>`*:* get movie's infoformation.
+  *Songs*
+ • `/song <query>`*:* get song's infoformation.
+  *Movie*
+ • `/book <query>`*:* get books infoformation.
+  *Movie*
+ • `/imdb <query>`*:* get movie's infoformation.
+  *Movie*
+ • `/imdb <query>`*:* get movie's infoformation.
+  *Movie*
+ • `/imdb <query>`*:* get movie's infoformation.
+ 
+ 
 *Currency converter:* 
  • `/cash`*:* currency converter
 Example:
