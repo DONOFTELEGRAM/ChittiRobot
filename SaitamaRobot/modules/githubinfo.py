@@ -6,7 +6,7 @@ from SaitamaRobot import pgram
 from SaitamaRobot.utils.errors import capture_err
 
 
-__mod_name__ = "Github"
+__mod_name__ = "Github HELP"
 
 
 @pgram.on_message(filters.command('github'))
