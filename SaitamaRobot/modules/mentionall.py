@@ -9,7 +9,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from SaitamaRobot import telethn
 
-@telethn.on(events.NewMessage(pattern="^/tagall|/call|/tall|/all|/mentionall|#all|@all?(.*)"))
+@telethn.on(events.NewMessage(pattern="^/tagall|/mentionall|#all|@all?(.*)"))
 async def mentionall(event):
   if event.is_private:
     return await event.respond("Use This In Channel or Group!")
