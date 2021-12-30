@@ -50,24 +50,13 @@ GLOBAL_IGNORE_COMMANDS = set()
 def set_cleanbt(chat_id, is_enable):
     with CLEANER_CHAT_SETTINGS:
         curr = SESSION.query(CleanerBlueTextChatSettings).get(str(chat_id))
+        if curr:
+            SESSION.delete(curr)
 
-        if not curr:
-            curr = CleanerBlueTextChatSettings(str(chat_id), is_enable)
-        else:
-            curr.is_enabled = is_enable
+        newcurr = CleanerBlueTextChatSettings(str(chat_id), is_enable)
 
-        if str(chat_id) not in CLEANER_CHATS:
-            CLEANER_CHATS.setdefault(
-                str(chat_id), {
-                    "setting": False,
-                    "commands": set()
-                })
-
-        CLEANER_CHATS[str(chat_id)]["setting"] = is_enable
-
-        SESSION.add(curr)
+        SESSION.add(newcurr)
         SESSION.commit()
-
 
 def chat_ignore_command(chat_id, ignore):
     ignore = ignore.lower()
