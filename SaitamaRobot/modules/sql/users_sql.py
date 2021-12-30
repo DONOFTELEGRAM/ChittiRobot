@@ -94,10 +94,10 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
         else:
             chat.chat_name = chat_name
       member = (
-            SESSION.query(ChatMembers)
-            .filter(ChatMembers.chat == chat.chat_id, ChatMembers.user == user.user_id)
-            .first()
-        )
+        SESSION.query(ChatMembers)
+        .filter(ChatMembers.chat == chat.chat_id, ChatMembers.user == user.user_id)
+        .first()
+      )
         if not member:
             chat_member = ChatMembers(chat.chat_id, user.user_id)
             SESSION.add(chat_member)
@@ -108,9 +108,9 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
 def get_userid_by_name(username):
     try:
         return (
-            SESSION.query(Users)
-            .filter(func.lower(Users.username) == username.lower())
-            .all()
+          SESSION.query(Users)
+          .filter(func.lower(Users.username) == username.lower())
+          .all()
         )
     finally:
         SESSION.close()
