@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi, I'm [『Rajnii』](https://telegra.ph/file/bcbf6166f575efcc83c10.mp4)!,
+Hi, I'm [『Rajnii』](t.me/rajniirobot)!,
 _A bot to manage your chats when you're offline._
 _Make sure to read my "About" section to know how you can use me effectively!_
 *Join Chatting Group - @RajniSpam!*
@@ -141,7 +141,7 @@ by your payment application.
 » _these donations will also help us
  to help others, those who really need support._
 """
-
+BOT_PIC = "https://telegra.ph/file/586f1921ec80a73836c55.mp4"
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
@@ -301,7 +301,8 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
+            update.effective_message.reply_video(
+                BOT_PIC,
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
