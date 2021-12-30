@@ -8,7 +8,7 @@ from pyrate_limiter import (BucketFullException, Duration, RequestRate, Limiter,
                             MemoryListBucket)
 
 if ALLOW_EXCL:
-    CMD_STARTERS = ('/', '!','.','\\','*','u')
+    CMD_STARTERS = ('/', '!','.')
 else:
     CMD_STARTERS = ('/',)
 
