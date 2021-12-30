@@ -504,7 +504,7 @@ def rajni_support_callback(update, context):
                      \n• Join Updates here - @RajniUpdates.
                      \n• Global Events here - @RajniGlobal.
                      \n• Join Spam/Appeal chat - @RajniSpam.
-                     \n• Join Developers chat - @ShAjNiDeVs.""",
+                     \n• Join Developers chat - @SanatanRakshaDevelopers.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=False,
             reply_markup=InlineKeyboardMarkup(
@@ -856,7 +856,9 @@ def main():
 
 
     if WEBHOOK:
-        LOGGER.info("Using webhooks.")
+        LOGGER.info("[RAJNII] • SRN • Using webhooks.")
+        LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
         updater.start_webhook(listen="127.0.0.1", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
@@ -865,6 +867,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
+        LOGGER.info("[RAJNII] • SRN • Long polling")
         LOGGER.info("[RAJNII] • SRN • Connection Successful!")
         updater.start_polling(timeout=15, read_latency=4)
 
