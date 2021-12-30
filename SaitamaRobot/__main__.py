@@ -74,7 +74,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hi, I'm [『Rajnii』](https://telegra.ph/file/0db1b3d079b7217b5dd1f.jpg)!,
+Hi, I'm [『Rajnii』](https://telegra.ph/file/bcbf6166f575efcc83c10.mp4)!,
 _A bot to manage your chats when you're offline._
 _Make sure to read my "About" section to know how you can use me effectively!_
 *Join Chatting Group - @RajniSpam!*
