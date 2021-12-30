@@ -856,8 +856,11 @@ def main():
 
 
     if WEBHOOK:
+        time.sleep(3)
         LOGGER.info("[RAJNII] • SRN • Using webhooks.")
+        time.sleep(1)
         LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        time.sleep(1)
         LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
         updater.start_webhook(listen="127.0.0.1", port=PORT, url_path=TOKEN)
 
@@ -867,8 +870,11 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
+        time.sleep(3)
         LOGGER.info("[RAJNII] • SRN • Long polling")
+        time.sleep(1)
         LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        time.sleep(1)
         LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
         updater.start_polling(timeout=15, read_latency=4)
 
@@ -882,7 +888,7 @@ def main():
 try:
     ubot.start()
 except BaseException:
-    print("[] • Userbot Error ! Please add a STRING_SESSION get it from")
+    print("[RAJNII] • Userbot Error ! Please add a STRING_SESSION get it from https://repl.it/@SpEcHiDe/GenerateStringSession - Telethon String Session")
     sys.exit(1)
 
 if __name__ == '__main__':
