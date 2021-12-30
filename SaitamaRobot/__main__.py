@@ -869,6 +869,7 @@ def main():
     else:
         LOGGER.info("[RAJNII] • SRN • Long polling")
         LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
         updater.start_polling(timeout=15, read_latency=4)
 
     if len(argv) not in (1, 3, 4):
