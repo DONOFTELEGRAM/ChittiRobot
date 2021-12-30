@@ -34,7 +34,7 @@ class Chats(BASE):
 
 class ChatMembers(BASE):
     __tablename__ = "chat_members"
-    priv_chat_id = Column(BigInteger, primary_key=True)
+    priv_chat_id = Column(Integer, primary_key=True)
     # NOTE: Use dual primary key instead of private primary key?
     chat = Column(
         String(14),
@@ -93,8 +93,7 @@ def update_user(user_id, username, chat_id=None, chat_name=None):
  
         else:
             chat.chat_name = chat_name
-
-        member = (
+      member = (
             SESSION.query(ChatMembers)
             .filter(ChatMembers.chat == chat.chat_id, ChatMembers.user == user.user_id)
             .first()
