@@ -211,6 +211,53 @@ else:
         LOGGER.warning("[RAJNII ERROR] Can't connect to SpamWatch!")
         
 
+time.sleep(5)
+print("""
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+=========================================================================================================
+"""
+# Credits Logger
+print("[RAJNII] Activating Rajnii. | SRN • Project C437 | Licensed Under GPLv3.")
+time.sleep(1)
+print("[RAJNII] [C437 ACTIVATING: Initializing Required Clients]")
+time.sleep(1)
+print("[RAJNII] Project Maintained By: github.com/itzzzzyashu (t.me/itzzzyashu)")
+time.sleep(3)
 from SaitamaRobot.modules.sql import SESSION
 
 print("[RAJNII] Installing Telegraph")
@@ -241,13 +288,14 @@ print("[RAJNII] INITIALZING AIOHTTP SESSION")
 aiohttpsession = ClientSession()
 time.sleep(1)
 # ARQ Client
-print("[RAJNII] INITIALIZING ARQ CLIENT")
+print("[RAJNII] INITIALIZATION ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 time.sleep(1)
 print("[RAJNII] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
-ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 time.sleep(1)
 print("[RAJNII] Connecting To SRN • Rajnii Userbot (t.me/itzzzyashu)")
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+print("\n=========================================================================================================")
 time.sleep(1)
 timeout = httpx.Timeout(40, pool=None)
 http = httpx.AsyncClient(http2=True, timeout=timeout)
