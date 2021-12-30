@@ -1,14 +1,19 @@
+
 import aiohttp
 
 from pyrogram import filters
-from SaitamaRobot import pgram, BOT_USERNAME
+from SaitamaRobot import pgram
 from SaitamaRobot.utils.errors import capture_err
 
-@pgram.on_message(filters.command("gitinfo", f"gitinfo@{BOT_USERNAME}"))
+
+__mod_name__ = "Github"
+
+
+@pgram.on_message(filters.command('github'))
 @capture_err
 async def github(_, message):
     if len(message.command) != 2:
-        await message.reply_text("Github Username Required")
+        await message.reply_text("/git Username")
         return
     username = message.text.split(None, 1)[1]
     URL = f'https://api.github.com/users/{username}'
@@ -43,6 +48,3 @@ async def github(_, message):
         except Exception as e:
             print(str(e))
     await message.reply_photo(photo=avatar_url, caption=caption)
-
-
-__mod_name__ = "Github"
