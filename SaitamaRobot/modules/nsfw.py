@@ -417,12 +417,12 @@ __mod_name__ = "NSFW"
 __help__ = """
 This Module is for only +18 guys, kids & teenagers Stay Away please!
 this module is not made for public groups.
-*Module credits:*[Dank-del](https://github.com/Dank-del/Chizuru/) ,
+Module credits: [Dank-del](https://github.com/Dank-del/Chizuru/),
 Also thanks to [EverythingSuckz](https://t.me/EverythingSuckz) for NSFW filter.
     
 *Enable or Disable NSFW Mode*:
-`/addnsfw`*:* Enable NSFW mode
-`/rmnsfw`*:* Disable NSFW mode
+ - `/addnsfw` *:* Enable NSFW mode
+ - `/rmnsfw` *:* Disable NSFW mode
 
 *Commands*
  - `/neko`: Sends Random SFW Neko source Images.
