@@ -90,7 +90,7 @@ __help__ = """
 *Wallpapers:*
  • `/wall <query>`*:* get a wallpaper from wall.alphacoders.com
  *Movie*
- • `/imdb <query>`*:* get movie's infoformation.
+ • `/gps <query>`*:* get Location infoformation.
   *Songs*
  • `/song <query>`*:* get song's infoformation.
   *Movie*
