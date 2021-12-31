@@ -472,7 +472,7 @@ Also thanks to [EverythingSuckz](https://t.me/EverythingSuckz) for NSFW filter.
  - `/erok`: Sends Random Ero-Kitsune source Images.
  - `/foxgirl`: Sends Random FoxGirl source Images.
  - `/titsgif`: Sends Random Tits GIFs.
- - /ero`: Sends Random Ero source Images.
+ - `/ero`: Sends Random Ero source Images.
  - `/smug`: Sends Random Smug GIFs.
  - `/baka`: Sends Random Baka Shout GIFs.
  - `/dva`: Sends Random D.VA source Images.
