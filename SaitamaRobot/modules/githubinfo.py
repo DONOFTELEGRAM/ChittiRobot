@@ -6,14 +6,14 @@ from SaitamaRobot import pgram
 from SaitamaRobot.utils.errors import capture_err
 
 
-__mod_name__ = "Github HELP"
+__mod_name__ = "Github"
 
 
 @pgram.on_message(filters.command('github'))
 @capture_err
 async def github(_, message):
     if len(message.command) != 2:
-        await message.reply_text("/git Username")
+        await message.reply_text("*Usage is:* `/github <username>`")
         return
     username = message.text.split(None, 1)[1]
     URL = f'https://api.github.com/users/{username}'
