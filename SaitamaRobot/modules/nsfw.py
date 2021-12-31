@@ -1,13 +1,77 @@
-import requests
-import nekos
-from PIL import Image
-import os
 
-from telegram import Message, Chat, Update, Bot, MessageEntity
-from telegram import ParseMode
-from telegram.ext import CommandHandler, run_async
+import os
+import html
+import nekos
+import requests
+import Cutiepii_Robot.modules.sql.nsfw_sql as sql
+
+from time import sleep
+from PIL import Image
+from telegram import Bot, Chat, Message, MessageEntity, ParseMode, Update
+from telegram.error import BadRequest, RetryAfter, Unauthorized
+from telegram.ext import CommandHandler, run_async, CallbackContext
+from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
 from SaitamaRobot import dispatcher, updater
+from SaitamaRobot.modules.log_channel import gloggable
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
+
+
+@user_admin
+@gloggable
+def add_nsfw(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    msg = update.effective_message
+    user = update.effective_user #Remodified by @EverythingSuckz
+    is_nsfw = sql.set_nsfw(chat.id)
+    if not is_nsfw:
+        sql.set_nsfw(chat.id)
+        msg.reply_text("Activated NSFW Mode!")
+        message = (
+            f"<b>{chat.title}:</b>\n"
+            f"ACTIVATED_NSFW\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        )
+        return message
+    msg.reply_text("NSFW Mode is already Activated for this chat!")
+    return ""
+
+
+@user_admin
+@gloggable
+def rem_nsfw(update: Update, context: CallbackContext):
+    msg = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+    is_nsfw = sql.rem_nsfw(chat.id)
+    if not is_nsfw:
+        msg.reply_text("NSFW Mode is already Deactivated")
+        return ""
+    sql.rem_nsfw(chat.id)
+    msg.reply_text("Rolled Back to SFW Mode!")
+    message = (
+        f"<b>{chat.title}:</b>\n"
+        f"DEACTIVATED_NSFW\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+    )
+    return message
+
+
+def list_nsfw_chats(update: Update, context: CallbackContext):
+    chats = sql.get_all_nsfw_chats()
+    text = "<b>NSFW Activated Chats</b>\n"
+    for chat in chats:
+        try:
+            x = context.bot.get_chat(int(*chat))
+            name = x.title or x.first_name
+            text += f"• <code>{name}</code>\n"
+        except (BadRequest, Unauthorized):
+            sql.rem_nsfw(*chat)
+        except RetryAfter as e:
+            sleep(e.retry_after)
+    update.effective_message.reply_text(text, parse_mode="HTML")
+
 
 
 def is_user_in_chat(chat: Chat, user_id: int) -> bool:
@@ -423,7 +487,13 @@ Also thanks to [EverythingSuckz](https://t.me/EverythingSuckz) for NSFW filter.
 *Enable or Disable NSFW Mode*:
  - `/addnsfw` *:* Enable NSFW mode
  - `/rmnsfw` *:* Disable NSFW mode
-
+*Anti Nsfw*
+ - `/antinsfw <on/off>` *:* Enable or Disable NSFW Filter,
+ this will detect if someone sent NSFW content in group,
+ and delete that media automatically,
+ It'll work surely if NSFW Media was clearly seenable.
+ - `/nsfwscan` *:* Scan a file/Media and tell about it's NSFW Information.
+ 
 *Commands*
  - `/neko`: Sends Random SFW Neko source Images.
  - `/feet`: Sends Random Anime Feet Images.
