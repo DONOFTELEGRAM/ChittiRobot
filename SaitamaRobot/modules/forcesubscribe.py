@@ -13,11 +13,11 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from Cutiepii_Robot import BOT_ID, BOT_USERNAME, BOT_NAME
+from SaitamaRobot import BOT_ID, BOT_USERNAME, BOT_NAME
 
 # from Cutiepii_Robot import OWNER_ID as SUDO_USERS
-from Cutiepii_Robot import pgram
-from Cutiepii_Robot.modules.sql import forceSubscribe_sql as sql
+from SaitamaRobot import pgram
+from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 
@@ -198,17 +198,17 @@ def config(client, message):
 
 __help__ = """
 *Force Subscribe*:
-- Cutiepii can mute members who are not subscribed your channel until they subscribe
+- I can mute members who are not subscribed your channel until they subscribe
 - When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
 *Setup*
 1) First of all add me in the group as admin with ban users permission and in the channel as admin.
 Note: Only creator of the group can setup me and i will not allow force subscribe again if not done so.
  
 *Commmands*:
-   ➢ `/forcesubscribe`*:* To get the current settings.
-   ➢ `/forcesubscribe <no/off/disable>`*:* To turn of ForceSubscribe.
-   ➢ `/forcesubscribe {channel username}`*:* To turn on and setup the channel.
-   ➢ `/forcesubscribe clear`*:* To unmute all members who muted by me.
+   • `/forcesubscribe`*:* To get the current settings.
+   • `/forcesubscribe <no/off/disable>`*:* To turn of ForceSubscribe.
+   • `/forcesubscribe {channel username}`*:* To turn on and setup the channel.
+   • `/forcesubscribe clear`*:* To unmute all members who muted by me.
 Note: /forcesub is an alias of /forcesubscribe
  
 """
