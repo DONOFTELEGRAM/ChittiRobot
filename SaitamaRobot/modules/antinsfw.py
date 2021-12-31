@@ -1,9 +1,7 @@
-
-
 from os import remove
 from pyrogram import filters
 
-from SaitamaRobot import DRAGONS, BOT_USERNAME, arq, pgram
+from SaitamaRobot import DRAGONS, BOT_USERNAME, SUPPORT_CHAT, arq, pgram
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.utils.permissions import adminsOnly
 from SaitamaRobot.modules.mongo.nsfw_mongo import is_nsfw_on, nsfw_off, nsfw_on
@@ -119,7 +117,7 @@ async def nsfw_scan_command(_, message):
     m = await message.reply_text("Scanning")
     file_id = await get_file_id_from_message(reply)
     if not file_id:
-        return await m.edit("Something wrong happened.")
+        return await m.edit(f"Something wrong happened, Report to @{SUPPORT_CHAT}")
     file = await pgram.download_media(file_id)
     try:
         results = await arq.nsfw_scan(file=file)
