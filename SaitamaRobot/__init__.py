@@ -84,6 +84,7 @@ if ENV:
     INFOPIC = bool(os.environ.get("INFOPIC", False))
     OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", "") # From:- https://openweathermap.org/api
     HEROKU_APP_NAME = (os.environ.get("HEROKU_APP_NAME", False))
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./") # Don't Change
     ERROR_LOGS = os.environ.get("ERROR_LOGS", -1001299139905)
     HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", False))
     EVENT_LOGS = os.environ.get("EVENT_LOGS")
@@ -102,6 +103,8 @@ if ENV:
     MONGO_DB = "Rajnii"
     MONGO_PORT = int(os.environ.get("MONGO_PORT", None))
     ARQ_API_URL = "https://thearq.tech"
+    GOOGLE_CHROME_BIN = "/usr/bin/google-chrome"
+    CHROME_DRIVER = "/usr/bin/chromedriver"
     ARQ_API_KEY = os.environ.get("ARQ_API")
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
