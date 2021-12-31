@@ -75,7 +75,7 @@ def capture_err(func):
             )
             for x in error_feedback:
                 await pgram.send_message(
-                    SUPPORT_CHAT,
+                    ERROR_LOGS,
                     x
                 )
             raise err
