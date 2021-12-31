@@ -1,5 +1,6 @@
 httpx[http2]
 future
+gtts
 wget==3.2
 apscheduler
 selenium==4.0.0
