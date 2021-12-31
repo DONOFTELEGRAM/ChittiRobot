@@ -33,7 +33,7 @@ logging.basicConfig(
 
 
 LOGGER = logging.getLogger(__name__)
-logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
+# logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 
 
 # if version < 3.6, stop bot.
