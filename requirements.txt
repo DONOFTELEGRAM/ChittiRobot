@@ -5,6 +5,7 @@ apscheduler
 selenium==4.0.0
 bing_image_downloader==1.1.1
 google-api-python-client==2.29.0
+lxml==4.6.4
 carbonnow
 pretty_errors
 secureme==0.0.4
