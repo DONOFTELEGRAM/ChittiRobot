@@ -16,6 +16,7 @@ from SaitamaRobot import (
     URL,
     WEBHOOK,
     SUPPORT_CHAT,
+    ERROR_LOGS,
     dispatcher,
     StartTime,
     telethn,
