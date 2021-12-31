@@ -32,7 +32,7 @@ from SaitamaRobot.events import register
 
 
 @register(pattern=r"^/google (.*)")
-async def gsearch(q_event):
+async def gsearch(q_event, Google):
     """For .google command, do a Google search."""
     match = q_event.pattern_match.group(1)
     page = findall(r"page=\d+", match)
