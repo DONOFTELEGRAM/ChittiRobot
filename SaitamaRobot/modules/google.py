@@ -2,6 +2,7 @@ import glob
 import io
 import os
 import re
+from re import findall
 import urllib
 import urllib.request
 from search_engine_parser import GoogleSearch
