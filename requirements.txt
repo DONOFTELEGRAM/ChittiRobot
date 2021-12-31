@@ -2,6 +2,9 @@ httpx[http2]
 future
 wget==3.2
 apscheduler
+selenium==4.0.0
+bing_image_downloader==1.1.1
+google-api-python-client==2.29.0
 carbonnow
 pretty_errors
 secureme==0.0.4
@@ -23,7 +26,6 @@ pytube
 youtube_search_python
 faker
 tgCrypto>=1.2.2
-bing_image_downloader
 aiofiles
 sylviorus
 lxml>=4.6.5
@@ -57,6 +59,7 @@ jikanpy
 speedtest-cli
 regex
 bleach
+zalgo_text
 wikipedia
 telethon==1.16.4
 ujson
