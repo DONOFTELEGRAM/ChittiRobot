@@ -11,7 +11,7 @@ pretty_errors
 secureme==0.0.4
 beautifulsoup4
 opencv-python
-ffmpeg==1.4
+ffmpeg
 yt-dlp
 pydub==0.25.1
 psutil==5.8.0
