@@ -234,11 +234,7 @@ time.sleep(1)
 dispatcher = updater.dispatcher
 print("[RAJNII] PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
-pgram = Client(
-    session_name,
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=TOKEN)
+pgram = Client(session_name, api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 time.sleep(1)
 print("[RAJNII] Connecting To SRN • Data Center • Mumbai • MongoDB Database")
 mongodb = MongoClient(MONGO_DB_URL, MONGO_PORT)[MONGO_DB]
