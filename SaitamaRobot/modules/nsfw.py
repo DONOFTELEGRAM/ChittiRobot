@@ -3,7 +3,7 @@ import os
 import html
 import nekos
 import requests
-import Cutiepii_Robot.modules.sql.nsfw_sql as sql
+import SaitamaRobot.modules.sql.nsfw_sql as sql
 
 from time import sleep
 from PIL import Image
@@ -40,7 +40,7 @@ def add_nsfw(update: Update, context: CallbackContext):
 
 @user_admin
 @gloggable
-def rem_nsfw(update: Update, context: CallbackContext):
+def rm_nsfw(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
@@ -601,6 +601,11 @@ SMUG_HANDLER = CommandHandler("smug", smug)
 BAKA_HANDLER = CommandHandler("baka", baka)
 DVA_HANDLER = CommandHandler("dva", dva)
 
+ADDNSFW = CommandHandler("addnsfw", add_nsfw)
+RMNSFW = CommandHandler("rmnsfw", rm_nsfw)
+dispatcher.add_handler(ADDNSFW)
+dispatcher.add_handler(RMNSFW)
+
 dispatcher.add_handler(LEWDKEMO_HANDLER)
 dispatcher.add_handler(NEKO_HANDLER)
 dispatcher.add_handler(FEET_HANDLER)
@@ -655,6 +660,8 @@ dispatcher.add_handler(BAKA_HANDLER)
 dispatcher.add_handler(DVA_HANDLER)
 
 __handlers__ = [
+    ADDNSFW,
+    RMNSFW,
     NEKO_HANDLER,
     FEET_HANDLER,
     YURI_HANDLER,
