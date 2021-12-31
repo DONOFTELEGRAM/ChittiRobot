@@ -1,6 +1,7 @@
+
 import logging
 import time
-from telegram.ext import CommandHandler
+
 from pyrogram import filters
 from pyrogram.errors import RPCError
 from pyrogram.errors.exceptions.bad_request_400 import (
@@ -11,10 +12,12 @@ from pyrogram.errors.exceptions.bad_request_400 import (
     UserNotParticipant,
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
-from SaitamaRobot import BOT_ID, BOT_USERNAME, dispatcher
+
+from Cutiepii_Robot import BOT_ID, BOT_USERNAME, BOT_NAME
+
 # from Cutiepii_Robot import OWNER_ID as SUDO_USERS
-from SaitamaRobot import pgram
-from SaitamaRobot.modules.sql import forceSubscribe_sql as sql
+from Cutiepii_Robot import pgram
+from Cutiepii_Robot.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 
@@ -61,19 +64,18 @@ def _onUnMuteRequest(client, cb):
                     text="❗ You have been muted by admins due to some other reason.",
                     show_alert=True,
                 )
-        else:
-            if not client.get_chat_member(chat_id, BOT_ID).status == "administrator":
-                client.send_message(
-                    chat_id,
-                    f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
-                )
+        elif client.get_chat_member(chat_id, BOT_ID).status != "administrator":
+            client.send_message(
+                chat_id,
+                f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
+            )
 
-            else:
-                client.answer_callback_query(
-                    cb.id,
-                    text="❗ Warning! Don't press the button when you can talk.",
-                    show_alert=True,
-                )
+        else:
+            client.answer_callback_query(
+                cb.id,
+                text="❗ Warning! Don't press the button when you can talk.",
+                show_alert=True,
+            )
 
 
 @pgram.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
@@ -86,9 +88,9 @@ def _check_member(client, message):
         except:
             return
         try:
-            if (
-                not client.get_chat_member(chat_id, user_id).status
-                in ("administrator", "creator")                
+            if client.get_chat_member(chat_id, user_id).status not in (
+                "administrator",
+                "creator",
             ):
                 channel = chat_db.channel
                 try:
@@ -121,7 +123,7 @@ def _check_member(client, message):
                         )
                     except ChatAdminRequired:
                         sent_message.edit(
-                            "❗ **Cutiepii is not an admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                            f"❗ **{BOT_NAME} is not an admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
                         )
                     except RPCError:
                         return
@@ -137,7 +139,7 @@ def _check_member(client, message):
             return
 
 
-# @pgram.on_message(filters.command(["forcesubscribe", "forcesub", f"forcesub@{BOT_USERNAME}", f"forcesubscribe@{BOT_USERNAME}"]) & ~filters.private)
+@pgram.on_message(filters.command(["forcesubscribe", "forcesub", f"forcesub@{BOT_USERNAME}", f"forcesubscribe@{BOT_USERNAME}"]) & ~filters.private)
 def config(client, message):
     user = client.get_chat_member(message.chat.id, message.from_user.id)
     if user.status == "creator":
@@ -181,14 +183,13 @@ def config(client, message):
                     message.reply_text("❗ **Invalid Channel Username.**")
                 except Exception as err:
                     message.reply_text(f"❗ **ERROR:** ```{err}```")
+        elif sql.fs_settings(chat_id):
+            message.reply_text(
+                f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
+                disable_web_page_preview=True,
+            )
         else:
-            if sql.fs_settings(chat_id):
-                message.reply_text(
-                    f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
-                    disable_web_page_preview=True,
-                )
-            else:
-                message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
+            message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
     else:
         message.reply_text(
             "❗ **Group Creator Required**\n__You have to be the group creator to do that.__"
@@ -211,8 +212,4 @@ Note: Only creator of the group can setup me and i will not allow force subscrib
 Note: /forcesub is an alias of /forcesubscribe
  
 """
-FSUB_HANDLER = CommandHandler(["forcesubscribe","forcesub"], config)
-dispatcher.add_handler(FSUB_HANDLER)
-
-
 __mod_name__ = "F-Sub"
