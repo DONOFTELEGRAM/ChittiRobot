@@ -1,7 +1,7 @@
 
 # Website Search packages 
 bing_image_downloader==1.1.1
-search_engine_parser
+search_engine_parser==0.6.6
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
