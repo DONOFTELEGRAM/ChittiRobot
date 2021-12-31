@@ -5,7 +5,7 @@ import re
 from re import findall
 import urllib
 import urllib.request
-from search_engine_parser import GoogleSearch
+from search_engine_parser.core.engines.google import Search as Google
 import urllib
 from urllib.parse import urlencode
 from urllib.error import URLError, HTTPError
@@ -43,7 +43,7 @@ async def gsearch(q_event):
     except IndexError:
         page = 1
     search_args = (str(match), int(page))
-    gsearch = GoogleSearch()
+    gsearch = Google()
     gresults = await gsearch.async_search(*search_args)
     msg = ""
     for i in range(len(gresults["links"])):
