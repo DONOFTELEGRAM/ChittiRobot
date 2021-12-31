@@ -1,7 +1,7 @@
 
 # Website Search packages 
 bing_image_downloader==1.1.1
-search_engine_parser==0.6.6
+search_engine_parser
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
@@ -93,7 +93,7 @@ telethon==1.16.4
 countryinfo
 aiofiles
 sylviorus
-lxml==4.6.3
+lxml==4.7.1
 odmantic
 spongemock
 aiohttp>=2.2.5
