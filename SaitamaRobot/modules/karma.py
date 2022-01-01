@@ -99,7 +99,7 @@ async def downvote(_, message):
     )
 
 
-@app.on_message(filters.command("karma", f"karma@{BOT_USERNAME}") & filters.group)
+@app.on_message(filters.command("karma") & filters.group)
 @capture_err
 async def command_karma(_, message):
     chat_id = message.chat.id
