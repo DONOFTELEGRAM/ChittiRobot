@@ -1,8 +1,9 @@
 import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import (Boolean, Column, BigInteger, String, UnicodeText, distinct, Integer,
+from sqlalchemy import (Boolean, Column, String, UnicodeText, distinct, Integer,
                         func)
+from sqlalchemy.sql.sqltypes import BigInteger
 from sqlalchemy.dialects import postgresql
 
 
