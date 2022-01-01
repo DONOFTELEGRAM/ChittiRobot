@@ -1,7 +1,7 @@
 import threading
-from sqlalchemy.sql.sqltypes import BigInteger
+
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, UnicodeText
+from sqlalchemy import Column, UnicodeText, Boolean, BigInteger
 
 
 class AFK(BASE):
