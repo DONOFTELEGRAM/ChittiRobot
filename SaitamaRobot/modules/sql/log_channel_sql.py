@@ -2,7 +2,7 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, distinct, func
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 
 class GroupLogs(BASE):
     __tablename__ = "log_channels"
