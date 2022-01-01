@@ -2,7 +2,7 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, UnicodeText
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 
 class BlacklistUsers(BASE):
     __tablename__ = "blacklistusers"
