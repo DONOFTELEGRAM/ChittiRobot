@@ -2,7 +2,7 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, UnicodeText
-from sqlalchemy.sql.sqltypes import BIGINT
+from sqlalchemy import BIGINT
 
 class UserInfo(BASE):
     __tablename__ = "userinfo"
