@@ -12,7 +12,7 @@ google-trans-new
 geopy
 gpytranslate
 feedparser
-
+html2text
 
 
 # Youtube
