@@ -4,9 +4,9 @@ from typing import Union
 
 from SaitamaRobot.modules.helper_funcs.msg_types import Types
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import (Boolean, Column, Integer, String, Integer,
+from sqlalchemy import (Boolean, Column, Integer, String, BigInteger,
                         UnicodeText)
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 
 DEFAULT_WELCOME = 'Hey {first}, how are you?'
 DEFAULT_GOODBYE = 'Nice knowing ya!'
@@ -288,7 +288,7 @@ class WelcomeMute(BASE):
 
 class WelcomeMuteUsers(BASE):
     __tablename__ = "human_checks"
-    user_id = Column(BigInteger, primary_key=True)
+    user_id = Column(BIGINT, primary_key=True)
     chat_id = Column(String(14), primary_key=True)
     human_check = Column(Boolean)
 
