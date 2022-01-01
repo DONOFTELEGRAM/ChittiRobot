@@ -2,7 +2,7 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, Integer, String, UnicodeText, distinct, func
-
+from sqlalchemy.sql.sqltypes import BigInteger
 
 class StickersFilters(BASE):
     __tablename__ = "blacklist_stickers"
