@@ -2,12 +2,12 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, String, UnicodeText
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 
 
 class GloballyBannedUsers(BASE):
     __tablename__ = "gbans"
-    user_id = Column(BigInteger, primary_key=True)
+    user_id = Column(BIGINT, primary_key=True)
     name = Column(UnicodeText, nullable=False)
     reason = Column(UnicodeText)
 
