@@ -2,9 +2,9 @@ import threading
 
 from SaitamaRobot import dispatcher
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Boolean, Column, Integer, String, UnicodeText, BigInteger
+from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
 from telegram.error import BadRequest, Unauthorized
-
+from sqlalchemy.sql.sqltypes import BigInteger
 
 class Federations(BASE):
     __tablename__ = "feds"
