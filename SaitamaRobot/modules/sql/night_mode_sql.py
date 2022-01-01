@@ -1,5 +1,5 @@
-from sqlalchemy.sql.sqltypes import BigInteger
-from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
+
+from sqlalchemy import Boolean, Column, Integer, String, UnicodeText, BIGINT
 from SaitamaRobot.modules.sql import BASE, SESSION
 
 
