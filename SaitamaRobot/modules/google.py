@@ -5,7 +5,7 @@ import re
 from re import findall
 import urllib
 import urllib.request
-from search_engine_parser.core.engines.google import Search as Google
+from search_engine_parser import GoogleSearch
 import urllib
 from urllib.parse import urlencode
 from urllib.error import URLError, HTTPError
@@ -31,11 +31,14 @@ from SaitamaRobot.events import register
 
 
 
-@register(pattern=r"^.gs (.*)")
-async def gsearch(event):
-    """For .google command, do a Google search."""
+@register(pattern="^/google (.*)")
+async def _(event):
+    if event.fwd_from:
+        return
+    
+    webevent = await event.reply("searching........")
     match = event.pattern_match.group(1)
-    page = findall(r"page=\d+", match)
+    page = re.findall(r"page=\d+", match)
     try:
         page = page[0]
         page = page.replace("page=", "")
@@ -43,7 +46,7 @@ async def gsearch(event):
     except IndexError:
         page = 1
     search_args = (str(match), int(page))
-    gsearch = Google()
+    gsearch = GoogleSearch()
     gresults = await gsearch.async_search(*search_args)
     msg = ""
     for i in range(len(gresults["links"])):
@@ -51,12 +54,12 @@ async def gsearch(event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            msg += f"[{title}]({link})\n`{desc}`\n\n"
+            msg += f"❍[{title}]({link})\n**{desc}**\n\n"
         except IndexError:
             break
-    await q_event.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg)
-
+    await webevent.edit(
+        "**Search Query:**\n`" + match + "`\n\n** • Results:**\n" + msg, link_preview=False
+    )
  
 
 @register(pattern="^/img (.*)")
@@ -83,10 +86,83 @@ async def img_sampler(event):
     os.chdir("/app")
     os.system("rm -rf store")
 
-
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
 opener.addheaders = [("User-agent", useragent)]
+
+
+
+
+@register(pattern=r"^/reverse(?: |$)(\d*)")
+async def okgoogle(img):
+    """ For .reverse command, Google search images and stickers. """
+    if os.path.isfile("okgoogle.png"):
+        os.remove("okgoogle.png")
+    
+    message = await img.get_reply_message()
+    if message and message.media:
+        photo = io.BytesIO()
+        await tbot.download_media(message, photo)
+    else:
+        await img.reply("`Reply to photo or sticker nigger.`")
+        return
+
+    if photo:
+        dev = await img.reply("`Processing...`")
+        try:
+            image = Image.open(photo)
+        except OSError:
+            await dev.edit("`Unsupported sexuality, most likely.`")
+            return
+        name = "okgoogle.png"
+        image.save(name, "PNG")
+        image.close()
+        # https://stackoverflow.com/questions/23270175/google-reverse-image-search-using-post-request#28792943
+        searchUrl = "https://www.google.com/searchbyimage/upload"
+        multipart = {"encoded_image": (name, open(name, "rb")), "image_content": ""}
+        response = requests.post(searchUrl, files=multipart, allow_redirects=False)
+        fetchUrl = response.headers["Location"]
+
+        if response != 400:
+            await dev.edit(
+                "`Image successfully uploaded to Google. Maybe.`"
+                "\n`Parsing source now. Maybe.`"
+            )
+        else:
+            await dev.edit("`Google told me to fuck off.`")
+            return
+
+        os.remove(name)
+        match = await ParseSauce(fetchUrl + "&preferences?hl=en&fg=1#languages")
+        guess = match["best_guess"]
+        imgspage = match["similar_images"]
+
+        if guess and imgspage:
+            await dev.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
+        else:
+            await dev.edit("`Can't find this piece of shit.`")
+            return
+
+        if img.pattern_match.group(1):
+            lim = img.pattern_match.group(1)
+        else:
+            lim = 3
+        images = await scam(match, lim)
+        yeet = []
+        for i in images:
+            k = requests.get(i)
+            yeet.append(k.content)
+        try:
+            await tbot.send_file(
+                entity=await tbot.get_input_entity(img.chat_id),
+                file=yeet,
+                reply_to=img,
+            )
+        except TypeError:
+            pass
+        await dev.edit(
+            f"[{guess}]({fetchUrl})\n\n[Visually similar images]({imgspage})"
+        )
 
 
 async def ParseSauce(googleurl):
@@ -194,43 +270,12 @@ async def apk(e):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += "\n\n===> *Rajnii* <==="
+        app_details += "\n\n===> Igris <==="
         await e.reply(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await e.reply("No result found in search. Please enter **Valid app name**")
     except Exception as err:
         await e.reply("Exception Occured:- " + str(err))
-
-
-def progress(current, total):
-    """Calculate and return the download progress with given arguments."""
-    print(
-        "Downloaded {} of {}\nCompleted {}".format(
-            current, total, (current / total) * 100
-        )
-    )
-
-
-async def is_register_admin(chat, user):
-    if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-
-        return isinstance(
-            (
-                await client(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerChat):
-
-        ui = await client.get_peer_id(user)
-        ps = (
-            await client(functions.messages.GetFullChatRequest(chat.chat_id))
-        ).full_chat.participants.participants
-        return isinstance(
-            next((p for p in ps if p.user_id == ui), None),
-            (types.ChatParticipantAdmin, types.ChatParticipantCreator),
-        )
-    return None
 
 
 @register(pattern=r"^/getqr$")
