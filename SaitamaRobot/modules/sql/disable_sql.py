@@ -2,7 +2,7 @@ import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, String, UnicodeText, distinct, func
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 
 class Disable(BASE):
     __tablename__ = "disabled_commands"
