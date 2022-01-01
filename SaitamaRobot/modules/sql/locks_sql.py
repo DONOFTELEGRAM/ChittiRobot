@@ -2,7 +2,7 @@
 import threading
 
 from sqlalchemy import Column, String, Boolean
-
+from sqlalchemy.sql.sqltypes import BigInteger
 from SaitamaRobot.modules.sql import SESSION, BASE
 
 
