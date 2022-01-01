@@ -76,7 +76,8 @@ beautifulsoup4
 
 # Database
 # sqlalchemy==1.3.20
-sqlalchemy==1.4.26
+# sqlalchemy==1.4.26
+sqlalchemy
 pymongo
 motor
 nltk
