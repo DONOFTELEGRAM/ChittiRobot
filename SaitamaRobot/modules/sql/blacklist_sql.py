@@ -1,7 +1,6 @@
 import threading
 
-from sqlalchemy import func, distinct, Column, String, UnicodeText, Integer
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import func, distinct, Column, String, UnicodeText, Integer, BIGINT
 from SaitamaRobot.modules.sql import SESSION, BASE
 
 
