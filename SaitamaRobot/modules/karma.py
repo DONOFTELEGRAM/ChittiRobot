@@ -13,8 +13,10 @@ from SaitamaRobot.modules.mongo.karma_mongo import is_karma_on, karma_off, karma
 karma_positive_group = 3
 karma_negative_group = 4
 
-regex_upvote = r"^((?i)\+|\+\+|\+1|👍)$"
-regex_downvote = r"^(\-|\-\-|\-1|👎)$"
+
+
+regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tnx|ty|thank you|thanx|thanks|lmao|sexy|pro|cool|mast|tnku|tysm|Awesome|good|🤣|😂|😁|😄|😅|😘|😍|👍)$"
+regex_downvote = r"^(\-|\-\-|\-1|fuck|fuk|shit|shitt|worst|bad|piro|nub|noob|pero|wrong|wtf|stfu|nikal|🙄|😑|😡|🤬|🤯|😒|😔|😞|😟|😕|🙁|☹️|😖|😣|😫|😩|🥺|😢|😭|😠|🤨|👎)$"
 
 @app.on_message(
     filters.text
