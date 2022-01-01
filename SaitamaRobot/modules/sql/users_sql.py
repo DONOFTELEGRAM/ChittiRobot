@@ -1,6 +1,7 @@
 import threading
 
 from SaitamaRobot import dispatcher
+from sqlalchemy.sql.sqltypes import BigInteger
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import (Column, ForeignKey, BigInteger, String, UnicodeText, Integer,
                         UniqueConstraint, func)
