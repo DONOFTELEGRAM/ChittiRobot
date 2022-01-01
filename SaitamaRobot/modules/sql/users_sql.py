@@ -1,7 +1,7 @@
 import threading
 
 from SaitamaRobot import dispatcher
-from sqlalchemy.sql.sqltypes import BigInteger
+from sqlalchemy import BIGINT
 from SaitamaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import (Column, ForeignKey, BigInteger, String, UnicodeText, Integer,
                         UniqueConstraint, func)
@@ -9,7 +9,7 @@ from sqlalchemy import (Column, ForeignKey, BigInteger, String, UnicodeText, Int
 
 class Users(BASE):
     __tablename__ = "users"
-    user_id = Column(BigInteger, primary_key=True)
+    user_id = Column(BIGINT, primary_key=True)
     username = Column(UnicodeText)
 
     def __init__(self, user_id, username=None):
@@ -38,7 +38,7 @@ class ChatMembers(BASE):
     priv_chat_id = Column(Integer, primary_key=True)
     # NOTE: Use dual primary key instead of private primary key?
     chat = Column(String(14), ForeignKey("chats.chat_id", onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
-    user = Column(BigInteger, ForeignKey("users.user_id", onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
+    user = Column(BIGINT, ForeignKey("users.user_id", onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
     __table_args__ = (UniqueConstraint('chat', 'user',
                                        name='_chat_members_uc'),)
 
