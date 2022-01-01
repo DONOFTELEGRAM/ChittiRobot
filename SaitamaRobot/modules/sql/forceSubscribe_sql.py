@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Numeric, Boolean
 from SaitamaRobot.modules.sql import BASE, SESSION
-
+from sqlalchemy.sql.sqltypes import BigInteger
 
 class forceSubscribe(BASE):
     __tablename__ = "forceSubscribe"
