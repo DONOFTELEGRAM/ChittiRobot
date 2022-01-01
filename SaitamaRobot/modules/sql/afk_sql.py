@@ -1,13 +1,13 @@
 import threading
 
 from SaitamaRobot.modules.sql import BASE, SESSION
-from sqlalchemy import Column, UnicodeText, Boolean, BigInteger
+from sqlalchemy import Column, UnicodeText, Boolean, BIGINT
 
 
 class AFK(BASE):
     __tablename__ = "afk_users"
 
-    user_id = Column(BigInteger, primary_key=True)
+    user_id = Column(BIGINT, primary_key=True)
     is_afk = Column(Boolean)
     reason = Column(UnicodeText)
 
