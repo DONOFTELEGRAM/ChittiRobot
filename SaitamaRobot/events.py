@@ -4,7 +4,7 @@ from SaitamaRobot import telethn
 
 def register(**args):
     """ Registers a new message. """
-    pattern = args.get('pattern')
+    pattern = args.get('pattern', None)
 
     r_pattern = r'^[/!]'
 
