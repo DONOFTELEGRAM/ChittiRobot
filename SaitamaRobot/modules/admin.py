@@ -343,7 +343,6 @@ def demote(update: Update, context: CallbackContext) -> str:
             " user, so I can't act upon them!")
         return
 
-
 @run_async
 @user_admin
 def refresh_admin(update, _):
@@ -351,7 +350,6 @@ def refresh_admin(update, _):
         ADMIN_CACHE.pop(update.effective_chat.id)
     except KeyError:
         pass
-
     update.effective_message.reply_text("Admins cache refreshed!")
 
 
@@ -374,9 +372,7 @@ def set_title(update: Update, context: CallbackContext):
         return
 
     if not user_id:
-        message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect.."
-        )
+        message.reply_text("You don't seem to be referring to a user or the ID specified is incorrect..")
         return
 
     if user_member.status == 'creator':
