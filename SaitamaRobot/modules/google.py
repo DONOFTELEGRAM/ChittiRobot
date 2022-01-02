@@ -31,7 +31,7 @@ useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [("User-agent", useragent)]
 
 
-@register(pattern=r"^\.google (.*)")
+@register(pattern="^/google (.*)")
 async def gsearch(q_event):
     """For .google command, do a Google search."""
     match = q_event.pattern_match.group(1)
