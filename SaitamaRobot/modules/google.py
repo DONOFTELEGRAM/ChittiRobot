@@ -43,14 +43,14 @@ async def gsearch(q_event):
     except IndexError:
         page = 1
         search_args = (str(match), int(page))
-        gsearch = Google()
-        gresults = await gsearch.async_search(*search_args)
+        gsearch = Google(search_args)
+#        gresults = await gsearch.async_search(*search_args)
         msg = ""
         for i in range(len(gresults["links"])):
             try:
-                title = gresults["titles"][i]
-                link = gresults["links"][i]
-                desc = gresults["descriptions"][i]
+                title = gsearch["titles"][i]
+                link = gsearch["links"][i]
+                desc = gsearch["descriptions"][i]
                 msg += f"[{title}]({link})\n`{desc}`\n\n"
             except IndexError:
                 break
