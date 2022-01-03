@@ -376,16 +376,13 @@ Gmutes, also known as global mutes, are used by the bot owners to mute spammers 
 you and your groups by removing spam flooders as quickly as possible. They can be disabled for you group by calling \
 """
 '''
-__mod_name__ = "GMUTES"
+__mod_name__ = "Global Mutes"
 
-GMUTE_HANDLER = CommandHandler("gmute", gmute, pass_args=True,
-                              filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
-UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute, pass_args=True,
-                                filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
-GMUTE_LIST = CommandHandler("gbanstats", gmutelist,
-                           filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
+GMUTE_HANDLER = CommandHandler("gmute", gmute)
+UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute)
+GMUTE_LIST = CommandHandler("gbanstats", gmutelist)
 
-GMUTE_STATUS = CommandHandler("gmutes", gmutespam, pass_args=True, filters=Filters.group)
+GMUTE_STATUS = CommandHandler("gmutes", gmutespam,  filters=Filters.group)
 
 GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gmute)
 
