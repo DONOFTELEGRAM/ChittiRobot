@@ -1,4 +1,4 @@
-from gsearch.googlesearch import Google
+from gsearch.googlesearch import search as Google
 import urllib
 from SaitamaRobot import telethn as tbot
 import glob
