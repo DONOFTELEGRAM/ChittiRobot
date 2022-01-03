@@ -382,10 +382,10 @@ GMUTE_HANDLER = CommandHandler("gmute", gmute, pass_args=True,
                               filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute, pass_args=True,
                                 filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
-GMUTE_LIST = CommandHandler("gmutelist", gmutelist,
+GMUTE_LIST = CommandHandler("gbanstats", gmutelist,
                            filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 
-GMUTE_STATUS = CommandHandler("gmutespam", gmutestat, pass_args=True, filters=Filters.group)
+GMUTE_STATUS = CommandHandler("antispam", gmutestat, pass_args=True, filters=Filters.group)
 
 GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gmute)
 
