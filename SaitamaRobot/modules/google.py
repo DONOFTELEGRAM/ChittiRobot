@@ -31,13 +31,11 @@ useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [("User-agent", useragent)]
 
 
-@register(pattern="^/google (.*)")
-def google(event):
-    if event.fwd_from:
-        return
-    webevent = event.reply("searching........")
-    match = event.pattern_match.group(1)
-    page = re.findall(r"page=\d+", match)
+@register(pattern=r"^/google (.*)")
+async def gsearch(q_event):
+    """For .google command, do a Google search."""
+    match = q_event.pattern_match.group(1)
+    page = findall(r"page=\d+", match)
     try:
         page = page[0]
         page = page.replace("page=", "")
@@ -46,17 +44,17 @@ def google(event):
         page = 1
         search_args = (str(match), int(page))
         gsearch = GoogleSearch()
-        gresults = gsearch.async_search(*search_args)
+        gresults = await gsearch.async_search(*search_args)
         msg = ""
-        for i in range(len(gresults["link"])):
+        for i in range(len(gresults["links"])):
             try:
-                title = gresults["title"][i]
-                link = gresults["link"][i]
-                desc = gresults["description"][i]
-                msg += f"❍[{title}]({link})\n**{desc}**\n\n"
+                title = gresults["titles"][i]
+                link = gresults["links"][i]
+                desc = gresults["descriptions"][i]
+                msg += f"[{title}]({link})\n`{desc}`\n\n"
             except IndexError:
                 break
-                webevent.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
+                await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
 
 
 @register(pattern="^/img (.*)")
