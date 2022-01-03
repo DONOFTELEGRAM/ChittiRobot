@@ -35,7 +35,7 @@ opener.addheaders = [("User-agent", useragent)]
 def google(event):
     if event.fwd_from:
         return
-    webevent = await event.reply("searching........")
+    webevent = event.reply("searching........")
     match = event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
@@ -46,7 +46,7 @@ def google(event):
         page = 1
         search_args = (str(match), int(page))
         gsearch = GoogleSearch()
-        gresults = await gsearch.async_search(*search_args)
+        gresults = gsearch.async_search(*search_args)
         msg = ""
         for i in range(len(gresults["link"])):
             try:
@@ -56,7 +56,7 @@ def google(event):
                 msg += f"❍[{title}]({link})\n**{desc}**\n\n"
             except IndexError:
                 break
-                await webevent.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
+                webevent.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
 
 
 @register(pattern="^/img (.*)")
