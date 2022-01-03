@@ -389,11 +389,9 @@ async def antichanpin_cleanlinked(c, m: Message):
     return
 
 __mod_name__ = "Pin"
- __help__ = """\n
- • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users.\
+ __help__ = """ • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users.\
  • `/unpin`*:* unpins the replied pinned message.\
  • `/unpinall`*:* unpin all pinned messages in a group.\
  • `/antichannelpin`*:* automatically unpins those pinned message which pinned through linked channel.\
  • `/cleanlinked`*:* automatically deletes linked channel's messages (after executed).\
- • `/permapin <text>`*:* first send the given message, then pin it.\
- """
+ • `/permapin <text>`*:* first send the given message, then pin it."""
