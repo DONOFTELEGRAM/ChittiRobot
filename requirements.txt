@@ -14,8 +14,6 @@ geopy
 gpytranslate
 feedparser
 html2text
-beautifulsoup4==4.9.1
-aiohttp==3.7.4
 
 
 # Youtube
@@ -95,7 +93,6 @@ telethon==1.16.4
 countryinfo
 aiofiles
 sylviorus
-lxml==4.6.5
 odmantic
 spongemock
 Pillow>=4.2.0
@@ -107,7 +104,6 @@ bleach
 zalgo_text
 wikipedia
 ujson
-fake-useragent==0.1.11
 spamwatch
 alphabet_detector
 cachetools
