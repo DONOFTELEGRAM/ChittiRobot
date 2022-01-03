@@ -19,9 +19,14 @@ GMUTE_ENFORCE_GROUP = 6
 
 
 @run_async
-def gmute(bot: Bot, update: Update, args: List[str]):
+def gmute(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    log_message = ""
+    
     message = update.effective_message  # type: Optional[Message]
-
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
@@ -173,8 +178,12 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 
 
 @run_async
-def ungmute(bot: Bot, update: Update, args: List[str]):
-    message = update.effective_message  # type: Optional[Message]
+def ungmute(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    log_message = ""
 
     user_id = extract_user(message, args)
     if not user_id:
@@ -278,7 +287,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
 
 
 @run_async
-def gmutelist(bot: Bot, update: Update):
+def gmutelist(update: Update, context: CallbackContext):
     muted_users = sql.get_gmute_list()
 
     if not muted_users:
@@ -297,7 +306,7 @@ def gmutelist(bot: Bot, update: Update):
                                                 caption="Here is the list of currently gmuted users.")
 
 
-def check_and_mute(bot, update, user_id, should_message=True):
+def check_and_mute(bot, update: Update, context: CallbackContext):
     if sql.is_user_gmuted(user_id):
         bot.restrict_chat_member(update.effective_chat.id, user_id, can_send_messages=False)
         if should_message:
@@ -305,7 +314,8 @@ def check_and_mute(bot, update, user_id, should_message=True):
 
 
 @run_async
-def enforce_gmute(bot: Bot, update: Update):
+def enforce_gmute(update: Update, context: CallbackContext):
+    bot = context.bot
     # Not using @restrict handler to avoid spamming - just ignore if cant gmute.
     if sql.does_chat_gmute(update.effective_chat.id) and update.effective_chat.get_member(bot.id).can_restrict_members:
         user = update.effective_user  # type: Optional[User]
@@ -325,7 +335,8 @@ def enforce_gmute(bot: Bot, update: Update):
 
 @run_async
 @user_admin
-def gmutespam(bot: Bot, update: Update, args: List[str]):
+def gmutespam(update: Update, context: CallbackContext):
+    args = context.args
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gmutes(update.effective_chat.id)
@@ -355,7 +366,8 @@ def __user_info__(user_id):
         text = text.format("Yes")
         user = sql.get_gmuted_user(user_id)
         if user.reason:
-            text += "\nReason: {}".format(html.escape(user.reason))
+            text += f"\nReason: {html.escape(user.reason)}"
+            text += f"\n<b>Appeal Chat:</b> @Rajnispam"
     else:
         text = text.format("No")
     return text
@@ -366,7 +378,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return "This chat is enforcing *Gmutes*: `{}`.".format(sql.does_chat_gmute(chat_id))
+    return f"This chat is enforcing *Gmutes*: `{sql.does_chat_gmute(chat_id)}`."
 
 '''
 __help__ = """
