@@ -325,7 +325,7 @@ def enforce_gmute(bot: Bot, update: Update):
 
 @run_async
 @user_admin
-def gmutestat(bot: Bot, update: Update, args: List[str]):
+def gmutespam(bot: Bot, update: Update, args: List[str]):
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gmutes(update.effective_chat.id)
@@ -385,7 +385,7 @@ UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute, pass_args=True,
 GMUTE_LIST = CommandHandler("gbanstats", gmutelist,
                            filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 
-GMUTE_STATUS = CommandHandler("antispam", gmutestat, pass_args=True, filters=Filters.group)
+GMUTE_STATUS = CommandHandler("gmutes", gmutespam, pass_args=True, filters=Filters.group)
 
 GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gmute)
 
