@@ -1,4 +1,3 @@
-from gsearch.googlesearch import search as Google
 import urllib
 from SaitamaRobot import telethn as tbot
 import glob
@@ -12,8 +11,13 @@ from urllib.parse import urlencode
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
+
+from gsearch.googlesearch import search as Google
 from search_engine_parser import GoogleSearch
 from SaitamaRobot import pgram as app
+from SaitamaRobot.utils.errors import capture_err
+
+
 import bs4
 import html2text
 from bing_image_downloader import downloader
@@ -79,6 +83,38 @@ async def img_sampler(event):
     await tbot.send_file(event.chat_id, files_grabbed, reply_to=event.id)
     os.chdir("/app")
     os.system("rm -rf store")
+
+
+   
+
+
+@app.on_message(filters.command("so") & ~filters.edited)
+@capture_err
+async def stack(_, message):
+    try:
+        if len(message.command) < 2:
+            await message.reply_text('"/so" Needs An Argument')
+            return
+        gett = message.text.split(None, 1)[1]
+        text = gett + ' "site:stackoverflow.com"'
+        gresults = await GoogleSearch().async_search(text, 1)
+        result = ""
+        for i in range(4):
+            try:
+                title = gresults["titles"][i].replace("\n", " ")
+                source = gresults["links"][i]
+                description = gresults["descriptions"][i]
+                result += f"[{title}]({source})\n"
+                result += f"`{description}`\n\n"
+            except IndexError:
+                pass
+        await message.reply_text(result, disable_web_page_preview=True)
+    except Exception as e:
+        await message.reply_text(str(e))
+
+
+
+
 
 
 opener = urllib.request.build_opener()
@@ -277,6 +313,7 @@ __help__ = """
   ➢ `/img <text>` :- Search Google for images and returns them\nFor greater no. of results specify lim, For eg: `/img hello lim=10`
   ➢ `/app <appname>` :- Searches for an app in Play Store and returns its details.
   ➢ `/reverse` :- reply to a sticker, or an image to search it!
+  ➢ `/so <text>` :- searchs on stackoverflow.
   Do you know that you can search an image with a link too? /reverse picturelink <amount>.
   ➢ `/gitinfo <github username>` :- Get info of any github profile
   ➢ `/ytdl <youtube video link` :- download any youtube video in every possible resolution.
