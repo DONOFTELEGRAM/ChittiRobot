@@ -43,8 +43,9 @@ async def gsearch(q_event):
     except IndexError:
         page = 1
         search_args = (str(match), int(page))
-        gsearch = Google(search_args)
-#        gresults = await gsearch.async_search(*search_args)
+        gsearch = await async_search(*search_args)
+        gresults = Google(gsearch)
+#       gresults = await gsearch.async_search(*search_args)
         msg = ""
         for i in range(len(gresults["links"])):
             try:
