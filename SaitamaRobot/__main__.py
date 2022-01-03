@@ -442,9 +442,10 @@ def antispam_setup(update, context):
         query.message.edit_text(
             text="""*｢ Anti-Spam Setup 」*
                  \n\n\n*« Anti-Spam »*
-                 \n• `/antispam <on/off/yes/no>`: Change antispam security settings in the group, or return your current settings(when no arguments).
+                 \n• `/antispam <on/off>`: Change antispam security settings in the group, or return your current settings(when no arguments).
 This helps protect you and your groups by removing spam flooders as quickly as possible.
-
+                 \n• `/gmutespam <on/off>`: As same as antispam, but it mutes the Gmuted user instead of banning.
+                 
                  \n\n*« Anti-Flood »*
                  \n• `/setflood <int/'no'/'off'>`: enables or disables flood control
                  \n• `/setfloodmode <ban/kick/mute/tban/tmute> <value>`: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
