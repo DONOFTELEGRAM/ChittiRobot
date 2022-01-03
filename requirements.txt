@@ -74,9 +74,9 @@ ffmpeg
 
 
 # Database
-# sqlalchemy==1.3.20
+sqlalchemy==1.3.20
 # sqlalchemy==1.4.26
-sqlalchemy
+# sqlalchemy
 pymongo
 motor
 nltk
