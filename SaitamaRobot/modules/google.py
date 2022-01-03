@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from gsearch.googlesearch import Google
 import urllib
 from SaitamaRobot import telethn as tbot
 import glob
@@ -43,7 +43,7 @@ async def gsearch(q_event):
     except IndexError:
         page = 1
         search_args = (str(match), int(page))
-        gsearch = GoogleSearch()
+        gsearch = Google()
         gresults = await gsearch.async_search(*search_args)
         msg = ""
         for i in range(len(gresults["links"])):
