@@ -14,6 +14,8 @@ geopy
 gpytranslate
 feedparser
 html2text
+beautifulsoup4==4.9.1
+aiohttp==3.7.4
 
 
 # Youtube
@@ -69,7 +71,7 @@ cowpy
 
 # Music
 ffmpeg
-beautifulsoup4
+
 
 
 
@@ -96,7 +98,6 @@ sylviorus
 lxml==4.6.5
 odmantic
 spongemock
-aiohttp==3.7.4
 Pillow>=4.2.0
 CurrencyConverter
 jikanpy
