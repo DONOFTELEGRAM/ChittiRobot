@@ -8,8 +8,9 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters, Cal
 from telegram.utils.helpers import mention_html
 
 import SaitamaRobot.modules.sql.global_mutes_sql as sql
+from SaitamaRobot.modules.sql.users_sql import get_user_com_chats
 from SaitamaRobot import dispatcher, OWNER_ID, DEV_USERS, DRAGONS, DEMONS, WOLVES, TIGERS, STRICT_GMUTE, EVENT_LOGS
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin
+from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin, support_plus
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from SaitamaRobot.modules.helper_funcs.misc import send_to_list
@@ -306,7 +307,7 @@ def gmutelist(update: Update, context: CallbackContext):
                                                 caption="Here is the list of currently gmuted users.")
 
 
-def check_and_mute(bot, update: Update, context: CallbackContext):
+def check_and_mute(bot, update: Update, context: CallbackContext, should_message=True):
     if sql.is_user_gmuted(user_id):
         bot.restrict_chat_member(update.effective_chat.id, user_id, can_send_messages=False)
         if should_message:
