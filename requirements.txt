@@ -56,12 +56,10 @@ python-rapidjson
 psutil
 
 
-
 # Image & Text
 carbonnow
 pretty_errors
 secureme==0.0.4
-beautifulsoup4
 telegraph
 emoji
 faker
@@ -98,7 +96,7 @@ sylviorus
 lxml==4.6.5
 odmantic
 spongemock
-aiohttp>=2.2.5
+aiohttp==3.7.4
 Pillow>=4.2.0
 CurrencyConverter
 jikanpy
@@ -108,6 +106,7 @@ bleach
 zalgo_text
 wikipedia
 ujson
+fake-useragent==0.1.11
 spamwatch
 alphabet_detector
 cachetools
