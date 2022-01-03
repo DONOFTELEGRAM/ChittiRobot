@@ -67,12 +67,12 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         return ""
 
     if user_id in DEMONS:
-        rt += "Requested HA to promote a Demon Disaster to Dragon."
+        rt += "Requested SRN to promote a Demon Disaster to Dragon."
         data['supports'].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Requested HA to promote a Wolf Disaster to Dragon."
+        rt += "Requested SRN to promote a Wolf Disaster to Dragon."
         data['whitelists'].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -592,7 +592,7 @@ Group admins/group owners do not need these commands.
  ╠ `/reboot`*:* Restarts the bots service
  ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
 
- ╔ *Chatbot:* 
+ ╔ *Chatbot groups:* 
  ╚ `/listaichats`*:* Lists the chats the chatmode is enabled in
  
  ╔ *Debugging and Shell:* 
@@ -607,8 +607,10 @@ Group admins/group owners do not need these commands.
  
  ╔ *Global Bans:*
  ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
- ╠ `/ungban`*:* Ungbans the user, same usage as gban
- ╚ `/gbanlist`*:* Outputs a list of gbanned users
+ ╠ `/ungban <id>`*:* Ungbans the user, same usage as gban
+ ╠ `/gmute <id> <reason>`*:* Gmutes the user, works by reply too
+ ╠ `/ungmute <id>`*:* Ungmutes the user, same usage as gmute
+ ╚ `/gbanlist`*:* Outputs a list of gbanned and Gmuted users
 
 Visit @{SUPPORT_CHAT} for more information.
 """
