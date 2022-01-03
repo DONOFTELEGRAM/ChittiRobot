@@ -544,7 +544,8 @@ except:
 
 __help__ = f"""
 *Admins only:*
- • `/antispam <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
+ • `/antispam <on/off/>`*:* Will toggle Global ban setting in your group.
+ • `/gmutespam <on/off>`*:* Will toggle Global ban setting in your group.
 Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
 you and your groups by removing spam flooders as quickly as possible.
 *Note:* Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
