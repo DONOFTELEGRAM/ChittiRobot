@@ -88,6 +88,7 @@ if ENV:
     ERROR_LOGS = os.environ.get("ERROR_LOGS", -1001299139905)
     HEROKU_API_KEY = (os.environ.get("HEROKU_API_KEY", False))
     EVENT_LOGS = os.environ.get("EVENT_LOGS")
+    STRICT_GMUTE = bool(os.environ.get("STRICT_GMUTE", False))
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")
     BOT_ID = int(os.environ.get("BOT_ID", 2037190400))
