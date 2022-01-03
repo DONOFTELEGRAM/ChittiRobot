@@ -32,10 +32,9 @@ opener.addheaders = [("User-agent", useragent)]
 
 
 @register(pattern="^/google (.*)")
-async def _(event):
+def google(event):
     if event.fwd_from:
         return
-    
     webevent = await event.reply("searching........")
     match = event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
@@ -45,21 +44,19 @@ async def _(event):
         match = match.replace("page=" + page[0], "")
     except IndexError:
         page = 1
-    search_args = (str(match), int(page))
-    gsearch = GoogleSearch()
-    gresults = await gsearch.async_search(*search_args)
-    msg = ""
-    for i in range(len(gresults["links"])):
-        try:
-            title = gresults["titles"][i]
-            link = gresults["links"][i]
-            desc = gresults["descriptions"][i]
-            msg += f"❍[{title}]({link})\n**{desc}**\n\n"
-        except IndexError:
-            break
-    await webevent.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
-    )
+        search_args = (str(match), int(page))
+        gsearch = GoogleSearch()
+        gresults = await gsearch.async_search(*search_args)
+        msg = ""
+        for i in range(len(gresults["link"])):
+            try:
+                title = gresults["title"][i]
+                link = gresults["link"][i]
+                desc = gresults["description"][i]
+                msg += f"❍[{title}]({link})\n**{desc}**\n\n"
+            except IndexError:
+                break
+                await webevent.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
 
 
 @register(pattern="^/img (.*)")
