@@ -13,7 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 from search_engine_parser import GoogleSearch
-
+from SaitamaRobot import pgram as app
 import bs4
 import html2text
 from bing_image_downloader import downloader
@@ -31,32 +31,30 @@ useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [("User-agent", useragent)]
 
 
-@register(pattern=r"^/google (.*)")
-async def gsearch(q_event):
-    """For .google command, do a Google search."""
-    match = q_event.pattern_match.group(1)
-    page = findall(r"page=\d+", match)
+@app.on_message(filters.command("google") & ~filters.edited)
+@capture_err
+async def google(_, message):
     try:
-        page = page[0]
-        page = page.replace("page=", "")
-        match = match.replace("page=" + page[0], "")
-    except IndexError:
-        page = 1
-        search_args = (str(match), int(page))
-        gsearch = await async_search(*search_args)
-        gresults = Google(gsearch)
-#       gresults = await gsearch.async_search(*search_args)
-        msg = ""
-        for i in range(len(gresults["links"])):
+        if len(message.command) < 2:
+            await message.reply_text('/google Needs An Argument')
+            return
+        text = message.text.split(None, 1)[1]
+        gresults = await GoogleSearch().async_search(text, 1)
+        result = ""
+        for i in range(4):
             try:
-                title = gsearch["titles"][i]
-                link = gsearch["links"][i]
-                desc = gsearch["descriptions"][i]
-                msg += f"[{title}]({link})\n`{desc}`\n\n"
+                title = gresults["titles"][i].replace("\n", " ")
+                source = gresults["links"][i]
+                description = gresults["descriptions"][i]
+                result += f"[{title}]({source})\n"
+                result += f"`{description}`\n\n"
             except IndexError:
-                break
-                await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False)
-
+                pass
+        await message.reply_text(result, disable_web_page_preview=True)
+    except Exception as e:
+        await message.reply_text(str(e))
+        
+        
 
 @register(pattern="^/img (.*)")
 async def img_sampler(event):
