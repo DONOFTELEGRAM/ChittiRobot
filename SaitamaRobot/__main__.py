@@ -89,10 +89,10 @@ buttons = [
             url="t.me/RajniiRobot?startgroup=true")],
     [
         InlineKeyboardButton(
-            text="About Me",
+            text="☆ About Me",
             callback_data="rajni_"),
         InlineKeyboardButton(
-            text="Help section",
+            text="☆ Help section",
             callback_data="help_back"),
     ],
 ]
@@ -124,14 +124,13 @@ And the following:
 
 SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
-DONATE_STRING = """*『Rajnii』* is hosted on Heroku free server yet,
-so it doesn't need any donations for now,
-But if you want to donate my developer you can,
-You can also DM my developer to ask about donation.
+DONATE_STRING = """*『Rajnii』* is hosted on Heroku server,
+if you want to donate my developers you can.......,
 • [Gpay](https://pay.google.com)
 *UPI ID* - `dhruv040.04@okaxis`
 • By Scanning the [BHIM UPI QR CODE](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg) below
 by your payment application.
+You can also DM my developer to ask about donation.
 
 *What we do with donations?*
 » _donations will help us to run Rajni
@@ -232,8 +231,8 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                      InlineKeyboardButton(text="★Back★", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                      InlineKeyboardButton(text="☆ Back", callback_data="help_back")]]
                 ),
             )
 
@@ -283,8 +282,8 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="★Back★", callback_data="help_back"),
-                          InlineKeyboardButton(text="★Home★", callback_data="rajni_back")]]
+                        [[InlineKeyboardButton(text="☆ Back", callback_data="help_back"),
+                          InlineKeyboardButton(text="☆ Home", callback_data="rajni_back")]]
                     ),
                 )
 
@@ -356,6 +355,7 @@ def rajni_about_callback(update, context):
     if query.data == "rajni_":
         query.message.edit_text(
             text=f"""*『 About section: 』*
+
 I'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
 *Here's a Shortlist what I can do.*
 \n• I can restrict users.
@@ -369,7 +369,8 @@ I'm *『Rajnii』*, a powerful & moduler group management bot built to help your
 • [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
 • Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
 • Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
-\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
+
+*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
 *Thanks for using me ;),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -379,8 +380,8 @@ I'm *『Rajnii』*, a powerful & moduler group management bot built to help your
                   InlineKeyboardButton(text="Support 👨‍✈️", callback_data="support_"),
                   InlineKeyboardButton(text="Manual 📚", callback_data="manual_")],
                  [InlineKeyboardButton(text="Terms And Conditions 📄", callback_data="tandc_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
     elif query.data == "rajni_back":
         query.message.edit_text(
@@ -397,8 +398,9 @@ def rajni_manual_callback(update, context):
     if query.data == "manual_":
         query.message.edit_text(
             text=f"""*『 Manual section: 』*
+
 Here is the help how to use me with my best performance, follow the steps below!
-\n• First add me to a group...
+• First add me to a group...
 » Click the “Add me” button and select a group where you want me to help you and your admins :).
 • Promote me with all admin rights to let me get in actions!.
 • You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
@@ -411,8 +413,8 @@ Here is the help how to use me with my best performance, follow the steps below!
                   InlineKeyboardButton(text="｢About」", callback_data="rajni_")],
                  [InlineKeyboardButton(text="｢Admin Setup」", callback_data="adminsetup_"),
                   InlineKeyboardButton(text="｢Anti-Spam Setup」", callback_data="antispamsetup_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 def admin_setup(update, context):
@@ -431,10 +433,10 @@ def admin_setup(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Manual", callback_data="manual_"),
-                  InlineKeyboardButton(text="About", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ Manual", callback_data="manual_"),
+                  InlineKeyboardButton(text="☆ About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 
@@ -487,10 +489,10 @@ Missrose should be admin with Ban Right Access.
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="Manual", callback_data="manual_"),
-                  InlineKeyboardButton(text="About", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ Manual", callback_data="manual_"),
+                  InlineKeyboardButton(text="☆ About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 
@@ -514,9 +516,9 @@ def rajni_support_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 @run_async
@@ -525,7 +527,7 @@ def rajni_credits_callback(update, context):
     if query.data == "credits_":
         query.message.edit_text(
             text=f"""*『 Developers section: 』*
-
+I'm thankful for them as they've given thier too much time in Updating me.
 *• Main developer   - @itzzzyashu*
 *• Normal Updates   - @sawada*
 *• New modules      - @flasho_gacha*
@@ -535,9 +537,9 @@ def rajni_credits_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 
@@ -565,9 +567,9 @@ _Terms & Conditions can be changed anytime, please check once a month._""",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
-                 [InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
-                  InlineKeyboardButton(text="★Help★", callback_data="help_back")],
+                 [InlineKeyboardButton(text="☆ About", callback_data="rajni_")],
+                 [InlineKeyboardButton(text="☆ Home", callback_data="rajni_back"),
+                  InlineKeyboardButton(text="☆ Help", callback_data="help_back")],
                 ]))
 
 @run_async
@@ -605,10 +607,10 @@ def get_help(update: Update, context: CallbackContext):
             chat.id, text,
             InlineKeyboardMarkup(
                 [InlineKeyboardButton(
-                        text="★Home★",
+                        text="☆ Home",
                         callback_data="rajni_back"),
                  InlineKeyboardButton(
-                        text="★Back★",
+                        text="☆ Back",
                         callback_data="help_back")]))
 
     else:
@@ -736,7 +738,7 @@ def get_settings(update: Update, context: CallbackContext):
                 text,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Settings",
+                        text="☆ Settings",
                         url="t.me/{}?start=stngs_{}".format(
                             context.bot.username, chat.id))
                 ]]))
@@ -761,7 +763,7 @@ def donate(update: Update, context: CallbackContext):
         if OWNER_ID != 254318997 and DONATION_LINK:
             update.effective_message.reply_text(
                 "Thanks for supporting us!😘"
-                "[Our BHIM UPI QR](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg)",
+                "[Our PAYTM UPI QR](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg)",
                 parse_mode=ParseMode.MARKDOWN)
 
     else:
