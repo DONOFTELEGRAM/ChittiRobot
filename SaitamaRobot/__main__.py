@@ -100,7 +100,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-*『*[Help](https://telegra.ph/file/d40481cb215f983a3fb9c.jpg) *section:』*
+*『 Help section: 』*
 
 Hey there! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
@@ -142,7 +142,6 @@ by your payment application.
 » _these donations will also help us
  to help others, those who really need support._
 """
-BOT_PIC = "https://telegra.ph/file/586f1921ec80a73836c55.mp4"
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
@@ -354,21 +353,21 @@ def rajni_about_callback(update, context):
     if query.data == "rajni_":
         query.message.edit_text(
             text=f"""*『 About section: 』*
-                 \nI'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
-                 \n*Here's a Shortlist what I can do.*
-                 \n\n• I can restrict users.
-                 \n• I can greet users with customizable welcome messages and even set a group's rules.
-                 \n• I have an advanced anti-flood system.
-                 \n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-                 \n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-                 \n• I check for admin’s permissions before executing any command and more stuffs.
-                 \n• I have more useful and fun modules too.
-                 \n• I can chat with users by using [Kuki AI](https://kuki-api.tk).
-                 \n• [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
-                 \n• Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
-                 \n• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
-                 \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
-                 \n *Thanks for using me :),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
+I'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+*Here's a Shortlist what I can do.*
+\n• I can restrict users.
+• I can greet users with customizable welcome messages and even set a group's rules.
+• I have an advanced anti-flood system.
+• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+• I check for admin’s permissions before executing any command and more stuffs.
+• I have more useful and fun modules too.
+• I can chat with users by using [Kuki AI](https://kuki-api.tk).
+• [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
+• Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
+• Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
+\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
+*Thanks for using me ;),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -395,12 +394,12 @@ def rajni_manual_callback(update, context):
     if query.data == "manual_":
         query.message.edit_text(
             text=f"""*『 Manual section: 』*
-                 \nHere is the help how to use me with my best performance, follow the steps below!
-                 \n\n• First add me to a group...
-                 \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
-                 \n• Promote me with all admin rights to let me get in actions!.
-                 \n• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
-                 \n• Now start learning and try to use me better!, You can get all support and help related to me at @{SUPPORT_CHAT}.""",
+Here is the help how to use me with my best performance, follow the steps below!
+\n• First add me to a group...
+» Click the “Add me” button and select a group where you want me to help you and your admins :).
+• Promote me with all admin rights to let me get in actions!.
+• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
+• Now start learning and try to use me better!, You can get all support and help related to me at @{SUPPORT_CHAT}.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -419,12 +418,12 @@ def admin_setup(update, context):
         query.message.edit_text(
             text="""*｢ Admin Setup 」*
 
-                 \n• To avoid slowing down, Rajnii caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), Rajnii will only find out ~10 minutes later.
-                 \n• If you want to update them immediately, you can use the `/admincache` command,thta'll force Rajnii to check who the admins are again and their permissions
-                 \n• If you are getting a message saying:
+• To avoid slowing down, Rajnii caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), Rajnii will only find out ~10 minutes later.
+• If you want to update them immediately, you can use the `/admincache` command,thta'll force Rajnii to check who the admins are again and their permissions
+• If you are getting a message saying:
 `You must be this chat administrator to perform this action!`
-                 \n• This has nothing to do with Rajnii’s rights; this is all about your permissions as an admin. Rajnii respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with Rajnii. Similarly, to change Rajnii settings, you need to have the Change group info permission.
-                 \n• The message very clearly says that you need these admin rights; Rajnii already have.""",
+• This has nothing to do with Rajnii’s rights; this is all about your permissions as an admin. Rajnii respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with Rajnii. Similarly, to change Rajnii settings, you need to have the Change group info permission.
+• The message very clearly says that you need these admin rights; Rajnii already have.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -441,48 +440,46 @@ def antispam_setup(update, context):
     if query.data == "antispamsetup_":
         query.message.edit_text(
             text="""*｢ Anti-Spam Setup 」*
-                 \n\n\n*« Anti-Spam »*
-                 \n• `/antispam <on/off>`: Change antispam security settings in the group, or return your current settings(when no arguments).
+\n\n*« Anti-Spam »*
+• `/antispam <on/off>`: Change antispam security settings in the group, or return your current settings(when no arguments).
 This helps protect you and your groups by removing spam flooders as quickly as possible.
-                 \n• `/gmutespam <on/off>`: As same as antispam, but it mutes the Gmuted user instead of banning.
+• `/gmutespam <on/off>`: As same as antispam, but it mutes the Gmuted user instead of banning.
                  
-                 \n\n*« Anti-Flood »*
-                 \n• `/setflood <int/'no'/'off'>`: enables or disables flood control
-                 \n• `/setfloodmode <ban/kick/mute/tban/tmute> <value>`: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
+*« Anti-Flood »*
+• `/setflood <int/'no'/'off'>`: enables or disables flood control
+• `/setfloodmode <ban/kick/mute/tban/tmute> <value>`: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user.
 
-                 \n\n*« Blacklist »*
-                 \n• `/addblacklist <triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
-                 \n• `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`: Action to perform when someone sends blacklisted words.
+*« Blacklist »*
+• `/addblacklist <triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
+• `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`: Action to perform when someone sends blacklisted words.
 Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, the message will immediately be deleted. A good combo is sometimes to pair this up with warn filters!
 
-                 \n\n*« Reports »*
-                 \n• `/reports <on/off>`: Change report setting, or view current status.
-                 \n  × If done in pm, toggles your status.
-                 \n  × If in chat, toggles that chat's status.
+*« Reports »*
+• `/reports <on/off>`: Change report setting, or view current status.
+  × If done in pm, toggles your status.
+  × If in chat, toggles that chat's status.
 If someone in your group thinks someone needs reporting, they now have an easy way to call all admins.
 
-                 \n\n*« Locks »*
-                 \n• `/lock <type>`: Lock items of a certain type (not available in private)
-                 \n• `/locktypes`: Lists all possible locktypes
+*« Locks »*
+• `/lock <type>`: Lock items of a certain type (not available in private)
+• `/locktypes`: Lists all possible locktypes
 The locks module allows you to lock away some common items in the telegram world; the bot will automatically delete them!
 
-                 \n\n*« Warns »*
-                 \n• `/addwarn <keyword> <reply message>`: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user. 
-                 \n• `/warn <userhandle>`: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
-                 \n• `/strongwarn <on/yes/off/no>`: If set to on, exceeding the warn limit will result in a ban. Else, will just kick.
+*« Warns »*
+• `/addwarn <keyword> <reply message>`: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user. 
+• `/warn <userhandle>`: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
+• `/strongwarn <on/yes/off/no>`: If set to on, exceeding the warn limit will result in a ban. Else, will just kick.
 If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command.
 
-                 \n\n*« Captcha »*
-                 \n• `/captcha <off/soft/strong>`: All users that join, get muted
+*« Captcha »*
+• `/captcha <off/soft/strong>`: All users that join, get muted
 A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots.
 
-                 \n\n*« Federations »*
-                 \n• Join @RajniiRobot’s official Federation by sending the below command to your group (You shouldn't be Anonymous there, You should be owner of the group to do this).
- [Click here](https://telegram.me/RajniiRobot?start=ghelp_federations) to know what a federation do.
- `/joinfed 48b40c38-d23b-49a9-b064-531ac228df74`
-                 \n• Join our Rose bot Federation [TIAF] • A as same as above one.
- `/joinfed 26e460c0-7819-4bdf-acd0-b4aee506563d`.""",
+*« Federations »*
+• Join our Rose bot Federation [TIAF] • A, Just send the below command in your group or as that group's owner to execute it.
+Missrose should be admin with Ban Right Access.
+`/joinfed 26e460c0-7819-4bdf-acd0-b4aee506563d`.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -500,13 +497,16 @@ def rajni_support_callback(update, context):
     if query.data == "support_":
         query.message.edit_text(
             text=f"""*『 Support section:』*
-                     \n*Just Click the link below as it’s mentioned:*
+*Just Click the link below as it’s mentioned:*
 
-                     \n\n• Join Support chat - @{SUPPORT_CHAT}.
-                     \n• Join Updates here - @RajniUpdates.
-                     \n• Global Events here - @RajniGlobal.
-                     \n• Join Spam/Appeal chat - @RajniSpam.
-                     \n• Join Developers chat - @SanatanRakshaDevelopers.""",
+• Join Support chat - @{SUPPORT_CHAT}.
+• Join Updates here - @RajniUpdates.
+• Global Events here - @RajniGlobal.
+• Join Spam/Appeal chat - @RajniSpam.
+• Join Developers chat - @SanatanRakshaDevelopers.
+
+• 𝔭𝔬𝔴𝔢𝔯𝔢𝔡 𝔟𝔶 - @SanatanRakshaNetwork
+""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -522,11 +522,12 @@ def rajni_credits_callback(update, context):
     if query.data == "credits_":
         query.message.edit_text(
             text=f"""*『 Developers section: 』*
-                     \n\n*• Main developer   - @itzzzyashu*
-                     \n*• Normal Updates   - @sawada*
-                     \n*• New modules      - @flasho_gacha*
-                     \n*• Updated modules  - @Awesome_RJ_official*
-                     \n*• Base code        - @SonOfLars*""",
+
+*• Main developer   - @itzzzyashu*
+*• Normal Updates   - @sawada*
+*• New modules      - @flasho_gacha*
+*• Updated modules  - @Awesome_RJ_official*
+*• Base code        - @SonOfLars*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -543,19 +544,20 @@ def rajni_tandc_callback(update, context):
     if query.data == "tandc_":
         query.message.edit_text(
             text=f"""*『 Terms & Conditions section: 』*
-                     \n*The Terms and Conditions are as follows:*
+*The Terms and Conditions are as follows:*
 
-                     \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
-                     \n• Rajnii is one of the safest, Stable, and Moduler telegram bot.
-                     \n• Messages between users and Rajnii is End to End Encrypted!
-                     \n• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
-                     \n• Be Active on your chats, if someone spamming your group, you can use report feature & you can also report us about that on @RajniSpam to appeal a Gban/Fban.
-                     \n• Make sure antiflood is enabled, so nobody can flood/spam your group.
-                     \n• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajnii Slower to respond and if we blacklist them who spams Rajni’s buttons or commands, Hence Rajni will ignore thier existance.
-                     \n• Global appeals for Rajnii? Read the [criteria](https://t.me/RajniGlobal/402) first.
-                     \n Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
-                     \n• We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
-                     \n\n_Terms & Conditions can be changed anytime, please check once a month._""",
+• We respect everyone's privacy & we never collect Sensitive data from groups.
+• Rajnii is one of the safest, Stable, and Moduler telegram bot.
+• Messages between users and Rajnii is End to End Encrypted!
+• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
+• Be Active on your chats, if someone spamming your group, you can use report feature & you can also report us about that on @RajniSpam to appeal a Gban/Fban.
+• Make sure antiflood is enabled, so nobody can flood/spam your group.
+• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajnii Slower to respond and if we blacklist them who spams Rajni’s buttons or commands, Hence Rajni will ignore thier existance.
+• Global appeals for Rajnii? Read the [criteria](https://t.me/RajniGlobal/402) first.
+ Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
+• We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
+
+_Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
