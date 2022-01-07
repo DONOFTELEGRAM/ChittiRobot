@@ -197,7 +197,7 @@ def send_help(chat_id, text, keyboard=None):
         chat_id=chat_id,
         text=text,
         parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=False,
+        disable_web_page_preview=True,
         reply_markup=keyboard,
     )
 
@@ -231,7 +231,7 @@ def help_button(update, context):
             query.message.edit_text(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
-                disable_web_page_preview=False,
+                disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text="★Home★", callback_data="rajni_back"),
                       InlineKeyboardButton(text="★Back★", callback_data="help_back")]]
@@ -353,7 +353,7 @@ def rajni_about_callback(update, context):
     query = update.callback_query
     if query.data == "rajni_":
         query.message.edit_text(
-            text=f"""*『*[About](https://telegra.ph/file/54be2e85bd0b185c74db2.jpg) *section:』*
+            text=f"""*『 About section: 』*
                  \nI'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
                  \n*Here's a Shortlist what I can do.*
                  \n\n• I can restrict users.
@@ -370,7 +370,7 @@ def rajni_about_callback(update, context):
                  \n\n*If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
                  \n *Thanks for using me :),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="Credits 👨‍💻", callback_data="credits_"),
@@ -394,7 +394,7 @@ def rajni_manual_callback(update, context):
     query = update.callback_query
     if query.data == "manual_":
         query.message.edit_text(
-            text=f"""*『*[Manual](https://telegra.ph/file/8e8fb6982ef9e4f0cd799.jpg) *section:』*
+            text=f"""*『 Manual section: 』*
                  \nHere is the help how to use me with my best performance, follow the steps below!
                  \n\n• First add me to a group...
                  \n» Click the “Add me” button and select a group where you want me to help you and your admins :).
@@ -402,7 +402,7 @@ def rajni_manual_callback(update, context):
                  \n• You can know about module related helps by help menu, Click “Help” to open, select a module to know about it.
                  \n• Now start learning and try to use me better!, You can get all support and help related to me at @{SUPPORT_CHAT}.""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="｢Add me」", url="t.me/RajniiRobot?startgroup=true"),
@@ -499,7 +499,7 @@ def rajni_support_callback(update, context):
     query = update.callback_query
     if query.data == "support_":
         query.message.edit_text(
-            text=f"""*『*[Support](https://telegra.ph/file/3c90f6fc89c72d529e60f.jpg) *section:』*
+            text=f"""*『 Support section:』*
                      \n*Just Click the link below as it’s mentioned:*
 
                      \n\n• Join Support chat - @{SUPPORT_CHAT}.
@@ -508,7 +508,7 @@ def rajni_support_callback(update, context):
                      \n• Join Spam/Appeal chat - @RajniSpam.
                      \n• Join Developers chat - @SanatanRakshaDevelopers.""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
@@ -521,14 +521,14 @@ def rajni_credits_callback(update, context):
     query = update.callback_query
     if query.data == "credits_":
         query.message.edit_text(
-            text=f"""*『*[Developers](https://telegra.ph/file/e8037324894de412039a4.jpg) *section:』*
+            text=f"""*『 Developers section: 』*
                      \n\n*• Main developer   - @itzzzyashu*
                      \n*• Normal Updates   - @sawada*
                      \n*• New modules      - @flasho_gacha*
                      \n*• Updated modules  - @Awesome_RJ_official*
                      \n*• Base code        - @SonOfLars*""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
@@ -542,7 +542,7 @@ def rajni_tandc_callback(update, context):
     query = update.callback_query
     if query.data == "tandc_":
         query.message.edit_text(
-            text=f"""*『*[T&C](https://telegra.ph/file/7812d8db02304724334da.jpg) *section:』*
+            text=f"""*『 Terms & Conditions section: 』*
                      \n*The Terms and Conditions are as follows:*
 
                      \n\n• We respect everyone's privacy & we never collect Sensitive data from groups.
@@ -557,7 +557,7 @@ def rajni_tandc_callback(update, context):
                      \n• We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
                      \n\n_Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=False,
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [InlineKeyboardButton(text="About 📑", callback_data="rajni_")],
