@@ -73,16 +73,16 @@ def ban(update: Update, context: CallbackContext) -> str:
             )
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Demon disaster.",
+                "that's my Demon disaster, How I'm supposed to ban them?",
             )
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from Heroes association to fight a Tiger disaster.",
+                "that's my Tiger disaster, How I'm supposed to ban them?",
             )
         elif user_id in WOLVES:
-            message.reply_text("Wolf abilities make them ban immune!")
+            message.reply_text("that's one of my wolves, they cannot be banned by me")
         else:
-            message.reply_text("This user has immunity and cannot be banned.")
+            message.reply_text("Umm this user has immunity and cannot be banned.")
         return log_message
     if message.text.startswith("/s"):
         silent = True
@@ -113,7 +113,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             f"<i>I've banned {mention_html(member.user.id, html.escape(member.user.first_name))} without time limits.</i>"
         )
         if reason:
-            reply += f"\n• Reason: \n{html.escape(reason)}"
+            reply += f"\n• Reason: \n<code>{html.escape(reason)}</code>"
         bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML, quote=False)
         return log
 
@@ -133,7 +133,7 @@ def ban(update: Update, context: CallbackContext) -> str:
                 chat.id,
                 excp.message,
             )
-            message.reply_text("Uhm...that didn't work...")
+            message.reply_text("Umm...Sorry, that didn't work...")
 
     return log_message
 
@@ -154,7 +154,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is this a user?.")
         return log_message
 
     try:
@@ -173,7 +173,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     if not reason:
-        message.reply_text("You haven't specified a time to ban this user for!")
+        message.reply_text("You haven't specified a time to ban this user for...")
         return log_message
 
     split_reason = reason.split(None, 1)
@@ -200,8 +200,8 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
-            f"Banned! User {mention_html(member.user.id, html.escape(member.user.first_name))} "
-            f"will be banned for {time_val}.",
+            f"<i>Banned! User {mention_html(member.user.id, html.escape(member.user.first_name))}</i>"
+            f"<i>will be banned for {time_val}.</i>",
             parse_mode=ParseMode.HTML,
         )
         return log
@@ -210,7 +210,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         if excp.message == "Reply message not found":
             # Do not reply
             message.reply_text(
-                f"Banned! User will be banned for {time_val}.", quote=False,
+                f"<i>Banned! User will be banned for {time_val}.</i>", quote=False,
             )
             return log
         else:
@@ -234,7 +234,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 @user_admin
 @user_can_ban
 @loggable
-def punch(update: Update, context: CallbackContext) -> str:
+def kick(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -243,7 +243,7 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is this a user?")
         return log_message
 
     try:
@@ -255,11 +255,11 @@ def punch(update: Update, context: CallbackContext) -> str:
         message.reply_text("I can't seem to find this user.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Yeahhh I'm not gonna do that.")
+        message.reply_text("I'm not gonna do that.")
         return log_message
 
     if is_user_ban_protected(chat, user_id):
-        message.reply_text("I really wish I could punch this user....")
+        message.reply_text("I really wish I could kick this user....")
         return log_message
 
     res = chat.unban_member(user_id)  # unban on current user = kick
@@ -267,7 +267,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
-            f"One Punched! {mention_html(member.user.id, html.escape(member.user.first_name))}.",
+            f"I've Kicked {mention_html(member.user.id, html.escape(member.user.first_name))}.",
             parse_mode=ParseMode.HTML,
         )
         log = (
@@ -290,7 +290,7 @@ def punch(update: Update, context: CallbackContext) -> str:
 @run_async
 @bot_admin
 @can_restrict
-def punchme(update: Update, context: CallbackContext):
+def kickme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
         update.effective_message.reply_text("I wish I could... but you're an admin.")
@@ -298,9 +298,9 @@ def punchme(update: Update, context: CallbackContext):
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("*punches you out of the group*")
+        update.effective_message.reply_text("*Get Out From Here.*")
     else:
-        update.effective_message.reply_text("Huh? I can't :/")
+        update.effective_message.reply_text("Sorry, I can't")
 
 
 @run_async
@@ -319,7 +319,7 @@ def unban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Is this a user?")
         return log_message
 
     try:
@@ -375,7 +375,7 @@ def selfunban(context: CallbackContext, update: Update) -> str:
     try:
         member = chat.get_member(user.id)
     except BadRequest as excp:
-        if excp.message == "User not found":
+        if excp.message == "Is this a user?":
             message.reply_text("I can't seem to find this user.")
             return
         else:
@@ -409,10 +409,10 @@ __help__ = """
 
 BAN_HANDLER = CommandHandler(["ban", "sban"], ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
-PUNCH_HANDLER = CommandHandler("kick", punch)
+PUNCH_HANDLER = CommandHandler("kick", kick)
 UNBAN_HANDLER = CommandHandler("unban", unban)
 ROAR_HANDLER = CommandHandler("roar", selfunban)
-PUNCHME_HANDLER = DisableAbleCommandHandler("kickme", punchme, filters=Filters.group)
+PUNCHME_HANDLER = DisableAbleCommandHandler("kickme", kickme, filters=Filters.group)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
