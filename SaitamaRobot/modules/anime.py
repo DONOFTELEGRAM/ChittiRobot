@@ -536,7 +536,8 @@ Get information about anime, manga or characters from [AniList](anilist.co) and 
   ➢ `/manga <manga>`*:* returns information about the manga from AniList
   ➢ `/upcoming`*:* returns a list of new anime in the upcoming seasons from AniList
   ➢ `/airing <anime>`*:* returns anime airing info from AniList
- 
+     `/animequotes`*:* returns an anime quote.
+     `/quote`*:* returns an anime quote in text format
 *MyAnimelist Commands:*
   ➢ `/manime <anime>`*:* returns information about the anime MAL.
   ➢ `/mcharacter` <character>*:* returns information about the character from MAL.
