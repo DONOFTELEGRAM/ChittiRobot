@@ -625,6 +625,8 @@ __help__ = """
  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
  • `/unpin`*:* unpins the currently pinned message
  • `/chatlink`*:* gets invitelink
+ • `/zombies`*:* check deleted accounts in a group, use `clean` tag to remove them too.
+    *Example :* `/zombies clean`
  • `/promote`*:* Simply promotes that user replied to
  • `/lessrights`*:* promotes that user with less admin rights, who is replied to
  • `/fullrights`*:* promotes that user with full admin rights, who is replied to
