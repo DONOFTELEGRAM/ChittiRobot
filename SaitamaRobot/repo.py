@@ -9,7 +9,7 @@ from SaitamaRobot.utils.http import get
 @capture_err
 async def repo(_, message):
     users = await get(
-        "https://api.github.com/repos/itzzzyashu/RajniiRoboActive/contributors"
+        "https://api.github.com/repos/itzzzyashu/RajniiRobot/contributors"
     )
     list_of_users = ""
     count = 1
