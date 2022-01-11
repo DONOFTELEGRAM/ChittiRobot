@@ -21,14 +21,15 @@ GMUTE_ENFORCE_GROUP = 6
 @support_plus
 @run_async
 def gmute(update: Update, context: CallbackContext):
-    bot, args = context.bot, context.args
+    bot = context.bot
+    args = context.args
     message = update.effective_message
     user = update.effective_user
     chat = update.effective_chat
     log_message = ""
     user_id = extract_user(message, args)
     message = update.effective_message  # type: Optional[Message]
-    user_id, reason = extract_user_and_text(message, args)
+    reason = extract_user_and_text(message, args)
 
     if not user_id:
         message.reply_text("You don't seem to be referring to a user.")
