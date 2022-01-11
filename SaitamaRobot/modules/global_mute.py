@@ -294,7 +294,7 @@ GMUTE_LIST = CommandHandler("gmutelist", gmutelist)
 
 GMUTE_STATUS = CommandHandler("gmutestats", gmutestat)
 
-GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
+GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gmute)
 
 dispatcher.add_handler(GMUTE_HANDLER)
 dispatcher.add_handler(UNGMUTE_HANDLER)
