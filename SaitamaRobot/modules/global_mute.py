@@ -130,7 +130,7 @@ def gmute(update: Update, context: CallbackContext):
             continue
 
         try:
-            member = chat.get_member(user_id)
+            member = chats.get_member(user_id)
             if member.can_send_messages is None or member.can_send_messages:
                 chat_permissions = ChatPermissions(can_send_messages=False)
                 bot.restrict_chat_member(chat_id, user_id, chat_permissions)
