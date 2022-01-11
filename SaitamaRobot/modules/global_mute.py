@@ -289,7 +289,7 @@ def __chat_settings__(chat_id, user_id):
 __mod_name__ = "GMutes"
 
 GMUTE_HANDLER = CommandHandler("gmute", gmute)
-UNGMUTE_HANDLER = CommandHandler("ungmute")
+UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute)
 GMUTE_LIST = CommandHandler("gmutelist", gmutelist)
 
 GMUTE_STATUS = CommandHandler("gmutestats", gmutestat)
