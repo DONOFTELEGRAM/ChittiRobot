@@ -22,7 +22,9 @@ GMUTE_ENFORCE_GROUP = 6
 
 @support_plus
 @run_async
-def gmute(bot: Bot, update: Update, args: List[str]):
+def gmute(update: Update, context: CallbackContext):
+    bot = context.bot
+    args = context.args
     message = update.effective_message  # type: Optional[Message]
 
     user_id, reason = extract_user_and_text(message, args)
@@ -124,7 +126,9 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 
 @support_plus
 @run_async
-def ungmute(bot: Bot, update: Update, args: List[str]):
+def ungmute(update: Update, context: CallbackContext):
+    bot = context.bot
+    args = context.args
     message = update.effective_message  # type: Optional[Message]
 
     user_id = extract_user(message, args)
