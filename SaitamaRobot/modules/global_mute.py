@@ -211,7 +211,7 @@ def ungmute(update: Update, context: CallbackContext):
                  "\n<b>Ungmuted User:</b> {}" \
                  "\n<b>Ungmuted User ID:</b> <code>{}</code>" \
                  "\n<b>Appeal chat: @RajniSpam</b>".format(mention_html(muter.id, muter.first_name),
-                                                                   ention_html(user_chat.id, user_chat.first_name), 
+                                                                   mention_html(user_chat.id, user_chat.first_name), 
                                                                    user_chat.id))
 
     if EVENT_LOGS:
