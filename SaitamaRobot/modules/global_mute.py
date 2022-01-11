@@ -2,7 +2,7 @@ import html
 from io import BytesIO
 from typing import Optional, List
 from SaitamaRobot.modules.sql.global_mutes_sql import GloballyMutedUsers, GmuteSettings
-from telegram import Message, Update, Bot, User, Chat, ParseMode
+from telegram import Message, Update, Bot, User, Chat, ParseMode, ChatPermissions
 from telegram.error import BadRequest, TelegramError
 from telegram.ext import run_async, CommandHandler, MessageHandler, Filters, CallbackContext
 from telegram.utils.helpers import mention_html
@@ -130,8 +130,10 @@ def gmute(update: Update, context: CallbackContext):
             continue
 
         try:
-            bot.restrict_chat_member(chat_id, user_id, can_send_messages=False)
-            gmuted_chats += 1
+            if member.can_send_messages is None or member.can_send_messages:
+                chat_permissions = ChatPermissions(can_send_messages=False)
+                bot.restrict_chat_member(chat_id, user_id, chat_permissions)
+                gmuted_chats += 1
         except BadRequest as excp:
             if excp.message == "User is an administrator of the chat":
                 pass
