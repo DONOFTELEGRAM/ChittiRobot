@@ -1,16 +1,18 @@
 import html
 from io import BytesIO
 from typing import Optional, List
-from SaitamaRobot.modules.sql.global_mutes_sql import GloballyMutedUsers, GmuteSettings
-from telegram import Message, Update, Bot, User, Chat, ParseMode, ChatPermissions
+
+from telegram import Message, Update, Bot, User, Chat
 from telegram.error import BadRequest, TelegramError
-from telegram.ext import run_async, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import SaitamaRobot.modules.sql.global_mutes_sql as sql
-from SaitamaRobot.modules.sql.users_sql import get_user_com_chats
-from SaitamaRobot import dispatcher, OWNER_ID, DEV_USERS, DRAGONS, DEMONS, WOLVES, TIGERS, STRICT_GMUTE, EVENT_LOGS
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin, support_plus
+from SaitamaRobot import dispatcher, OWNER_ID, DRAGONS, DEMONS, STRICT_GMUTE
+from SaitamaRobot.modules.helper_funcs.chat_status import (
+    is_user_admin,
+    support_plus,
+    user_admin)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 from SaitamaRobot.modules.helper_funcs.misc import send_to_list
@@ -20,51 +22,25 @@ GMUTE_ENFORCE_GROUP = 6
 
 @support_plus
 @run_async
-def gmute(update: Update, context: CallbackContext):
-    bot = context.bot
-    args = context.args
-    message = update.effective_message
-    user = update.effective_user
-    chat = update.effective_chat
-    log_message = ""
-    user_id = extract_user(message, args)
+def gmute(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
-    reason = extract_user_and_text(message, args)
+
+    user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
         message.reply_text("You don't seem to be referring to a user.")
         return
-    
-    if int(user_id) == OWNER_ID:
-        message.reply_text("You trying to gmute my Owner..huh??")
-        return
 
     if int(user_id) in DRAGONS:
-        message.reply_text("You trying to gmute my sudo..huh??")
+        message.reply_text("I spy, with my little eye... a sudo user war! Why are you guys turning on each other?")
         return
 
-    if int(user_id) in DEV_USERS:
-        message.reply_text("You trying to gmute a Dev user!")
-        return
-    
     if int(user_id) in DEMONS:
-        message.reply_text("You trying to gmute a demon user!")
-        return
-      
-    if int(user_id) in TIGERS:
-        message.reply_text("You trying to gmute a tiger user!")
-        return
-      
-    if int(user_id) in WOLVES:
-        message.reply_text("You trying to gmute a wolf user!")
-        return
-
-    if user_id == 2088713608:
-        message.reply_text("There is no way I can gmute this user, He is my Main Developer.")
+        message.reply_text("OOOH someone's trying to gmute a support user! *grabs popcorn*")
         return
 
     if user_id == bot.id:
-        message.reply_text("I can't gmute myself.")
+        message.reply_text("-_- So funny, lets gmute myself why don't I? Nice try.")
         return
 
     try:
@@ -86,43 +62,23 @@ def gmute(update: Update, context: CallbackContext):
         if success:
             message.reply_text("This user is already gmuted; I've gone and updated the gmute reason though!")
         else:
-            message.reply_text("I thought this person was gmuted.")
+            message.reply_text("Do you mind trying again? I thought this person was gmuted, but then they weren't? "
+                               "Am very confused")
 
         return
 
-    message.reply_text("Gets duct tape ready 😉")
+    message.reply_text("*Gets duct tape ready* 😉")
 
     muter = update.effective_user  # type: Optional[User]
-    log_message = (
-                 "<b>Global Mute</b>" \
-                 "\n#GMUTE" \
-                 "\n<b>Status:</b> <code>Enforcing</code>" \
-                 "\n<b>Approved by:</b> {}" \
-                 "\n<b>Gmuted User:</b> {}" \
-                 "\n<b>Gmuted User ID:</b> <code>{}</code>" \
-                 "\n<b>Reason:</b> {}".format(mention_html(muter.id, muter.first_name),
-                                              mention_html(user_chat.id, user_chat.first_name), 
-                                                           user_chat.id, reason or "No reason given"))
+    send_to_list(bot, DRAGONS + DRAGONS,
+                 "{} is gmuting user {} "
+                 "because:\n{}".format(mention_html(muter.id, muter.first_name),
+                                       mention_html(user_chat.id, user_chat.first_name), reason or "No reason given"),
+                 html=True)
 
-
-    if EVENT_LOGS:
-        try:
-            log = bot.send_message(
-                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
-        except BadRequest as e:
-            print(e)
-            log = bot.send_message(
-                EVENT_LOGS,
-                log_message +
-                "\n\nFormatting has been disabled due to an unexpected error.")
-
-    else:
-        send_to_list(bot, DRAGONS + DEV_USERS, log_message, html=True)
-        
     sql.gmute_user(user_id, user_chat.username or user_chat.first_name, reason)
 
     chats = get_all_chats()
-    gmuted_chats = 0
     for chat in chats:
         chat_id = chat.chat_id
 
@@ -131,11 +87,7 @@ def gmute(update: Update, context: CallbackContext):
             continue
 
         try:
-            member = chats.get_member(user_id)
-            if member.can_send_messages is None or member.can_send_messages:
-                chat_permissions = ChatPermissions(can_send_messages=False)
-                bot.restrict_chat_member(chat_id, user_id, chat_permissions)
-                gmuted_chats += 1
+            bot.restrict_chat_member(chat_id, user_id, can_send_messages=False)
         except BadRequest as excp:
             if excp.message == "User is an administrator of the chat":
                 pass
@@ -157,38 +109,23 @@ def gmute(update: Update, context: CallbackContext):
                 pass
             elif excp.message == "Method is available only for supergroups":
                 pass
-            elif excp.message == "Channel_private":              
-                pass
             elif excp.message == "Can't demote chat creator":
                 pass
             else:
                 message.reply_text("Could not gmute due to: {}".format(excp.message))
-                send_to_list(bot, DRAGONS + DEV_USERS, "Could not gmute due to: {}".format(excp.message))
+                send_to_list(bot, DRAGONS + DRAGONS, "Could not gmute due to: {}".format(excp.message))
                 sql.ungmute_user(user_id)
                 return
         except TelegramError:
             pass
-    if EVENT_LOGS:
-        log.edit_text(
-            log_message +
-            f"\n<b>Chats affected:</b> {gmuted_chats}",
-            parse_mode=ParseMode.HTML)    
-    else:
-        send_to_list(bot, DRAGONS + DEV_USERS, 
-                  "{} has been successfully gmuted!".format(mention_html(user_chat.id, user_chat.first_name)),
-                html=True)
 
-    message.reply_text("{} won't be talking again anytime soon.".format(mention_html(user_chat.id, user_chat.first_name)), 
-                       parse_mode=ParseMode.HTML)
+    send_to_list(bot, DRAGONS + DRAGONS, "gmute complete!")
+    message.reply_text("Person has been gmuted.")
 
 @support_plus
 @run_async
-def ungmute(update: Update, context: CallbackContext):
-    bot, args = context.bot, context.args
-    message = update.effective_message
-    user = update.effective_user
-    chat = update.effective_chat
-    log_message = ""
+def ungmute(bot: Bot, update: Update, args: List[str]):
+    message = update.effective_message  # type: Optional[Message]
 
     user_id = extract_user(message, args)
     if not user_id:
@@ -208,32 +145,12 @@ def ungmute(update: Update, context: CallbackContext):
 
     message.reply_text("I'll let {} speak again, globally.".format(user_chat.first_name))
 
-    log_message = (
-                 "<b>Regression of Global Mute</b>" \
-                 "\n#UNGMUTE" \
-                 "\n<b>Approved by:</b> {}" \
-                 "\n<b>Ungmuted User:</b> {}" \
-                 "\n<b>Ungmuted User ID:</b> <code>{}</code>" \
-                 "\n<b>Appeal chat: @RajniSpam</b>".format(mention_html(muter.id, muter.first_name),
-                                                                   mention_html(user_chat.id, user_chat.first_name), 
-                                                                   user_chat.id))
+    send_to_list(bot, DRAGONS + DRAGONS,
+                 "{} has ungmuted user {}".format(mention_html(muter.id, muter.first_name),
+                                                   mention_html(user_chat.id, user_chat.first_name)),
+                 html=True)
 
-    if EVENT_LOGS:
-        try:
-            log = bot.send_message(
-                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
-        except BadRequest as e:
-            print(e)
-            log = bot.send_message(
-                EVENT_LOGS,
-                log_message +
-                "\n\nFormatting has been disabled due to an unexpected error.")
-
-    else:
-        send_to_list(bot, DRAGONS + DEV_USERS, log_message, html=True)
-    
     chats = get_all_chats()
-    ungmuted_chats = 0
     for chat in chats:
         chat_id = chat.chat_id
 
@@ -249,7 +166,7 @@ def ungmute(update: Update, context: CallbackContext):
                                      can_send_media_messages=True,
                                      can_send_other_messages=True,
                                      can_add_web_page_previews=True)
-            ungmuted_chats += 1
+
         except BadRequest as excp:
             if excp.message == "User is an administrator of the chat":
                 pass
@@ -267,8 +184,6 @@ def ungmute(update: Update, context: CallbackContext):
                 pass
             elif excp.message == "Chat_admin_required":
                 pass
-            elif excp.message == "User not found":
-                pass
             else:
                 message.reply_text("Could not un-gmute due to: {}".format(excp.message))
                 bot.send_message(OWNER_ID, "Could not un-gmute due to: {}".format(excp.message))
@@ -277,22 +192,14 @@ def ungmute(update: Update, context: CallbackContext):
             pass
 
     sql.ungmute_user(user_id)
-    if EVENT_LOGS:
-        log.edit_text(
-            log_message +
-            f"\n<b>Chats affected:</b> {ungmuted_chats}",
-            parse_mode=ParseMode.HTML)
-    else:
-        send_to_list(bot, DRAGONS + DEV_USERS, 
-                  "{} has been successfully un-gmuted!".format(mention_html(user_chat.id, 
-                                                                         user_chat.first_name)),
-                  html=True)
 
-    message.reply_text("{} has been un-gmuted.".format(mention_html(user_chat.id, user_chat.first_name)), parse_mode=ParseMode.HTML)
+    send_to_list(bot, DRAGONS + DRAGONS, "un-gmute complete!")
+
+    message.reply_text("Person has been un-gmuted.")
 
 @support_plus
 @run_async
-def gmutelist(update: Update, context: CallbackContext):
+def gmutelist(bot: Bot, update: Update):
     muted_users = sql.get_gmute_list()
 
     if not muted_users:
@@ -311,7 +218,7 @@ def gmutelist(update: Update, context: CallbackContext):
                                                 caption="Here is the list of currently gmuted users.")
 
 
-def check_and_mute(bot, update: Update, context: CallbackContext, should_message=True):
+def check_and_mute(bot, update, user_id, should_message=True):
     if sql.is_user_gmuted(user_id):
         bot.restrict_chat_member(update.effective_chat.id, user_id, can_send_messages=False)
         if should_message:
@@ -319,8 +226,7 @@ def check_and_mute(bot, update: Update, context: CallbackContext, should_message
 
 
 @run_async
-def enforce_gmute(update: Update, context: CallbackContext):
-    bot = context.bot
+def enforce_gmute(bot: Bot, update: Update):
     # Not using @restrict handler to avoid spamming - just ignore if cant gmute.
     if sql.does_chat_gmute(update.effective_chat.id) and update.effective_chat.get_member(bot.id).can_restrict_members:
         user = update.effective_user  # type: Optional[User]
@@ -337,26 +243,22 @@ def enforce_gmute(update: Update, context: CallbackContext):
             user = msg.reply_to_message.from_user  # type: Optional[User]
             if user and not is_user_admin(chat, user.id):
                 check_and_mute(bot, update, user.id, should_message=True)
-
+                
+@support_plus
 @run_async
 @user_admin
-def gmutespam(update: Update, context: CallbackContext):
-    args = context.args
+def gmutestat(bot: Bot, update: Update, args: List[str]):
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gmutes(update.effective_chat.id)
             update.effective_message.reply_text("I've enabled gmutes in this group. This will help protect you "
-                                                "from spammers, unsavoury characters")
+                                                "from spammers, unsavoury characters.")
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gmutes(update.effective_chat.id)
-            update.effective_message.reply_text("I've disabled gmutes in this group. GMutes wont affect gmuted users in your group "
-                                                "Anyways You'll be less protected from Spammers though!")
+            update.effective_message.reply_text("I've disabled gmutes in this group. GMutes wont affect your users "
+                                                "anymore. You'll be less protected from Malicious users")
     else:
-        update.effective_message.reply_text("Give me some arguments to choose a setting! on/off, yes/no!\n\n"
-                                            "Your current setting is: {}\n"
-                                            "When True, our gmuted will also muted in your group. "
-                                            "When False, they won't, Atlast it's your choice that you want them muted or not."
-                                            "spammers.".format(sql.does_chat_gmute(update.effective_chat.id)))
+        update.effective_message.reply_text("{} OK".format(sql.does_chat_gmute(update.effective_chat.id)))
 
 
 def __stats__():
@@ -371,8 +273,7 @@ def __user_info__(user_id):
         text = text.format("Yes")
         user = sql.get_gmuted_user(user_id)
         if user.reason:
-            text += f"\n<b>Reason:</b> <code>{html.escape(user.reason)}</code>"
-            text += f"\n<b>Appeal Chat:</b> @Rajnispam"
+            text += "\nReason: {}".format(html.escape(user.reason))
     else:
         text = text.format("No")
     return text
@@ -383,25 +284,17 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return f"This chat is enforcing *Gmutes*: `{sql.does_chat_gmute(chat_id)}`."
+    return "This chat is enforcing *gmutes*: `{}`.".format(sql.does_chat_gmute(chat_id))
 
-'''
-__help__ = """
-*Admin only:*
- - /antispam <on/off/yes/no>: Will disable the effect of global mutes on your group, or return your current settings.
-Gmutes, also known as global mutes, are used by the bot owners to mute spammers across all groups. This helps protect \
-you and your groups by removing spam flooders as quickly as possible. They can be disabled for you group by calling \
-"""
-'''
-__mod_name__ = "Global Mutes"
+__mod_name__ = "GMutes"
 
 GMUTE_HANDLER = CommandHandler("gmute", gmute)
-UNGMUTE_HANDLER = CommandHandler("ungmute", ungmute)
-GMUTE_LIST = CommandHandler("gbanstats", gmutelist)
+UNGMUTE_HANDLER = CommandHandler("ungmute")
+GMUTE_LIST = CommandHandler("gmutelist", gmutelist)
 
-GMUTE_STATUS = CommandHandler("gmutes", gmutespam,  filters=Filters.group)
+GMUTE_STATUS = CommandHandler("gmutestats", gmutestat)
 
-GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gmute)
+GMUTE_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
 
 dispatcher.add_handler(GMUTE_HANDLER)
 dispatcher.add_handler(UNGMUTE_HANDLER)
