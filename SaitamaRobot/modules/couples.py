@@ -6,7 +6,7 @@ from SaitamaRobot import pgram as app, BOT_USERNAME
 from SaitamaRobot.utils.errors import capture_err
 from SaitamaRobot.modules.mongo.couples_mongo import get_couple, save_couple
 
-__mod_name__ = "Shippering"
+__mod_name__ = "Couples"
 
 # Date and time
 def dt():
