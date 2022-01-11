@@ -18,7 +18,7 @@ from SaitamaRobot.modules.sql.users_sql import get_all_chats
 
 GMUTE_ENFORCE_GROUP = 6
 
-
+@support_plus
 @run_async
 def gmute(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -26,7 +26,7 @@ def gmute(update: Update, context: CallbackContext):
     user = update.effective_user
     chat = update.effective_chat
     log_message = ""
-    
+    user_id = extract_user(message, args)
     message = update.effective_message  # type: Optional[Message]
     user_id, reason = extract_user_and_text(message, args)
 
@@ -96,9 +96,9 @@ def gmute(update: Update, context: CallbackContext):
                  "<b>Global Mute</b>" \
                  "\n#GMUTE" \
                  "\n<b>Status:</b> <code>Enforcing</code>" \
-                 "\n<b>Sudo Admin:</b> {}" \
-                 "\n<b>User:</b> {}" \
-                 "\n<b>ID:</b> <code>{}</code>" \
+                 "\n<b>Approved by:</b> {}" \
+                 "\n<b>Gmuted User:</b> {}" \
+                 "\n<b>Gmuted User ID:</b> <code>{}</code>" \
                  "\n<b>Reason:</b> {}".format(mention_html(muter.id, muter.first_name),
                                               mention_html(user_chat.id, user_chat.first_name), 
                                                            user_chat.id, reason or "No reason given"))
@@ -177,7 +177,7 @@ def gmute(update: Update, context: CallbackContext):
     message.reply_text("{} won't be talking again anytime soon.".format(mention_html(user_chat.id, user_chat.first_name)), 
                        parse_mode=ParseMode.HTML)
 
-
+@support_plus
 @run_async
 def ungmute(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -207,12 +207,12 @@ def ungmute(update: Update, context: CallbackContext):
     log_message = (
                  "<b>Regression of Global Mute</b>" \
                  "\n#UNGMUTE" \
-                 "\n<b>Status:</b> <code>Ceased</code>" \
-                 "\n<b>Sudo Admin:</b> {}" \
-                 "\n<b>User:</b> {}" \
-                 "\n<b>ID:</b> <code>{}</code>".format(mention_html(muter.id, muter.first_name),
-                                                       mention_html(user_chat.id, user_chat.first_name), 
-                                                                    user_chat.id))
+                 "\n<b>Approved by:</b> {}" \
+                 "\n<b>Ungmuted User:</b> {}" \
+                 "\n<b>Ungmuted User ID:</b> <code>{}</code>" \
+                 "\n<b>Appeal chat: @RajniSpam</b>".format(mention_html(muter.id, muter.first_name),
+                                                                   ention_html(user_chat.id, user_chat.first_name), 
+                                                                   user_chat.id))
 
     if EVENT_LOGS:
         try:
@@ -286,7 +286,7 @@ def ungmute(update: Update, context: CallbackContext):
 
     message.reply_text("{} has been un-gmuted.".format(mention_html(user_chat.id, user_chat.first_name)), parse_mode=ParseMode.HTML)
 
-
+@support_plus
 @run_async
 def gmutelist(update: Update, context: CallbackContext):
     muted_users = sql.get_gmute_list()
@@ -342,16 +342,16 @@ def gmutespam(update: Update, context: CallbackContext):
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gmutes(update.effective_chat.id)
             update.effective_message.reply_text("I've enabled gmutes in this group. This will help protect you "
-                                                "from spammers, unsavoury characters, and Anirudh.")
+                                                "from spammers, unsavoury characters")
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gmutes(update.effective_chat.id)
-            update.effective_message.reply_text("I've disabled gmutes in this group. GMutes wont affect your users "
-                                                "anymore. You'll be less protected from Anirudh though!")
+            update.effective_message.reply_text("I've disabled gmutes in this group. GMutes wont affect gmuted users in your group "
+                                                "Anyways You'll be less protected from Spammers though!")
     else:
         update.effective_message.reply_text("Give me some arguments to choose a setting! on/off, yes/no!\n\n"
                                             "Your current setting is: {}\n"
-                                            "When True, any gmutes that happen will also happen in your group. "
-                                            "When False, they won't, leaving you at the possible mercy of "
+                                            "When True, our gmuted will also muted in your group. "
+                                            "When False, they won't, Atlast it's your choice that you want them muted or not."
                                             "spammers.".format(sql.does_chat_gmute(update.effective_chat.id)))
 
 
@@ -367,7 +367,7 @@ def __user_info__(user_id):
         text = text.format("Yes")
         user = sql.get_gmuted_user(user_id)
         if user.reason:
-            text += f"\nReason: {html.escape(user.reason)}"
+            text += f"\n<b>Reason:</b> <code>{html.escape(user.reason)}</code>"
             text += f"\n<b>Appeal Chat:</b> @Rajnispam"
     else:
         text = text.format("No")
