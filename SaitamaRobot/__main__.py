@@ -16,6 +16,8 @@ from SaitamaRobot import (
     URL,
     WEBHOOK,
     SUPPORT_CHAT,
+    BOT_NAME,
+    BOT_USERNAME,
     ERROR_LOGS,
     dispatcher,
     StartTime,
@@ -74,8 +76,8 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-PM_START_TEXT = """
-Hi, I'm [『Rajnii』](t.me/rajniirobot)!,
+PM_START_TEXT = f"""
+Hi, I'm [{BOT_NAME}](t.me/{BOT_USERNAME})!,
 _A bot to manage your chats when you're offline._
 _Make sure to read my "About" section to know how you can use me effectively!_
 *Join Chatting Group - @RajniSpam!*
@@ -85,8 +87,8 @@ _Make sure to read my "About" section to know how you can use me effectively!_
 buttons = [
     [
         InlineKeyboardButton(
-            text="Add Rajnii to your group",
-            url="t.me/RajniiRobot?startgroup=true")],
+            text=f"Add {BOT_NAME} to your group",
+            url=f"t.me/{BOT_USERNAME}?startgroup=true")],
     [
         InlineKeyboardButton(
             text="☆ About Me",
@@ -99,7 +101,7 @@ buttons = [
 
 
 
-HELP_STRINGS = """
+HELP_STRINGS = f"""
 *『 Help section: 』*
 
 Hey there! My name is *{}*.
@@ -124,7 +126,7 @@ And the following:
 
 SAITAMA_IMG = "https://telegra.ph/file/0c8c80cc3df5c6a340448.jpg"
 
-DONATE_STRING = """*『Rajnii』* is hosted on Heroku server,
+DONATE_STRING = f"""*{dispatcher.bot.first_name}* is hosted on Heroku server,
 if you want to donate my developers you can.......,
 • [Gpay](https://pay.google.com)
 *UPI ID* - `dhruv040.04@okaxis`
@@ -356,7 +358,7 @@ def rajni_about_callback(update, context):
         query.message.edit_text(
             text=f"""*『 About section: 』*
 
-I'm *『Rajnii』*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
+I'm *{dispatcher.bot.first_name}*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
 *Here's a Shortlist what I can do.*
 \n• I can restrict users.
 • I can greet users with customizable welcome messages and even set a group's rules.
@@ -367,7 +369,7 @@ I'm *『Rajnii』*, a powerful & moduler group management bot built to help your
 • I have more useful and fun modules too.
 • I can chat with users by using [Kuki AI](https://kuki-api.tk).
 • [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
-• Rajnii’s reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
+• *{dispatcher.bot.first_name}’s* reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
 • Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
 
 *If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
@@ -409,7 +411,7 @@ Here is the help how to use me with my best performance, follow the steps below!
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [InlineKeyboardButton(text="｢Add me」", url="t.me/RajniiRobot?startgroup=true"),
+                 [InlineKeyboardButton(text="｢Add me」", url=f"t.me/{BOT_USERNAME}?startgroup=true"),
                   InlineKeyboardButton(text="｢About」", callback_data="rajni_")],
                  [InlineKeyboardButton(text="｢Admin Setup」", callback_data="adminsetup_"),
                   InlineKeyboardButton(text="｢Anti-Spam Setup」", callback_data="antispamsetup_")],
@@ -421,14 +423,24 @@ def admin_setup(update, context):
     query = update.callback_query
     if query.data == "adminsetup_":
         query.message.edit_text(
-            text="""*｢ Admin Setup 」*
+            text=f"""*｢ Admin Setup 」*
 
-• To avoid slowing down, Rajnii caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), Rajnii will only find out ~10 minutes later.
-• If you want to update them immediately, you can use the `/admincache` command,thta'll force Rajnii to check who the admins are again and their permissions
+• To avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user.
+This cache lasts about 10 minutes; this may change in the future.
+This means that if you promote a user manually (without using the /promote command),
+{dispatcher.bot.first_name} will only find out 10 minutes later.
+• If you want to update them immediately, you can use the `/admincache` command,
+that'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions
 • If you are getting a message saying:
 `You must be this chat administrator to perform this action!`
-• This has nothing to do with Rajnii’s rights; this is all about your permissions as an admin. Rajnii respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with Rajnii. Similarly, to change Rajnii settings, you need to have the Change group info permission.
-• The message very clearly says that you need these admin rights; Rajnii already have.""",
+• This has nothing to do with {dispatcher.bot.first_name}’s rights;
+this is all about your permissions as an admin.
+{dispatcher.bot.first_name} respects admin permissions;
+if you do not have the Ban Users permission as a telegram admin,
+you won't be able to ban users with Rajnii.
+Similarly, to change {dispatcher.bot.first_name} settings,
+you need to have the Change group info permission.
+• The message very clearly says that you need these admin rights; {dispatcher.bot.first_name} already have enough.""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -458,7 +470,9 @@ Antiflood allows you to take action on users that send more than x messages in a
 *« Blacklist »*
 • `/addblacklist <triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
 • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`: Action to perform when someone sends blacklisted words.
-Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, the message will immediately be deleted. A good combo is sometimes to pair this up with warn filters!
+Blacklists are used to stop certain triggers from being said in a group.
+Any time the trigger is mentioned, the message will immediately be deleted.
+A good combo is sometimes to pair this up with warn filters!
 
 *« Reports »*
 • `/reports <on/off>`: Change report setting, or view current status.
@@ -552,13 +566,14 @@ def rajni_tandc_callback(update, context):
 *The Terms and Conditions are as follows:*
 
 • We respect everyone's privacy & we never collect Sensitive data from groups.
-• Rajnii is one of the safest, Stable, and Moduler telegram bot.
-• Messages between users and Rajnii is End to End Encrypted!
-• NSFW content spammers always get Permanent Global Ban in Rajnii Database.
+• {dispatcher.bot.first_name} is one of the safest, easiest and Moduler telegram bot.
+• Messages between users and {dispatcher.bot.first_name} is End to End Encrypted!
+• NSFW content spammers always get Permanent Global Ban in {dispatcher.bot.first_name} Database.
 • Be Active on your chats, if someone spamming your group, you can use report feature & you can also report us about that on @RajniSpam to appeal a Gban/Fban.
 • Make sure antiflood is enabled, so nobody can flood/spam your group.
-• Please don't spam bot commands or buttons weather in pm or in groups, it can make Rajnii Slower to respond and if we blacklist them who spams Rajni’s buttons or commands, Hence Rajni will ignore thier existance.
-• Global appeals for Rajnii? Read the [criteria](https://t.me/RajniGlobal/402) first.
+• Please don't spam bot commands or buttons weather in pm or in groups, it can make {dispatcher.bot.first_name} Slower to respond and
+if we blacklist them who spams {dispatcher.bot.first_name}’s buttons or commands, Hence {dispatcher.bot.first_name} will ignore thier existance.
+• Global appeals for {dispatcher.bot.first_name}? Read the [criteria](https://t.me/RajniGlobal/402) first.
  Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
 • We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
 
@@ -807,7 +822,7 @@ def main():
             dispatcher.bot.sendMessage(f"@{ERROR_LOGS}", "I am now online!")
         except Unauthorized:
             LOGGER.warning(
-                "Bot isnt able to send message to ERROR LOG CHANNEL chat, go and check!")
+                f"{dispatcher.bot.first_name} isnt able to send message to ERROR LOG CHANNEL chat, go and check {dispatcher.bot.first_name} is added there or not!")
         except BadRequest as e:
             LOGGER.warning(e.message)
 
@@ -866,11 +881,11 @@ def main():
 
     if WEBHOOK:
         time.sleep(0)
-        LOGGER.info("[RAJNII] • SRN • Using webhooks.")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • Using webhooks.")
         time.sleep(0)
-        LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • Connection Successful!")
         time.sleep(0)
-        LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • {dispatcher.bot.first_name} deployed, check @{SUPPORT_CHAT}")
         updater.start_webhook(listen="127.0.0.1", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
@@ -880,11 +895,11 @@ def main():
 
     else:
         time.sleep(0)
-        LOGGER.info("[RAJNII] • SRN • Long polling")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • Long polling")
         time.sleep(0)
-        LOGGER.info("[RAJNII] • SRN • Connection Successful!")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • Connection Successful!")
         time.sleep(0)
-        LOGGER.info(f"[RAJNII] • SRN • Rajni deployed, check @{SUPPORT_CHAT}")
+        LOGGER.info(f"[{dispatcher.bot.first_name}] • SRN • {dispatcher.bot.first_name} deployed, check @{SUPPORT_CHAT}")
         updater.start_polling(timeout=15, read_latency=4)
 
     if len(argv) not in (1, 3, 4):
@@ -897,7 +912,7 @@ def main():
 try:
     ubot.start()
 except BaseException:
-    print("[RAJNII] • Userbot Error ! Please add a STRING_SESSION get it from https://repl.it/@SpEcHiDe/GenerateStringSession - Telethon String Session")
+    print(f"[{dispatcher.bot.first_name}] • Userbot Error ! Please add a STRING_SESSION get it from https://repl.it/@SpEcHiDe/GenerateStringSession - Telethon String Session")
     sys.exit(1)
 
 if __name__ == '__main__':
