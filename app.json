@@ -13,241 +13,205 @@
       ],   
    "repository": "https://github.com/itzzzzyashu/RajniiRobotActive",
    "env": {
-"TOKEN": {
-         "description": ".",
-         "required": true,
-         "value": "xyz"
+         "TOKEN": {
+               "description": ".",
+               "required": true,
+               "value": "xyz"
+         },
+         "OWNER_ID": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-"OWNER_ID": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "JOIN_LOGGER": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-"JOIN_LOGGER": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "OWNER_USERNAME": {
+               "description": ".",
+               "required": true,
+               "value": "itzzzyashu"
       },
-    
-"OWNER_USERNAME": {
-         "description": ".",
-         "required": true,
-         "value": "itzzzyashu"
+         "DRAGONS": {
+               "description": ".",
+               "required": false,
+               "value": ""
       },
-    
-"DRAGONS": {
-         "description": ".",
-         "required": false,
-         "value": ""
+         "DEV_USERS": {
+               "description": ".",
+               "required": false,
+               "value": ""
       },
-    
-"DEV_USERS": {
-         "description": ".",
-         "required": false,
-         "value": ""
+         "DEMONS": {
+               "description": ".",
+               "required": false,
+               "value": ""
       },
-    
-"DEMONS": {
-         "description": ".",
-         "required": false,
-         "value": ""
+         "WOLVES": {
+               "description": ".",
+               "required": false,
+               "value": ""
       },
-     
-"WOLVES": {
-         "description": ".",
-         "required": false,
-         "value": ""
+         "TIGERS": {
+               "description": ".",
+               "required": false,
+               "value": ""
       },
-    
-"TIGERS": {
-         "description": ".",
-         "required": false,
-         "value": ""
+         "INFOPIC": {
+               "description": ".",
+               "required": true,
+               "value": "True"
       },
-    
-"INFOPIC": {
-         "description": ".",
-         "required": true,
-         "value": "True"
+         "OPENWEATHERMAP_ID": {
+               "description": "get it from https://home.openweathermap.org/api_keys.",
+               "required": true,
+               "value": ""
       },
-    
-"OPENWEATHERMAP_ID": {
-         "description": "get it from https://home.openweathermap.org/api_keys.",
-         "required": true,
-         "value": ""
+         "HEROKU_APP_NAME": {
+               "description": "your heroku app name, first block above.",
+               "required": true,
+               "value": ""
       },
-    
-"HEROKU_APP_NAME": {
-         "description": "your heroku app name, first block above.",
-         "required": true,
-         "value": ""
+         "ERROR_LOGS": {
+               "description": "where your bot can show error logs to you",
+               "required": true,
+               "value": "SanatanRakshaDevelopers"
       },
-    
-"ERROR_LOGS": {
-         "description": "where your bot can show error logs to you",
-         "required": true,
-         "value": "SanatanRakshaDevelopers"
+         "HEROKU_API_KEY": {
+               "description": "your heroku API key from heroku account info.",
+               "required": true,
+               "value": "XYZ"
       },
-    
-"HEROKU_API_KEY": {
-         "description": "your heroku API key from heroku account info.",
-         "required": true,
-         "value": "XYZ"
+         "EVENT_LOGS": {
+               "description": "where your bot can log global actions",
+               "required": true,
+               "value": ""
       },
-    
-"EVENT_LOGS": {
-         "description": "where your bot can log global actions",
-         "required": true,
-         "value": ""
+         "STRICT_GMUTE": {
+               "description": "True or False",
+               "required": true,
+               "value": "True"
       },
-    
-"STRICT_GMUTE": {
-         "description": "True or False",
-         "required": true,
-         "value": "True"
+         "REM_BG_API_KEY": {
+               "description": "get api from https://www.remove.bg/tools-api.",
+               "required": true,
+               "value": ""
       },
-    
-"REM_BG_API_KEY": {
-         "description": "get api from https://www.remove.bg/tools-api.",
-         "required": true,
-         "value": ""
+         "BOT_USERNAME": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"BOT_USERNAME": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "BOT_ID": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"BOT_ID": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "BOT_NAME": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"BOT_NAME": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "URL": {
+               "description": "heroku app url",
+               "required": true,
+               "value": ""
       },
-"URL": {
-         "description": "heroku app url",
-         "required": true,
-         "value": ""
+         "API_ID": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"API_ID": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "API_HASH": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"API_HASH": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "DATABASE_URL": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"DATABASE_URL": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "MONGO_DB_URI": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"MONGO_DB_URI": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "MONGO_PORT": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"MONGO_PORT": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "ARQ_API": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"ARQ_API": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "STRING_SESSION": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"STRING_SESSION": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "DONATION_LINK": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"DONATION_LINK": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "NO_LOAD": {
+               "description": "",
+               "required": false,
+               "value": ""
       },
-    
-"NO_LOAD": {
-         "description": "",
-         "required": true,
-         "value": ""
+         "DEL_CMDS": {
+               "description": "",
+               "required": true,
+               "value": ""
       },
-    
-"DEL_CMDS": {
-         "description": "",
-         "required": true,
-         "value": ""
+         "STRICT_GBAN": {
+               "description": "",
+               "required": true,
+               "value": ""
       },
-    
-"STRICT_GBAN": {
-         "description": "",
-         "required": true,
-         "value": ""
+         "ALLOW_EXCL": {
+               "description": "",
+               "required": true,
+               "value": ""
       },
-    
-"ALLOW_EXCL": {
-         "description": "",
-         "required": true,
-         "value": ""
+         "CASH_API_KEY": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"CASH_API_KEY": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "TIME_API_KEY": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"TIME_API_KEY": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "AI_API_KEY": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"AI_API_KEY": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "WALL_API": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"WALL_API": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "SUPPORT_CHAT": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"SUPPORT_CHAT": {
-         "description": ".",
-         "required": true,
-         "value": ""
+         "SPAMWATCH_SUPPORT_CHAT": {
+               "description": ".",
+               "required": true,
+               "value": ""
       },
-    
-"SPAMWATCH_SUPPORT_CHAT": {
-         "description": ".",
-         "required": true,
-         "value": ""
-      },
-    
-"SPAMWATCH_API": {
-         "description": ".",
-         "required": true,
-         "value": ""
-      }
-  }
+         "SPAMWATCH_API": {
+               "description": ".",
+               "required": true,
+               "value": ""
+         }
+   }
 }
