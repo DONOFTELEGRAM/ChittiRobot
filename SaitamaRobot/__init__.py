@@ -205,56 +205,56 @@ DEV_USERS.add(OWNER_ID)
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("[RAJNII ERROR] SpamWatch API key Is Missing! Recheck Your Config.")
+    LOGGER.warning(f"[{BOT_NAME} ERROR] SpamWatch API key Is Missing! Recheck Your Config.")
 else:
     try:
         sw = spamwatch.Client(SPAMWATCH_API)
     except:
         sw = None
-        LOGGER.warning("[RAJNII ERROR] Can't connect to SpamWatch!")
+        LOGGER.warning(f"[{BOT_NAME} ERROR] Can't connect to SpamWatch!")
         
 
 time.sleep(0)
 print("=========================================================================================================")
 # Credits Logger
-print("[RAJNII] Activating Rajnii. | SRN • Project C437 | Licensed Under GPLv3.")
+print(f"[{BOT_NAME}] Activating {BOT_NAME}. | SRN • Project C437 | Licensed Under GPLv3.")
 time.sleep(0)
-print("[RAJNII] [C437 ACTIVATING: Initializing Required Clients]")
+print(f"[{BOT_NAME}] [C437 ACTIVATING: Initializing Required Clients]")
 time.sleep(0)
-print("[RAJNII] Project Maintained By: [github.com/itzzzzyashu] (t.me/itzzzyashu)")
+print(f"[{BOT_NAME}] Project Maintained By: [github.com/itzzzzyashu] (t.me/itzzzyashu)")
 time.sleep(3)
 from SaitamaRobot.modules.sql import SESSION
 
-print("[RAJNII] Installing Telegraph")
+print(f"[{BOT_NAME}] Installing Telegraph")
 telegraph = Telegraph()
 time.sleep(0)
-print("[RAJNII] Creating Telegraph Account")
+print(f"[{BOT_NAME}] Creating Telegraph Account")
 updater = tg.Updater(TOKEN, workers=WORKERS, request_kwargs={"read_timeout": 10, "connect_timeout": 10}, use_context=True)
-time.sleep(0)
-print("[RAJNII] TELETHON CLIENT STARTING")
-telethn = TelegramClient("RAJNII", API_ID, API_HASH)
-time.sleep(0)
 dispatcher = updater.dispatcher
-print("[RAJNII] PYROGRAM CLIENT STARTING")
+time.sleep(0)
+print(f"[{BOT_NAME}] TELETHON CLIENT STARTING")
+telethn = TelegramClient(f"{BOT_NAME}", API_ID, API_HASH)
+time.sleep(0)
+print(f"[{BOT_NAME}] PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
 pgram = Client(session_name, api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 time.sleep(0)
-print("[RAJNII] Connecting To SRN • Data Center • Mumbai • MongoDB Database")
+print(f"[{BOT_NAME}] Connecting To SRN • Data Center • Mumbai • MongoDB Database")
 mongodb = MongoClient(MONGO_DB_URL, MONGO_PORT)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
 time.sleep(0)
-print("[RAJNII] INITIALZING AIOHTTP SESSION")
+print(f"[{BOT_NAME}] INITIALZING AIOHTTP SESSION")
 aiohttpsession = ClientSession()
 time.sleep(0)
 # ARQ Client
-print("[RAJNII] INITIALIZATION ARQ CLIENT")
+print(f"[{BOT_NAME}] INITIALIZATION ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 time.sleep(0)
-print("[RAJNII] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
+print(f"[{BOT_NAME}] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
 time.sleep(0)
-print("[RAJNII] Connecting To SRN • Rajnii Userbot (t.me/itzzzyashu)")
+print(f"[{BOT_NAME}] Connecting To SRN • {BOT_NAME}'s Userbot (t.me/itzzzyashu)")
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 print("\n=========================================================================================================")
 time.sleep(0)
