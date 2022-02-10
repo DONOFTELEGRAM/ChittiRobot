@@ -12,45 +12,248 @@
       ],   
    "repository": "https://github.com/itzzzzyashu/RajniiRobotActive",
    "env": {
-    TOKEN
-    OWNER_ID
-    JOIN_LOGGER
-    OWNER_USERNAME
-    DRAGONS
-    DEV_USERS
-    DEMONS
-    WOLVES 
-    TIGERS
-    INFOPIC
-    OPENWEATHERMAP_ID
-    HEROKU_APP_NAME
-    ERROR_LOGS
-    HEROKU_API_KEY
-    EVENT_LOGS
-    STRICT_GMUTE
-    REM_BG_API_KEY
-    BOT_USERNAME
-    BOT_ID
-    BOT_NAME
-    URL  # heroku app url
-    API_ID
-    API_HASH
-    DATABASE_URL
-    MONGO_DB_URI
-    MONGO_PORT
-    ARQ_API
-    STRING_SESSION
-    DONATION_LINK
-    NO_LOAD
-    DEL_CMDS
-    STRICT_GBAN
-    ALLOW_EXCL
-    CASH_API_KEY
-    TIME_API_KEY
-    AI_API_KEY
-    WALL_API
-    SUPPORT_CHAT
-    SPAMWATCH_SUPPORT_CHAT
-    SPAMWATCH_API
- }
+"TOKEN": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+   
+"TOKEN": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+"OWNER_ID": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+"JOIN_LOGGER": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"OWNER_USERNAME": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DRAGONS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DEV_USERS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DEMONS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+     
+"WOLVES": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"TIGERS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"INFOPIC": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"OPENWEATHERMAP_ID": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"HEROKU_APP_NAME": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"ERROR_LOGS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"HEROKU_API_KEY": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"EVENT_LOGS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"STRICT_GMUTE": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"REM_BG_API_KEY": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"BOT_USERNAME": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"BOT_ID": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"BOT_NAME": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+      # heroku app url
+"URL": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"API_ID": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"API_HASH": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DATABASE_URL": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"MONGO_DB_URI": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"MONGO_PORT": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"ARQ_API": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"STRING_SESSION": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DONATION_LINK": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"NO_LOAD": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"DEL_CMDS": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"STRICT_GBAN": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"ALLOW_EXCL": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"CASH_API_KEY": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"TIME_API_KEY": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"AI_API_KEY": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"WALL_API": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"SUPPORT_CHAT": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"SPAMWATCH_SUPPORT_CHAT": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+    
+"SPAMWATCH_API": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+ },
 }
