@@ -12,13 +12,6 @@
       ],   
    "repository": "https://github.com/itzzzzyashu/RajniiRobotActive",
    "env": {
-
-"TOKEN": {
-         "description": ".",
-         "required": true,
-         "value": ""
-      },
-   
 "TOKEN": {
          "description": ".",
          "required": true,
