@@ -130,9 +130,8 @@
          "required": true,
          "value": ""
       },
-      # heroku app url
 "URL": {
-         "description": ".",
+         "description": "heroku app url",
          "required": true,
          "value": ""
       },
