@@ -1,5 +1,6 @@
 {
       "name": "RajniiRobot",
+      "logo": "https://telegra.ph/file/cdddd4bdbd05f9d5bc441.jpg",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
@@ -248,6 +249,6 @@
          "description": ".",
          "required": true,
          "value": ""
-      },
- },
+      }
+  }
 }
