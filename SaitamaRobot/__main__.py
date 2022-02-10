@@ -101,7 +101,7 @@ buttons = [
 
 
 
-HELP_STRINGS = f"""
+HELP_STRINGS = """
 *『 Help section: 』*
 
 Hey there! My name is *{}*.
