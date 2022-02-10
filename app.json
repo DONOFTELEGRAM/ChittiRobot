@@ -16,7 +16,7 @@
 "TOKEN": {
          "description": ".",
          "required": true,
-         "value": ""
+         "value": "xyz"
       },
 "OWNER_ID": {
          "description": ".",
@@ -32,83 +32,83 @@
 "OWNER_USERNAME": {
          "description": ".",
          "required": true,
-         "value": ""
+         "value": "itzzzyashu"
       },
     
 "DRAGONS": {
          "description": ".",
-         "required": true,
+         "required": false,
          "value": ""
       },
     
 "DEV_USERS": {
          "description": ".",
-         "required": true,
+         "required": false,
          "value": ""
       },
     
 "DEMONS": {
          "description": ".",
-         "required": true,
+         "required": false,
          "value": ""
       },
      
 "WOLVES": {
          "description": ".",
-         "required": true,
+         "required": false,
          "value": ""
       },
     
 "TIGERS": {
          "description": ".",
-         "required": true,
+         "required": false,
          "value": ""
       },
     
 "INFOPIC": {
          "description": ".",
          "required": true,
-         "value": ""
+         "value": "True"
       },
     
 "OPENWEATHERMAP_ID": {
-         "description": ".",
+         "description": "get it from https://home.openweathermap.org/api_keys.",
          "required": true,
          "value": ""
       },
     
 "HEROKU_APP_NAME": {
-         "description": ".",
+         "description": "your heroku app name, first block above.",
          "required": true,
          "value": ""
       },
     
 "ERROR_LOGS": {
-         "description": ".",
+         "description": "where your bot can show error logs to you",
          "required": true,
-         "value": ""
+         "value": "SanatanRakshaDevelopers"
       },
     
 "HEROKU_API_KEY": {
-         "description": ".",
+         "description": "your heroku API key from heroku account info.",
          "required": true,
-         "value": ""
+         "value": "XYZ"
       },
     
 "EVENT_LOGS": {
-         "description": ".",
+         "description": "where your bot can log global actions",
          "required": true,
          "value": ""
       },
     
 "STRICT_GMUTE": {
-         "description": ".",
+         "description": "True or False",
          "required": true,
-         "value": ""
+         "value": "True"
       },
     
 "REM_BG_API_KEY": {
-         "description": ".",
+         "description": "get api from https://www.remove.bg/tools-api.",
          "required": true,
          "value": ""
       },
