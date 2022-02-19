@@ -1,7 +1,6 @@
 
 import os
 import wget
-import arq
 import time
 import yt_dlp
 import asyncio
@@ -10,7 +9,7 @@ import requests
 
 from pyrogram import filters
 from pyrogram.types import Message
-from SaitamaRobot import pgram, BOT_USERNAME
+from SaitamaRobot import pgram, BOT_USERNAME, arq
 from SaitamaRobot.utils.pluginhelp import get_text, progress
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
