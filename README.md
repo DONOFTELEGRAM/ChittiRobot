@@ -1,6 +1,6 @@
 ![RAJNI](https://telegra.ph/file/cdddd4bdbd05f9d5bc441.jpg)
 
-# [@RajniiRobot](https://telegram.me/RajniiRobot)
+# [Rajniirobot](https://telegram.me/RajniiRobot)
 ### Random
 ### Accessible
 ### Jobs &
@@ -107,7 +107,6 @@ My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](ht
 <code>WOLVES</code> - A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot(Leave it as it as if you don't know anyone).
   
   [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzzyashu/RajniiRoboActive.git)
-  [RAILWAY](https://railway.app/new/template?template=https://github.com/itzzzzyashu/RajniiRoboActive/tree/master/SaitamaRobot&envs=AI_API_KEY,ALLOW_EXCL,API_HASH,API_ID,BAN_STICKER,BL_CHATS,CASH_API_KEY,DEL_CMDS,DEMONS,DEV_USERS,DONATION_LINK,DRAGONS,ENV,EVENT_LOGS,JOIN_LOGGER,No_LOAD,OWNER_ID,OWNER_USERNAME,PORT,SQLALCHEMY_DATABASE_URI,STRICT_GBAN,SUPPORT_CHAT,sw_api,TIGERS,TIME_API_KEY,TOKEN,URL,WALL_API,WEBHOOK,WOLVES)
   
 </details>
 
