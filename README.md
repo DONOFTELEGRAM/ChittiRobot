@@ -1,6 +1,6 @@
 ![RAJNI](https://telegra.ph/file/cdddd4bdbd05f9d5bc441.jpg)
 
-# [Rajniirobot](https://telegram.me/RajniiRobot)
+# [rajniirobot](https://telegram.me/RajniiRobot)
 ### Random
 ### Accessible
 ### Jobs &
