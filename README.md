@@ -1,18 +1,12 @@
 ![RAJNI](https://telegra.ph/file/cdddd4bdbd05f9d5bc441.jpg)
 
-# [rajniirobot](https://telegram.me/RajniiRobot)
-### Random
-### Accessible
-### Jobs &
-### Networking
-### Interface
-### Version 4.0
+# [ʀᴀᴊɴɪ](https://telegram.me/rajniirobot) 4.0
 
 An Advanced Modular Telegram Python Group Management bot running on python3.8.6.
 Build For Mainly Group Maintaining & Help Admins With Amazing Advanced Modules.
 
 
-You Can Find RajniiRobot at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniiRobot)
+You Can Find rajniirobot at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniiRobot)
 
 The Support Chat can be reached out to at [![Telegram](https://img.shields.io/badge/telegram-1b77FF.svg?style=for-the-badge&logo=telegram)](https://telegram.me/RajniSupportChat)
 
@@ -24,7 +18,7 @@ You can Join Our OT Chat at [![Telegram](https://img.shields.io/badge/telegram-1
 
 My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](https://telegram.me/Flasho_gacha),[ Sawada](https://telegram.me/sawada),[ Paul Larson](https://telegram.me/SonOfLars),[ Awesome-RJ](https://telegram.me/Black_Knights_Union_Support).
 
-## POWERED BY [SR Networks](telegram.me/ShajniNetworks)
+## POWERED BY [✵ ꜱᴀɴᴀᴛᴀɴ ʀᴀᴋꜱʜᴀ ɴᴇᴛᴡᴏʀᴋ™ ✵](https://telegram.me/SanatanRakshaNetwork)
 
 
 ## How to setup/deploy.
@@ -38,10 +32,11 @@ My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](ht
 
 >  Step 4 Get Required Values Those are compulsory also can get Non-Required Values.
 
->  Step 5 Click Deploy to Heroku Button to open Heroku Website.
+>  Step 5 Click Deploy Button.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzzyashu/RajniiRoboActive.git)
-  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzyashu/RajniiRoboActive.git)
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/M5nyRu?referralCode=ARAK6a)
 <details>
   
 <code>AI_API_KEY</code> - Enter you AI API KEY from ARQ BOT or Intellivoid.
@@ -106,15 +101,16 @@ My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](ht
   
 <code>WOLVES</code> - A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot(Leave it as it as if you don't know anyone).
   
-  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzzyashu/RajniiRoboActive.git)
+  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzyashu/rajniiroboactive.git)
   
+  [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/M5nyRu?referralCode=ARAK6a)
 </details>
 
 
 
-## Steps to Self Hosting.
-Click here - [NohA - Github](https://github.com/flashokiller/NohA) & Scroll Down then Click "Steps to Self Host".
-Read The Manual & Host Yourself.
+
+
+
 
   <summary>SEE THIS(IMPORTANT!)!!</summary>
   <details>
@@ -133,6 +129,6 @@ Pls don't Ask Us about Console errors! We will Ban you Permanently If We Found a
   
 * [Awesome-RJ](https://telegram.me/Black_Knights_Union_Support)
 
-![Github Stats](https://github-readme-stats.vercel.app/api?username=Itzzzzyashu&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515)
+![Github Stats](https://github-readme-stats.vercel.app/api?username=itzzzyashu&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515)
 
   
