@@ -245,7 +245,7 @@ print(f"[{BOT_NAME}] [C437 ACTIVATING: Initializing Required Clients]")
 time.sleep(0)
 print(f"[{BOT_NAME}] Project Maintained By: [github.com/itzzzyashu] (tellegram.me/itzzzyashu)")
 time.sleep(3)
-from modules.sql import SESSION
+from SaitamaRobot.modules.sql import SESSION
 
 print(f"[{BOT_NAME}] Installing Telegraph")
 telegraph = Telegraph()
