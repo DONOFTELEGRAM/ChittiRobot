@@ -1,3 +1,12 @@
+"""
+This __init__.py file takes input from config.py file and changes variables.
+It also creates other different instances which are needed by bot to run all modules correctly.
+=========================================================\n
+[Team Sanatan Raksha Network](https://www.github.com/SanatanRakshaNetwork), All rights reserved.\n
+Project [rajniiroboactive](https://www.github.com/SanatanRakshaNetwork/rajniiroboactive) have copyright of [@itzzzyashu](https://www.github.com/itzzzyashu).
+=========================================================\n
+"""
+
 import logging
 import os
 import sys
@@ -165,23 +174,37 @@ else:
     except ValueError:
         raise Exception(
             "Your tiger users list does not contain valid integers.")
-
+    INFOPIC = Config.INFOPIC
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+    TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
+    ERROR_LOGS = Config.ERROR_LOGS
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
     EVENT_LOGS = Config.EVENT_LOGS
+    STRICT_GMUTE = Config.STRICT_GMUTE
+    REM_BG_API_KEY = Config.REM_BG_API_KEY
+    BOT_USERNAME = Config.BOT_USERNAME
+    BOT_ID = Config.BOT_ID
+    BOT_NAME = Config.BOT_NAME
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
-    PORT = Config.PORT
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
-    DB_URI = Config.SQLALCHEMY_DATABASE_URI
+    DB_URL = Config.DB_URL
+    MONGO_DB_URL = Config.MONGO_DB_URL
+    MONGO_DB = Config.MONGO_DB
+    MONGO_PORT = Config.MONGO_PORT
+    ARQ_API_URL = Config.ARQ_API_URL
+    GOOGLE_CHROME_BIN = Config.GOOGLE_CHROME_BIN
+    CHROME_DRIVER = Config.CHROME_DRIVER
+    ARQ_API_KEY = Config.ARQ_API_KEY
+    STRING_SESSION = Config.STRING_SESSION
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
     NO_LOAD = Config.NO_LOAD
     DEL_CMDS = Config.DEL_CMDS
     STRICT_GBAN = Config.STRICT_GBAN
-    MONGO_URI = Config.MONGO_DB_URI
-    MONGO_PORT = Config.MONGO_PORT
-    MONGO_DB = Config.MONGO_DB
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
@@ -192,7 +215,6 @@ else:
     SUPPORT_CHAT = Config.SUPPORT_CHAT
     SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
     SPAMWATCH_API = Config.SPAMWATCH_API
-    INFOPIC = Config.INFOPIC
 
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
@@ -221,14 +243,14 @@ print(f"[{BOT_NAME}] Activating {BOT_NAME}. | SRN • Project C437 | Licensed Un
 time.sleep(0)
 print(f"[{BOT_NAME}] [C437 ACTIVATING: Initializing Required Clients]")
 time.sleep(0)
-print(f"[{BOT_NAME}] Project Maintained By: [github.com/itzzzzyashu] (t.me/itzzzyashu)")
+print(f"[{BOT_NAME}] Project Maintained By: [github.com/itzzzyashu] (tellegram.me/itzzzyashu)")
 time.sleep(3)
-from SaitamaRobot.modules.sql import SESSION
+from modules.sql import SESSION
 
 print(f"[{BOT_NAME}] Installing Telegraph")
 telegraph = Telegraph()
 time.sleep(0)
-print(f"[{BOT_NAME}] Creating Telegraph Account")
+print(f"[{BOT_NAME}] Creating Updater, Dispatcher")
 updater = tg.Updater(TOKEN, workers=WORKERS, request_kwargs={"read_timeout": 10, "connect_timeout": 10}, use_context=True)
 dispatcher = updater.dispatcher
 time.sleep(0)
@@ -245,14 +267,14 @@ motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
 time.sleep(0)
+print(f"[{BOT_NAME}] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
+time.sleep(0)
 print(f"[{BOT_NAME}] INITIALZING AIOHTTP SESSION")
 aiohttpsession = ClientSession()
 time.sleep(0)
 # ARQ Client
 print(f"[{BOT_NAME}] INITIALIZATION ARQ CLIENT")
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-time.sleep(0)
-print(f"[{BOT_NAME}] Connecting To SRN • Data Center • Mumbai • PostgreSQL Database")
 time.sleep(0)
 print(f"[{BOT_NAME}] Connecting To SRN • {BOT_NAME}'s Userbot (t.me/itzzzyashu)")
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
