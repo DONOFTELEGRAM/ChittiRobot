@@ -17,11 +17,11 @@ html2text
 
 
 # Youtube
-youtube_dl
-youtube_search_python
-yt-dlp
-youtube_search
-youtube-search-python
+# youtube_dl
+# youtube_search_python
+# yt-dlp
+# youtube_search
+# youtube-search-python
 
 
 # Github Repos
