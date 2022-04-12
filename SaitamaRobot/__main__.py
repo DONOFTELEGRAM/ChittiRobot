@@ -80,8 +80,9 @@ PM_START_TEXT = f"""
 Hi, I'm [{BOT_NAME}](t.me/{BOT_USERNAME})!,
 _A bot to manage your chats when you're offline._
 _Make sure to read my "About" section to know how you can use me effectively!_
-*Join Chatting Group - @RajniSpam!*
+*Join Our Chatting Group - @RajniSpam!*
 *Checkout Full Help menu by sending /help or click help button to know about my modules and usage*.
+*• 𝔭𝔬𝔴𝔢𝔯𝔢𝔡 𝔟𝔶 - @SanatanRakshaNetwork™*
 """
 
 buttons = [
@@ -103,7 +104,6 @@ buttons = [
 
 HELP_STRINGS = """
 *『 Help section: 』*
-
 Hey there! My name is *{}*.
 I'm here Active to help your admins manage their groups with My Advanced Modules!
 Have a look at the following for an idea of some of the things I can help you with.
@@ -111,7 +111,6 @@ Have a look at the following for an idea of some of the things I can help you wi
  • /start : Starts me, can be used to check i'm alive or no...
  • /help : PM's you this message.
  • /help <module name> : PM's you info about that module.
-
 *Need help? head to @RajniSupportChat*
 Click on the buttons below to get documentation about specific modules!
  • /settings :
@@ -130,10 +129,9 @@ DONATE_STRING = f"""*{dispatcher.bot.first_name}* is hosted on Heroku server,
 if you want to donate my developers you can.......,
 • [Gpay](https://pay.google.com)
 *UPI ID* - `dhruv040.04@okaxis`
-• By Scanning the [BHIM UPI QR CODE](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg) below
+• By Scanning the [Paytm UPI QR CODE](https://telegra.ph/file/4b6abf3199adf23c7e8f3.jpg) below
 by your payment application.
 You can also DM my developer to ask about donation.
-
 *What we do with donations?*
 » _donations will help us to run Rajni
  on a paid server by which
@@ -142,6 +140,7 @@ You can also DM my developer to ask about donation.
  with more useful and fun modules._
 » _these donations will also help us
  to help others, those who really need support._
+ *Thanks for thinking about donations❤*
 """
 IMPORTED = {}
 MIGRATEABLE = []
@@ -357,7 +356,6 @@ def rajni_about_callback(update, context):
     if query.data == "rajni_":
         query.message.edit_text(
             text=f"""*『 About section: 』*
-
 I'm *{dispatcher.bot.first_name}*, a powerful & moduler group management bot built to help your admins and you to manage your group easily.
 *Here's a Shortlist what I can do.*
 \n• I can restrict users.
@@ -367,11 +365,17 @@ I'm *{dispatcher.bot.first_name}*, a powerful & moduler group management bot bui
 • I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
 • I check for admin’s permissions before executing any command and more stuffs.
 • I have more useful and fun modules too.
-• I can chat with users by using [Kuki AI](https://kuki-api.tk).
+• I can chat with users by using [Itel Ai](https://www.kukiapi.xyz/).
 • [Click here](https://youtube.com/playlist?list=PLR1ul39qY-jfgtjUdzTxV2On8O5OWbgTw) to know about my basic modules on [YouTube](https://www.youtube.com).
-• *{dispatcher.bot.first_name}’s* reposiratory is private, anyone can’t fork, if you want base Repository [Click here](https://github.com/AnimeKaizoku/SaitamaRobot) | don't come to us for asking Rajni's Repo otherwise you'll get direct ban.
+• *{dispatcher.bot.first_name}’s* reposiratory is public now, anyone can fork.
+ Click [TeamSanatanRakshaNetwork/rajniiroboactive](https://github.com/TeamSanatanRakshaNetwork/rajniiroboactive).
+ - You can come at our support chat to ask about deploy errors and solutions.
+ - Please don't ask about any error if you've edited the codes.
+ - Once you edited code, errors will be yours only, we won't help after it.
+ - Warning - don't edit the developers section, you'll get gban if you did that.
+ - put `• 𝔭𝔬𝔴𝔢𝔯𝔢𝔡 𝔟𝔶 - @SanatanRakshaNetwork™` in your bot's start message.
+ To learn coding and tech, please join correct group from @SanatanRakshaNetwork and ask there.
 • Reach my Support Links at [here](https://t.me/RajniSupportChat/3).
-
 *If you have any question about me, let our team help you at @{SUPPORT_CHAT}*.
 *Thanks for using me ;),* [Click here](https://t.me/RajniUpdates/97) *to Share & Support us*💙""",
             parse_mode=ParseMode.MARKDOWN,
@@ -400,7 +404,6 @@ def rajni_manual_callback(update, context):
     if query.data == "manual_":
         query.message.edit_text(
             text=f"""*『 Manual section: 』*
-
 Here is the help how to use me with my best performance, follow the steps below!
 • First add me to a group...
 » Click the “Add me” button and select a group where you want me to help you and your admins :).
@@ -424,7 +427,6 @@ def admin_setup(update, context):
     if query.data == "adminsetup_":
         query.message.edit_text(
             text=f"""*｢ Admin Setup 」*
-
 • To avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user.
 This cache lasts about 10 minutes; this may change in the future.
 This means that if you promote a user manually (without using the /promote command),
@@ -466,35 +468,29 @@ This helps protect you and your groups by removing spam flooders as quickly as p
 • `/setflood <int/'no'/'off'>`: enables or disables flood control
 • `/setfloodmode <ban/kick/mute/tban/tmute> <value>`: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user.
-
 *« Blacklist »*
 • `/addblacklist <triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
 • `/blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>`: Action to perform when someone sends blacklisted words.
 Blacklists are used to stop certain triggers from being said in a group.
 Any time the trigger is mentioned, the message will immediately be deleted.
 A good combo is sometimes to pair this up with warn filters!
-
 *« Reports »*
 • `/reports <on/off>`: Change report setting, or view current status.
   × If done in pm, toggles your status.
   × If in chat, toggles that chat's status.
 If someone in your group thinks someone needs reporting, they now have an easy way to call all admins.
-
 *« Locks »*
 • `/lock <type>`: Lock items of a certain type (not available in private)
 • `/locktypes`: Lists all possible locktypes
 The locks module allows you to lock away some common items in the telegram world; the bot will automatically delete them!
-
 *« Warns »*
 • `/addwarn <keyword> <reply message>`: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user. 
 • `/warn <userhandle>`: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
 • `/strongwarn <on/yes/off/no>`: If set to on, exceeding the warn limit will result in a ban. Else, will just kick.
 If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command.
-
 *« Captcha »*
 • `/captcha <off/soft/strong>`: All users that join, get muted
 A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots.
-
 *« Federations »*
 • Join our Rose bot Federation [TIAF] • A, Just send the below command in your group or as that group's owner to execute it.
 Missrose should be admin with Ban Right Access.
@@ -517,14 +513,12 @@ def rajni_support_callback(update, context):
         query.message.edit_text(
             text=f"""*『 Support section:』*
 *Just Click the link below as it’s mentioned:*
-
 • Join Support chat - @{SUPPORT_CHAT}.
 • Join Updates here - @RajniUpdates.
 • Global Events here - @RajniGlobal.
 • Join Spam/Appeal chat - @RajniSpam.
 • Join Developers chat - @SanatanRakshaDevelopers.
-
-• 𝔭𝔬𝔴𝔢𝔯𝔢𝔡 𝔟𝔶 - @SanatanRakshaNetwork
+• 𝔭𝔬𝔴𝔢𝔯𝔢𝔡 𝔟𝔶 - @SanatanRakshaNetwork™
 """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -564,7 +558,6 @@ def rajni_tandc_callback(update, context):
         query.message.edit_text(
             text=f"""*『 Terms & Conditions section: 』*
 *The Terms and Conditions are as follows:*
-
 • We respect everyone's privacy & we never collect Sensitive data from groups.
 • {dispatcher.bot.first_name} is one of the safest, easiest and Moduler telegram bot.
 • Messages between users and {dispatcher.bot.first_name} is End to End Encrypted!
@@ -576,7 +569,6 @@ if we blacklist them who spams {dispatcher.bot.first_name}’s buttons or comman
 • Global appeals for {dispatcher.bot.first_name}? Read the [criteria](https://t.me/RajniGlobal/402) first.
  Appeal Global Actions at [RajniSpam Appeal/Off-topic chat](t.me/RajniSpam).
 • We only stores User ID, Usernames, Name only, which is needed bot to respond to any user.
-
 _Terms & Conditions can be changed anytime, please check once a month._""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -767,7 +759,7 @@ def get_settings(update: Update, context: CallbackContext):
 @run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
-    chat = update.effective_chat  # type: Optional[Chat]
+    chat = update.effective_chat  # type Optional Chat
     bot = context.bot
     if chat.type == "private":
         update.effective_message.reply_text(
@@ -797,7 +789,7 @@ def donate(update: Update, context: CallbackContext):
 
 
 def migrate_chats(update: Update, context: CallbackContext):
-    msg = update.effective_message  # type: Optional[Message]
+    msg = update.effective_message  # type Optional Message
     if msg.migrate_to_chat_id:
         old_chat = update.effective_chat.id
         new_chat = msg.migrate_to_chat_id
