@@ -36,7 +36,6 @@ My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](ht
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzyashu/RajniiRoboActive.git)
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/M5nyRu?referralCode=ARAK6a)
 <details>
   
 <code>AI_API_KEY</code> - Enter you AI API KEY from ARQ BOT or Intellivoid.
@@ -103,8 +102,7 @@ My Developers : [Yash Virmani](https://telegram.me/itzzzyashu),[ Yash Rajput](ht
   
   [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/itzzzyashu/rajniiroboactive.git)
   
-  [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/M5nyRu?referralCode=ARAK6a)
-</details>
+  </details>
 
 
 
